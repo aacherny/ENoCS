@@ -33,46 +33,135 @@ public class OuterJFrame
      * Creates the menu bar in the outer window, adding dropdown menus like
      * 'File' and 'Edit'
      */
-    public JMenuBar createMenuBar() {
+    public JMenuBar createMenuBar()
+    {
         JMenuBar menuBar = new JMenuBar();  // Menu bar within the window
 
-        //Build the File menu
-        JMenu menu = new JMenu("File");
-        menu.setMnemonic(KeyEvent.VK_A);
-        menu.getAccessibleContext().setAccessibleDescription("The only menu in this program that has menu items");
-        menuBar.add(menu);
+        // TODO add icons to the JMenuItems
+        // Build the File menu
+        JMenu menuFile = new JMenu("File");
+        menuBar.add(menuFile);
 
-        //TODO add icons to the JMenuItems
-        //'New' button under 'File'
+        // 'New' button under 'File'
         JMenuItem menuItemNew = new JMenuItem("New");
         menuItemNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
-        menu.add(menuItemNew);
+        menuFile.add(menuItemNew);
 
-        //'Open' button under 'File'
+        // 'Open' button under 'File'
         JMenuItem menuItemOpen = new JMenuItem("Open");
         menuItemOpen.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK));
-        menu.add(menuItemOpen);
+        menuFile.add(menuItemOpen);
 
+        menuFile.addSeparator();
 
-        menu.addSeparator();
-
-        //'Save' button under 'File'
+        // 'Save' button under 'File'
         JMenuItem menuItemSave = new JMenuItem("Save");
         menuItemSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
-        menu.add(menuItemSave);
+        menuFile.add(menuItemSave);
 
-        //'Save As' button under 'File'
+        // 'Save As' button under 'File'
         JMenuItem menuItemSaveAs = new JMenuItem("Save As");
-        menu.add(menuItemSaveAs);
+        menuFile.add(menuItemSaveAs);
 
-        menu.addSeparator();
+        menuFile.addSeparator();
 
-        //'Exit' button under 'File'
+        // 'Exit' button under 'File'
         JMenuItem menuItemExit = new JMenuItem("Exit");
-        menu.add(menuItemExit);
+        menuFile.add(menuItemExit);
 
 
-        outerFrame.setJMenuBar(menuBar);
+
+        // Build the File menu
+        JMenu menuEdit = new JMenu("Edit");
+        menuBar.add(menuEdit);
+
+        // 'Properties' button under 'Edit'
+        JMenuItem menuItemProperties = new JMenuItem("Properties");
+        menuEdit.add(menuItemProperties);
+
+
+
+        // Build the View menu
+        JMenu menuView = new JMenu("View");
+        menuBar.add(menuView);
+
+        // 'Toolbar' button under 'View'
+        JMenuItem menuItemToolbar = new JCheckBoxMenuItem("Toolbar");
+        menuView.add(menuItemToolbar);
+
+        // 'Status Bar' button under 'View'
+        JMenuItem menuItemStatusBar = new JCheckBoxMenuItem("Status Bar");
+        menuView.add(menuItemStatusBar);
+
+        // 'Topology' button under 'View'
+        JMenuItem menuItemTopology = new JCheckBoxMenuItem("Topology");
+        menuView.add(menuItemTopology);
+
+        // 'Pipeline' button under 'View'
+        JMenuItem menuItemPipeline = new JCheckBoxMenuItem("Pipeline");
+        menuView.add(menuItemPipeline);
+
+        // 'Routing' button under 'View'
+        JMenuItem menuItemRouting = new JCheckBoxMenuItem("Routing");
+        menuView.add(menuItemRouting);
+
+        // 'Statistics' button under 'View'
+        JMenuItem menuItemStatistics = new JCheckBoxMenuItem("Statistics");
+        menuView.add(menuItemStatistics);
+
+        // 'Network Information' button under 'View'
+        JMenuItem menuItemNetworkInfo = new JCheckBoxMenuItem("Network Information");
+        menuView.add(menuItemNetworkInfo);
+
+        // 'Flow Control' button under 'View'
+        JMenuItem menuItemFlowControl = new JCheckBoxMenuItem("Flow Control");
+        menuView.add(menuItemFlowControl);
+
+
+
+        // Build the Windows menu
+        JMenu menuWindows = new JMenu("Windows");
+        menuBar.add(menuWindows);
+
+        // 'Properties' button under 'Windows'
+        JMenuItem menuItemNewWindow = new JMenuItem("New Window");
+        menuWindows.add(menuItemNewWindow);
+
+        // 'Properties' button under 'Windows'
+        JMenuItem menuItemCascade = new JMenuItem("Cascade");
+        menuWindows.add(menuItemCascade);
+
+        // 'Properties' button under 'Windows'
+        JMenuItem menuItemTileV = new JMenuItem("Tile Vertical");
+        menuWindows.add(menuItemTileV);
+
+        // 'Properties' button under 'Windows'
+        JMenuItem menuItemTileH = new JMenuItem("Tile Horizontal");
+        menuWindows.add(menuItemTileH);
+
+        // 'Properties' button under 'Windows'
+        JMenuItem menuItemCloseAll = new JMenuItem("Close All");
+        menuWindows.add(menuItemCloseAll);
+
+        // 'Properties' button under 'Windows'
+        JMenuItem menuItemRefresh = new JMenuItem("Refresh");
+        menuWindows.add(menuItemRefresh);
+
+
+
+        // Build the Help menu
+        JMenu menuHelp = new JMenu("Help");
+        menuBar.add(menuHelp);
+
+        // 'Properties' button under 'Windows'
+        JMenuItem menuItemContents = new JMenuItem("Contents");
+        menuHelp.add(menuItemContents);
+
+        menuHelp.addSeparator();
+
+        // 'Properties' button under 'Windows'
+        JMenuItem menuItemAbout = new JMenuItem("About");
+        menuHelp.add(menuItemAbout);
 
         return menuBar;
     }
