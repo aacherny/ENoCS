@@ -3,7 +3,7 @@ package main.java;
 import javax.swing.JFrame;
 
 /**
- * Class for the outer window that will hold all of the windows inside it
+ * Class for the outer window that holds other windows inside it
  */
 public class OuterJFrame
 {
@@ -13,7 +13,7 @@ public class OuterJFrame
     {
         outerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         outerFrame.setTitle("Example GUI");
-        outerFrame.setSize(300, 250);
+        outerFrame.setSize(500, 350);
         outerFrame.setLocationRelativeTo(null);
 
         outerFrame.setVisible(true);
