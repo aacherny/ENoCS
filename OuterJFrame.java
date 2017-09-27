@@ -20,7 +20,13 @@ public class OuterJFrame
         outerFrame.setTitle("ENoCS Simulator");
         outerFrame.setSize(500, 350);
         outerFrame.setLocationRelativeTo(null);
+    }
 
+    /**
+     * Creates the JFrame that holds all of the windows inside it and makes it visible
+     */
+    public void createOuterJFrame()
+    {
         // Creates the menu bar and adds it to the window
         JMenuBar menuBar = createMenuBar();
         outerFrame.setJMenuBar(menuBar);
@@ -33,7 +39,7 @@ public class OuterJFrame
      * Creates the menu bar in the outer window, adding dropdown menus like
      * 'File' and 'Edit'
      */
-    public JMenuBar createMenuBar()
+    private JMenuBar createMenuBar()
     {
         JMenuBar menuBar = new JMenuBar();  // Menu bar within the window
 
@@ -78,6 +84,12 @@ public class OuterJFrame
         // 'Properties' button under 'Edit'
         JMenuItem menuItemProperties = new JMenuItem("Properties");
         menuEdit.add(menuItemProperties);
+        menuItemProperties.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ev) {
+                PropertiesWindow propWindow = new PropertiesWindow();
+                propWindow.createPropWindow();
+            }
+        });
 
 
 
@@ -153,13 +165,13 @@ public class OuterJFrame
         JMenu menuHelp = new JMenu("Help");
         menuBar.add(menuHelp);
 
-        // 'Properties' button under 'Windows'
+        // 'Contents' button under 'Help'
         JMenuItem menuItemContents = new JMenuItem("Contents");
         menuHelp.add(menuItemContents);
 
         menuHelp.addSeparator();
 
-        // 'Properties' button under 'Windows'
+        // 'About' button under 'Help'
         JMenuItem menuItemAbout = new JMenuItem("About");
         menuHelp.add(menuItemAbout);
 
