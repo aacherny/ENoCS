@@ -10,6 +10,10 @@ public class Main
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch(Exception x) {}
 
-        new OuterJFrame();
+        Mesh networkMesh = new Mesh(4);
+
+        OuterJFrame outerFrame = new OuterJFrame();
+        outerFrame.createOuterJFrame();
+
     }
 }

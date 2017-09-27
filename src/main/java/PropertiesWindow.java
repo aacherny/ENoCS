@@ -5,10 +5,7 @@ import java.awt.*;
 
 public class PropertiesWindow
 {
-    private JFrame propertiesFrame = new JFrame();   // Outer window
-
-    private String topology;
-    private int nodes;
+    private JFrame propertiesFrame = new JFrame();   // Main window that holds all of the tabs
 
     public PropertiesWindow()
     {
@@ -17,22 +14,34 @@ public class PropertiesWindow
         propertiesFrame.setTitle("Properties");
         propertiesFrame.setSize(500, 350);
         propertiesFrame.setLocationRelativeTo(null);
-
-        // Default values
-        topology = "mesh";
-        nodes = 4;
     }
 
+    /**
+     * Creates the format of the Properties window and its tabs
+     */
     public void createPropWindow()
     {
-        JTabbedPane tabbedPane = new JTabbedPane();
+        JTabbedPane tabbedPane = new JTabbedPane(); // Creates tabbed pane
 
-        JPanel p = new JPanel(new BorderLayout());
+        // Creates tabs and adds them to the tabbed pane
+        JPanel runtimeOptions = new JPanel(new BorderLayout());
+        tabbedPane.addTab("Runtime Options", runtimeOptions);
 
-        tabbedPane.addTab("Tab 1", p);
+        JPanel networkSettings = new JPanel(new BorderLayout());
+        tabbedPane.addTab("Network Settings", networkSettings);
+
+        JPanel routerMA = new JPanel(new BorderLayout());
+        tabbedPane.addTab("Router MicroArchitecture", routerMA);
+
+        JPanel statWindow = new JPanel(new BorderLayout());
+        tabbedPane.addTab("Stat Window", statWindow);
+
+        JPanel misc = new JPanel(new BorderLayout());
+        tabbedPane.addTab("Misc", misc);
 
 
-
+        // Adds the tabbed pane to the Properties window
+        propertiesFrame.add(tabbedPane);
 
         // Makes the window visible
         propertiesFrame.setVisible(true);

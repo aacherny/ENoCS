@@ -12,8 +12,6 @@ import java.awt.event.KeyEvent;
 public class OuterJFrame
 {
     private JFrame outerFrame = new JFrame();   // Outer window
-    public PropertiesWindow propWindow = new PropertiesWindow();   // Properties window
-
 
     public OuterJFrame()
     {
@@ -22,7 +20,13 @@ public class OuterJFrame
         outerFrame.setTitle("ENoCS Simulator");
         outerFrame.setSize(500, 350);
         outerFrame.setLocationRelativeTo(null);
+    }
 
+    /**
+     * Creates the JFrame that holds all of the windows inside it and makes it visible
+     */
+    public void createOuterJFrame()
+    {
         // Creates the menu bar and adds it to the window
         JMenuBar menuBar = createMenuBar();
         outerFrame.setJMenuBar(menuBar);
@@ -82,6 +86,7 @@ public class OuterJFrame
         menuEdit.add(menuItemProperties);
         menuItemProperties.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
+                PropertiesWindow propWindow = new PropertiesWindow();
                 propWindow.createPropWindow();
             }
         });
