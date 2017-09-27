@@ -2,6 +2,8 @@ package main.java;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PropertiesWindow
 {
@@ -24,18 +26,79 @@ public class PropertiesWindow
         JTabbedPane tabbedPane = new JTabbedPane(); // Creates tabbed pane
 
         // Creates tabs and adds them to the tabbed pane
+        // 'Runtime Options' panel
         JPanel runtimeOptions = new JPanel(new BorderLayout());
         tabbedPane.addTab("Runtime Options", runtimeOptions);
 
-        JPanel networkSettings = new JPanel(new BorderLayout());
+
+
+        // 'Network Settings' panel
+        JPanel networkSettings = new JPanel(new GridLayout(9, 2));
         tabbedPane.addTab("Network Settings", networkSettings);
 
+        // Panel for the labels
+        JPanel topologyPanel = new JPanel(new GridLayout(1, 2)); // 2 rows 1 column
+        networkSettings.add(topologyPanel);
+
+
+
+        // Panel for the fields
+        JPanel nodesPanel = new JPanel(new GridLayout(1, 2)); // 2 rows 1 column
+        networkSettings.add(nodesPanel);
+
+        // Textfield
+        JLabel labelTopology = new JLabel("Topology");
+
+        String[] choicesTopology = { "Bus", "Mesh", "Torus", "Flattened Butterfly"};
+        final JComboBox<String> boxTopology = new JComboBox<String>(choicesTopology);
+        networkSettings.add(boxTopology);
+        boxTopology.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                // Do something when you select a value
+            }
+        });
+
+
+
+        JLabel labelNodes = new JLabel("Nodes");
+
+        String[] choicesNodes = { "4", "9", "16"};
+        final JComboBox<String> boxNodes = new JComboBox<String>(choicesNodes);
+        networkSettings.add(boxNodes);
+        boxNodes.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                // Do something when you select a value
+            }
+        });
+
+
+        topologyPanel.add(labelTopology);
+        topologyPanel.add(boxTopology);
+
+        nodesPanel.add(labelNodes);
+        nodesPanel.add(boxNodes);
+
+
+
+
+
+
+
+        // 'Router MicroArchitecture' panel
         JPanel routerMA = new JPanel(new BorderLayout());
         tabbedPane.addTab("Router MicroArchitecture", routerMA);
 
+        // 'Stat Window' panel
         JPanel statWindow = new JPanel(new BorderLayout());
         tabbedPane.addTab("Stat Window", statWindow);
 
+        // 'Misc' panel
         JPanel misc = new JPanel(new BorderLayout());
         tabbedPane.addTab("Misc", misc);
 
