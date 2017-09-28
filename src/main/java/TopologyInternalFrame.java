@@ -1,7 +1,5 @@
 package main.java;
 
-import com.sun.xml.internal.bind.v2.TODO;
-
 import javax.swing.*;
 
 public class TopologyInternalFrame extends JInternalFrame
