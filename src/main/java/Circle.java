@@ -4,10 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Circle extends JPanel {
-    public void paintComponent(Graphics l){
-        super.paintComponent(l);
+    public void paintComponent(Graphics c){
+        super.paintComponent(c);
 
-        l.setColor(Color.BLACK);
-        l.drawOval(25, 25, 25, 25);
+        c.setColor(Color.BLACK);
+        c.drawOval(25, 25, 25, 25);
     }
 }

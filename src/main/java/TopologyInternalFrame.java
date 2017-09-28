@@ -23,6 +23,7 @@ public class TopologyInternalFrame extends JInternalFrame
         //TODO: Figure out why you can't have both a line and a circle
         Circle circ1 = new Circle();
         add(circ1);
+
 //        Line line1 = new Line();
 //        add(line1);
 
