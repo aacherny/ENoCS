@@ -18,6 +18,7 @@ public class PropertiesWindow
         propertiesFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         propertiesFrame.setTitle("Properties");
         propertiesFrame.setSize(500, 350);
+        propertiesFrame.setResizable(false);
         propertiesFrame.setLocationRelativeTo(null);
     }
 
@@ -62,6 +63,10 @@ public class PropertiesWindow
         propertiesFrame.setVisible(true);
     }
 
+    /**
+     * Creates the panel under the 'Network Settings' tab
+     * @param networkSettings
+     */
     private void createNetworkSettingsPanel(JPanel networkSettings)
     {
         // Panel for the topology
@@ -113,6 +118,7 @@ public class PropertiesWindow
         nodesPanel.add(labelNodes);
         nodesPanel.add(boxNodes);
 
+        // OK button at the bottom
         JButton okButton = new JButton("OK");
         networkSettings.add(okButton);
 

@@ -24,7 +24,7 @@ public class OuterJFrame
         // General things like window title and size
         outerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         outerFrame.setTitle("ENoCS Simulator");
-        outerFrame.setSize(500, 350);
+        outerFrame.setSize(1200, 800);
         outerFrame.setLocationRelativeTo(null);
     }
 
@@ -184,6 +184,10 @@ public class OuterJFrame
         return menuBar;
     }
 
+    /**
+     * Returns the desktop pane of the JPanel
+     * @return {JDesktopPane}
+     */
     public JDesktopPane getDesktopPane()
     {
         return desktop;

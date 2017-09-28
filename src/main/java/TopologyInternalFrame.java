@@ -9,11 +9,13 @@ public class TopologyInternalFrame extends JInternalFrame
 
     public TopologyInternalFrame()
     {
-        super("Document #" + (++openFrameCount),
+        super("Network Topology",
                 true, //resizable
                 true, //closable
                 true, //maximizable
                 true);//iconifiable
+
+        ++openFrameCount;
 
         setSize(500, 350);
 
