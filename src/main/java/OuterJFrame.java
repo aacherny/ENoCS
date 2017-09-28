@@ -11,10 +11,16 @@ import java.awt.event.KeyEvent;
  */
 public class OuterJFrame
 {
-    private JFrame outerFrame = new JFrame();   // Outer window
+    private JFrame outerFrame;   // Outer window
+    private JDesktopPane desktop;
 
     public OuterJFrame()
     {
+        outerFrame = new JFrame();
+        desktop = new JDesktopPane();
+
+        outerFrame.setContentPane(desktop);
+
         // General things like window title and size
         outerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         outerFrame.setTitle("ENoCS Simulator");
@@ -86,7 +92,7 @@ public class OuterJFrame
         menuEdit.add(menuItemProperties);
         menuItemProperties.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
-                PropertiesWindow propWindow = new PropertiesWindow();
+                PropertiesWindow propWindow = new PropertiesWindow(desktop);
                 propWindow.createPropWindow();
             }
         });
@@ -176,5 +182,10 @@ public class OuterJFrame
         menuHelp.add(menuItemAbout);
 
         return menuBar;
+    }
+
+    public JDesktopPane getDesktopPane()
+    {
+        return desktop;
     }
 }
