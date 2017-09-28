@@ -21,11 +21,12 @@ public class TopologyInternalFrame extends JInternalFrame
         setLocation(xOffset*openFrameCount, yOffset*openFrameCount);
 
         //TODO: Figure out why you can't have both a line and a circle
-        Circle circ1 = new Circle();
+        Circle circ1 = new Circle(25, 25);
         add(circ1);
-
-//        Line line1 = new Line();
-//        add(line1);
+        Circle circ2 = new Circle(50, 50);
+        add(circ2);
+        Line line1 = new Line(25, 25, 50, 50);
+        add(line1);
 
         setVisible(true);
     }
