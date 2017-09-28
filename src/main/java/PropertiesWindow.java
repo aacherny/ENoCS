@@ -8,9 +8,12 @@ import java.awt.event.ActionListener;
 public class PropertiesWindow
 {
     private JFrame propertiesFrame = new JFrame();   // Main window that holds all of the tabs
+    private JDesktopPane desktopPane;
 
-    public PropertiesWindow()
+    public PropertiesWindow(JDesktopPane inputJDesktopPane)
     {
+        desktopPane = inputJDesktopPane;
+
         // General things like window title and size
         propertiesFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         propertiesFrame.setTitle("Properties");
@@ -31,24 +34,49 @@ public class PropertiesWindow
         tabbedPane.addTab("Runtime Options", runtimeOptions);
 
 
-
         // 'Network Settings' panel
         JPanel networkSettings = new JPanel(new GridLayout(9, 2));
         tabbedPane.addTab("Network Settings", networkSettings);
+        createNetworkSettingsPanel(networkSettings);    // creates the content in the 'Network Settings' tab
 
-        // Panel for the labels
+
+        // 'Router MicroArchitecture' panel
+        JPanel routerMA = new JPanel(new BorderLayout());
+        tabbedPane.addTab("Router MicroArchitecture", routerMA);
+
+
+        // 'Stat Window' panel
+        JPanel statWindow = new JPanel(new BorderLayout());
+        tabbedPane.addTab("Stat Window", statWindow);
+
+
+        // 'Misc' panel
+        JPanel misc = new JPanel(new BorderLayout());
+        tabbedPane.addTab("Misc", misc);
+
+
+        // Adds the tabbed pane to the Properties window
+        propertiesFrame.add(tabbedPane);
+
+        // Makes the window visible
+        propertiesFrame.setVisible(true);
+    }
+
+    private void createNetworkSettingsPanel(JPanel networkSettings)
+    {
+        // Panel for the topology
         JPanel topologyPanel = new JPanel(new GridLayout(1, 2)); // 2 rows 1 column
         networkSettings.add(topologyPanel);
 
 
-
-        // Panel for the fields
+        // Panel for the nodes
         JPanel nodesPanel = new JPanel(new GridLayout(1, 2)); // 2 rows 1 column
         networkSettings.add(nodesPanel);
 
-        // Textfield
+        // Topology label
         JLabel labelTopology = new JLabel("Topology");
 
+        // Topology dropdown
         String[] choicesTopology = { "Bus", "Mesh", "Torus", "Flattened Butterfly"};
         final JComboBox<String> boxTopology = new JComboBox<String>(choicesTopology);
         networkSettings.add(boxTopology);
@@ -63,8 +91,10 @@ public class PropertiesWindow
 
 
 
+        // Nodes label
         JLabel labelNodes = new JLabel("Nodes");
 
+        // Nodes dropdown
         String[] choicesNodes = { "4", "9", "16"};
         final JComboBox<String> boxNodes = new JComboBox<String>(choicesNodes);
         networkSettings.add(boxNodes);
@@ -77,36 +107,24 @@ public class PropertiesWindow
             }
         });
 
-
         topologyPanel.add(labelTopology);
         topologyPanel.add(boxTopology);
 
         nodesPanel.add(labelNodes);
         nodesPanel.add(boxNodes);
 
+        JButton okButton = new JButton("OK");
+        networkSettings.add(okButton);
 
-
-
-
-
-
-        // 'Router MicroArchitecture' panel
-        JPanel routerMA = new JPanel(new BorderLayout());
-        tabbedPane.addTab("Router MicroArchitecture", routerMA);
-
-        // 'Stat Window' panel
-        JPanel statWindow = new JPanel(new BorderLayout());
-        tabbedPane.addTab("Stat Window", statWindow);
-
-        // 'Misc' panel
-        JPanel misc = new JPanel(new BorderLayout());
-        tabbedPane.addTab("Misc", misc);
-
-
-        // Adds the tabbed pane to the Properties window
-        propertiesFrame.add(tabbedPane);
-
-        // Makes the window visible
-        propertiesFrame.setVisible(true);
+        okButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                TopologyInternalFrame myFrame = new TopologyInternalFrame();
+                myFrame.setVisible(true);
+                desktopPane.add(myFrame);
+            }
+        });
     }
 }
