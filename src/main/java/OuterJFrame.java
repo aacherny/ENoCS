@@ -24,7 +24,7 @@ public class OuterJFrame
         // General things like window title and size
         outerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         outerFrame.setTitle("ENoCS Simulator");
-        outerFrame.setSize(500, 350);
+        outerFrame.setSize(900, 600);
         outerFrame.setLocationRelativeTo(null);
     }
 

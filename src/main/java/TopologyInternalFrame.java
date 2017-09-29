@@ -1,11 +1,13 @@
 package main.java;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class TopologyInternalFrame extends JInternalFrame
 {
     static int openFrameCount = 0;
     static final int xOffset = 30, yOffset = 30;
+    JDesktopPane desktopPane;
 
     public TopologyInternalFrame()
     {
@@ -16,17 +18,12 @@ public class TopologyInternalFrame extends JInternalFrame
                 true);//iconifiable
 
         setSize(500, 350);
-
+        Container contentPane = getContentPane();
         //Set the window's location.
         setLocation(xOffset*openFrameCount, yOffset*openFrameCount);
 
-        //TODO: Figure out why you can't have both a line and a circle
-        Circle circ1 = new Circle(25, 25);
-        add(circ1);
-        Circle circ2 = new Circle(50, 50);
-        add(circ2);
-        Line line1 = new Line(25, 25, 50, 50);
-        add(line1);
+        Circle circ1 = new Circle(9);
+        contentPane.add(circ1);
 
         setVisible(true);
     }
