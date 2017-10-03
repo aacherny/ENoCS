@@ -119,6 +119,21 @@ public class PropertiesWindow
         String[] choicesNodes = { "4", "9", "16"};
         final JComboBox<String> boxNodes = new JComboBox<String>(choicesNodes);
         boxNodes.setSelectedItem(network.getNodes());   // Sets the default value of the JComboBox
+        switch(network.getNodes()){  // sets the default value of the dropdown to the value of the object
+        default:
+            boxNodes.setSelectedIndex(0);
+            break;
+        case 4:
+            boxNodes.setSelectedIndex(0);
+            break;
+        case 9:
+            boxNodes.setSelectedIndex(1);
+            break;
+        case 16:
+            boxNodes.setSelectedIndex(2);
+            break;
+        }
+
         networkSettings.add(boxNodes);
 
         topologyPanel.add(labelTopology);
@@ -139,11 +154,14 @@ public class PropertiesWindow
                 selectedTopology = boxTopology.getSelectedItem().toString().toLowerCase();
                 selectedNodes = Integer.parseInt(boxNodes.getSelectedItem().toString());
 
+                // ERROR: Multiple frames open because a new PropertiesWindow is created every time it's opened, which
+                //  creates fresh topologyFrames - Need to check for open/existing Topology Frames
                 if(topologyFrame != null)
                 {
                     topologyFrame.dispose();
                 }
 
+                System.out.println("Frame = " + topologyFrame);
 
                 network.setTopology(selectedTopology);
                 network.setNodes(selectedNodes);
