@@ -24,33 +24,9 @@ public class TopologyInternalFrame extends JInternalFrame
         setLocation(xOffset, yOffset);
 
 
-        if(inputNetwork.getTopology().equals("mesh"))
-        {
-            JPanel panelYContainer = new JPanel();
-            panelYContainer.setLayout(new GridLayout(0, (int)Math.sqrt(inputNetwork.getNodes())));
 
-            for(int county = 0; county < Math.sqrt(inputNetwork.getNodes()); county++)
-            {
-                JPanel panelXContainer = new JPanel();
-                panelXContainer.setLayout(new GridLayout((int)Math.sqrt(inputNetwork.getNodes()), 0));
+        add(inputNetwork.drawTopology());
 
-
-                Circle circle = new Circle();
-                Line line = new Line();
-
-                panelXContainer.add(circle);
-
-                for(int countx = 0; countx < (Math.sqrt(inputNetwork.getNodes()) - 1); countx++)
-                {
-                    panelXContainer.add(line);
-
-                    panelXContainer.add(circle);
-                }
-                panelYContainer.add(panelXContainer);
-            }
-
-            add(panelYContainer);
-        }
 
         pack();
         setVisible(true);

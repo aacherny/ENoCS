@@ -7,3 +7,4 @@ public class Mesh extends Network
         super("mesh", inputNodes);
     }
 }
+

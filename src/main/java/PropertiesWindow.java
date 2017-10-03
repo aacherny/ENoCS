@@ -12,6 +12,9 @@ public class PropertiesWindow
 
     public Network network;
 
+    private String selectedTopology;
+    private int selectedNodes;
+
     TopologyInternalFrame topologyFrame;
 
     public PropertiesWindow(JDesktopPane inputJDesktopPane, Network inputNetwork)
@@ -89,17 +92,25 @@ public class PropertiesWindow
         // Topology dropdown
         String[] choicesTopology = { "Bus", "Mesh", "Torus", "Flattened Butterfly"};
         final JComboBox<String> boxTopology = new JComboBox<String>(choicesTopology);
+        switch(network.getTopology()){  // sets the default value of the dropdown to the value of the object
+            default:
+                boxTopology.setSelectedIndex(0);
+                break;
+            case "bus":
+                boxTopology.setSelectedIndex(0);
+                break;
+            case "mesh":
+                boxTopology.setSelectedIndex(1);
+                break;
+            case "torus":
+                boxTopology.setSelectedIndex(2);
+                break;
+            case "butterfly":
+                boxTopology.setSelectedIndex(3);
+                break;
+        }
+
         networkSettings.add(boxTopology);
-        boxTopology.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                // Do something when you select a value
-            }
-        });
-
-
 
         // Nodes label
         JLabel labelNodes = new JLabel("Nodes");
@@ -107,15 +118,8 @@ public class PropertiesWindow
         // Nodes dropdown
         String[] choicesNodes = { "4", "9", "16"};
         final JComboBox<String> boxNodes = new JComboBox<String>(choicesNodes);
+        boxNodes.setSelectedItem(network.getNodes());   // Sets the default value of the JComboBox
         networkSettings.add(boxNodes);
-        boxNodes.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                // Do something when you select a value
-            }
-        });
 
         topologyPanel.add(labelTopology);
         topologyPanel.add(boxTopology);
@@ -132,10 +136,24 @@ public class PropertiesWindow
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                selectedTopology = boxTopology.getSelectedItem().toString().toLowerCase();
+                selectedNodes = Integer.parseInt(boxNodes.getSelectedItem().toString());
+
                 if(topologyFrame != null)
                 {
                     topologyFrame.dispose();
                 }
+
+
+                network.setTopology(selectedTopology);
+                network.setNodes(selectedNodes);
+
+                System.out.println("Topology = " + network.getTopology());
+                System.out.println("Nodes = " + network.getNodes());
+
+                System.out.println("Selected topology = " + selectedTopology);
+                System.out.println("Selectde nodes = " + selectedNodes);
+
 
                 topologyFrame = new TopologyInternalFrame(network);
 
