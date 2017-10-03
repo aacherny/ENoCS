@@ -14,8 +14,12 @@ public class OuterJFrame
     private JFrame outerFrame;   // Outer window
     private JDesktopPane desktop;
 
+    protected Mesh testNetwork;
+
     public OuterJFrame()
     {
+        testNetwork = new Mesh(4);
+
         outerFrame = new JFrame();
         desktop = new JDesktopPane();
 
@@ -92,7 +96,7 @@ public class OuterJFrame
         menuEdit.add(menuItemProperties);
         menuItemProperties.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
-                PropertiesWindow propWindow = new PropertiesWindow(desktop);
+                PropertiesWindow propWindow = new PropertiesWindow(desktop, testNetwork);
                 propWindow.createPropWindow();
             }
         });

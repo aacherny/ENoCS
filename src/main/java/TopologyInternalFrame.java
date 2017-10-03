@@ -3,6 +3,7 @@ package main.java;
 //import com.sun.xml.internal.bind.v2.TODO;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class TopologyInternalFrame extends JInternalFrame
 {
@@ -12,7 +13,7 @@ public class TopologyInternalFrame extends JInternalFrame
     public TopologyInternalFrame(Network inputNetwork)
     {
         super("Network Topology",
-                false, //resizable
+                true, //resizable
                 true, //closable
                 true, //maximizable
                 true);//iconifiable
@@ -22,22 +23,27 @@ public class TopologyInternalFrame extends JInternalFrame
         //Set the window's location.
         setLocation(xOffset, yOffset);
 
-        //TODO: Figure out why you can't have both a line and a circle
-        //Circle circ1 = new Circle();
-        //add(circ1);
-//        Line line1 = new Line();
-//        add(line1);
 
         if(inputNetwork.getTopology().equals("mesh"))
         {
             JPanel panelYContainer = new JPanel();
-            panelYContainer.setLayout(new BoxLayout(panelYContainer, BoxLayout.Y_AXIS));
+            panelYContainer.setLayout(new GridLayout(0, (int)Math.sqrt(inputNetwork.getNodes())));
+
             for(int county = 0; county < Math.sqrt(inputNetwork.getNodes()); county++)
             {
                 JPanel panelXContainer = new JPanel();
-                for(int countx = 0; countx < Math.sqrt(inputNetwork.getNodes()); countx++)
+                panelXContainer.setLayout(new GridLayout((int)Math.sqrt(inputNetwork.getNodes()), 0));
+
+
+                Circle circle = new Circle();
+                Line line = new Line();
+
+                panelXContainer.add(circle);
+
+                for(int countx = 0; countx < (Math.sqrt(inputNetwork.getNodes()) - 1); countx++)
                 {
-                    Circle circle = new Circle();
+                    panelXContainer.add(line);
+
                     panelXContainer.add(circle);
                 }
                 panelYContainer.add(panelXContainer);
@@ -48,5 +54,15 @@ public class TopologyInternalFrame extends JInternalFrame
 
         pack();
         setVisible(true);
+    }
+
+    public int getXBounds()
+    {
+        return getBounds().width;
+    }
+
+    public int getYBounds()
+    {
+        return getBounds().height;
     }
 }

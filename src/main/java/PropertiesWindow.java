@@ -10,9 +10,14 @@ public class PropertiesWindow
     private JFrame propertiesFrame = new JFrame();   // Main window that holds all of the tabs
     private JDesktopPane desktopPane;
 
-    public PropertiesWindow(JDesktopPane inputJDesktopPane)
+    public Network network;
+
+    TopologyInternalFrame topologyFrame;
+
+    public PropertiesWindow(JDesktopPane inputJDesktopPane, Network inputNetwork)
     {
         desktopPane = inputJDesktopPane;
+        network = inputNetwork;
 
         // General things like window title and size
         propertiesFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -127,9 +132,16 @@ public class PropertiesWindow
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                TopologyInternalFrame myFrame = new TopologyInternalFrame();
-                myFrame.setVisible(true);
-                desktopPane.add(myFrame);
+                if(topologyFrame != null)
+                {
+                    topologyFrame.dispose();
+                }
+
+                topologyFrame = new TopologyInternalFrame(network);
+
+                topologyFrame.setVisible(true);
+
+                desktopPane.add(topologyFrame);
             }
         });
     }

@@ -3,7 +3,7 @@ package main.java;
 public class Network
 {
     private String topology;
-    private int nodes;
+    protected int nodes;
 
     public Network(String inputTopology, int inputNodes)
     {
@@ -15,5 +15,10 @@ public class Network
     public String getTopology()
     {
         return topology;
+    }
+
+    public int getNodes()
+    {
+        return nodes;
     }
 }
