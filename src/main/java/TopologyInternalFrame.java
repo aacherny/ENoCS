@@ -1,13 +1,23 @@
 package main.java;
 
-import com.sun.xml.internal.bind.v2.TODO;
-
 import javax.swing.*;
+import java.util.LinkedList;
+import java.util.List;
+import javafx.scene.*;
+import javafx.stage.Stage;
 
 public class TopologyInternalFrame extends JInternalFrame
 {
     static int openFrameCount = 0;
     static final int xOffset = 30, yOffset = 30;
+    int nodes = 4;
+    String topology = "mesh";
+    private int nodex = 25;
+    private int nodey = 25;
+    List<Node> nodeList = new LinkedList<>();
+    Group topologyGroup = new Group();
+    Scene topologyScene = new Scene(topologyGroup, 500, 350);
+
 
     public TopologyInternalFrame()
     {
@@ -23,10 +33,18 @@ public class TopologyInternalFrame extends JInternalFrame
         setLocation(xOffset*openFrameCount, yOffset*openFrameCount);
 
         //TODO: Figure out why you can't have both a line and a circle
-        Circle circ1 = new Circle();
-        add(circ1);
-//        Line line1 = new Line();
-//        add(line1);
+        if (topology.toLowerCase() == "mesh"){
+            for (int i = 0; i < nodes; i++){
+
+                nodeList.add(new Node(i, nodex, nodey));
+                nodex = nodex + 50;
+                if (i == Math.ceil(Math.sqrt(nodes))){
+                    nodex = 25;
+                    nodey = nodey + 50;
+                }
+
+            }
+        }
 
         setVisible(true);
     }
