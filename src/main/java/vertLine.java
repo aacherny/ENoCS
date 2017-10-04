@@ -1,11 +1,11 @@
 package main.java;
 
-import javax.swing.*;
-import java.awt.*;
+        import javax.swing.*;
+        import java.awt.*;
 
-public class Line extends JPanel {
+public class vertLine extends JPanel {
 
-    public Line(){
+    public vertLine(){
         setPreferredSize(new Dimension(26, 26));
         setLocation(0,0);
     }
@@ -14,6 +14,6 @@ public class Line extends JPanel {
         super.paintComponent(g);
 
         g.setColor(Color.BLACK);
-        g.drawLine(0, 0, 25, 25);
+        g.drawLine(12, 0, 12, 26);
     }
 }

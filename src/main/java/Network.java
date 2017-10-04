@@ -19,27 +19,68 @@ public class Network
 
         JPanel panelYContainer = new JPanel();
 
+        int nodesSqrt = (int) Math.sqrt(nodes);
+
         if(topology.equals("mesh"))
         {
-            panelYContainer.setLayout(new GridLayout(0, (int) Math.sqrt(nodes)));
+            panelYContainer.setLayout(new GridLayout(0, nodesSqrt + nodesSqrt - 1));
 
-            for (int county = 0; county < Math.sqrt(nodes); county++) {
-                JPanel panelXContainer = new JPanel();
-                panelXContainer.setLayout(new GridLayout((int) Math.sqrt(nodes), 0));
+            JPanel panelXContainer = new JPanel();
+            panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt - 1, 0));
 
+            panelXContainer.add(new Circle());  // Adds the very top-left circle
+            System.out.println("First circle made");
 
-                Circle circle = new Circle();
-                Line line = new Line();
+            for (int i = 0; i < nodesSqrt - 1; i++) {   // Adds on more line+circle combos to the same column
 
-                panelXContainer.add(circle);
+                panelXContainer.add(new vertLine());
+                System.out.println("Line under first circle made");
+                panelXContainer.add(new Circle());
+                System.out.println("Circle under first circle made");
 
-                for (int countx = 0; countx < (Math.sqrt(nodes) - 1); countx++) {
-                    panelXContainer.add(line);
-
-                    panelXContainer.add(circle);
-                }
-                panelYContainer.add(panelXContainer);
             }
+
+            panelYContainer.add(panelXContainer);   // Adds that column of circle+vertLines as the leftmost column
+
+            for (int i = 0; i < nodesSqrt - 1; i++) {
+
+                panelXContainer = new JPanel();
+                panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt - 1, 0));
+
+                panelXContainer.add(new horiLine());  // Adds the top-leftmost horizontal line
+
+                for (int j = 0; j < nodesSqrt - 1; j++) {   // Adds on more horiline+blankspace combos to the same column
+
+                    panelXContainer.add(new blankSpace());
+                    panelXContainer.add(new horiLine());
+
+                }
+
+                panelYContainer.add(panelXContainer);
+
+
+
+                panelXContainer = new JPanel();
+                panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt - 1, 0));
+
+                panelXContainer.add(new Circle());  // Adds the very top-left circle
+
+                for (int j = 0; j < nodesSqrt - 1; j++) {   // Adds on more line+circle combos to the same column
+
+                    panelXContainer.add(new vertLine());
+                    panelXContainer.add(new Circle());
+
+                }
+
+                panelYContainer.add(panelXContainer);
+
+
+
+
+
+            }
+
+
         }else if (true/* other topologies */)
         {
 
