@@ -29,62 +29,93 @@ public class Network
             panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt - 1, 0));
 
             panelXContainer.add(new Circle());  // Adds the very top-left circle
-            System.out.println("First circle made");
 
             for (int i = 0; i < nodesSqrt - 1; i++) {   // Adds on more line+circle combos to the same column
 
                 panelXContainer.add(new vertLine());
-                System.out.println("Line under first circle made");
                 panelXContainer.add(new Circle());
-                System.out.println("Circle under first circle made");
 
             }
 
             panelYContainer.add(panelXContainer);   // Adds that column of circle+vertLines as the leftmost column
 
-            for (int i = 0; i < nodesSqrt - 1; i++) {
+            for (int i = 0; i < nodesSqrt - 1; i++) {   // for the rest of the columns in the mesh
 
                 panelXContainer = new JPanel();
                 panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt - 1, 0));
 
-                panelXContainer.add(new horiLine());  // Adds the top-leftmost horizontal line
+                panelXContainer.add(new horiLine());  // Adds the top horizontal line to the column to the right of the previous one
 
-                for (int j = 0; j < nodesSqrt - 1; j++) {   // Adds on more horiline+blankspace combos to the same column
+                for (int j = 0; j < nodesSqrt - 1; j++) {   // Adds on more blankspace+horiline combos to the same column
 
                     panelXContainer.add(new blankSpace());
                     panelXContainer.add(new horiLine());
 
                 }
-
-                panelYContainer.add(panelXContainer);
-
-
+                panelYContainer.add(panelXContainer);   // Adds the column of horiline+blackspaces to the right of the previous column
 
                 panelXContainer = new JPanel();
                 panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt - 1, 0));
 
-                panelXContainer.add(new Circle());  // Adds the very top-left circle
+                panelXContainer.add(new Circle());  // Adds a top circle
 
-                for (int j = 0; j < nodesSqrt - 1; j++) {   // Adds on more line+circle combos to the same column
+                for (int j = 0; j < nodesSqrt - 1; j++) {   // Adds on more line+circle combos to the column
 
                     panelXContainer.add(new vertLine());
                     panelXContainer.add(new Circle());
 
                 }
+                panelYContainer.add(panelXContainer);   // Adds the column of circles+vertLines to the right of the previous column
+            }
+        }
+        else if (topology.equals("bus"))    // Draw the topology for a bus network, depending on the number of nodes it has
+        {
+            panelYContainer.setLayout(new GridLayout(0, nodes));
+
+
+            for(int i = 0; i < nodes/2; i++) {
+
+                JPanel panelXContainer = new JPanel();
+                panelXContainer.setLayout(new GridLayout(5, 0));
+
+                panelXContainer.add(new Circle());
+                panelXContainer.add(new vertLine());
+                panelXContainer.add(new tSegmentUp());
+                panelXContainer.add(new blankSpace());
+                panelXContainer.add(new blankSpace());
 
                 panelYContainer.add(panelXContainer);
 
+                panelXContainer = new JPanel();
+                panelXContainer.setLayout(new GridLayout(5, 0));
 
+                panelXContainer.add(new blankSpace());
+                panelXContainer.add(new blankSpace());
+                panelXContainer.add(new tSegmentDown());
+                panelXContainer.add(new vertLine());
+                panelXContainer.add(new Circle());
 
+                panelYContainer.add(panelXContainer);
+            }
 
+            if(nodes % 2 == 1) {
 
+                JPanel panelXContainer = new JPanel();
+                panelXContainer.setLayout(new GridLayout(5, 0));
+
+                panelXContainer.add(new Circle());
+                panelXContainer.add(new vertLine());
+                panelXContainer.add(new tSegmentUp());
+                panelXContainer.add(new blankSpace());
+                panelXContainer.add(new blankSpace());
+
+                panelYContainer.add(panelXContainer);
             }
 
 
-        }else if (true/* other topologies */)
-        {
 
-        }else
+        }
+        else
         {
             // do nothing
         }
