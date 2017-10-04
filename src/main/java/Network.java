@@ -78,7 +78,7 @@ public class Network
                 JPanel panelXContainer = new JPanel();
                 panelXContainer.setLayout(new GridLayout(5, 0));
 
-                panelXContainer.add(new Circle());
+                panelXContainer.add(new Circle());  // Adds an upper branch from the bus linking to a node
                 panelXContainer.add(new vertLine());
                 panelXContainer.add(new tSegmentUp());
                 panelXContainer.add(new blankSpace());
@@ -89,7 +89,7 @@ public class Network
                 panelXContainer = new JPanel();
                 panelXContainer.setLayout(new GridLayout(5, 0));
 
-                panelXContainer.add(new blankSpace());
+                panelXContainer.add(new blankSpace());  // Adds a lower branch
                 panelXContainer.add(new blankSpace());
                 panelXContainer.add(new tSegmentDown());
                 panelXContainer.add(new vertLine());
@@ -103,7 +103,7 @@ public class Network
                 JPanel panelXContainer = new JPanel();
                 panelXContainer.setLayout(new GridLayout(5, 0));
 
-                panelXContainer.add(new Circle());
+                panelXContainer.add(new Circle());  // If there's an odd number of nodes, adds a final upper branch at the end of the bus
                 panelXContainer.add(new vertLine());
                 panelXContainer.add(new tSegmentUp());
                 panelXContainer.add(new blankSpace());

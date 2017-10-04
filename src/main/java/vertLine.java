@@ -14,6 +14,6 @@ public class vertLine extends JPanel {
         super.paintComponent(g);
 
         g.setColor(Color.BLACK);
-        g.drawLine(12, 0, 12, 26);
+        g.drawLine(13, 0, 13, 26);
     }
 }

@@ -3,9 +3,9 @@ package main.java;
 import javax.swing.*;
 import java.awt.*;
 
-public class horiLine extends JPanel {
+public class tSegmentDown extends JPanel {
 
-    public horiLine(){
+    public tSegmentDown(){
         setPreferredSize(new Dimension(26, 26));
         setLocation(0,0);
     }
@@ -14,6 +14,7 @@ public class horiLine extends JPanel {
         super.paintComponent(g);
 
         g.setColor(Color.BLACK);
+        g.drawLine(13, 13, 13, 26);
         g.drawLine(0, 13, 26, 13);
     }
 }
