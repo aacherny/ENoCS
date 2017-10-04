@@ -13,6 +13,7 @@ public class OuterJFrame
 {
     private JFrame outerFrame;   // Outer window
     private JDesktopPane desktop;
+    private PropertiesWindow propWindow;
 
     protected Mesh testNetwork;
 
@@ -96,8 +97,12 @@ public class OuterJFrame
         menuEdit.add(menuItemProperties);
         menuItemProperties.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
-                PropertiesWindow propWindow = new PropertiesWindow(desktop, testNetwork);
-                propWindow.createPropWindow();
+                if(propWindow != null) {    // Opens the window with all of the existing variables if it's been opened before
+                    propWindow.createPropWindow();
+                }else{
+                    propWindow = new PropertiesWindow(desktop, testNetwork);
+                    propWindow.createPropWindow();
+                }
             }
         });
 

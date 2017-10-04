@@ -23,7 +23,7 @@ public class PropertiesWindow
         network = inputNetwork;
 
         // General things like window title and size
-        propertiesFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        propertiesFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         propertiesFrame.setTitle("Properties");
         propertiesFrame.setSize(500, 350);
         propertiesFrame.setResizable(false);
