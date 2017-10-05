@@ -40,9 +40,26 @@ public class Network
                 }
                 panelYContainer.add(panelXContainer);
             }
-        }else if (true/* other topologies */)
+        }else if (topology.equals("bus"))
         {
+            //Make there be as many columns as half of the number of nodes and
+            //space them out over two rows
+            panelYContainer.setLayout(new GridLayout(0,(int) Math.ceil(nodes/2)));
 
+            for (int county = 0; county < nodes/2; county++){
+                JPanel panelXContainer = new JPanel();
+                panelXContainer.setLayout(new GridLayout(2, 0));
+
+                Circle circle = new Circle();
+                Line line = new Line(25, 25,25,25);
+
+                //panelXContainer.add(circle); //Is this necessary with the code below
+                for (int countx = 0; countx < Math.ceil(nodes/2); countx++){
+                    panelXContainer.add(line);
+                    panelXContainer.add(circle);
+                }
+                panelYContainer.add(panelXContainer);
+            }
         }else
         {
             // do nothing
