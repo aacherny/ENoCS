@@ -10,14 +10,23 @@ public class PropertiesWindow
     private JFrame propertiesFrame = new JFrame();   // Main window that holds all of the tabs
     private JDesktopPane desktopPane;
 
-    public PropertiesWindow(JDesktopPane inputJDesktopPane)
+    public Network network;
+
+    private String selectedTopology;
+    private int selectedNodes;
+
+    TopologyInternalFrame topologyFrame;
+
+    public PropertiesWindow(JDesktopPane inputJDesktopPane, Network inputNetwork)
     {
         desktopPane = inputJDesktopPane;
+        network = inputNetwork;
 
         // General things like window title and size
         propertiesFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         propertiesFrame.setTitle("Properties");
         propertiesFrame.setSize(500, 350);
+        propertiesFrame.setResizable(false);
         propertiesFrame.setLocationRelativeTo(null);
     }
 
@@ -62,6 +71,10 @@ public class PropertiesWindow
         propertiesFrame.setVisible(true);
     }
 
+    /**
+     * Creates the panel under the 'Network Settings' tab
+     * @param networkSettings
+     */
     private void createNetworkSettingsPanel(JPanel networkSettings)
     {
         // Panel for the topology
@@ -79,17 +92,25 @@ public class PropertiesWindow
         // Topology dropdown
         String[] choicesTopology = { "Bus", "Mesh", "Torus", "Flattened Butterfly"};
         final JComboBox<String> boxTopology = new JComboBox<String>(choicesTopology);
+        switch(network.getTopology()){  // sets the default value of the dropdown to the value of the object
+            default:
+                boxTopology.setSelectedIndex(0);
+                break;
+            case "bus":
+                boxTopology.setSelectedIndex(0);
+                break;
+            case "mesh":
+                boxTopology.setSelectedIndex(1);
+                break;
+            case "torus":
+                boxTopology.setSelectedIndex(2);
+                break;
+            case "butterfly":
+                boxTopology.setSelectedIndex(3);
+                break;
+        }
+
         networkSettings.add(boxTopology);
-        boxTopology.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                // Do something when you select a value
-            }
-        });
-
-
 
         // Nodes label
         JLabel labelNodes = new JLabel("Nodes");
@@ -97,15 +118,23 @@ public class PropertiesWindow
         // Nodes dropdown
         String[] choicesNodes = { "4", "9", "16"};
         final JComboBox<String> boxNodes = new JComboBox<String>(choicesNodes);
+        boxNodes.setSelectedItem(network.getNodes());   // Sets the default value of the JComboBox
+        switch(network.getNodes()){  // sets the default value of the dropdown to the value of the object
+        default:
+            boxNodes.setSelectedIndex(0);
+            break;
+        case 4:
+            boxNodes.setSelectedIndex(0);
+            break;
+        case 9:
+            boxNodes.setSelectedIndex(1);
+            break;
+        case 16:
+            boxNodes.setSelectedIndex(2);
+            break;
+        }
+
         networkSettings.add(boxNodes);
-        boxNodes.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                // Do something when you select a value
-            }
-        });
 
         topologyPanel.add(labelTopology);
         topologyPanel.add(boxTopology);
@@ -113,6 +142,7 @@ public class PropertiesWindow
         nodesPanel.add(labelNodes);
         nodesPanel.add(boxNodes);
 
+        // OK button at the bottom
         JButton okButton = new JButton("OK");
         networkSettings.add(okButton);
 
@@ -121,9 +151,33 @@ public class PropertiesWindow
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                TopologyInternalFrame myFrame = new TopologyInternalFrame();
-                myFrame.setVisible(true);
-                desktopPane.add(myFrame);
+                selectedTopology = boxTopology.getSelectedItem().toString().toLowerCase();
+                selectedNodes = Integer.parseInt(boxNodes.getSelectedItem().toString());
+
+                // ERROR: Multiple frames open because a new PropertiesWindow is created every time it's opened, which
+                //  creates fresh topologyFrames - Need to check for open/existing Topology Frames
+                if(topologyFrame != null)
+                {
+                    topologyFrame.dispose();
+                }
+
+                System.out.println("Frame = " + topologyFrame);
+
+                network.setTopology(selectedTopology);
+                network.setNodes(selectedNodes);
+
+                System.out.println("Topology = " + network.getTopology());
+                System.out.println("Nodes = " + network.getNodes());
+
+                System.out.println("Selected topology = " + selectedTopology);
+                System.out.println("Selectde nodes = " + selectedNodes);
+
+
+                topologyFrame = new TopologyInternalFrame(network);
+
+                topologyFrame.setVisible(true);
+
+                desktopPane.add(topologyFrame);
             }
         });
     }

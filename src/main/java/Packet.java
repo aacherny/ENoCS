@@ -1,4 +1,4 @@
 package main.java;
 
-public class Node {
+public class Packet {
 }

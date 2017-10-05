@@ -14,8 +14,12 @@ public class OuterJFrame
     private JFrame outerFrame;   // Outer window
     private JDesktopPane desktop;
 
+    protected Mesh testNetwork;
+
     public OuterJFrame()
     {
+        testNetwork = new Mesh(4);
+
         outerFrame = new JFrame();
         desktop = new JDesktopPane();
 
@@ -24,7 +28,7 @@ public class OuterJFrame
         // General things like window title and size
         outerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         outerFrame.setTitle("ENoCS Simulator");
-        outerFrame.setSize(500, 350);
+        outerFrame.setSize(1200, 800);
         outerFrame.setLocationRelativeTo(null);
     }
 
@@ -92,7 +96,7 @@ public class OuterJFrame
         menuEdit.add(menuItemProperties);
         menuItemProperties.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
-                PropertiesWindow propWindow = new PropertiesWindow(desktop);
+                PropertiesWindow propWindow = new PropertiesWindow(desktop, testNetwork);
                 propWindow.createPropWindow();
             }
         });
@@ -184,6 +188,10 @@ public class OuterJFrame
         return menuBar;
     }
 
+    /**
+     * Returns the desktop pane of the JPanel
+     * @return {JDesktopPane}
+     */
     public JDesktopPane getDesktopPane()
     {
         return desktop;
