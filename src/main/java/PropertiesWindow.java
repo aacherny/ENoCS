@@ -146,6 +146,7 @@ public class PropertiesWindow
         JButton okButton = new JButton("OK");
         networkSettings.add(okButton);
 
+        // What happens when the OK button is clicked
         okButton.addActionListener(new ActionListener()
         {
             @Override
@@ -154,24 +155,13 @@ public class PropertiesWindow
                 selectedTopology = boxTopology.getSelectedItem().toString().toLowerCase();
                 selectedNodes = Integer.parseInt(boxNodes.getSelectedItem().toString());
 
-                // ERROR: Multiple frames open because a new PropertiesWindow is created every time it's opened, which
-                //  creates fresh topologyFrames - Need to check for open/existing Topology Frames
-                if(topologyFrame != null)
+                if(topologyFrame != null)   // Creates a new topology display every time it's opened
                 {
                     topologyFrame.dispose();
                 }
 
-                System.out.println("Frame = " + topologyFrame);
-
                 network.setTopology(selectedTopology);
                 network.setNodes(selectedNodes);
-
-                System.out.println("Topology = " + network.getTopology());
-                System.out.println("Nodes = " + network.getNodes());
-
-                System.out.println("Selected topology = " + selectedTopology);
-                System.out.println("Selectde nodes = " + selectedNodes);
-
 
                 topologyFrame = new TopologyInternalFrame(network);
 

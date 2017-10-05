@@ -70,15 +70,22 @@ public class Network
         }
         else if (topology.equals("bus"))    // Draw the topology for a bus network, depending on the number of nodes it has
         {
-            panelYContainer.setLayout(new GridLayout(0, nodes));
+            Circle[] nodeArray = new Circle[nodes];
 
+            int nodeCounter = 0;
+
+            for(int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
+                nodeArray[i] = new Circle();
+            }
+
+            panelYContainer.setLayout(new GridLayout(0, nodes));
 
             for(int i = 0; i < nodes/2; i++) {
 
                 JPanel panelXContainer = new JPanel();
                 panelXContainer.setLayout(new GridLayout(5, 0));
 
-                panelXContainer.add(new Circle());  // Adds an upper branch from the bus linking to a node
+                panelXContainer.add(nodeArray[nodeCounter++]);  // Adds an upper branch from the bus linking to a node
                 panelXContainer.add(new vertLine());
                 panelXContainer.add(new tSegmentUp());
                 panelXContainer.add(new blankSpace());
@@ -93,7 +100,7 @@ public class Network
                 panelXContainer.add(new blankSpace());
                 panelXContainer.add(new tSegmentDown());
                 panelXContainer.add(new vertLine());
-                panelXContainer.add(new Circle());
+                panelXContainer.add(nodeArray[nodeCounter++]);
 
                 panelYContainer.add(panelXContainer);
             }
@@ -103,7 +110,7 @@ public class Network
                 JPanel panelXContainer = new JPanel();
                 panelXContainer.setLayout(new GridLayout(5, 0));
 
-                panelXContainer.add(new Circle());  // If there's an odd number of nodes, adds a final upper branch at the end of the bus
+                panelXContainer.add(nodeArray[nodeCounter]);  // If there's an odd number of nodes, adds a final upper branch at the end of the bus
                 panelXContainer.add(new vertLine());
                 panelXContainer.add(new tSegmentUp());
                 panelXContainer.add(new blankSpace());
