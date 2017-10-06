@@ -2,6 +2,8 @@ package main.java;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Circle extends JPanel {
 

@@ -23,17 +23,25 @@ public class Network
 
         if(topology.equals("mesh"))
         {
+            Node[] nodeArray = new Node[nodes];
+
+            int nodeCounter = 0;
+
+            for(int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
+                nodeArray[i] = new Node(i);
+            }
+
             panelYContainer.setLayout(new GridLayout(0, nodesSqrt + nodesSqrt - 1));
 
             JPanel panelXContainer = new JPanel();
             panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt - 1, 0));
 
-            panelXContainer.add(new Circle());  // Adds the very top-left circle
+            panelXContainer.add(nodeArray[nodeCounter++].drawCircle());  // Adds the very top-left circle
 
             for (int i = 0; i < nodesSqrt - 1; i++) {   // Adds on more line+circle combos to the same column
 
                 panelXContainer.add(new vertLine());
-                panelXContainer.add(new Circle());
+                panelXContainer.add(nodeArray[nodeCounter++].drawCircle());
 
             }
 
@@ -57,12 +65,12 @@ public class Network
                 panelXContainer = new JPanel();
                 panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt - 1, 0));
 
-                panelXContainer.add(new Circle());  // Adds a top circle
+                panelXContainer.add(nodeArray[nodeCounter++].drawCircle());  // Adds a top circle
 
                 for (int j = 0; j < nodesSqrt - 1; j++) {   // Adds on more line+circle combos to the column
 
                     panelXContainer.add(new vertLine());
-                    panelXContainer.add(new Circle());
+                    panelXContainer.add(nodeArray[nodeCounter++].drawCircle());
 
                 }
                 panelYContainer.add(panelXContainer);   // Adds the column of circles+vertLines to the right of the previous column
@@ -70,12 +78,12 @@ public class Network
         }
         else if (topology.equals("bus"))    // Draw the topology for a bus network, depending on the number of nodes it has
         {
-            Circle[] nodeArray = new Circle[nodes];
+            Node[] nodeArray = new Node[nodes];
 
             int nodeCounter = 0;
 
             for(int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
-                nodeArray[i] = new Circle();
+                nodeArray[i] = new Node(i);
             }
 
             panelYContainer.setLayout(new GridLayout(0, nodes));
@@ -85,7 +93,7 @@ public class Network
                 JPanel panelXContainer = new JPanel();
                 panelXContainer.setLayout(new GridLayout(5, 0));
 
-                panelXContainer.add(nodeArray[nodeCounter++]);  // Adds an upper branch from the bus linking to a node
+                panelXContainer.add(nodeArray[nodeCounter++].drawCircle());  // Adds an upper branch from the bus linking to a node
                 panelXContainer.add(new vertLine());
                 panelXContainer.add(new tSegmentUp());
                 panelXContainer.add(new blankSpace());
@@ -100,7 +108,7 @@ public class Network
                 panelXContainer.add(new blankSpace());
                 panelXContainer.add(new tSegmentDown());
                 panelXContainer.add(new vertLine());
-                panelXContainer.add(nodeArray[nodeCounter++]);
+                panelXContainer.add(nodeArray[nodeCounter++].drawCircle());
 
                 panelYContainer.add(panelXContainer);
             }
@@ -110,7 +118,7 @@ public class Network
                 JPanel panelXContainer = new JPanel();
                 panelXContainer.setLayout(new GridLayout(5, 0));
 
-                panelXContainer.add(nodeArray[nodeCounter]);  // If there's an odd number of nodes, adds a final upper branch at the end of the bus
+                panelXContainer.add(nodeArray[nodeCounter].drawCircle());  // If there's an odd number of nodes, adds a final upper branch at the end of the bus
                 panelXContainer.add(new vertLine());
                 panelXContainer.add(new tSegmentUp());
                 panelXContainer.add(new blankSpace());
@@ -118,13 +126,6 @@ public class Network
 
                 panelYContainer.add(panelXContainer);
             }
-
-
-
-        }
-        else
-        {
-            // do nothing
         }
 
         return panelYContainer;
