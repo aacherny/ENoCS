@@ -15,11 +15,11 @@ public class OuterJFrame
     private JDesktopPane desktop;
     private PropertiesWindow propWindow;
 
-    protected Mesh testNetwork;
+    protected Network testNetwork;
 
     public OuterJFrame()
     {
-        testNetwork = new Mesh(4);
+        testNetwork = new Network("mesh", 4);
 
         outerFrame = new JFrame();
         desktop = new JDesktopPane();
