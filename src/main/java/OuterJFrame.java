@@ -2,6 +2,7 @@ package main.java;
 
 import javax.swing.*;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -41,6 +42,13 @@ public class OuterJFrame
         // Creates the menu bar and adds it to the window
         JMenuBar menuBar = createMenuBar();
         outerFrame.setJMenuBar(menuBar);
+
+        JToolBar toolBar = new JToolBar("Toolbar");
+        outerFrame.add(toolBar);
+
+        JButton button = new JButton("Test button");
+        toolBar.setBounds(0, 0, outerFrame.getBounds().width, 25);
+        toolBar.add(button);
 
         // Makes the window visible
         outerFrame.setVisible(true);
