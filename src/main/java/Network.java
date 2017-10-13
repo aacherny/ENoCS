@@ -15,6 +15,16 @@ public class Network
         nodes = inputNodes;
     }
 
+    public void nextCycle()
+    {
+
+    }
+
+    public void newCycle()
+    {
+
+    }
+
     public JPanel drawTopology() {
 
         JPanel panelYContainer = new JPanel();

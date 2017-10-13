@@ -1,6 +1,7 @@
 package main.java;
 
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,15 +16,19 @@ public class OuterJFrame
     private JFrame outerFrame;   // Outer window
     private JDesktopPane desktop;
     private PropertiesWindow propWindow;
+    private JToolBar toolBar;
 
-    protected Network testNetwork;
+    protected Network network;
+
+    protected int cycleNumber;
 
     public OuterJFrame()
     {
-        testNetwork = new Network("mesh", 4);
-
+        network = new Network("mesh", 4);
         outerFrame = new JFrame();
         desktop = new JDesktopPane();
+
+        cycleNumber = 0;
 
         outerFrame.setContentPane(desktop);
 
@@ -43,15 +48,49 @@ public class OuterJFrame
         JMenuBar menuBar = createMenuBar();
         outerFrame.setJMenuBar(menuBar);
 
-        JToolBar toolBar = new JToolBar("Toolbar");
-        outerFrame.add(toolBar);
-
-        JButton button = new JButton("Test button");
-        toolBar.setBounds(0, 0, outerFrame.getBounds().width, 25);
-        toolBar.add(button);
+        // Creates the toolbar and adds it to the window
+        createToolBar();
+        outerFrame.getContentPane().add(toolBar, BorderLayout.NORTH);
 
         // Makes the window visible
         outerFrame.setVisible(true);
+    }
+
+    private void createToolBar()
+    {
+        JLabel cycleLabel = new JLabel("Cycle number: ");
+
+        toolBar = new JToolBar();
+        toolBar.setBounds(0, 0, 9999, 20);
+        toolBar.setFloatable( false);
+
+        JButton nextClockCycle = new JButton("Next Cycle");
+        nextClockCycle.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                cycleNumber++;
+                cycleLabel.setText("Cycle number: " + cycleNumber);
+
+                network.nextCycle();
+            }
+        });
+
+        JButton newCycle = new JButton("Restart");
+        newCycle.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                cycleNumber = 0;
+                cycleLabel.setText("Cycle number: " + cycleNumber);
+
+                network.newCycle();
+            }
+        });
+
+        toolBar.add(nextClockCycle);
+        toolBar.add(newCycle);
+        toolBar.add(cycleLabel);
     }
 
     /**
@@ -108,7 +147,7 @@ public class OuterJFrame
                 if(propWindow != null) {    // Opens the window with all of the existing variables if it's been opened before
                     propWindow.createPropWindow();
                 }else{
-                    propWindow = new PropertiesWindow(desktop, testNetwork);
+                    propWindow = new PropertiesWindow(desktop, network);
                     propWindow.createPropWindow();
                 }
             }
