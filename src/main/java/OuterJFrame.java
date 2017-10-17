@@ -12,9 +12,9 @@ import java.awt.event.KeyEvent;
  */
 public class OuterJFrame
 {
-    private JFrame outerFrame;   // Outer window
-    private JPanel panel;
-    private JDesktopPane desktop;
+    private JFrame outerFrame;      // Outer window
+    private JPanel panel;           // Needed for toolbar
+    private JDesktopPane desktop;   // Needed for Internal JFrames
     private PropertiesWindow propWindow;
 
     protected Mesh testNetwork;
@@ -22,14 +22,19 @@ public class OuterJFrame
     public OuterJFrame()
     {
         testNetwork = new Mesh(4);
-        panel = new JPanel();
         outerFrame = new JFrame();
+        panel = new JPanel();
         desktop = new JDesktopPane();
 
-        //outerFrame.setContentPane(desktop);
-
+        /*
+        The next line adds a BoxLayout to outerFrame's content pane
+        This allows the panel for the toolbar and the desktoppane
+        to play nice together otherwise they will overlap eachother
+        */
+        outerFrame.getContentPane().setLayout(new BoxLayout(outerFrame.getContentPane(), BoxLayout.Y_AXIS));
         outerFrame.getContentPane().add(panel);
-        panel.add(desktop);
+        outerFrame.getContentPane().add(desktop);
+
 
         // General things like window title and size
         outerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
