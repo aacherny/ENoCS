@@ -19,48 +19,103 @@ public class Network
 
         JPanel panelYContainer = new JPanel();
 
+        int nodesSqrt = (int) Math.sqrt(nodes);
+
         if(topology.equals("mesh"))
         {
-            panelYContainer.setLayout(new GridLayout(0, (int) Math.sqrt(nodes)));
+            panelYContainer.setLayout(new GridLayout(0, nodesSqrt + nodesSqrt - 1));
 
-            for (int county = 0; county < Math.sqrt(nodes); county++) {
-                JPanel panelXContainer = new JPanel();
-                panelXContainer.setLayout(new GridLayout((int) Math.sqrt(nodes), 0));
+            JPanel panelXContainer = new JPanel();
+            panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt - 1, 0));
 
+            panelXContainer.add(new Circle());  // Adds the very top-left circle
 
-                Circle circle = new Circle();
-                Line line = new Line();
+            for (int i = 0; i < nodesSqrt - 1; i++) {   // Adds on more line+circle combos to the same column
 
-                panelXContainer.add(circle);
+                panelXContainer.add(new vertLine());
+                panelXContainer.add(new Circle());
 
-                for (int countx = 0; countx < (Math.sqrt(nodes) - 1); countx++) {
-                    panelXContainer.add(line);
-
-                    panelXContainer.add(circle);
-                }
-                panelYContainer.add(panelXContainer);
             }
-        }else if (topology.equals("bus"))
+
+            panelYContainer.add(panelXContainer);   // Adds that column of circle+vertLines as the leftmost column
+
+            for (int i = 0; i < nodesSqrt - 1; i++) {   // for the rest of the columns in the mesh
+
+                panelXContainer = new JPanel();
+                panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt - 1, 0));
+
+                panelXContainer.add(new horiLine());  // Adds the top horizontal line to the column to the right of the previous one
+
+                for (int j = 0; j < nodesSqrt - 1; j++) {   // Adds on more blankspace+horiline combos to the same column
+
+                    panelXContainer.add(new blankSpace());
+                    panelXContainer.add(new horiLine());
+
+                }
+                panelYContainer.add(panelXContainer);   // Adds the column of horiline+blackspaces to the right of the previous column
+
+                panelXContainer = new JPanel();
+                panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt - 1, 0));
+
+                panelXContainer.add(new Circle());  // Adds a top circle
+
+                for (int j = 0; j < nodesSqrt - 1; j++) {   // Adds on more line+circle combos to the column
+
+                    panelXContainer.add(new vertLine());
+                    panelXContainer.add(new Circle());
+
+                }
+                panelYContainer.add(panelXContainer);   // Adds the column of circles+vertLines to the right of the previous column
+            }
+        }
+        else if (topology.equals("bus"))    // Draw the topology for a bus network, depending on the number of nodes it has
         {
-            //Make there be as many columns as half of the number of nodes and
-            //space them out over two rows
-            panelYContainer.setLayout(new GridLayout(0,(int) Math.ceil(nodes/2)));
+            panelYContainer.setLayout(new GridLayout(0, nodes));
 
-            for (int county = 0; county < nodes/2; county++){
+
+            for(int i = 0; i < nodes/2; i++) {
+
                 JPanel panelXContainer = new JPanel();
-                panelXContainer.setLayout(new GridLayout(2, 0));
+                panelXContainer.setLayout(new GridLayout(5, 0));
 
-                Circle circle = new Circle();
-                Line line = new Line(25, 25,25,25);
+                panelXContainer.add(new Circle());  // Adds an upper branch from the bus linking to a node
+                panelXContainer.add(new vertLine());
+                panelXContainer.add(new tSegmentUp());
+                panelXContainer.add(new blankSpace());
+                panelXContainer.add(new blankSpace());
 
-                //panelXContainer.add(circle); //Is this necessary with the code below
-                for (int countx = 0; countx < Math.ceil(nodes/2); countx++){
-                    panelXContainer.add(line);
-                    panelXContainer.add(circle);
-                }
+                panelYContainer.add(panelXContainer);
+
+                panelXContainer = new JPanel();
+                panelXContainer.setLayout(new GridLayout(5, 0));
+
+                panelXContainer.add(new blankSpace());  // Adds a lower branch
+                panelXContainer.add(new blankSpace());
+                panelXContainer.add(new tSegmentDown());
+                panelXContainer.add(new vertLine());
+                panelXContainer.add(new Circle());
+
                 panelYContainer.add(panelXContainer);
             }
-        }else
+
+            if(nodes % 2 == 1) {
+
+                JPanel panelXContainer = new JPanel();
+                panelXContainer.setLayout(new GridLayout(5, 0));
+
+                panelXContainer.add(new Circle());  // If there's an odd number of nodes, adds a final upper branch at the end of the bus
+                panelXContainer.add(new vertLine());
+                panelXContainer.add(new tSegmentUp());
+                panelXContainer.add(new blankSpace());
+                panelXContainer.add(new blankSpace());
+
+                panelYContainer.add(panelXContainer);
+            }
+
+
+
+        }
+        else
         {
             // do nothing
         }
