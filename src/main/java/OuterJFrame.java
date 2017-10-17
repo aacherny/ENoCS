@@ -2,6 +2,7 @@ package main.java;
 
 import javax.swing.*;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -12,6 +13,7 @@ import java.awt.event.KeyEvent;
 public class OuterJFrame
 {
     private JFrame outerFrame;   // Outer window
+    private JPanel panel;
     private JDesktopPane desktop;
     private PropertiesWindow propWindow;
 
@@ -20,11 +22,14 @@ public class OuterJFrame
     public OuterJFrame()
     {
         testNetwork = new Mesh(4);
-
+        panel = new JPanel();
         outerFrame = new JFrame();
         desktop = new JDesktopPane();
 
-        outerFrame.setContentPane(desktop);
+        //outerFrame.setContentPane(desktop);
+
+        outerFrame.getContentPane().add(panel);
+        panel.add(desktop);
 
         // General things like window title and size
         outerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,6 +46,9 @@ public class OuterJFrame
         // Creates the menu bar and adds it to the window
         JMenuBar menuBar = createMenuBar();
         outerFrame.setJMenuBar(menuBar);
+
+        JToolBar toolBar = createToolBar();
+        panel.add(toolBar);
 
         // Makes the window visible
         outerFrame.setVisible(true);
@@ -191,6 +199,59 @@ public class OuterJFrame
         menuHelp.add(menuItemAbout);
 
         return menuBar;
+    }
+
+    /**
+     * Creates the toolbar with the ability to start a new simulation and advance the
+     * cycles in the current simulation.
+     */
+    private JToolBar createToolBar()
+    {
+        JToolBar toolBar = new JToolBar("TEST");
+
+        toolBar.setFloatable(false);
+
+        ImageIcon newFileImage = new ImageIcon("C:\\Users\\scopp\\Documents\\Senior Year\\A test thing\\src\\com\\company\\images\\new.png");
+        JButton newFile = new JButton(newFileImage);
+        newFile.setToolTipText("New");
+        toolBar.add(newFile);
+
+        ImageIcon openFileImage = new ImageIcon("C:\\Users\\scopp\\Documents\\Senior Year\\A test thing\\src\\com\\company\\images\\open.png");
+        JButton openFile = new JButton(openFileImage);
+        openFile.setToolTipText("Open");
+        toolBar.add(openFile);
+
+        ImageIcon saveFileImage = new ImageIcon("C:\\Users\\scopp\\Documents\\Senior Year\\A test thing\\src\\com\\company\\images\\save.png");
+        JButton saveFile = new JButton(saveFileImage);
+        saveFile.setToolTipText("Save");
+        toolBar.add(saveFile);
+
+        ImageIcon printImage = new ImageIcon("C:\\Users\\scopp\\Documents\\Senior Year\\A test thing\\src\\com\\company\\images\\print.png");
+        JButton print = new JButton(printImage);
+        print.setToolTipText("Print");
+        toolBar.add(print);
+
+        ImageIcon helpImage = new ImageIcon("C:\\Users\\scopp\\Documents\\Senior Year\\A test thing\\src\\com\\company\\images\\help.png");
+        JButton help = new JButton(helpImage);
+        help.setToolTipText("Help");
+        toolBar.add(help);
+
+        ImageIcon refreshImage = new ImageIcon("C:\\Users\\scopp\\Documents\\Senior Year\\A test thing\\src\\com\\company\\images\\refresh.png");
+        JButton refresh = new JButton(refreshImage);
+        refresh.setToolTipText("Refresh");
+        toolBar.add(refresh);
+
+        ImageIcon nextCycleImage = new ImageIcon("C:\\Users\\scopp\\Documents\\Senior Year\\A test thing\\src\\com\\company\\images\\play.png");
+        JButton nextCycle = new JButton(nextCycleImage);
+        nextCycle.setToolTipText("Next Cycle");
+        toolBar.add(nextCycle);
+
+        ImageIcon multiCycleImage = new ImageIcon("C:\\Users\\scopp\\Documents\\Senior Year\\A test thing\\src\\com\\company\\images\\fastforward.png");
+        JButton multiCycle = new JButton(multiCycleImage);
+        multiCycle.setToolTipText("Run Multiple Cycles");
+        toolBar.add(multiCycle);
+
+        return toolBar;
     }
 
     /**
