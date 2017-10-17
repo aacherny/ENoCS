@@ -216,42 +216,42 @@ public class OuterJFrame
 
         toolBar.setFloatable(false);
 
-        ImageIcon newFileImage = new ImageIcon("C:\\Users\\scopp\\Documents\\Senior Year\\A test thing\\src\\com\\company\\images\\new.png");
+        ImageIcon newFileImage = new ImageIcon(getClass().getResource("images/new.png"));
         JButton newFile = new JButton(newFileImage);
         newFile.setToolTipText("New");
         toolBar.add(newFile);
 
-        ImageIcon openFileImage = new ImageIcon("C:\\Users\\scopp\\Documents\\Senior Year\\A test thing\\src\\com\\company\\images\\open.png");
+        ImageIcon openFileImage = new ImageIcon(getClass().getResource("images/open.png"));
         JButton openFile = new JButton(openFileImage);
         openFile.setToolTipText("Open");
         toolBar.add(openFile);
 
-        ImageIcon saveFileImage = new ImageIcon("C:\\Users\\scopp\\Documents\\Senior Year\\A test thing\\src\\com\\company\\images\\save.png");
+        ImageIcon saveFileImage = new ImageIcon(getClass().getResource("images/save.png"));
         JButton saveFile = new JButton(saveFileImage);
         saveFile.setToolTipText("Save");
         toolBar.add(saveFile);
 
-        ImageIcon printImage = new ImageIcon("C:\\Users\\scopp\\Documents\\Senior Year\\A test thing\\src\\com\\company\\images\\print.png");
+        ImageIcon printImage = new ImageIcon(getClass().getResource("images/print.png"));
         JButton print = new JButton(printImage);
         print.setToolTipText("Print");
         toolBar.add(print);
 
-        ImageIcon helpImage = new ImageIcon("C:\\Users\\scopp\\Documents\\Senior Year\\A test thing\\src\\com\\company\\images\\help.png");
+        ImageIcon helpImage = new ImageIcon(getClass().getResource("images/help.png"));
         JButton help = new JButton(helpImage);
         help.setToolTipText("Help");
         toolBar.add(help);
 
-        ImageIcon refreshImage = new ImageIcon("C:\\Users\\scopp\\Documents\\Senior Year\\A test thing\\src\\com\\company\\images\\refresh.png");
+        ImageIcon refreshImage = new ImageIcon(getClass().getResource("images/refresh.png"));
         JButton refresh = new JButton(refreshImage);
         refresh.setToolTipText("Refresh");
         toolBar.add(refresh);
 
-        ImageIcon nextCycleImage = new ImageIcon("C:\\Users\\scopp\\Documents\\Senior Year\\A test thing\\src\\com\\company\\images\\play.png");
+        ImageIcon nextCycleImage = new ImageIcon(getClass().getResource("images/play.png"));
         JButton nextCycle = new JButton(nextCycleImage);
         nextCycle.setToolTipText("Next Cycle");
         toolBar.add(nextCycle);
 
-        ImageIcon multiCycleImage = new ImageIcon("C:\\Users\\scopp\\Documents\\Senior Year\\A test thing\\src\\com\\company\\images\\fastforward.png");
+        ImageIcon multiCycleImage = new ImageIcon(getClass().getResource("images/fastforward.png"));
         JButton multiCycle = new JButton(multiCycleImage);
         multiCycle.setToolTipText("Run Multiple Cycles");
         toolBar.add(multiCycle);
