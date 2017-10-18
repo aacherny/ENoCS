@@ -23,17 +23,17 @@ public class OuterJFrame
     {
         testNetwork = new Mesh(4);
         outerFrame = new JFrame();
-        panel = new JPanel();
+        panel = new JPanel(new BorderLayout());
         desktop = new JDesktopPane();
 
         /*
-        The next line adds a BoxLayout to outerFrame's content pane
+        The next line adds a BorderLayout to outerFrame's content pane
         This allows the panel for the toolbar and the desktoppane
         to play nice together otherwise they will overlap eachother
         */
-        outerFrame.getContentPane().setLayout(new BoxLayout(outerFrame.getContentPane(), BoxLayout.Y_AXIS));
-        outerFrame.getContentPane().add(panel);
-        outerFrame.getContentPane().add(desktop);
+        outerFrame.getContentPane().setLayout(new BorderLayout());
+        outerFrame.getContentPane().add(panel, BorderLayout.PAGE_START);
+        outerFrame.getContentPane().add(desktop, BorderLayout.CENTER);
 
 
         // General things like window title and size
@@ -51,9 +51,9 @@ public class OuterJFrame
         // Creates the menu bar and adds it to the window
         JMenuBar menuBar = createMenuBar();
         outerFrame.setJMenuBar(menuBar);
-
+        //Creates the toolbar and adds it to the window on the left side
         JToolBar toolBar = createToolBar();
-        panel.add(toolBar);
+        panel.add(toolBar, BorderLayout.WEST);
 
         // Makes the window visible
         outerFrame.setVisible(true);
@@ -209,10 +209,11 @@ public class OuterJFrame
     /**
      * Creates the toolbar with the ability to start a new simulation and advance the
      * cycles in the current simulation.
+     * @return JToolBar
      */
     private JToolBar createToolBar()
     {
-        JToolBar toolBar = new JToolBar("TEST");
+        JToolBar toolBar = new JToolBar();
 
         toolBar.setFloatable(false);
 
