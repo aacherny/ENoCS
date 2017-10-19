@@ -160,10 +160,21 @@ public class PropertiesWindow
                     topologyFrame.dispose();
                 }
 
-                network.setTopology(selectedTopology);
+                switch(selectedTopology) {  // sets the default value of the dropdown to the value of the object
+                default:
+                    network = new Mesh(selectedNodes);
+                    break;
+                case "mesh":
+                    network = new Mesh(selectedNodes);
+                    break;
+                case "bus":
+                    network = new Bus(selectedNodes);
+                    break;
+                }
+
                 network.setNodes(selectedNodes);
 
-                topologyFrame = new TopologyInternalFrame(network);
+                topologyFrame = new TopologyInternalFrame(network.drawTopology());
 
                 topologyFrame.setVisible(true);
 

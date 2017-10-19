@@ -10,7 +10,7 @@ public class TopologyInternalFrame extends JInternalFrame
     static int openFrameCount = 0;
     static final int xOffset = 25, yOffset = 25;
 
-    public TopologyInternalFrame(Network inputNetwork)
+    public TopologyInternalFrame(JPanel inputTopology)
     {
         super("Network Topology",
                 true, //resizable
@@ -25,7 +25,7 @@ public class TopologyInternalFrame extends JInternalFrame
 
 
 
-        add(inputNetwork.drawTopology());
+        add(inputTopology);
 
 
         pack();

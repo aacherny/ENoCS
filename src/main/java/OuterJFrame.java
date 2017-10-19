@@ -24,7 +24,7 @@ public class OuterJFrame
 
     public OuterJFrame()
     {
-        network = new Network("mesh", 4);
+        network = new Mesh( 4);
         outerFrame = new JFrame();
         desktop = new JDesktopPane();
 
@@ -72,7 +72,7 @@ public class OuterJFrame
                 cycleNumber++;
                 cycleLabel.setText("Cycle number: " + cycleNumber);
 
-                network.nextCycle();
+                // network.nextCycle();
             }
         });
 
@@ -84,7 +84,7 @@ public class OuterJFrame
                 cycleNumber = 0;
                 cycleLabel.setText("Cycle number: " + cycleNumber);
 
-                network.newCycle();
+                // network.newCycle();
             }
         });
 
