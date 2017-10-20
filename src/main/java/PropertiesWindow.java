@@ -172,8 +172,6 @@ public class PropertiesWindow
                     break;
                 }
 
-                network.setNodes(selectedNodes);
-
                 topologyFrame = new TopologyInternalFrame(network.drawTopology());
 
                 topologyFrame.setVisible(true);
