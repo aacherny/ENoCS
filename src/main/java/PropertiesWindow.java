@@ -49,7 +49,8 @@ public class PropertiesWindow
 
 
         // 'Network Settings' panel
-        JPanel networkSettings = new JPanel(new GridLayout(9, 2));
+        JPanel networkSettings = new JPanel();
+//        JPanel networkSettings = new JPanel(new GridLayout(9, 2));
         tabbedPane.addTab("Network Settings", networkSettings);
         createNetworkSettingsPanel(networkSettings);    // creates the content in the 'Network Settings' tab
 
@@ -84,7 +85,14 @@ public class PropertiesWindow
      */
     private void createRuntimeOptionsPanel(JPanel runtimeOptions)
     {
+        //The line below set panel to center things and cascade them vertically
         runtimeOptions.setLayout(new BoxLayout(runtimeOptions, BoxLayout.Y_AXIS));
+
+        /**
+         * the design of this panel is to create a panel that is divided into two sections. The left section holds
+         * the label for the parameter that is going to be changed. The right side holds the parameter that
+         * is getting changed.
+         */
         JPanel ccPerStepPanel = new JPanel(new GridLayout(1,2));
 
         JLabel ccPerStepLabel = new JLabel("Clock Cycles per step");
@@ -180,6 +188,7 @@ public class PropertiesWindow
      */
     private void createNetworkSettingsPanel(JPanel networkSettings)
     {
+        networkSettings.setLayout(new BoxLayout(networkSettings, BoxLayout.Y_AXIS));
         // Panel for the topology
         JPanel topologyPanel = new JPanel(new GridLayout(1, 2)); // 2 rows 1 column
         networkSettings.add(topologyPanel);
@@ -245,6 +254,72 @@ public class PropertiesWindow
         nodesPanel.add(labelNodes);
         nodesPanel.add(boxNodes);
 
+
+        JPanel routingPanel = new JPanel(new GridLayout(1, 2));
+
+        JLabel routingLabel = new JLabel();
+        routingPanel.add(routingLabel);
+
+        JComboBox<String> routingCombo = new JComboBox<>();
+        routingCombo.addItem("X-Y Routing");
+        routingCombo.addItem("Adaptive Routing");
+        routingPanel.add(routingCombo);
+
+        JPanel linkLatencyPanel = new JPanel(new GridLayout(1, 2));
+
+        JLabel linkLatencyLabel = new JLabel("Link Latency");
+        linkLatencyPanel.add(linkLatencyLabel);
+
+        JTextField linkLatencyField = new JTextField("0");
+        linkLatencyPanel.add(linkLatencyField);
+
+        JPanel nodeSizePanel = new JPanel(new GridLayout(1, 2));
+
+        JLabel nodeSizeLabel = new JLabel("Node Size");
+        nodeSizePanel.add(nodeSizeLabel);
+
+        JTextField nodeSizeField = new JTextField("20");
+        nodeSizePanel.add(nodeSizeField);
+
+        JPanel linkSizePanel = new JPanel(new GridLayout(1, 2));
+
+        JLabel linkSizeLabel = new JLabel("Link Size");
+        linkSizePanel.add(linkSizeLabel);
+
+        JTextField linkSizeField = new JTextField("30");
+        linkSizePanel.add(linkSizeField);
+
+        JPanel phitSizePanel = new JPanel(new GridLayout(1, 2));
+
+        JLabel phitSizeLabel = new JLabel("Phit Size (in bits)");
+        phitSizePanel.add(phitSizeLabel);
+
+        JTextField phitSizeField = new JTextField("40");
+        phitSizePanel.add(phitSizeField);
+
+        JPanel flitSizePanel = new JPanel(new GridLayout(1, 2));
+
+        JLabel flitSizeLabel = new JLabel("Flit Size (in bits)");
+        flitSizePanel.add(flitSizeLabel);
+
+        JTextField flitSizeField = new JTextField("40");
+        flitSizePanel.add(flitSizeField);
+
+        JPanel packetSizePanel = new JPanel(new GridLayout(1, 2));
+
+        JLabel packetSizeLabel = new JLabel("Packet Size (in bits)");
+        packetSizePanel.add(packetSizeLabel);
+
+        JTextField packetSizeField = new JTextField("80");
+        packetSizePanel.add(packetSizeField);
+
+        networkSettings.add(linkLatencyPanel);
+        networkSettings.add(nodeSizePanel);
+        networkSettings.add(linkSizePanel);
+        networkSettings.add(phitSizePanel);
+        networkSettings.add(flitSizePanel);
+        networkSettings.add(packetSizePanel);
+
         // OK button at the bottom
         JButton okButton = new JButton("OK");
         networkSettings.add(okButton);
@@ -289,13 +364,19 @@ public class PropertiesWindow
     {
         routerMA.setLayout(new BoxLayout(routerMA, BoxLayout.Y_AXIS));
 
-        JPanel leftPanel = new JPanel(new GridLayout(4, 2));
-        JPanel rightPanel = new JPanel(new GridLayout(3, 1));
+        JPanel topPanel = new JPanel(new GridLayout(4, 2));
+        JPanel sliderPanel = new JPanel(new GridLayout(3, 1));
+
+        /**
+         * This panel is divided into a top panel and a bottom panel. The bottom panel contains
+         * the slider and the Credit based flow control checkbox. The top panel contains
+         * everything else.
+         */
 
         JLabel bufferDesignLabel = new JLabel("Buffer Design");
-        leftPanel.add(bufferDesignLabel);
+        topPanel.add(bufferDesignLabel);
 
-        JComboBox<String> bufferDesignBox = new JComboBox();
+        JComboBox<String> bufferDesignBox = new JComboBox<>();
         bufferDesignBox.addItem("1 buffer w/ 0 VCs per Node");
         bufferDesignBox.addItem("1 buffer w/ 2 VCs per Node");
         bufferDesignBox.addItem("1 buffer w/ 3 VCs per Node");
@@ -303,43 +384,43 @@ public class PropertiesWindow
         bufferDesignBox.addItem("#buffers = #inputs w/ 2 VCs per Node");
         bufferDesignBox.addItem("#buffers = #inputs w/ 3 VCs per Node");
         bufferDesignBox.addItem("Bufferless");
-        leftPanel.add(bufferDesignBox);
+        topPanel.add(bufferDesignBox);
 
         JLabel bufferSizeLabel = new JLabel("Buffer Size");
-        leftPanel.add(bufferSizeLabel);
+        topPanel.add(bufferSizeLabel);
 
         JTextField bufferSizeField = new JTextField("4");
-        leftPanel.add(bufferSizeField);
+        topPanel.add(bufferSizeField);
 
         JLabel flowControlLabel = new JLabel("Flow Control");
-        leftPanel.add(flowControlLabel);
+        topPanel.add(flowControlLabel);
 
-        JComboBox<String> flowControlBox = new JComboBox();
+        JComboBox<String> flowControlBox = new JComboBox<>();
         flowControlBox.addItem("Round Robin");
         flowControlBox.addItem("Priority");
         flowControlBox.addItem("Wormhole");
-        leftPanel.add(flowControlBox);
+        topPanel.add(flowControlBox);
 
         JLabel pipelineTypeLabel = new JLabel("Pipeline Type");
-        leftPanel.add(pipelineTypeLabel);
+        topPanel.add(pipelineTypeLabel);
 
         JComboBox<String> pipelineTypeBox = new JComboBox<>();
         pipelineTypeBox.addItem("Fixed Pipeline");
         pipelineTypeBox.addItem("Flexible Pipeline");
-        leftPanel.add(pipelineTypeBox);
+        topPanel.add(pipelineTypeBox);
 
         JLabel pipelineStageLabel = new JLabel("Number of Pipeline Stages");
-        rightPanel.add(pipelineStageLabel);
+        sliderPanel.add(pipelineStageLabel);
 
         JSlider pipelineStageSlider = new JSlider(JSlider.HORIZONTAL,0, 5, 4);
         pipelineStageSlider.setMajorTickSpacing(1);
         pipelineStageSlider.setPaintTicks(true);
         pipelineStageSlider.setPaintLabels(true);
-        rightPanel.add(pipelineStageSlider);
+        sliderPanel.add(pipelineStageSlider);
 
         JCheckBox creditBasedCheck = new JCheckBox("Turn On Credit Based Flow Control");
         creditBasedCheck.setSelected(true);
-        rightPanel.add(creditBasedCheck);
+        sliderPanel.add(creditBasedCheck);
 
         JPanel okayCancel = new JPanel();
 
@@ -349,11 +430,10 @@ public class PropertiesWindow
         JButton cancel = new JButton("Cancel");
         okayCancel.add(cancel);
 
-        routerMA.add(leftPanel);
-        routerMA.add(rightPanel);
+        routerMA.add(topPanel);
+        routerMA.add(sliderPanel);
         routerMA.add(okayCancel);
-//        routerMA.add(okay);
-//        routerMA.add(cancel);
+
     }
 
     private void createStatWindow(JPanel statWindow){
