@@ -1,5 +1,8 @@
 package main.java;
 
+import javafx.scene.control.CheckMenuItem;
+
+import javax.imageio.plugins.jpeg.JPEGHuffmanTable;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -39,8 +42,10 @@ public class PropertiesWindow
 
         // Creates tabs and adds them to the tabbed pane
         // 'Runtime Options' panel
-        JPanel runtimeOptions = new JPanel(new BorderLayout());
+
+        JPanel runtimeOptions = new JPanel();
         tabbedPane.addTab("Runtime Options", runtimeOptions);
+        createRuntimeOptionsPanel(runtimeOptions);
 
 
         // 'Network Settings' panel
@@ -50,13 +55,15 @@ public class PropertiesWindow
 
 
         // 'Router MicroArchitecture' panel
-        JPanel routerMA = new JPanel(new BorderLayout());
+        JPanel routerMA = new JPanel();
         tabbedPane.addTab("Router MicroArchitecture", routerMA);
+        createRouterMAPanel(routerMA);
 
 
         // 'Stat Window' panel
-        JPanel statWindow = new JPanel(new BorderLayout());
+        JPanel statWindow = new JPanel();
         tabbedPane.addTab("Stat Window", statWindow);
+        createStatWindow(statWindow);
 
 
         // 'Misc' panel
@@ -69,6 +76,102 @@ public class PropertiesWindow
 
         // Makes the window visible
         propertiesFrame.setVisible(true);
+    }
+
+    /**
+     * Creates the panel under the Runtime Options tab
+     * @param runtimeOptions
+     */
+    private void createRuntimeOptionsPanel(JPanel runtimeOptions)
+    {
+        runtimeOptions.setLayout(new BoxLayout(runtimeOptions, BoxLayout.Y_AXIS));
+        JPanel ccPerStepPanel = new JPanel(new GridLayout(1,2));
+
+        JLabel ccPerStepLabel = new JLabel("Clock Cycles per step");
+        ccPerStepPanel.add(ccPerStepLabel);
+
+        JTextField ccPerStepField = new JTextField("3");
+        ccPerStepPanel.add(ccPerStepField);
+
+        JPanel hotspotRatePanel = new JPanel(new GridLayout(1,2));
+
+        JLabel hotspotRateLabel = new JLabel("Hotspot Traffic Rate");
+        hotspotRatePanel.add(hotspotRateLabel);
+
+        JTextField hotSpotRateField = new JTextField("100");
+        hotspotRatePanel.add(hotSpotRateField);
+
+
+        JPanel injectionTypePanel = new JPanel(new GridLayout(1, 2));
+
+        JLabel injectionTypeLabel = new JLabel("Injection Type");
+        injectionTypePanel.add(injectionTypeLabel);
+
+        JComboBox<String> injectionTypeBox = new JComboBox<>();
+        injectionTypeBox.addItem("By Flit");
+        injectionTypeBox.addItem("By Packet");
+        injectionTypePanel.add(injectionTypeBox);
+
+
+        JPanel hotspotNodePanel = new JPanel(new GridLayout(1, 2));
+
+        JLabel hotspotNodeLabel = new JLabel("Hotspot Node");
+        hotspotNodePanel.add(hotspotNodeLabel);
+
+        JTextField hotspotNodeField = new JTextField("0");
+        hotspotNodePanel.add(hotspotNodeField);
+
+
+        JPanel injectionRatePanel = new JPanel(new GridLayout(1, 2));
+
+        JLabel injectionRateLabel = new JLabel("Packet/Flit Injection Rate");
+        injectionRatePanel.add(injectionRateLabel);
+
+        JTextField injectionRateField = new JTextField("10");
+        injectionRatePanel.add(injectionRateField);
+
+
+        JPanel trafficPatternPanel = new JPanel(new GridLayout(1, 2));
+
+        JLabel trafficPatternLabel = new JLabel("Traffic Pattern");
+        trafficPatternPanel.add(trafficPatternLabel);
+
+        JComboBox<String> trafficPatternBox = new JComboBox<>();
+        trafficPatternBox.addItem("Unified Random");
+        trafficPatternBox.addItem("Tornado");
+        trafficPatternBox.addItem("Hotspot");
+        trafficPatternPanel.add(trafficPatternBox);
+
+        JPanel packetGenPanel = new JPanel();
+
+        JLabel packetGenLabel = new JLabel("Packet Generation Options");
+        packetGenPanel.add(packetGenLabel);
+
+        JComboBox<String> packetGenBox = new JComboBox<>();
+        packetGenBox.addItem("Drop packets generated at nodes with full input buffer");
+        packetGenBox.addItem("Do not generate packets at nodes with full input buffer");
+        packetGenBox.addItem("Unlimited buffer space at nodes for generated packets");
+        packetGenPanel.add(packetGenBox);
+
+        JPanel okayCancelPanel = new JPanel();
+
+        JButton okay = new JButton("OK");
+        okayCancelPanel.add(okay);
+
+        JButton cancel = new JButton("Cancel");
+        okayCancelPanel.add(cancel);
+
+        runtimeOptions.add(ccPerStepPanel);
+        runtimeOptions.add(hotspotRatePanel);
+        runtimeOptions.add(injectionTypePanel);
+        runtimeOptions.add(hotspotNodePanel);
+        runtimeOptions.add(injectionRatePanel);
+        runtimeOptions.add(trafficPatternPanel);
+        runtimeOptions.add(packetGenPanel);
+//        runtimeOptions.add(packetGenLabel);
+//        runtimeOptions.add(packetGenBox);
+        runtimeOptions.add(okayCancelPanel);
+
     }
 
     /**
@@ -180,5 +283,129 @@ public class PropertiesWindow
                 desktopPane.add(topologyFrame);
             }
         });
+    }
+
+    private void createRouterMAPanel(JPanel routerMA)
+    {
+        routerMA.setLayout(new BoxLayout(routerMA, BoxLayout.Y_AXIS));
+
+        JPanel leftPanel = new JPanel(new GridLayout(4, 2));
+        JPanel rightPanel = new JPanel(new GridLayout(3, 1));
+
+        JLabel bufferDesignLabel = new JLabel("Buffer Design");
+        leftPanel.add(bufferDesignLabel);
+
+        JComboBox<String> bufferDesignBox = new JComboBox();
+        bufferDesignBox.addItem("1 buffer w/ 0 VCs per Node");
+        bufferDesignBox.addItem("1 buffer w/ 2 VCs per Node");
+        bufferDesignBox.addItem("1 buffer w/ 3 VCs per Node");
+        bufferDesignBox.addItem("#buffers = #inputs w/ 0 VCs per Node");
+        bufferDesignBox.addItem("#buffers = #inputs w/ 2 VCs per Node");
+        bufferDesignBox.addItem("#buffers = #inputs w/ 3 VCs per Node");
+        bufferDesignBox.addItem("Bufferless");
+        leftPanel.add(bufferDesignBox);
+
+        JLabel bufferSizeLabel = new JLabel("Buffer Size");
+        leftPanel.add(bufferSizeLabel);
+
+        JTextField bufferSizeField = new JTextField("4");
+        leftPanel.add(bufferSizeField);
+
+        JLabel flowControlLabel = new JLabel("Flow Control");
+        leftPanel.add(flowControlLabel);
+
+        JComboBox<String> flowControlBox = new JComboBox();
+        flowControlBox.addItem("Round Robin");
+        flowControlBox.addItem("Priority");
+        flowControlBox.addItem("Wormhole");
+        leftPanel.add(flowControlBox);
+
+        JLabel pipelineTypeLabel = new JLabel("Pipeline Type");
+        leftPanel.add(pipelineTypeLabel);
+
+        JComboBox<String> pipelineTypeBox = new JComboBox<>();
+        pipelineTypeBox.addItem("Fixed Pipeline");
+        pipelineTypeBox.addItem("Flexible Pipeline");
+        leftPanel.add(pipelineTypeBox);
+
+        JLabel pipelineStageLabel = new JLabel("Number of Pipeline Stages");
+        rightPanel.add(pipelineStageLabel);
+
+        JSlider pipelineStageSlider = new JSlider(JSlider.HORIZONTAL,0, 5, 4);
+        pipelineStageSlider.setMajorTickSpacing(1);
+        pipelineStageSlider.setPaintTicks(true);
+        pipelineStageSlider.setPaintLabels(true);
+        rightPanel.add(pipelineStageSlider);
+
+        JCheckBox creditBasedCheck = new JCheckBox("Turn On Credit Based Flow Control");
+        creditBasedCheck.setSelected(true);
+        rightPanel.add(creditBasedCheck);
+
+        JPanel okayCancel = new JPanel();
+
+        JButton okay = new JButton("Okay");
+        okayCancel.add(okay);
+
+        JButton cancel = new JButton("Cancel");
+        okayCancel.add(cancel);
+
+        routerMA.add(leftPanel);
+        routerMA.add(rightPanel);
+        routerMA.add(okayCancel);
+//        routerMA.add(okay);
+//        routerMA.add(cancel);
+    }
+
+    private void createStatWindow(JPanel statWindow){
+        statWindow.setLayout(new BoxLayout(statWindow, BoxLayout.Y_AXIS));
+
+        JLabel latencyStatsLabel = new JLabel("Latency Statistics");
+        statWindow.add(latencyStatsLabel);
+
+        JPanel latencyStatsCheckPanel = new JPanel(new FlowLayout());
+
+        JCheckBox clockCycles = new JCheckBox("Clock Cycles");
+        clockCycles.setSelected(true);
+        latencyStatsCheckPanel.add(clockCycles);
+
+        JCheckBox hops = new JCheckBox("Hops");
+        hops.setSelected(true);
+        latencyStatsCheckPanel.add(hops);
+
+        statWindow.add(latencyStatsCheckPanel);
+
+        JLabel otherStatsLabel = new JLabel("Other Statistics");
+        statWindow.add(otherStatsLabel);
+
+        JPanel otherStatsPanel = new JPanel(new FlowLayout());
+
+        JCheckBox bandwidth = new JCheckBox("Bandwidth");
+        otherStatsPanel.add(bandwidth);
+
+        JCheckBox throughput = new JCheckBox("Throughput");
+        otherStatsPanel.add(throughput);
+
+        JCheckBox droppedFlits = new JCheckBox("Dropped Flits");
+        droppedFlits.setSelected(true);
+        otherStatsPanel.add(droppedFlits);
+
+        JCheckBox area = new JCheckBox("Area");
+        otherStatsPanel.add(area);
+
+        JCheckBox power = new JCheckBox("Power");
+        otherStatsPanel.add(power);
+
+        statWindow.add(otherStatsPanel);
+
+        JPanel okayCancelPanel = new JPanel();
+
+        JButton okay = new JButton("Okay");
+        okayCancelPanel.add(okay);
+
+        JButton cancel = new JButton("Cancel");
+        okayCancelPanel.add(cancel);
+
+        statWindow.add(okayCancelPanel);
+
     }
 }

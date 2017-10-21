@@ -51,6 +51,7 @@ public class OuterJFrame
         // Creates the menu bar and adds it to the window
         JMenuBar menuBar = createMenuBar();
         outerFrame.setJMenuBar(menuBar);
+
         //Creates the toolbar and adds it to the window on the left side
         JToolBar toolBar = createToolBar();
         panel.add(toolBar, BorderLayout.WEST);
@@ -73,19 +74,19 @@ public class OuterJFrame
         menuBar.add(menuFile);
 
         // 'New' button under 'File'
-        JMenuItem menuItemNew = new JMenuItem("New");
+        JMenuItem menuItemNew = new JMenuItem("New", new ImageIcon(getClass().getResource("images/new.png")));
         menuItemNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
         menuFile.add(menuItemNew);
 
         // 'Open' button under 'File'
-        JMenuItem menuItemOpen = new JMenuItem("Open");
+        JMenuItem menuItemOpen = new JMenuItem("Open", new ImageIcon(getClass().getResource("images/open.png")));
         menuItemOpen.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK));
         menuFile.add(menuItemOpen);
 
         menuFile.addSeparator();
 
         // 'Save' button under 'File'
-        JMenuItem menuItemSave = new JMenuItem("Save");
+        JMenuItem menuItemSave = new JMenuItem("Save", new ImageIcon(getClass().getResource("images/save.png")));
         menuItemSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
         menuFile.add(menuItemSave);
 
