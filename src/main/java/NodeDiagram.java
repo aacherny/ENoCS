@@ -1,16 +1,12 @@
 package main.java;
 
-//import com.sun.xml.internal.bind.v2.TODO;
-
 import javax.swing.*;
-import java.awt.*;
 
-public class TopologyInternalFrame extends JInternalFrame
+public class NodeDiagram extends JInternalFrame
 {
-    static int openFrameCount = 0;
     static final int xOffset = 25, yOffset = 25;
 
-    public TopologyInternalFrame(JPanel inputTopology)
+    public NodeDiagram()
     {
         super("Network Topology",
                 true, //resizable
@@ -23,19 +19,18 @@ public class TopologyInternalFrame extends JInternalFrame
         //Set the window's location.
         setLocation(xOffset, yOffset);
 
-        add(inputTopology);
+        add(addDiagram());
 
         pack();
         setVisible(true);
     }
 
-    public int getXBounds()
+    public JPanel addDiagram()
     {
-        return getBounds().width;
-    }
+        JPanel routerPanel = new JPanel();
 
-    public int getYBounds()
-    {
-        return getBounds().height;
+
+
+        return routerPanel;
     }
 }
