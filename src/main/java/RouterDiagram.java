@@ -2,11 +2,11 @@ package main.java;
 
 import javax.swing.*;
 
-public class NodeDiagram extends JInternalFrame
+public class RouterDiagram extends JInternalFrame
 {
     static final int xOffset = 25, yOffset = 25;
 
-    public NodeDiagram()
+    public RouterDiagram()
     {
         super("Network Topology",
                 true, //resizable

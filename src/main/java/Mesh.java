@@ -12,6 +12,11 @@ public class Mesh implements Network
         nodes = inputNodes;
     }
 
+    public void nextCycle()
+    {
+
+    }
+
     public JPanel drawTopology()
     {
         JPanel panelYContainer = new JPanel();
