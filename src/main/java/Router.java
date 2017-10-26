@@ -5,13 +5,17 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Node
+public class Router
 {
-    private int nodeNumber;
+    private int routerNumber;
 
-    public Node(int nodeNumberInput)
+    public Router(int nodeNumberInput)
     {
-        nodeNumber = nodeNumberInput;
+        routerNumber = nodeNumberInput;
+    }
+
+    public void inputPacket(Flit[] inputFlit, int source)
+    {
 
     }
 
@@ -22,13 +26,13 @@ public class Node
     public JPanel drawCircle()
     {
         Circle circle = new Circle();
-        JLabel nodeNum = new JLabel(nodeNumber+"");
+        JLabel nodeNum = new JLabel(routerNumber+"");
 
         circle.add(nodeNum);
 
         circle.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
-                System.out.println("The node that was clicked is: " + nodeNumber);
+                System.out.println("The node that was clicked is: " + routerNumber);
             }
         });
 

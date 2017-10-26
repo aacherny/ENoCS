@@ -7,6 +7,8 @@ public class Mesh implements Network
 {
     private int nodes;
 
+    protected Router[] routerArray = new Router[nodes];
+
     public Mesh(int inputNodes)
     {
         nodes = inputNodes;
@@ -14,8 +16,12 @@ public class Mesh implements Network
 
     public void nextCycle()
     {
-
+        // sometimes create new packets
+        // call the nextCycle of each router
+        // check if each router has a packet ready to send, send to the next router if it is
     }
+
+    // TODO Add a method to create an array of Flits
 
     public JPanel drawTopology()
     {
@@ -23,12 +29,10 @@ public class Mesh implements Network
 
         int nodesSqrt = (int) Math.sqrt(nodes);
 
-        Node[] nodeArray = new Node[nodes];
-
         int nodeCounter = 0;
 
         for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
-            nodeArray[i] = new Node(i);
+            routerArray[i] = new Router(i);
         }
 
         panelYContainer.setLayout(new GridLayout(0, nodesSqrt + nodesSqrt - 1));
@@ -36,12 +40,12 @@ public class Mesh implements Network
         JPanel panelXContainer = new JPanel();
         panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt - 1, 0));
 
-        panelXContainer.add(nodeArray[nodeCounter++].drawCircle());  // Adds the very top-left circle
+        panelXContainer.add(routerArray[nodeCounter++].drawCircle());  // Adds the very top-left circle
 
         for (int i = 0; i < nodesSqrt - 1; i++) {   // Adds on more line+circle combos to the same column
 
             panelXContainer.add(new vertLine());
-            panelXContainer.add(nodeArray[nodeCounter++].drawCircle());
+            panelXContainer.add(routerArray[nodeCounter++].drawCircle());
 
         }
 
@@ -65,12 +69,12 @@ public class Mesh implements Network
             panelXContainer = new JPanel();
             panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt - 1, 0));
 
-            panelXContainer.add(nodeArray[nodeCounter++].drawCircle());  // Adds a top circle
+            panelXContainer.add(routerArray[nodeCounter++].drawCircle());  // Adds a top circle
 
             for (int j = 0; j < nodesSqrt - 1; j++) {   // Adds on more line+circle combos to the column
 
                 panelXContainer.add(new vertLine());
-                panelXContainer.add(nodeArray[nodeCounter++].drawCircle());
+                panelXContainer.add(routerArray[nodeCounter++].drawCircle());
 
             }
             panelYContainer.add(panelXContainer);   // Adds the column of circles+vertLines to the right of the previous column
