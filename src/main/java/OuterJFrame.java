@@ -1,5 +1,7 @@
 package main.java;
 
+import javafx.scene.control.ToolBar;
+
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 
@@ -221,8 +223,8 @@ public class OuterJFrame
     private JToolBar createToolBar()
     {
         JToolBar toolBar = new JToolBar();
-
-        toolBar.setFloatable(false);
+        toolBar.setBounds(0, 0, 9999, 20);
+        toolBar.setFloatable( false);
 
         ImageIcon newFileImage = new ImageIcon(getClass().getResource("images/new.png"));
         JButton newFile = new JButton(newFileImage);
@@ -249,41 +251,12 @@ public class OuterJFrame
         help.setToolTipText("Help");
         toolBar.add(help);
 
-        ImageIcon refreshImage = new ImageIcon(getClass().getResource("images/refresh.png"));
-        JButton refresh = new JButton(refreshImage);
-        refresh.setToolTipText("Refresh");
-        toolBar.add(refresh);
-
-        ImageIcon nextCycleImage = new ImageIcon(getClass().getResource("images/play.png"));
-        JButton nextCycle = new JButton(nextCycleImage);
-        nextCycle.setToolTipText("Next Cycle");
-        toolBar.add(nextCycle);
-
-        ImageIcon multiCycleImage = new ImageIcon(getClass().getResource("images/fastforward.png"));
-        JButton multiCycle = new JButton(multiCycleImage);
-        multiCycle.setToolTipText("Run Multiple Cycles");
-        toolBar.add(multiCycle);
-
         JLabel cycleLabel = new JLabel("Cycle number: ");
 
-        toolBar = new JToolBar();
-        toolBar.setBounds(0, 0, 9999, 20);
-        toolBar.setFloatable( false);
-
-        JButton nextClockCycle = new JButton("Next Cycle");
-        nextClockCycle.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-                cycleNumber++;
-                cycleLabel.setText("Cycle number: " + cycleNumber);
-
-                // network.nextCycle();
-            }
-        });
-
-        JButton newCycle = new JButton("Restart");
-        newCycle.addActionListener(new ActionListener()
+        ImageIcon refreshImage = new ImageIcon(getClass().getResource("images/refresh.png"));
+        JButton refresh = new JButton(refreshImage);
+        refresh.setToolTipText("Restart");
+        refresh.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
@@ -293,13 +266,49 @@ public class OuterJFrame
                 // network.newCycle();
             }
         });
+        toolBar.add(refresh);
 
-        toolBar.add(nextClockCycle);
-        toolBar.add(newCycle);
+        ImageIcon nextCycleImage = new ImageIcon(getClass().getResource("images/play.png"));
+        JButton nextCycle = new JButton(nextCycleImage);
+        nextCycle.setToolTipText("Next Cycle");
+        nextCycle.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                cycleNumber++;
+                cycleLabel.setText("Cycle number: " + cycleNumber);
+
+                // network.nextCycle();
+            }
+        });
+        toolBar.add(nextCycle);
+
+        JTextField multiCycleField = new JTextField("5");
+        toolBar.add(multiCycleField);
+
+        ImageIcon multiCycleImage = new ImageIcon(getClass().getResource("images/fastforward.png"));
+        JButton multiCycle = new JButton(multiCycleImage);
+        multiCycle.setToolTipText("Run Multiple Cycles");
+        multiCycle.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+
+                for (int i = 0; i < Integer.parseInt(multiCycleField.getText()); i++){
+                    cycleNumber++;
+                    cycleLabel.setText("Cycle number: " + cycleNumber);
+                }
+
+                // network.nextCycle();
+            }
+        });
+        toolBar.add(multiCycle);
+
         toolBar.add(cycleLabel);
 
         return toolBar;
     }
+
 
     /**
      * Returns the desktop pane of the JPanel
