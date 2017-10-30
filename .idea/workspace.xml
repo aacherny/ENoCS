@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6effbb56-f5b0-4b79-a23a-cf22072d6528" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Node.java" afterPath="$PROJECT_DIR$/src/main/java/Router.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Bus.java" afterPath="$PROJECT_DIR$/src/main/java/Bus.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mesh.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/OuterJFrame.java" afterPath="$PROJECT_DIR$/src/main/java/OuterJFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/PropertiesWindow.java" afterPath="$PROJECT_DIR$/src/main/java/PropertiesWindow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Router.java" afterPath="$PROJECT_DIR$/src/main/java/Router.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,8 +24,8 @@
           <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+                <state relative-caret-position="0">
+                  <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
                   <folding />
                 </state>
               </provider>
@@ -32,10 +34,10 @@
           <file leaf-file-name="OuterJFrame.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/OuterJFrame.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+                <state relative-caret-position="-2383">
+                  <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
                   <folding>
-                    <marker date="1508524701704" expanded="true" signature="4704:4718" ph="{...}" />
+                    <marker date="1509393828791" expanded="true" signature="4713:4727" ph="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -44,20 +46,11 @@
           <file leaf-file-name="PropertiesWindow.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/PropertiesWindow.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="388">
-                  <caret line="138" column="41" lean-forward="true" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Mesh.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="425">
-                  <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+                <state relative-caret-position="813">
+                  <caret line="163" column="24" lean-forward="true" selection-start-line="163" selection-start-column="24" selection-end-line="163" selection-end-column="24" />
                   <folding>
-                    <element signature="imports" expanded="true" />
+                    <element signature="e#2991#2999#0" expanded="true" />
+                    <element signature="e#3873#3881#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -70,8 +63,8 @@
           <file leaf-file-name="TopologyInternalFrame.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/TopologyInternalFrame.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+                <state relative-caret-position="221">
+                  <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -82,8 +75,8 @@
           <file leaf-file-name="Network.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/Network.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="238">
-                  <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+                <state relative-caret-position="0">
+                  <caret line="0" column="18" lean-forward="true" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -91,11 +84,24 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Flit.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/Flit.java">
+          <file leaf-file-name="Mesh.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="476">
-                  <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+                <state relative-caret-position="85">
+                  <caret line="5" column="36" lean-forward="true" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <marker date="1509394088149" expanded="true" signature="2836:3063" ph="{...}" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Bus.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/Bus.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="340">
+                  <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -104,12 +110,9 @@
           <file leaf-file-name="Router.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="425">
-                  <caret line="28" column="35" lean-forward="false" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
-                  <folding>
-                    <element signature="e#228#229#0" expanded="true" />
-                    <element signature="e#274#275#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="714">
+                  <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -117,8 +120,18 @@
           <file leaf-file-name="RouterDiagram.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/RouterDiagram.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="10" column="33" lean-forward="true" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+                <state relative-caret-position="323">
+                  <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Flit.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/Flit.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="476">
+                  <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -140,8 +153,8 @@
       <find>L</find>
       <find>network</find>
       <find>the node</find>
-      <find>the node</find>
       <find>draw</find>
+      <find>topologyint</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -171,15 +184,15 @@
         <option value="$PROJECT_DIR$/src/main/java/horiLine.java" />
         <option value="$PROJECT_DIR$/src/main/java/Circle.java" />
         <option value="$PROJECT_DIR$/src/main/java/Node.java" />
-        <option value="$PROJECT_DIR$/src/main/java/OuterJFrame.java" />
         <option value="$PROJECT_DIR$/src/main/java/Network.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bus.java" />
-        <option value="$PROJECT_DIR$/src/main/java/PropertiesWindow.java" />
         <option value="$PROJECT_DIR$/src/main/java/TopologyInternalFrame.java" />
         <option value="$PROJECT_DIR$/src/main/java/NodeDiagram.java" />
         <option value="$PROJECT_DIR$/src/main/java/RouterDiagram.java" />
         <option value="$PROJECT_DIR$/src/main/java/Flit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/PropertiesWindow.java" />
+        <option value="$PROJECT_DIR$/src/main/java/OuterJFrame.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mesh.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bus.java" />
         <option value="$PROJECT_DIR$/src/main/java/Router.java" />
       </list>
     </option>
@@ -214,9 +227,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -246,7 +258,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -402,6 +415,7 @@
       <workItem from="1508524210534" duration="449000" />
       <workItem from="1508870218168" duration="4578000" />
       <workItem from="1509038540651" duration="3896000" />
+      <workItem from="1509392952821" duration="1528000" />
     </task>
     <task id="LOCAL-00001" summary="Another test commit">
       <created>1506367699156</created>
@@ -526,7 +540,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98429000" />
+    <option name="totallyTimeSpent" value="99976000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -641,7 +655,7 @@
         <state relative-caret-position="357">
           <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
-            <marker date="1508524701704" expanded="true" signature="4704:4718" ph="{...}" />
+            <marker date="1509393828791" expanded="true" signature="4713:4727" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -732,7 +746,7 @@
         <state relative-caret-position="357">
           <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
-            <marker date="1508524701704" expanded="true" signature="4704:4718" ph="{...}" />
+            <marker date="1509393828791" expanded="true" signature="4713:4727" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -950,72 +964,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bus.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Packet.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="36" column="48" lean-forward="true" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+        <state relative-caret-position="0">
+          <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Network.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/TopologyInternalFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/OuterJFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
-          <folding>
-            <marker date="1508524701704" expanded="true" signature="4704:4718" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Packet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/RouterDiagram.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="33" lean-forward="true" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state relative-caret-position="221">
+          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1025,27 +986,74 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Flit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/OuterJFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2383">
           <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <marker date="1509393828791" expanded="true" signature="4713:4727" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Network.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="18" lean-forward="true" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="36" lean-forward="true" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1509394088149" expanded="true" signature="2836:3063" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/RouterDiagram.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/PropertiesWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="138" column="41" lean-forward="true" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
-          <folding />
+        <state relative-caret-position="813">
+          <caret line="163" column="24" lean-forward="true" selection-start-line="163" selection-start-column="24" selection-end-line="163" selection-end-column="24" />
+          <folding>
+            <element signature="e#2991#2999#0" expanded="true" />
+            <element signature="e#3873#3881#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="28" column="35" lean-forward="false" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
-          <folding>
-            <element signature="e#228#229#0" expanded="true" />
-            <element signature="e#274#275#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="714">
+          <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

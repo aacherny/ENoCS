@@ -7,11 +7,17 @@ public class Mesh implements Network
 {
     private int nodes;
 
-    protected Router[] routerArray = new Router[nodes];
+    JDesktopPane desktopPane;
 
-    public Mesh(int inputNodes)
+    protected Router[] routerArray;
+
+    public Mesh(int inputNodes, JDesktopPane inputDesktopPane)
     {
         nodes = inputNodes;
+
+        desktopPane = inputDesktopPane;
+
+        routerArray = new Router[nodes];
     }
 
     public void nextCycle()
@@ -32,7 +38,7 @@ public class Mesh implements Network
         int nodeCounter = 0;
 
         for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
-            routerArray[i] = new Router(i);
+            routerArray[i] = new Router(i, desktopPane);
         }
 
         panelYContainer.setLayout(new GridLayout(0, nodesSqrt + nodesSqrt - 1));

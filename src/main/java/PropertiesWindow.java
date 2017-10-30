@@ -162,13 +162,13 @@ public class PropertiesWindow
 
                 switch(selectedTopology) {  // sets the default value of the dropdown to the value of the object
                 default:
-                    network = new Mesh(selectedNodes);
+                    network = new Mesh(selectedNodes, desktopPane);
                     break;
                 case "mesh":
-                    network = new Mesh(selectedNodes);
+                    network = new Mesh(selectedNodes, desktopPane);
                     break;
                 case "bus":
-                    network = new Bus(selectedNodes);
+                    network = new Bus(selectedNodes, desktopPane);
                     break;
                 }
 

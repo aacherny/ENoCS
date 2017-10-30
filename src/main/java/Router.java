@@ -9,9 +9,13 @@ public class Router
 {
     private int routerNumber;
 
-    public Router(int nodeNumberInput)
+    JDesktopPane desktopPane;
+    Circle circle = new Circle();
+
+    public Router(int nodeNumberInput, JDesktopPane inputDesktopPane)
     {
         routerNumber = nodeNumberInput;
+        desktopPane = inputDesktopPane;
     }
 
     public void inputPacket(Flit[] inputFlit, int source)
@@ -25,14 +29,16 @@ public class Router
      */
     public JPanel drawCircle()
     {
-        Circle circle = new Circle();
-        JLabel nodeNum = new JLabel(routerNumber+"");
+        JLabel nodeNum = new JLabel(routerNumber+"");   // Creates a label for the circle
 
-        circle.add(nodeNum);
+        circle.add(nodeNum);    // Adds the label to the circle
 
         circle.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
                 System.out.println("The node that was clicked is: " + routerNumber);
+
+                RouterDiagram routerDiagram = new RouterDiagram();
+                desktopPane.add(routerDiagram);
             }
         });
 

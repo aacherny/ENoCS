@@ -24,7 +24,7 @@ public class OuterJFrame
 
     public OuterJFrame()
     {
-        network = new Mesh( 4);
+        network = new Mesh( 4, desktop);
         outerFrame = new JFrame();
         desktop = new JDesktopPane();
 
