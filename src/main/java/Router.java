@@ -37,7 +37,7 @@ public class Router
             public void mouseClicked(MouseEvent e){
                 System.out.println("The node that was clicked is: " + routerNumber);
 
-                RouterDiagram routerDiagram = new RouterDiagram();
+                RouterDiagram routerDiagram = new RouterDiagram(routerNumber);
                 desktopPane.add(routerDiagram);
             }
         });

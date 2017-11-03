@@ -6,9 +6,9 @@ public class RouterDiagram extends JInternalFrame
 {
     static final int xOffset = 25, yOffset = 25;
 
-    public RouterDiagram()
+    public RouterDiagram(int routerNumber)
     {
-        super("Network Topology",
+        super("Router " + routerNumber,
                 true, //resizable
                 true, //closable
                 true, //maximizable
@@ -18,6 +18,7 @@ public class RouterDiagram extends JInternalFrame
 
         //Set the window's location.
         setLocation(xOffset, yOffset);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         add(addDiagram());
 

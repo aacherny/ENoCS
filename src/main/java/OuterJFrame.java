@@ -24,19 +24,21 @@ public class OuterJFrame
 
     public OuterJFrame()
     {
-        network = new Mesh( 4, desktop);
+        network = new Mesh( 4, desktop);    // Creates a default network to work with
         outerFrame = new JFrame();
-        desktop = new JDesktopPane();
+        desktop = new JDesktopPane();   // DesktopPane that will hold all of the windows
+        desktop.setLayout(new GridBagLayout());
 
         cycleNumber = 0;
-
-        outerFrame.setContentPane(desktop);
 
         // General things like window title and size
         outerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         outerFrame.setTitle("ENoCS Simulator");
         outerFrame.setSize(1200, 800);
         outerFrame.setLocationRelativeTo(null);
+        outerFrame.setLayout(new BorderLayout());
+
+        outerFrame.add(desktop);
     }
 
     /**
@@ -49,20 +51,21 @@ public class OuterJFrame
         outerFrame.setJMenuBar(menuBar);
 
         // Creates the toolbar and adds it to the window
-        createToolBar();
-        outerFrame.getContentPane().add(toolBar, BorderLayout.NORTH);
+        toolBar = createToolBar();
+        //outerFrame.getContentPane().add(toolBar, BorderLayout.NORTH);
+        outerFrame.add(toolBar, BorderLayout.PAGE_START);
 
         // Makes the window visible
         outerFrame.setVisible(true);
     }
 
-    private void createToolBar()
+    private JToolBar createToolBar()
     {
         JLabel cycleLabel = new JLabel("Cycle number: ");
 
-        toolBar = new JToolBar();
-        toolBar.setBounds(0, 0, 9999, 20);
-        toolBar.setFloatable( false);
+        JToolBar newToolBar = new JToolBar();
+        newToolBar.setBounds(0, 0, 9999, 20);
+        newToolBar.setFloatable( false);
 
         JButton nextClockCycle = new JButton("Next Cycle");
         nextClockCycle.addActionListener(new ActionListener()
@@ -88,9 +91,11 @@ public class OuterJFrame
             }
         });
 
-        toolBar.add(nextClockCycle);
-        toolBar.add(newCycle);
-        toolBar.add(cycleLabel);
+        newToolBar.add(nextClockCycle);
+        newToolBar.add(newCycle);
+        newToolBar.add(cycleLabel);
+
+        return newToolBar;
     }
 
     /**
