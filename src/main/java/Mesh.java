@@ -16,6 +16,16 @@ public class Mesh implements Network
 
     public void nextCycle()
     {
+        //Below is the function to randomly create a packet
+        //It will randomly generate either a one or a zero, then if one create a packet
+        //(int)(Math.floor(Math.random()*10%2))
+
+        if ((Math.floor(Math.random()*10%2)) == 1){
+            //new Packet();
+
+        }
+
+        //Math.random()
         // sometimes create new packets
         // call the nextCycle of each router
         // check if each router has a packet ready to send, send to the next router if it is
