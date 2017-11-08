@@ -8,6 +8,11 @@ import java.awt.event.MouseEvent;
 public class Router
 {
     private int routerNumber;
+    private Flit[] channelNorth;    // Channels to hold incoming flits
+    private Flit[] channelSouth;
+    private Flit[] channelEast;
+    private Flit[] channelWest;
+    private Flit[] channelHome;
 
     JDesktopPane desktopPane;
     Circle circle = new Circle();
