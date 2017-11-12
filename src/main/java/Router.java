@@ -40,6 +40,7 @@ public class Router
     public JPanel drawCircle()
     {
         JLabel nodeNum = new JLabel(routerNumber+"");   // Creates a label for the circle
+        Router currentRouter = this; // Creates a router object to pass
 
         circle.add(nodeNum);    // Adds the label to the circle
 
@@ -47,11 +48,16 @@ public class Router
             public void mouseClicked(MouseEvent e){
                 System.out.println("The node that was clicked is: " + routerNumber);
 
-                RouterDiagram routerDiagram = new RouterDiagram(routerNumber);
+                RouterDiagram routerDiagram = new RouterDiagram(currentRouter);
                 desktopPane.add(routerDiagram);
             }
         });
 
         return circle;
+    }
+
+    public int getRouterNumber()
+    {
+        return routerNumber;
     }
 }
