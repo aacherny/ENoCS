@@ -23,6 +23,11 @@ public class Router
         desktopPane = inputDesktopPane;
     }
 
+    public void nextCycle()
+    {
+
+    }
+
     public void inputPacket(Flit[] inputFlit, int source)
     {
 

@@ -16,6 +16,13 @@ public class Bus implements Network
         routerArray = new Router[nodes];
     }
 
+    public void nextCycle()
+    {
+        // sometimes create new packets
+        // call the nextCycle of each router
+        // check if each router has a packet ready to send, send to the next router if it is
+    }
+
     public JPanel drawTopology() {
 
         JPanel panelYContainer = new JPanel();

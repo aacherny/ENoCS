@@ -12,4 +12,6 @@ interface Network
     int getNodes();
 
     String getTopology();
+
+    void nextCycle();
 }

@@ -17,29 +17,66 @@ public class Mesh implements Network
 
         desktopPane = inputDesktopPane;
 
-        routerArray = new Router[nodes];
+        routerArray = createRouterArray(nodes);
     }
 
     public void nextCycle()
     {
+        Flit[] packet = createPacket(1, 1, 1, 3, 3);
+
+        for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
+            routerArray[i].nextCycle();
+        }
         // sometimes create new packets
         // call the nextCycle of each router
         // check if each router has a packet ready to send, send to the next router if it is
     }
 
-    // TODO Add a method to create an array of Flits
+    public Flit[] createPacket(int numberOfFlits, int locX, int locY, int destX, int destY)
+    {
+        Flit[] packet = {};
 
+        switch(numberOfFlits) {
+            case 1:
+                packet[0] = new Flit(0, locX, locY, destX, destY);
+                break;
+            case 4:
+                packet[0] = new Flit(1, locX, locY, destX, destY);
+                packet[1] = new Flit(2, locX, locY, destX, destY);
+                packet[2] = new Flit(3, locX, locY, destX, destY);
+                packet[3] = new Flit(4, locX, locY, destX, destY);
+                break;
+        }
+
+        return packet;
+    }
+
+    /**
+     * Creates an array of Router objects depending on the amount of nodes there are
+     * @return Router[]
+     */
+    public Router[] createRouterArray(int inputNodes)
+    {
+        Router[] routers = new Router[inputNodes];
+
+        for (int i = 0; i < nodes; i++) {    // Creates the same number of router objects that there are number of nodes
+            routers[i] = new Router(i, desktopPane);
+        }
+
+        return routers;
+    }
+
+    /**
+     * Draws the topology of the network using the existing array of routers
+     * @return JPanel
+     */
     public JPanel drawTopology()
     {
         JPanel panelYContainer = new JPanel();
 
         int nodesSqrt = (int) Math.sqrt(nodes);
-
         int nodeCounter = 0;
 
-        for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
-            routerArray[i] = new Router(i, desktopPane);
-        }
 
         panelYContainer.setLayout(new GridLayout(0, nodesSqrt + nodesSqrt - 1));
 
