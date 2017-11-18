@@ -30,7 +30,7 @@ public class Bus implements Network
         int nodeCounter = 0;
 
         for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
-            routerArray[i] = new Router(i, desktopPane);
+            //routerArray[i] = new Router(i, desktopPane);
         }
 
         panelYContainer.setLayout(new GridLayout(0, nodes));

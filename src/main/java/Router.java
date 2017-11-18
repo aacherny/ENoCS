@@ -8,19 +8,31 @@ import java.awt.event.MouseEvent;
 public class Router
 {
     private int routerNumber;
+
+    private int routerNorth;
+    private int routerSouth;
+    private int routerEast;
+    private int routerWest;
+
     private Flit[] channelNorth;    // Channels to hold incoming flits
     private Flit[] channelSouth;
     private Flit[] channelEast;
     private Flit[] channelWest;
     private Flit[] channelHome;
 
-    JDesktopPane desktopPane;
+    private JDesktopPane desktopPane;
+    //RouterDiagram routerDiagram;
     Circle circle = new Circle();
 
-    public Router(int nodeNumberInput, JDesktopPane inputDesktopPane)
+    public Router(int inputNodeNumber, int inputNorth, int inputSouth, int inputEast, int inputWest, JDesktopPane inputDesktopPane)
     {
-        routerNumber = nodeNumberInput;
+        routerNumber = inputNodeNumber;
         desktopPane = inputDesktopPane;
+
+        routerNorth = inputNorth;
+        routerSouth = inputSouth;
+        routerEast = inputEast;
+        routerWest = inputWest;
     }
 
     public void nextCycle()
@@ -54,6 +66,26 @@ public class Router
         });
 
         return circle;
+    }
+
+    public int getRouterNorth()
+    {
+        return routerNorth;
+    }
+
+    public int getRouterSouth()
+    {
+        return routerSouth;
+    }
+
+    public int getRouterEast()
+    {
+        return routerEast;
+    }
+
+    public int getRouterWest()
+    {
+        return routerWest;
     }
 
     public int getRouterNumber()
