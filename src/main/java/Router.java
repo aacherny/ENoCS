@@ -37,7 +37,7 @@ public class Router
 
     public void nextCycle()
     {
-
+        System.out.println("Next cycle for router: " + routerNumber);
     }
 
     public void inputPacket(Flit[] inputFlit, int source)

@@ -22,38 +22,41 @@ public class Mesh implements Network
 
     public void nextCycle()
     {
-        Flit[] packet = createPacket(1, 1, 1, 3, 3);
+        Flit[] packet = createPacket(1, 0, 0, 1, 1);
+
+        System.out.println("Next cycle selected");
 
         for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
             routerArray[i].nextCycle();
         }
-        // sometimes create new packets
-        // call the nextCycle of each router
+
         // check if each router has a packet ready to send, send to the next router if it is
     }
 
     public Flit[] createPacket(int numberOfFlits, int locX, int locY, int destX, int destY)
     {
-        Flit[] packet = {};
-
         switch(numberOfFlits) {
-            case 1:
-                packet[0] = new Flit(0, locX, locY, destX, destY);
-                break;
-            case 4:
-                packet[0] = new Flit(1, locX, locY, destX, destY);
-                packet[1] = new Flit(2, locX, locY, destX, destY);
-                packet[2] = new Flit(3, locX, locY, destX, destY);
-                packet[3] = new Flit(4, locX, locY, destX, destY);
-                break;
+            default: {
+                Flit[] packet = new Flit[]{new Flit(0, locX, locY, destX, destY)};
+                return packet;
+            }
+            case (1): {
+                Flit[] packet = new Flit[]{new Flit(0, locX, locY, destX, destY)};
+                return packet;
+            }
+            case (4): {
+                Flit[] packet = new Flit[]{new Flit(1, locX, locY, destX, destY),
+                        new Flit(2, locX, locY, destX, destY),
+                        new Flit(3, locX, locY, destX, destY),
+                        new Flit(4, locX, locY, destX, destY)};
+                return packet;
+            }
         }
-
-        return packet;
     }
 
     /**
      * Creates an array of Router objects depending on the amount of nodes there are
-     * @return Router[]
+     * @return Router[] An array of router objects
      */
     public Router[] createRouterArray(int inputNodes)
     {
