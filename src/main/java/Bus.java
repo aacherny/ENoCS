@@ -23,6 +23,11 @@ public class Bus implements Network
         // check if each router has a packet ready to send, send to the next router if it is
     }
 
+    public void newCycle()
+    {
+
+    }
+
     public JPanel drawTopology() {
 
         JPanel panelYContainer = new JPanel();

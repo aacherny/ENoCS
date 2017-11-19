@@ -87,7 +87,7 @@ public class OuterJFrame
                 cycleNumber = 0;
                 cycleLabel.setText("Cycle number: " + cycleNumber);
 
-                // network.newCycle();
+                network.newCycle();
             }
         });
 

@@ -14,4 +14,6 @@ interface Network
     String getTopology();
 
     void nextCycle();
+
+    void newCycle();
 }
