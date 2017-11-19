@@ -66,40 +66,63 @@ public class RouterDiagram extends JInternalFrame
         return routerPanel;
     }
 
+    /**
+     * Adds a channel for every router that neighbors the current one, and adds a channel for home
+     * @param panelInput    Is the panel that the channels will be put on
+     */
     public void addChannels(JPanel panelInput)
     {
-        /*
-        JLabel channelPanel = new JLabel();
-        channelPanel.setLayout(null);
-        channelPanel.setBackground(new Color(0,0,0,0));
-        channelPanel.setBounds(20, 20, 50, 50);
+        int channelIndex = 0;
 
-        Button button = new Button("Yes");
-        button.setMaximumSize(new Dimension(25, 25));
-        button.setLocation(30, 30);
-        channelPanel.add(button);
-        */
+        addChannel(panelInput, channelIndex++, "Home");
 
-        if(currentRouter.getRouterNorth() != -1)
-        {
-            try {
-                BufferedImage inputNode = ImageIO.read(this.getClass().getResource("/main/resources/inputNode.png"));
-                BufferedImage ouputNode = ImageIO.read(this.getClass().getResource("/main/resources/outputNode.png"));
+        if(currentRouter.getRouterNorth() != -1) {
+            addChannel(panelInput, channelIndex++, "North");
+        }
+        if (currentRouter.getRouterSouth() != -1) {
+            addChannel(panelInput, channelIndex++, "South");
+        }
+        if (currentRouter.getRouterEast() != -1) {
+            addChannel(panelInput, channelIndex++, "East");
+        }
+        if (currentRouter.getRouterWest() != -1) {
+            addChannel(panelInput, channelIndex++, "West");
+        }
+    }
 
-                JLabel inputLabel = new JLabel(new ImageIcon(inputNode));
-                JLabel outputLabel = new JLabel(new ImageIcon(ouputNode));
+    /**
+     * Adds an input channel with 16 slots, and an output channel with 1 slot
+     * @param panelInput The panel that it will be added to
+     * @param position  The vertical position in the diagram it's in, 0 being at the very top
+     * @param label The label that's above the input channel
+     */
+    private void addChannel(JPanel panelInput, int position, String label)
+    {
+        int locationY = position * 50;
 
-                inputLabel.setSize(new Dimension(inputNode.getWidth(), inputNode.getHeight()));
-                outputLabel.setSize(new Dimension(ouputNode.getWidth(), ouputNode.getHeight()));
+        try {
+            BufferedImage inputNode = ImageIO.read(this.getClass().getResource("/main/resources/inputNode.png"));
+            BufferedImage ouputNode = ImageIO.read(this.getClass().getResource("/main/resources/outputNode.png"));
 
-                inputLabel.setLocation(20, 50);
-                outputLabel.setLocation(515, 50);
+            JLabel channelLabel = new JLabel();
+            channelLabel.setText(label);
+            JLabel inputLabel = new JLabel(new ImageIcon(inputNode));
+            JLabel outputLabel = new JLabel(new ImageIcon(ouputNode));
 
-                panelInput.add(inputLabel);
-                panelInput.add(outputLabel);
-            } catch (IOException ex) {
-                System.out.println("EXCEPTION: " + ex);
-            }
+
+            channelLabel.setFont(new Font("Arial",Font.PLAIN,12));
+            inputLabel.setSize(new Dimension(inputNode.getWidth(), inputNode.getHeight()));
+            outputLabel.setSize(new Dimension(ouputNode.getWidth(), ouputNode.getHeight()));
+
+            channelLabel.setBounds(20, 17 + locationY, 200, 50);
+            inputLabel.setLocation(20, 50 + locationY);
+            outputLabel.setLocation(515 , 50 + locationY);
+
+            panelInput.add(channelLabel);
+            panelInput.add(inputLabel);
+            panelInput.add(outputLabel);
+        } catch (IOException ex) {
+            System.out.println("EXCEPTION: " + ex);
         }
     }
 }
