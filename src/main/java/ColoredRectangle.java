@@ -39,8 +39,8 @@ public class ColoredRectangle extends JPanel {
             RECT_WIDTH = 15;
             RECT_HEIGHT = 248;
         } else if (inputRectX == 20) {
-            RECT_Y = 53 + inputRectY * 50;
-            RECT_X = 480;
+            RECT_Y = 52 + inputRectY * 50;
+            RECT_X = 561;
         }
 
         setLocation(RECT_X, RECT_Y);

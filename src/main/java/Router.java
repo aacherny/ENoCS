@@ -1,6 +1,7 @@
 package main.java;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.LinkedList;
@@ -13,6 +14,12 @@ public class Router {
     private int routerSouth;
     private int routerEast;
     private int routerWest;
+
+    private int homeIndex;  // These hold the X index of each output/intput
+    private int northIndex; // If the router is connected to the east and west, then home = 0, east = 1, west = 2...
+    private int southIndex;
+    private int eastIndex;
+    private int westIndex;
 
     private String[] channelIndex = {"", "", "", "", "", "", ""};
     private int cIndex = 0;
@@ -30,7 +37,8 @@ public class Router {
     private Flit SwitchAllocator = null;
     private Flit SwitchTraversal = null;
 
-    private Flit outputNorth = null;    // Hold the flits that are in certain output channels
+    private Flit outputHome = null; // Hold the flits that are in certain output channels
+    private Flit outputNorth = null;
     private Flit outputSouth = null;
     private Flit outputEast = null;
     private Flit outputWest = null;
@@ -54,22 +62,27 @@ public class Router {
 
 
         channelHome = new LinkedList<Flit>();
+        homeIndex = cIndex;
         channelIndex[cIndex++] = "home";
 
         if (inputNorth != -1) {
             channelNorth = new LinkedList<Flit>();
+            northIndex = cIndex;
             channelIndex[cIndex++] = "north";
         }
         if (inputSouth != -1) {
             channelSouth = new LinkedList<Flit>();
+            southIndex = cIndex;
             channelIndex[cIndex++] = "south";
         }
         if (inputEast != -1) {
             channelEast = new LinkedList<Flit>();
+            eastIndex = cIndex;
             channelIndex[cIndex++] = "east";
         }
         if (inputWest != -1) {
             channelWest = new LinkedList<Flit>();
+            westIndex = cIndex;
             channelIndex[cIndex++] = "west";
         }
 
@@ -83,7 +96,9 @@ public class Router {
     public void nextCycle() {
         System.out.println("Next cycle for router: " + routerNumber + ", next channel is: " + nextRouter);
 
-        // Figure out which output node  the flit should go to
+        if (SwitchTraversal != null) {
+            routeComputation(SwitchTraversal);
+        }
 
         if (SwitchAllocator != null) {
             SwitchTraversal = SwitchAllocator;
@@ -155,6 +170,48 @@ public class Router {
         createRectanglesFromPipeline(SwitchAllocator, 18);
         createRectanglesFromPipeline(SwitchTraversal, 19);
 
+
+        if(outputHome != null) {
+            routerDiagram.addRectangle(new ColoredRectangle(outputHome.getColor(), 20, homeIndex));
+        } else {
+            routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, homeIndex));
+        }
+        if(outputNorth != null) {
+            routerDiagram.addRectangle(new ColoredRectangle(outputNorth.getColor(), 20, northIndex));
+        } else {
+            routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, northIndex));
+        }
+        if(outputSouth != null) {
+            routerDiagram.addRectangle(new ColoredRectangle(outputSouth.getColor(), 20, southIndex));
+        } else {
+            routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, southIndex));
+        }
+        if(outputEast != null) {
+            routerDiagram.addRectangle(new ColoredRectangle(outputEast.getColor(), 20, eastIndex));
+        } else {
+            routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, eastIndex));
+        }
+        if(outputWest != null) {
+            routerDiagram.addRectangle(new ColoredRectangle(outputWest.getColor(), 20, westIndex));
+        } else {
+            routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, westIndex));
+        }
+
+
+
+        /*for (int i = 0; i <= cIndex; i++) {
+            if (channelIndex[i] == "home") {
+                createRectanglesFromOutput(outputHome, i);
+            } else if (channelIndex[i] == "north") {
+                createRectanglesFromOutput(outputNorth, i);
+            } else if (channelIndex[i] == "south") {
+                createRectanglesFromOutput(outputSouth, i);
+            } else if (channelIndex[i] == "east") {
+                createRectanglesFromOutput(outputEast, i);
+            } else if (channelIndex[i] == "west") {
+                createRectanglesFromOutput(outputWest, i);
+            }
+        }*/
 
         // Update the window for each router
         routerDiagram.invalidate();
@@ -236,6 +293,23 @@ public class Router {
     }
 
     /**
+     * Computes which output channel the flit should be put in depending on its location and destination
+     * Goes West/East first, then North/South once needed
+     * @param inputFlit
+     */
+    public void routeComputation(Flit inputFlit) {
+        if (routerLocation % 10 > inputFlit.getDestinationX()) {
+            outputWest = inputFlit;
+        } else if (routerLocation % 10 < inputFlit.getDestinationX()) {
+            outputEast = inputFlit;
+        } else if (routerLocation / 10 > inputFlit.getDestinationY()) {
+            outputNorth = inputFlit;
+        } else if (routerLocation / 10 < inputFlit.getDestinationY()) {
+            outputSouth = inputFlit;
+        }
+    }
+
+    /**
      * Selects the next channel whose flit will be taken from the front of the list, following a Round Robin order,
      * and checking if the channel actually exists and has a flit in it
      * <p>
@@ -250,10 +324,7 @@ public class Router {
         Integer four = 4;
         Integer flitIndex = inputFlitIndex;
 
-        System.out.println("The flit index is: " + inputFlitIndex);
-
-
-        if (!flitIndex.equals(four)) {
+        if (!flitIndex.equals(four) && !flitIndex.equals(zero)) {
             nextRouter = channel;
         } else if (channel == "home") {
             if (channelNorth != null && channelNorth.peekFirst() != null) {
@@ -344,6 +415,13 @@ public class Router {
                 routerDiagram.addRectangle(new ColoredRectangle(flit.getColor(), 19, routerNumber));
             }
         }
+    }
+
+    public void createRectanglesFromOutput(Flit flit, int channel){
+        if(outputNorth != null){
+            routerDiagram.addRectangle(new ColoredRectangle(flit.getColor(), 20, channel));
+        }
+
     }
 
     /**

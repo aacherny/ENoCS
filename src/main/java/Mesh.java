@@ -23,15 +23,21 @@ public class Mesh implements Network
 
     public void nextCycle()
     {
-        Flit[] packet = createPacket(1, 0, 0, 1, 1);
-        Flit[] packet2 = createPacket(4, 0, 0, 1, 1);
-        Flit[] packet3 = createPacket(4, 0, 0, 1, 1);
-        Flit[] packet4 = createPacket(4, 0, 0, 1, 1);
+        Flit[] packet1 = createPacket(1, 0, 0, 1, 1);
+        Flit[] packet2 = createPacket(1, 0, 0, 1, 0);
+        Flit[] packet3 = createPacket(1, 0, 0, 0, 1);
+
+        Flit[] packet7 = createPacket(4, 0, 0, 0, 1);
+        Flit[] packet8 = createPacket(4, 0, 0, 1, 1);
+        Flit[] packet9 = createPacket(4, 0, 0, 1, 1);
 
 
-        routerArray[0].inputPacket(packet2, 00);
-        routerArray[0].inputPacket(packet3, 01);
-        routerArray[0].inputPacket(packet3, 10);
+        routerArray[0].inputPacket(packet1, 00);
+        routerArray[0].inputPacket(packet7, 01);
+        routerArray[0].inputPacket(packet2, 10);
+        routerArray[0].inputPacket(packet8, 10);
+        //routerArray[0].inputPacket(packet3, 01);
+        //routerArray[0].inputPacket(packet4, 10);
 
 
         for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
