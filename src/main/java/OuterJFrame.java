@@ -76,6 +76,9 @@ public class OuterJFrame
                 cycleLabel.setText("Cycle number: " + cycleNumber);
 
                 network.nextCycle();
+
+                desktop.validate();
+                desktop.repaint();
             }
         });
 
@@ -152,7 +155,7 @@ public class OuterJFrame
                 if(propWindow != null) {    // Opens the window with all of the existing variables if it's been opened before
                     propWindow.createPropWindow();
                 }else{
-                    propWindow = new PropertiesWindow(desktop, network);
+                    propWindow = new PropertiesWindow(desktop, network, getOuterJFrame());
                     propWindow.createPropWindow();
                 }
             }
@@ -252,5 +255,15 @@ public class OuterJFrame
     public JDesktopPane getDesktopPane()
     {
         return desktop;
+    }
+
+    public OuterJFrame getOuterJFrame()
+    {
+        return this;
+    }
+
+    public void updateNetwork(Network inputNetwork)
+    {
+        network = inputNetwork;
     }
 }

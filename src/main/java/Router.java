@@ -15,30 +15,69 @@ public class Router {
     private int routerEast;
     private int routerWest;
 
+    private boolean frameActive;
 
-    private LinkedList<Flit> channelHome = new LinkedList<Flit>();   // Channels to hold incoming flits
-    private LinkedList<Flit> channelNorth = new LinkedList<Flit>();
-    private LinkedList<Flit> channelSouth = new LinkedList<Flit>();
-    private LinkedList<Flit> channelEast = new LinkedList<Flit>();
-    private LinkedList<Flit> channelWest = new LinkedList<Flit>();
+    private LinkedList<Flit> channelHome;   // Channels to hold incoming flits
+    private LinkedList<Flit> channelNorth;
+    private LinkedList<Flit> channelSouth;
+    private LinkedList<Flit> channelEast;
+    private LinkedList<Flit> channelWest;
 
     private JDesktopPane desktopPane;
-    //RouterDiagram routerDiagram;
+    private RouterDiagram routerDiagram;
+    private Network network;
+
     Circle circle = new Circle();
 
-    public Router(int inputNodeNumber, int inputLocation, int inputNorth, int inputSouth, int inputEast, int inputWest, JDesktopPane inputDesktopPane) {
+    public Router(int inputNodeNumber, int inputLocation, int inputNorth, int inputSouth, int inputEast, int inputWest, JDesktopPane inputDesktopPane, Network inputNetwork) {
         routerNumber = inputNodeNumber;
         routerLocation = inputLocation;
         desktopPane = inputDesktopPane;
+        frameActive = false;
+        network = inputNetwork;
 
         routerNorth = inputNorth;
         routerSouth = inputSouth;
         routerEast = inputEast;
         routerWest = inputWest;
+
+        channelHome = new LinkedList<Flit>();
+        if(inputNorth != -1) {
+            channelNorth = new LinkedList<Flit>();
+        }
+        if(inputSouth != -1) {
+            channelSouth = new LinkedList<Flit>();
+        }
+        if(inputEast != -1) {
+            channelEast = new LinkedList<Flit>();
+        }
+        if(inputWest != -1) {
+            channelWest = new LinkedList<Flit>();
+        }
+
+        routerDiagram = new RouterDiagram(this);
+        JPanel jpan = routerDiagram.addDiagram();
+        routerDiagram.add(jpan);
+
+        System.out.println("Router " + routerNumber + " created");
     }
 
     public void nextCycle() {
         System.out.println("Next cycle for router: " + routerNumber);
+
+        routerDiagram.addRectangle(new ColoredRectangle(Color.RED, 20, 20));
+
+
+
+        //routerDiagram.add(routerDiagram.addDiagram());
+        //routerDiagram.addRectangle(new ColoredRectangle(Color.RED, 20, 20));
+
+        routerDiagram.invalidate();
+        routerDiagram.validate();
+        routerDiagram.repaint();
+
+
+
     }
 
     public void newCycle() {
@@ -153,16 +192,16 @@ public class Router {
      */
     public JPanel drawCircle() {
         JLabel nodeNum = new JLabel(routerNumber + "");   // Creates a label for the circle
-        Router currentRouter = this; // Creates a router object to pass
 
         circle.add(nodeNum);    // Adds the label to the circle
 
         circle.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                System.out.println("The node that was clicked is: " + routerNumber);
 
-                RouterDiagram routerDiagram = new RouterDiagram(currentRouter);
+                routerDiagram.setVisible(true);
+
                 desktopPane.add(routerDiagram);
+
             }
         });
 

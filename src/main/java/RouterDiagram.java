@@ -13,6 +13,10 @@ public class RouterDiagram extends JInternalFrame
 
     private Router currentRouter;
 
+    JPanel routerPanel = new JPanel();
+
+    private JPanel diagram;
+
     public RouterDiagram(Router inputRouter)
     {
         super("Router " + inputRouter.getRouterNumber(),
@@ -30,17 +34,33 @@ public class RouterDiagram extends JInternalFrame
         setLocation(xOffset, yOffset);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-        add(addDiagram(), BorderLayout.CENTER);
+        //diagram = addDiagram();
+        //add(diagram, BorderLayout.CENTER);
+
+
 
         pack();
-        setVisible(true);
+    }
+
+    public JPanel updateDiagram()
+    {
+        JPanel routerPanel = new JPanel();
+
+//        ColoredRectangle rect = new ColoredRectangle();
+//        rect.setLocation(20, 50);
+//        routerPanel.add(rect);
+
+        routerPanel.add(addDiagram());
+
+
+
+        return routerPanel;
     }
 
     public JPanel addDiagram()
     {
-        JPanel routerPanel = new JPanel();
+        routerPanel = new JPanel();
         routerPanel.setLayout(null);
-        routerPanel.setPreferredSize(new Dimension(500, 500));
 
         try {
             BufferedImage diagram = ImageIO.read(this.getClass().getResource("/main/resources/routerDiagram.png"));
@@ -52,9 +72,6 @@ public class RouterDiagram extends JInternalFrame
             // Sets the size of the JLabel to be the same as the image
             diagramLabel.setSize(diagram.getWidth(), diagram.getHeight());
 
-
-
-
             addChannels(routerPanel);
 
             routerPanel.add(diagramLabel);
@@ -64,6 +81,11 @@ public class RouterDiagram extends JInternalFrame
         }
 
         return routerPanel;
+    }
+
+    public void addRectangle(ColoredRectangle rectangle)
+    {
+        routerPanel.add(rectangle, 0);
     }
 
     /**

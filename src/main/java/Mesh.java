@@ -35,6 +35,7 @@ public class Mesh implements Network
             routerArray[i].nextCycle();
         }
 
+
         // check if each router has a packet ready to send, send to the next router if it is
     }
 
@@ -74,39 +75,39 @@ public class Mesh implements Network
 
         switch(nodes) { // All routers are manually assigned their number, and all of their neighboring routers
             case 4:
-                routers[0] = new Router(0, 00,-1, 01, 10, -1, desktopPane);
-                routers[1] = new Router(1, 01,00, -1, 11, -1, desktopPane);
-                routers[2] = new Router(2, 10,-1, 11, -1, 00, desktopPane);
-                routers[3] = new Router(3, 11,10, -1, -1, 01, desktopPane);
+                routers[0] = new Router(0, 00,-1, 01, 10, -1, desktopPane, this);
+                routers[1] = new Router(1, 01,00, -1, 11, -1, desktopPane, this);
+                routers[2] = new Router(2, 10,-1, 11, -1, 00, desktopPane, this);
+                routers[3] = new Router(3, 11,10, -1, -1, 01, desktopPane, this);
                 break;
             case 9:
-                routers[0] = new Router(0, 00,-1, 01, 10, -1, desktopPane);
-                routers[1] = new Router(1, 01,00, 02, 11, -1, desktopPane);
-                routers[2] = new Router(2, 02,01, -1, 12, -1, desktopPane);
-                routers[3] = new Router(3, 10,-1, 11, 20, 00, desktopPane);
-                routers[4] = new Router(4, 11,10, 12, 21, 01, desktopPane);
-                routers[5] = new Router(5, 12,11, -1, 22, 02, desktopPane);
-                routers[6] = new Router(6, 20,-1, 21, -1, 10, desktopPane);
-                routers[7] = new Router(7, 21,20, 22, -1, 11, desktopPane);
-                routers[8] = new Router(8, 22,21, -1, -1, 12, desktopPane);
+                routers[0] = new Router(0, 00,-1, 01, 10, -1, desktopPane, this);
+                routers[1] = new Router(1, 01,00, 02, 11, -1, desktopPane, this);
+                routers[2] = new Router(2, 02,01, -1, 12, -1, desktopPane, this);
+                routers[3] = new Router(3, 10,-1, 11, 20, 00, desktopPane, this);
+                routers[4] = new Router(4, 11,10, 12, 21, 01, desktopPane, this);
+                routers[5] = new Router(5, 12,11, -1, 22, 02, desktopPane, this);
+                routers[6] = new Router(6, 20,-1, 21, -1, 10, desktopPane, this);
+                routers[7] = new Router(7, 21,20, 22, -1, 11, desktopPane, this);
+                routers[8] = new Router(8, 22,21, -1, -1, 12, desktopPane, this);
                 break;
             case 16:
-                routers[0] = new Router(0, 00,-1, 01, 10, -1, desktopPane);
-                routers[1] = new Router(1, 01,00, 02, 11, -1, desktopPane);
-                routers[2] = new Router(2, 02,01, 03, 12, -1, desktopPane);
-                routers[3] = new Router(3, 03,02, -1, 13, -1, desktopPane);
-                routers[4] = new Router(4, 10,-1, 11, 20, 00, desktopPane);
-                routers[5] = new Router(5, 11,10, 12, 21, 01, desktopPane);
-                routers[6] = new Router(6, 12,11, 13, 22, 02, desktopPane);
-                routers[7] = new Router(7, 13,12, -1, 23, 03, desktopPane);
-                routers[8] = new Router(8, 20,-1, 21, 30, 10, desktopPane);
-                routers[9] = new Router(9, 21,20, 22, 31, 11, desktopPane);
-                routers[10] = new Router(10, 22,21, 23, 32, 12, desktopPane);
-                routers[11] = new Router(11, 23,22, -1, 33, 13, desktopPane);
-                routers[12] = new Router(12, 30,-1, 31, -1, 20, desktopPane);
-                routers[13] = new Router(13, 31,30, 32, -1, 21, desktopPane);
-                routers[14] = new Router(14, 32,31, 33, -1, 22, desktopPane);
-                routers[15] = new Router(15, 33,32, -1, -1, 23, desktopPane);
+                routers[0] = new Router(0, 00,-1, 01, 10, -1, desktopPane, this);
+                routers[1] = new Router(1, 01,00, 02, 11, -1, desktopPane, this);
+                routers[2] = new Router(2, 02,01, 03, 12, -1, desktopPane, this);
+                routers[3] = new Router(3, 03,02, -1, 13, -1, desktopPane, this);
+                routers[4] = new Router(4, 10,-1, 11, 20, 00, desktopPane, this);
+                routers[5] = new Router(5, 11,10, 12, 21, 01, desktopPane, this);
+                routers[6] = new Router(6, 12,11, 13, 22, 02, desktopPane, this);
+                routers[7] = new Router(7, 13,12, -1, 23, 03, desktopPane, this);
+                routers[8] = new Router(8, 20,-1, 21, 30, 10, desktopPane, this);
+                routers[9] = new Router(9, 21,20, 22, 31, 11, desktopPane, this);
+                routers[10] = new Router(10, 22,21, 23, 32, 12, desktopPane, this);
+                routers[11] = new Router(11, 23,22, -1, 33, 13, desktopPane, this);
+                routers[12] = new Router(12, 30,-1, 31, -1, 20, desktopPane, this);
+                routers[13] = new Router(13, 31,30, 32, -1, 21, desktopPane, this);
+                routers[14] = new Router(14, 32,31, 33, -1, 22, desktopPane, this);
+                routers[15] = new Router(15, 33,32, -1, -1, 23, desktopPane, this);
                 break;
         }
 

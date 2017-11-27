@@ -16,11 +16,13 @@ public class PropertiesWindow
     private int selectedNodes;
 
     TopologyInternalFrame topologyFrame;
+    OuterJFrame OJFrame;
 
-    public PropertiesWindow(JDesktopPane inputJDesktopPane, Network inputNetwork)
+    public PropertiesWindow(JDesktopPane inputJDesktopPane, Network inputNetwork, OuterJFrame inputOuterJFrame)
     {
         desktopPane = inputJDesktopPane;
         network = inputNetwork;
+        OJFrame = inputOuterJFrame;
 
         // General things like window title and size
         propertiesFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -171,6 +173,9 @@ public class PropertiesWindow
                     network = new Bus(selectedNodes, desktopPane);
                     break;
                 }
+
+                // Updates the parent class that "network" is now different
+                OJFrame.updateNetwork(network);
 
                 topologyFrame = new TopologyInternalFrame(network.drawTopology());
 
