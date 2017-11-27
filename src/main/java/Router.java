@@ -1,7 +1,6 @@
 package main.java;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.LinkedList;
@@ -76,38 +75,57 @@ public class Router {
     }
 
     public void nextCycle() {
-        System.out.println("Next cycle for router: " + routerNumber);
+        System.out.println("Next cycle for router: " + routerNumber + ", next channel is: " + nextRouter);
 
+        // Figure out which output node  the flit should go to
 
-
-        if((nextRouter == "home") && (channelHome.peekFirst() != null)){
-            RouteComputation = channelHome.getFirst();
-            channelHome.removeFirst();
-
-            nextRouter = "north";
-        } else if((nextRouter == "north") && (channelNorth.peekFirst() != null)) {
-            RouteComputation = channelNorth.getFirst();
-            channelNorth.removeFirst();
-
-            nextRouter = "south";
-        } else if((nextRouter == "south") && (channelSouth.peekFirst() != null)){
-            RouteComputation = channelSouth.getFirst();
-            channelSouth.removeFirst();
-
-            nextRouter = "east";
-        } else if((nextRouter == "east") && (channelEast.peekFirst() != null)){
-            RouteComputation = channelEast.getFirst();
-            channelEast.removeFirst();
-
-            nextRouter = "west";
-        } else if((nextRouter == "west") && (channelWest.peekFirst() != null)){
-            RouteComputation = channelWest.getFirst();
-            channelWest.removeFirst();
-
-            nextRouter = "home";
+        if (SwitchAllocator != null) {
+            SwitchTraversal = SwitchAllocator;
         }
 
+        if (VCAllocator != null) {
+            SwitchAllocator = VCAllocator;
+        }
 
+        if (RouteComputation != null) {
+            VCAllocator = RouteComputation;
+        }
+
+        if ((nextRouter == "home") && (channelHome.peekFirst() != null)) {
+            RouteComputation = channelHome.getFirst();
+
+            setNextChannel(nextRouter, channelHome.getFirst().getIndex());
+
+            channelHome.removeFirst();
+
+        } else if ((nextRouter == "north") && (channelNorth.peekFirst() != null)) {
+            RouteComputation = channelNorth.getFirst();
+
+            setNextChannel(nextRouter, channelNorth.getFirst().getIndex());
+
+            channelNorth.removeFirst();
+
+        } else if ((nextRouter == "south") && (channelSouth.peekFirst() != null)) {
+            RouteComputation = channelSouth.getFirst();
+
+            setNextChannel(nextRouter, channelSouth.getFirst().getIndex());
+
+            channelSouth.removeFirst();
+
+        } else if ((nextRouter == "east") && (channelEast.peekFirst() != null)) {
+            RouteComputation = channelEast.getFirst();
+
+            setNextChannel(nextRouter, channelEast.getFirst().getIndex());
+
+            channelEast.removeFirst();
+
+        } else if ((nextRouter == "west") && (channelWest.peekFirst() != null)) {
+            RouteComputation = channelWest.getFirst();
+
+            setNextChannel(nextRouter, channelWest.getFirst().getIndex());
+
+            channelWest.removeFirst();
+        }
 
 
 
@@ -117,6 +135,27 @@ public class Router {
         createRectanglesFromFlitList(channelSouth);
         createRectanglesFromFlitList(channelEast);
         createRectanglesFromFlitList(channelWest);
+
+        // Adds rectangles for the flits inside the pipeline
+        createRectanglesFromPipeline(RouteComputation, 16);
+        createRectanglesFromPipeline(VCAllocator, 17);
+        createRectanglesFromPipeline(SwitchAllocator, 18);
+        createRectanglesFromPipeline(SwitchTraversal, 19);
+
+
+        /*
+        // Adds a rectangle for the flit currently in the north output channel
+        routerDiagram.addRectangle(new ColoredRectangle(outputNorth.getColor(),20, routerNumber));
+
+        // Adds a rectangle for the flit currently in the south output channel
+        routerDiagram.addRectangle(new ColoredRectangle(outputSouth.getColor(),20, routerNumber));
+
+        // Adds a rectangle for the flit currently in the east output channel
+        routerDiagram.addRectangle(new ColoredRectangle(outputEast.getColor(),20, routerNumber));
+
+        // Adds a rectangle for the flit currently in the west output channel
+        routerDiagram.addRectangle(new ColoredRectangle(outputWest.getColor(),20, routerNumber));
+        */
 
 
         // Update the window for each router
@@ -172,33 +211,131 @@ public class Router {
         }
 
 
-        if(RouteComputation != null) {
+        if (RouteComputation != null) {
             System.out.println("Router " + routerNumber + ", RouteComputation: " + RouteComputation.getIndex());
-        }if(VCAllocator != null) {
+        }
+        if (VCAllocator != null) {
             System.out.println("Router " + routerNumber + ", RouteComputation: " + VCAllocator.getIndex());
-        }if(SwitchAllocator != null) {
+        }
+        if (SwitchAllocator != null) {
             System.out.println("Router " + routerNumber + ", RouteComputation: " + SwitchAllocator.getIndex());
-        }if(SwitchTraversal != null) {
+        }
+        if (SwitchTraversal != null) {
             System.out.println("Router " + routerNumber + ", RouteComputation: " + SwitchTraversal.getIndex());
-        }if(outputNorth != null) {
+        }
+        if (outputNorth != null) {
             System.out.println("Router " + routerNumber + ", RouteComputation: " + outputNorth.getIndex());
-        }if(outputSouth != null) {
+        }
+        if (outputSouth != null) {
             System.out.println("Router " + routerNumber + ", RouteComputation: " + outputSouth.getIndex());
-        }if(outputEast != null) {
+        }
+        if (outputEast != null) {
             System.out.println("Router " + routerNumber + ", RouteComputation: " + outputEast.getIndex());
-        }if(outputWest != null) {
+        }
+        if (outputWest != null) {
             System.out.println("Router " + routerNumber + ", RouteComputation: " + outputWest.getIndex());
         }
     }
 
-    private void createRectanglesFromFlitList(LinkedList<Flit> list){
+    /**
+     * Selects the next channel whose flit will be taken from the front of the list, following a Round Robin order,
+     * and checking if the channel actually exists and has a flit in it
+     *
+     * @param channel
+     */
+    private void setNextChannel(String channel, int inputFlitIndex) {
+        Integer zero = 0;
+        Integer four = 4;
+        Integer flitIndex = inputFlitIndex;
+
+
+        if (flitIndex != zero || flitIndex != four) {
+            nextRouter = channel;
+        } else if (channel == "home") {
+            if (channelNorth != null && channelNorth.peekFirst() != null) {
+                nextRouter = "north";
+            } else if (channelSouth != null && channelSouth.peekFirst() != null) {
+                nextRouter = "south";
+            } else if (channelEast != null && channelEast.peekFirst() != null) {
+                nextRouter = "east";
+            } else if (channelWest != null && channelWest.peekFirst() != null) {
+                nextRouter = "west";
+            } else {
+                nextRouter = "home";
+            }
+        } else if (channel == "north") {
+            if (channelSouth != null && channelSouth.peekFirst() != null) {
+                nextRouter = "south";
+            } else if (channelEast != null && channelEast.peekFirst() != null) {
+                nextRouter = "east";
+            } else if (channelWest != null && channelWest.peekFirst() != null) {
+                nextRouter = "west";
+            } else if (channelHome != null && channelHome.peekFirst() != null) {
+                nextRouter = "home";
+            } else {
+                nextRouter = "north";
+            }
+        } else if (channel == "south") {
+            if (channelEast != null && channelEast.peekFirst() != null) {
+                nextRouter = "east";
+            } else if (channelWest != null && channelWest.peekFirst() != null) {
+                nextRouter = "west";
+            } else if (channelHome != null && channelHome.peekFirst() != null) {
+                nextRouter = "home";
+            } else if (channelNorth != null && channelNorth.peekFirst() != null) {
+                nextRouter = "north";
+            } else {
+                nextRouter = "south";
+            }
+        } else if (channel == "east") {
+            if (channelWest != null && channelWest.peekFirst() != null) {
+                nextRouter = "west";
+            } else if (channelHome != null && channelHome.peekFirst() != null) {
+                nextRouter = "home";
+            } else if (channelNorth != null && channelNorth.peekFirst() != null) {
+                nextRouter = "north";
+            } else if (channelSouth != null && channelSouth.peekFirst() != null) {
+                nextRouter = "south";
+            } else {
+                nextRouter = "east";
+            }
+        } else if (channel == "west") {
+            if (channelHome != null && channelHome.peekFirst() != null) {
+                nextRouter = "home";
+            } else if (channelNorth != null && channelNorth.peekFirst() != null) {
+                nextRouter = "north";
+            } else if (channelSouth != null && channelSouth.peekFirst() != null) {
+                nextRouter = "south";
+            } else if (channelEast != null && channelEast.peekFirst() != null) {
+                nextRouter = "east";
+            } else {
+                nextRouter = "west";
+            }
+        }
+    }
+
+    private void createRectanglesFromFlitList(LinkedList<Flit> list) {
         if (list != null) {
             for (int i = 0; i < list.size(); i++) {
                 Flit flit = list.get(i);
 
-                routerDiagram.addRectangle(new ColoredRectangle(flit.getColor(),15 - i, routerNumber));
+                routerDiagram.addRectangle(new ColoredRectangle(flit.getColor(), 15 - i, routerNumber));
 
                 System.out.println("Flit " + flit.getIndex() + " checked at list index " + i);
+            }
+        }
+    }
+
+    private void createRectanglesFromPipeline(Flit flit, int stage) {
+        if (flit != null) {
+            if (stage == 16) {
+                routerDiagram.addRectangle(new ColoredRectangle(flit.getColor(), 16, routerNumber));
+            } else if (stage == 17) {
+                routerDiagram.addRectangle(new ColoredRectangle(flit.getColor(), 17, routerNumber));
+            } else if (stage == 18) {
+                routerDiagram.addRectangle(new ColoredRectangle(flit.getColor(), 18, routerNumber));
+            } else if (stage == 19) {
+                routerDiagram.addRectangle(new ColoredRectangle(flit.getColor(), 19, routerNumber));
             }
         }
     }
