@@ -42,21 +42,6 @@ public class RouterDiagram extends JInternalFrame
         pack();
     }
 
-    public JPanel updateDiagram()
-    {
-        JPanel routerPanel = new JPanel();
-
-//        ColoredRectangle rect = new ColoredRectangle();
-//        rect.setLocation(20, 50);
-//        routerPanel.add(rect);
-
-        routerPanel.add(addDiagram());
-
-
-
-        return routerPanel;
-    }
-
     public JPanel addDiagram()
     {
         routerPanel = new JPanel();

@@ -65,9 +65,11 @@ public class Router {
     public void nextCycle() {
         System.out.println("Next cycle for router: " + routerNumber);
 
-        routerDiagram.addRectangle(new ColoredRectangle(Color.RED, 20, 20));
+        routerDiagram.addRectangle(new ColoredRectangle(Color.RED, 0, 0));
 
+        routerDiagram.addRectangle(new ColoredRectangle(Color.RED, 1, 1));
 
+        routerDiagram.addRectangle(new ColoredRectangle(Color.RED, 2, 2));
 
         //routerDiagram.add(routerDiagram.addDiagram());
         //routerDiagram.addRectangle(new ColoredRectangle(Color.RED, 20, 20));
