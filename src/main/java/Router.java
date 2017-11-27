@@ -14,9 +14,10 @@ public class Router {
     private int routerEast;
     private int routerWest;
 
-    private String nextRouter = "home"; // Keeps track of the router that's going to pass the next flit into the pipeline
+    private String[] channelIndex = {"", "", "", "", "", "", ""};
+    private int cIndex = 0;
 
-    private boolean frameActive;
+    private String nextRouter = "home"; // Keeps track of the router that's going to pass the next flit into the pipeline
 
     private LinkedList<Flit> channelHome = null;   // Channels to hold incoming flits
     private LinkedList<Flit> channelNorth = null;
@@ -44,7 +45,6 @@ public class Router {
         routerNumber = inputNodeNumber;
         routerLocation = inputLocation;
         desktopPane = inputDesktopPane;
-        frameActive = false;
         network = inputNetwork;
 
         routerNorth = inputNorth;
@@ -52,19 +52,25 @@ public class Router {
         routerEast = inputEast;
         routerWest = inputWest;
 
+
         channelHome = new LinkedList<Flit>();
+        channelIndex[cIndex++] = "home";
 
         if (inputNorth != -1) {
             channelNorth = new LinkedList<Flit>();
+            channelIndex[cIndex++] = "north";
         }
         if (inputSouth != -1) {
             channelSouth = new LinkedList<Flit>();
+            channelIndex[cIndex++] = "south";
         }
         if (inputEast != -1) {
             channelEast = new LinkedList<Flit>();
+            channelIndex[cIndex++] = "east";
         }
         if (inputWest != -1) {
             channelWest = new LinkedList<Flit>();
+            channelIndex[cIndex++] = "west";
         }
 
         routerDiagram = new RouterDiagram(this);
@@ -91,35 +97,35 @@ public class Router {
             VCAllocator = RouteComputation;
         }
 
-        if ((nextRouter == "home") && (channelHome.peekFirst() != null)) {
+        if ((nextRouter == "home") && (channelHome.peekFirst() != null) && (channelHome != null)) {
             RouteComputation = channelHome.getFirst();
 
             setNextChannel(nextRouter, channelHome.getFirst().getIndex());
 
             channelHome.removeFirst();
 
-        } else if ((nextRouter == "north") && (channelNorth.peekFirst() != null)) {
+        } else if ((nextRouter == "north") && (channelNorth.peekFirst() != null) && (channelNorth != null)) {
             RouteComputation = channelNorth.getFirst();
 
             setNextChannel(nextRouter, channelNorth.getFirst().getIndex());
 
             channelNorth.removeFirst();
 
-        } else if ((nextRouter == "south") && (channelSouth.peekFirst() != null)) {
+        } else if ((nextRouter == "south") && (channelSouth.peekFirst() != null) && (channelSouth != null)) {
             RouteComputation = channelSouth.getFirst();
 
             setNextChannel(nextRouter, channelSouth.getFirst().getIndex());
 
             channelSouth.removeFirst();
 
-        } else if ((nextRouter == "east") && (channelEast.peekFirst() != null)) {
+        } else if ((nextRouter == "east") && (channelEast.peekFirst() != null) && (channelEast != null)) {
             RouteComputation = channelEast.getFirst();
 
             setNextChannel(nextRouter, channelEast.getFirst().getIndex());
 
             channelEast.removeFirst();
 
-        } else if ((nextRouter == "west") && (channelWest.peekFirst() != null)) {
+        } else if ((nextRouter == "west") && (channelWest.peekFirst() != null) && (channelWest != null)) {
             RouteComputation = channelWest.getFirst();
 
             setNextChannel(nextRouter, channelWest.getFirst().getIndex());
@@ -128,34 +134,26 @@ public class Router {
         }
 
 
-
         // Go through each list and draw the rectangle on the diagram for every flit in the router
-        createRectanglesFromFlitList(channelHome);
-        createRectanglesFromFlitList(channelNorth);
-        createRectanglesFromFlitList(channelSouth);
-        createRectanglesFromFlitList(channelEast);
-        createRectanglesFromFlitList(channelWest);
+        for (int i = 0; i <= cIndex; i++) {
+            if (channelIndex[i] == "home") {
+                createRectanglesFromFlitList(channelHome, i);
+            } else if (channelIndex[i] == "north") {
+                createRectanglesFromFlitList(channelNorth, i);
+            } else if (channelIndex[i] == "south") {
+                createRectanglesFromFlitList(channelSouth, i);
+            } else if (channelIndex[i] == "east") {
+                createRectanglesFromFlitList(channelEast, i);
+            } else if (channelIndex[i] == "west") {
+                createRectanglesFromFlitList(channelWest, i);
+            }
+        }
 
         // Adds rectangles for the flits inside the pipeline
         createRectanglesFromPipeline(RouteComputation, 16);
         createRectanglesFromPipeline(VCAllocator, 17);
         createRectanglesFromPipeline(SwitchAllocator, 18);
         createRectanglesFromPipeline(SwitchTraversal, 19);
-
-
-        /*
-        // Adds a rectangle for the flit currently in the north output channel
-        routerDiagram.addRectangle(new ColoredRectangle(outputNorth.getColor(),20, routerNumber));
-
-        // Adds a rectangle for the flit currently in the south output channel
-        routerDiagram.addRectangle(new ColoredRectangle(outputSouth.getColor(),20, routerNumber));
-
-        // Adds a rectangle for the flit currently in the east output channel
-        routerDiagram.addRectangle(new ColoredRectangle(outputEast.getColor(),20, routerNumber));
-
-        // Adds a rectangle for the flit currently in the west output channel
-        routerDiagram.addRectangle(new ColoredRectangle(outputWest.getColor(),20, routerNumber));
-        */
 
 
         // Update the window for each router
@@ -215,41 +213,47 @@ public class Router {
             System.out.println("Router " + routerNumber + ", RouteComputation: " + RouteComputation.getIndex());
         }
         if (VCAllocator != null) {
-            System.out.println("Router " + routerNumber + ", RouteComputation: " + VCAllocator.getIndex());
+            System.out.println("Router " + routerNumber + ", VCAllocator: " + VCAllocator.getIndex());
         }
         if (SwitchAllocator != null) {
-            System.out.println("Router " + routerNumber + ", RouteComputation: " + SwitchAllocator.getIndex());
+            System.out.println("Router " + routerNumber + ", SwitchAllocator: " + SwitchAllocator.getIndex());
         }
         if (SwitchTraversal != null) {
-            System.out.println("Router " + routerNumber + ", RouteComputation: " + SwitchTraversal.getIndex());
+            System.out.println("Router " + routerNumber + ", SwitchTraversal: " + SwitchTraversal.getIndex());
         }
         if (outputNorth != null) {
-            System.out.println("Router " + routerNumber + ", RouteComputation: " + outputNorth.getIndex());
+            System.out.println("Router " + routerNumber + ", outputNorth: " + outputNorth.getIndex());
         }
         if (outputSouth != null) {
-            System.out.println("Router " + routerNumber + ", RouteComputation: " + outputSouth.getIndex());
+            System.out.println("Router " + routerNumber + ", outputSouth: " + outputSouth.getIndex());
         }
         if (outputEast != null) {
-            System.out.println("Router " + routerNumber + ", RouteComputation: " + outputEast.getIndex());
+            System.out.println("Router " + routerNumber + ", outputEast: " + outputEast.getIndex());
         }
         if (outputWest != null) {
-            System.out.println("Router " + routerNumber + ", RouteComputation: " + outputWest.getIndex());
+            System.out.println("Router " + routerNumber + ", outputWest: " + outputWest.getIndex());
         }
     }
 
     /**
      * Selects the next channel whose flit will be taken from the front of the list, following a Round Robin order,
      * and checking if the channel actually exists and has a flit in it
+     * <p>
+     * Also takes into account if the flit is part of a packet, sending keeping flits of a packet together as they move
+     * through the pipeline
      *
      * @param channel
+     * @param inputFlitIndex
      */
     private void setNextChannel(String channel, int inputFlitIndex) {
         Integer zero = 0;
         Integer four = 4;
         Integer flitIndex = inputFlitIndex;
 
+        System.out.println("The flit index is: " + inputFlitIndex);
 
-        if (flitIndex != zero || flitIndex != four) {
+
+        if (!flitIndex.equals(four)) {
             nextRouter = channel;
         } else if (channel == "home") {
             if (channelNorth != null && channelNorth.peekFirst() != null) {
@@ -311,15 +315,17 @@ public class Router {
             } else {
                 nextRouter = "west";
             }
+
+
         }
     }
 
-    private void createRectanglesFromFlitList(LinkedList<Flit> list) {
+    private void createRectanglesFromFlitList(LinkedList<Flit> list, int channel) {
         if (list != null) {
             for (int i = 0; i < list.size(); i++) {
                 Flit flit = list.get(i);
 
-                routerDiagram.addRectangle(new ColoredRectangle(flit.getColor(), 15 - i, routerNumber));
+                routerDiagram.addRectangle(new ColoredRectangle(flit.getColor(), 15 - i, channel));
 
                 System.out.println("Flit " + flit.getIndex() + " checked at list index " + i);
             }
@@ -347,6 +353,7 @@ public class Router {
      * @param source      The source of the packet, 0 = home, 1 = north, 2 = south, 3 = east, 4 = west
      */
     public void inputPacket(Flit[] inputPacket, int source) {
+
         if (inputPacket[0].getIndex() == 0) {  // If it's a single Flit packet, add the flit to the correct channel
             if (source == -1)  // If the source of the packet is from the home node
             {
@@ -354,16 +361,16 @@ public class Router {
             } else if (source == routerLocation)  // If the source of the packet is also from the home node
             {
                 channelHome.addLast(inputPacket[0]);
-            } else if (source + 10 == routerLocation)  // If the source of the packet is from the north
+            } else if (source == routerNorth)  // If the source of the packet is from the north
             {
                 channelNorth.addLast(inputPacket[0]);
-            } else if (source - 10 == routerLocation)  // If the source of the packet is from the south
+            } else if (source == routerSouth)  // If the source of the packet is from the south
             {
                 channelSouth.addLast(inputPacket[0]);
-            } else if (source - 1 == routerLocation)  // If the source of the packet is from the east
+            } else if (source == routerEast)  // If the source of the packet is from the east
             {
                 channelEast.addLast(inputPacket[0]);
-            } else if (source + 1 == routerLocation)  // If the source of the packet is from the west
+            } else if (source == routerWest)  // If the source of the packet is from the west
             {
                 channelWest.addLast(inputPacket[0]);
             }
@@ -383,25 +390,25 @@ public class Router {
                 channelHome.addLast(inputPacket[1]);
                 channelHome.addLast(inputPacket[2]);
                 channelHome.addLast(inputPacket[3]);
-            } else if (source + 10 == routerLocation)  // If the source of the packet is from the north
+            } else if (source == routerNorth)  // If the source of the packet is from the north
             {
                 channelNorth.addLast(inputPacket[0]);
                 channelNorth.addLast(inputPacket[1]);
                 channelNorth.addLast(inputPacket[2]);
                 channelNorth.addLast(inputPacket[3]);
-            } else if (source - 10 == routerLocation)  // If the source of the packet is from the south
+            } else if (source == routerSouth)  // If the source of the packet is from the south
             {
                 channelSouth.addLast(inputPacket[0]);
                 channelSouth.addLast(inputPacket[1]);
                 channelSouth.addLast(inputPacket[2]);
                 channelSouth.addLast(inputPacket[3]);
-            } else if (source - 1 == routerLocation)  // If the source of the packet is from the east
+            } else if (source == routerEast)  // If the source of the packet is from the east
             {
                 channelEast.addLast(inputPacket[0]);
                 channelEast.addLast(inputPacket[1]);
                 channelEast.addLast(inputPacket[2]);
                 channelEast.addLast(inputPacket[3]);
-            } else if (source + 1 == routerLocation)  // If the source of the packet is from the west
+            } else if (source == routerWest)  // If the source of the packet is from the west
             {
                 channelWest.addLast(inputPacket[0]);
                 channelWest.addLast(inputPacket[1]);

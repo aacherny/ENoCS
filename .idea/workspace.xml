@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6effbb56-f5b0-4b79-a23a-cf22072d6528" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Flit.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Flit.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/ColoredRectangle.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/ColoredRectangle.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Router$1.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Router$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Router.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Router.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ColoredRectangle.java" afterPath="$PROJECT_DIR$/src/main/java/ColoredRectangle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mesh.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Router.java" afterPath="$PROJECT_DIR$/src/main/java/Router.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -69,12 +72,12 @@
           <file leaf-file-name="Mesh.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="28" column="47" lean-forward="true" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+                <state relative-caret-position="765">
+                  <caret line="54" column="35" lean-forward="true" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <marker date="1511750374990" expanded="true" signature="5481:7538" ph="{...}" />
-                    <marker date="1511750374990" expanded="true" signature="7311:7538" ph="{...}" />
+                    <marker date="1511759711026" expanded="true" signature="5641:7698" ph="{...}" />
+                    <marker date="1511759711026" expanded="true" signature="7471:7698" ph="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -106,13 +109,25 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Router.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Router.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1071">
-                  <caret line="133" column="51" lean-forward="true" selection-start-line="133" selection-start-column="51" selection-end-line="133" selection-end-column="51" />
+                <state relative-caret-position="819">
+                  <caret line="335" column="27" lean-forward="true" selection-start-line="335" selection-start-column="27" selection-end-line="335" selection-end-column="27" />
                   <folding>
                     <element signature="method#newCycle#0;class#Router#0" expanded="false" />
+                    <element signature="e#17335#17531#0" expanded="true" />
+                    <element signature="e#17530#17531#0" expanded="true" />
+                    <element signature="e#17597#17598#0" expanded="true" />
+                    <element signature="e#17631#17632#0" expanded="true" />
+                    <element signature="e#17666#17667#0" expanded="true" />
+                    <element signature="e#17700#17701#0" expanded="true" />
+                    <element signature="e#17734#17735#0" expanded="true" />
+                    <element signature="e#17767#17768#0" expanded="true" />
+                    <element signature="e#17801#17802#0" expanded="true" />
+                    <element signature="e#17834#17835#0" expanded="true" />
+                    <element signature="e#17870#17871#0" expanded="true" />
+                    <element signature="e#17905#17906#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -130,11 +145,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ColoredRectangle.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ColoredRectangle.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/ColoredRectangle.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="663">
-                  <caret line="39" column="30" lean-forward="true" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+                <state relative-caret-position="697">
+                  <caret line="41" column="42" lean-forward="true" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -215,9 +230,9 @@
         <option value="$PROJECT_DIR$/src/main/java/OuterJFrame.java" />
         <option value="$PROJECT_DIR$/src/main/java/RouterDiagram.java" />
         <option value="$PROJECT_DIR$/src/main/java/Flit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ColoredRectangle.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mesh.java" />
         <option value="$PROJECT_DIR$/src/main/java/Router.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ColoredRectangle.java" />
       </list>
     </option>
   </component>
@@ -458,7 +473,7 @@
       <workItem from="1511140946797" duration="38000" />
       <workItem from="1511289075175" duration="134000" />
       <workItem from="1511729233124" duration="15014000" />
-      <workItem from="1511747270359" duration="8693000" />
+      <workItem from="1511747270359" duration="13103000" />
     </task>
     <task id="LOCAL-00001" summary="Another test commit">
       <created>1506367699156</created>
@@ -649,11 +664,18 @@
       <option name="project" value="LOCAL" />
       <updated>1511751612776</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="&quot;Next Cycle&quot; moves flits out of the channel and cycles/displays flits as they move through the pipeline">
+      <created>1511756016962</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1511756016962</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="166483000" />
+    <option name="totallyTimeSpent" value="170893000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -731,7 +753,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added classes for Circles and Line. Attempted to draw circle and line on internal window" />
     <MESSAGE value="Pressing OK in Properties creates a window with the amount of nodes in a mesh configuration" />
     <MESSAGE value="The Network Settings panel sets the default values of the ComboBoxes to their value in the Network object&#10;Pressing OK sets the values of the Network object to those selected from the Comboboxes&#10;The Topology is then redrawn using the new values of the Network object" />
     <MESSAGE value="Properties window opens without being recreated if it's been opened before" />
@@ -756,14 +777,15 @@
     <MESSAGE value="Clicking &quot;Next Cycle&quot; updates the image with updated flits" />
     <MESSAGE value="Clicking &quot;Next Cycle&quot; updates the image with new shapes" />
     <MESSAGE value="&quot;Next Cycle&quot; brings flits from the channels into &quot;Route Computation&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Next Cycle&quot; brings flits from the channels into &quot;Route Computation&quot;" />
+    <MESSAGE value="&quot;Next Cycle&quot; moves flits out of the channel and cycles/displays flits as they move through the pipeline" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Next Cycle&quot; moves flits out of the channel and cycles/displays flits as they move through the pipeline" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1169,6 +1191,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ColoredRectangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="42" lean-forward="true" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/RouterDiagram.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1190">
@@ -1179,34 +1211,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="133" column="51" lean-forward="true" selection-start-line="133" selection-start-column="51" selection-end-line="133" selection-end-column="51" />
-          <folding>
-            <element signature="method#newCycle#0;class#Router#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="28" column="47" lean-forward="true" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+        <state relative-caret-position="765">
+          <caret line="54" column="35" lean-forward="true" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1511750374990" expanded="true" signature="5481:7538" ph="{...}" />
-            <marker date="1511750374990" expanded="true" signature="7311:7538" ph="{...}" />
+            <marker date="1511759711026" expanded="true" signature="5641:7698" ph="{...}" />
+            <marker date="1511759711026" expanded="true" signature="7471:7698" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ColoredRectangle.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="30" lean-forward="true" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+        <state relative-caret-position="819">
+          <caret line="335" column="27" lean-forward="true" selection-start-line="335" selection-start-column="27" selection-end-line="335" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#newCycle#0;class#Router#0" expanded="false" />
+            <element signature="e#17335#17531#0" expanded="true" />
+            <element signature="e#17530#17531#0" expanded="true" />
+            <element signature="e#17597#17598#0" expanded="true" />
+            <element signature="e#17631#17632#0" expanded="true" />
+            <element signature="e#17666#17667#0" expanded="true" />
+            <element signature="e#17700#17701#0" expanded="true" />
+            <element signature="e#17734#17735#0" expanded="true" />
+            <element signature="e#17767#17768#0" expanded="true" />
+            <element signature="e#17801#17802#0" expanded="true" />
+            <element signature="e#17834#17835#0" expanded="true" />
+            <element signature="e#17870#17871#0" expanded="true" />
+            <element signature="e#17905#17906#0" expanded="true" />
           </folding>
         </state>
       </provider>
