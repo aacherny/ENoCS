@@ -2,6 +2,7 @@ package main.java;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class Mesh implements Network
 {
@@ -27,9 +28,6 @@ public class Mesh implements Network
 
         routerArray[0].inputPacket(packet, -1);
         routerArray[0].inputPacket(packet2, 00);
-        routerArray[0].inputPacket(packet2, 01);
-        routerArray[0].inputPacket(packet2, 10);
-        routerArray[0].inputPacket(packet, 10);
 
         for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
             routerArray[i].nextCycle();
@@ -41,25 +39,34 @@ public class Mesh implements Network
 
     public void newCycle()
     {
-        routerArray[0].newCycle();
+        for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
+            routerArray[i].newCycle();
+        }
     }
 
     public Flit[] createPacket(int numberOfFlits, int locX, int locY, int destX, int destY)
     {
+        // Creates a random color for the Flit to be assigned as
+        Random rand = new Random();
+        float r = rand.nextFloat();
+        float g = rand.nextFloat();
+        float b = rand.nextFloat();
+        Color randomColor = new Color(r, g, b);
+
         switch(numberOfFlits) {
             default: {
-                Flit[] packet = new Flit[]{new Flit(0, locX, locY, destX, destY)};
+                Flit[] packet = new Flit[]{new Flit(0, locX, locY, destX, destY, randomColor)};
                 return packet;
             }
             case (1): {
-                Flit[] packet = new Flit[]{new Flit(0, locX, locY, destX, destY)};
+                Flit[] packet = new Flit[]{new Flit(0, locX, locY, destX, destY, randomColor)};
                 return packet;
             }
             case (4): {
-                Flit[] packet = new Flit[]{new Flit(1, locX, locY, destX, destY),
-                        new Flit(2, locX, locY, destX, destY),
-                        new Flit(3, locX, locY, destX, destY),
-                        new Flit(4, locX, locY, destX, destY)};
+                Flit[] packet = new Flit[]{new Flit(1, locX, locY, destX, destY, randomColor),
+                        new Flit(2, locX, locY, destX, destY, randomColor),
+                        new Flit(3, locX, locY, destX, destY, randomColor),
+                        new Flit(4, locX, locY, destX, destY, randomColor)};
                 return packet;
             }
         }

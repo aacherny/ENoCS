@@ -15,13 +15,25 @@ public class Router {
     private int routerEast;
     private int routerWest;
 
+    private String nextRouter = "home"; // Keeps track of the router that's going to pass the next flit into the pipeline
+
     private boolean frameActive;
 
-    private LinkedList<Flit> channelHome;   // Channels to hold incoming flits
-    private LinkedList<Flit> channelNorth;
-    private LinkedList<Flit> channelSouth;
-    private LinkedList<Flit> channelEast;
-    private LinkedList<Flit> channelWest;
+    private LinkedList<Flit> channelHome = null;   // Channels to hold incoming flits
+    private LinkedList<Flit> channelNorth = null;
+    private LinkedList<Flit> channelSouth = null;
+    private LinkedList<Flit> channelEast = null;
+    private LinkedList<Flit> channelWest = null;
+
+    private Flit RouteComputation = null;   // Hold the flits that are in certain stages of the pipeline
+    private Flit VCAllocator = null;
+    private Flit SwitchAllocator = null;
+    private Flit SwitchTraversal = null;
+
+    private Flit outputNorth = null;    // Hold the flits that are in certain output channels
+    private Flit outputSouth = null;
+    private Flit outputEast = null;
+    private Flit outputWest = null;
 
     private JDesktopPane desktopPane;
     private RouterDiagram routerDiagram;
@@ -42,16 +54,17 @@ public class Router {
         routerWest = inputWest;
 
         channelHome = new LinkedList<Flit>();
-        if(inputNorth != -1) {
+
+        if (inputNorth != -1) {
             channelNorth = new LinkedList<Flit>();
         }
-        if(inputSouth != -1) {
+        if (inputSouth != -1) {
             channelSouth = new LinkedList<Flit>();
         }
-        if(inputEast != -1) {
+        if (inputEast != -1) {
             channelEast = new LinkedList<Flit>();
         }
-        if(inputWest != -1) {
+        if (inputWest != -1) {
             channelWest = new LinkedList<Flit>();
         }
 
@@ -65,55 +78,128 @@ public class Router {
     public void nextCycle() {
         System.out.println("Next cycle for router: " + routerNumber);
 
-        routerDiagram.addRectangle(new ColoredRectangle(Color.RED, 0, 0));
 
-        routerDiagram.addRectangle(new ColoredRectangle(Color.RED, 1, 1));
 
-        routerDiagram.addRectangle(new ColoredRectangle(Color.RED, 2, 2));
+        if((nextRouter == "home") && (channelHome.peekFirst() != null)){
+            RouteComputation = channelHome.getFirst();
+            channelHome.removeFirst();
 
-        //routerDiagram.add(routerDiagram.addDiagram());
-        //routerDiagram.addRectangle(new ColoredRectangle(Color.RED, 20, 20));
+            nextRouter = "north";
+        } else if((nextRouter == "north") && (channelNorth.peekFirst() != null)) {
+            RouteComputation = channelNorth.getFirst();
+            channelNorth.removeFirst();
 
+            nextRouter = "south";
+        } else if((nextRouter == "south") && (channelSouth.peekFirst() != null)){
+            RouteComputation = channelSouth.getFirst();
+            channelSouth.removeFirst();
+
+            nextRouter = "east";
+        } else if((nextRouter == "east") && (channelEast.peekFirst() != null)){
+            RouteComputation = channelEast.getFirst();
+            channelEast.removeFirst();
+
+            nextRouter = "west";
+        } else if((nextRouter == "west") && (channelWest.peekFirst() != null)){
+            RouteComputation = channelWest.getFirst();
+            channelWest.removeFirst();
+
+            nextRouter = "home";
+        }
+
+
+
+
+
+        // Go through each list and draw the rectangle on the diagram for every flit in the router
+        createRectanglesFromFlitList(channelHome);
+        createRectanglesFromFlitList(channelNorth);
+        createRectanglesFromFlitList(channelSouth);
+        createRectanglesFromFlitList(channelEast);
+        createRectanglesFromFlitList(channelWest);
+
+
+        // Update the window for each router
         routerDiagram.invalidate();
         routerDiagram.validate();
         routerDiagram.repaint();
-
-
-
     }
 
     public void newCycle() {
-        System.out.print("Objects in Home channel are: ");
-        for(int i = 0; i < channelHome.size(); i++) {
-            System.out.print(channelHome.get(i).getIndex());
+        if (channelHome != null) {
+            System.out.print("Router " + routerNumber + ", Home channel: ");
+            for (int i = 0; i < channelHome.size(); i++) {
+                System.out.print(channelHome.get(i).getIndex());
+            }
         }
 
         System.out.println("");
 
-        System.out.print("Objects in North channel are: ");
-        for(int i = 0; i < channelNorth.size(); i++) {
-            System.out.print(channelNorth.get(i).getIndex());
+        if (channelNorth != null) {
+            System.out.print("Router " + routerNumber + ", North channel: ");
+            for (int i = 0; i < channelNorth.size(); i++) {
+                System.out.print(channelNorth.get(i).getIndex());
+            }
+
+            System.out.println("");
         }
 
-        System.out.println("");
+        if (channelSouth != null) {
+            System.out.print("Router " + routerNumber + ", South channel: ");
+            for (int i = 0; i < channelSouth.size(); i++) {
+                System.out.print(channelSouth.get(i).getIndex());
+            }
 
-        System.out.print("Objects in South channel are: ");
-        for(int i = 0; i < channelSouth.size(); i++) {
-            System.out.print(channelSouth.get(i).getIndex());
+            System.out.println("");
         }
 
-        System.out.println("");
+        if (channelEast != null) {
+            System.out.print("Router " + routerNumber + ", East channel: ");
+            for (int i = 0; i < channelEast.size(); i++) {
+                System.out.print(channelEast.get(i).getIndex());
+            }
 
-        System.out.print("Objects in East channel are: ");
-        for(int i = 0; i < channelEast.size(); i++) {
-            System.out.print(channelEast.get(i).getIndex());
+            System.out.println("");
         }
 
-        System.out.println("");
+        if (channelWest != null) {
+            System.out.print("Router " + routerNumber + ", West channel: ");
+            for (int i = 0; i < channelWest.size(); i++) {
+                System.out.print(channelWest.get(i).getIndex());
+            }
 
-        System.out.print("Objects in West channel are: ");
-        for(int i = 0; i < channelWest.size(); i++) {
-            System.out.print(channelWest.get(i).getIndex());
+            System.out.println("");
+        }
+
+
+        if(RouteComputation != null) {
+            System.out.println("Router " + routerNumber + ", RouteComputation: " + RouteComputation.getIndex());
+        }if(VCAllocator != null) {
+            System.out.println("Router " + routerNumber + ", RouteComputation: " + VCAllocator.getIndex());
+        }if(SwitchAllocator != null) {
+            System.out.println("Router " + routerNumber + ", RouteComputation: " + SwitchAllocator.getIndex());
+        }if(SwitchTraversal != null) {
+            System.out.println("Router " + routerNumber + ", RouteComputation: " + SwitchTraversal.getIndex());
+        }if(outputNorth != null) {
+            System.out.println("Router " + routerNumber + ", RouteComputation: " + outputNorth.getIndex());
+        }if(outputSouth != null) {
+            System.out.println("Router " + routerNumber + ", RouteComputation: " + outputSouth.getIndex());
+        }if(outputEast != null) {
+            System.out.println("Router " + routerNumber + ", RouteComputation: " + outputEast.getIndex());
+        }if(outputWest != null) {
+            System.out.println("Router " + routerNumber + ", RouteComputation: " + outputWest.getIndex());
+        }
+    }
+
+    private void createRectanglesFromFlitList(LinkedList<Flit> list){
+        if (list != null) {
+            for (int i = 0; i < list.size(); i++) {
+                Flit flit = list.get(i);
+
+                routerDiagram.addRectangle(new ColoredRectangle(flit.getColor(),15 - i, routerNumber));
+
+                System.out.println("Flit " + flit.getIndex() + " checked at list index " + i);
+            }
         }
     }
 
@@ -131,7 +217,7 @@ public class Router {
             } else if (source == routerLocation)  // If the source of the packet is also from the home node
             {
                 channelHome.addLast(inputPacket[0]);
-            }else if (source + 10 == routerLocation)  // If the source of the packet is from the north
+            } else if (source + 10 == routerLocation)  // If the source of the packet is from the north
             {
                 channelNorth.addLast(inputPacket[0]);
             } else if (source - 10 == routerLocation)  // If the source of the packet is from the south
@@ -153,13 +239,14 @@ public class Router {
                 channelHome.addLast(inputPacket[2]);
                 channelHome.addLast(inputPacket[3]);
 
-            } if (source == routerLocation)  // If the source of the packet is also from the home node
+            }
+            if (source == routerLocation)  // If the source of the packet is also from the home node
             {
                 channelHome.addLast(inputPacket[0]);  // Add the packet to the list of packets from the home node
                 channelHome.addLast(inputPacket[1]);
                 channelHome.addLast(inputPacket[2]);
                 channelHome.addLast(inputPacket[3]);
-            }else if (source + 10 == routerLocation)  // If the source of the packet is from the north
+            } else if (source + 10 == routerLocation)  // If the source of the packet is from the north
             {
                 channelNorth.addLast(inputPacket[0]);
                 channelNorth.addLast(inputPacket[1]);
