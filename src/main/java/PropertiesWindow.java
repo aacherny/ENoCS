@@ -350,7 +350,7 @@ public class PropertiesWindow
                     break;
                 }
 
-                topologyFrame = new TopologyInternalFrame(network.drawTopology());
+//                topologyFrame = new TopologyInternalFrame(network.drawTopology());
 
                 topologyFrame.setVisible(true);
 

@@ -1,27 +1,24 @@
 package main.java;
 
-//import com.sun.xml.internal.bind.v2.TODO;
-
 import javax.swing.*;
-import java.awt.*;
 
 public class TopologyInternalFrame extends JInternalFrame
 {
-    static int openFrameCount = 0;
+    int openFrameCount;
     static final int xOffset = 25, yOffset = 25;
 
-    public TopologyInternalFrame(JPanel inputTopology)
+    public TopologyInternalFrame(JPanel inputTopology, int openFrame)
     {
         super("Network Topology",
                 true, //resizable
                 true, //closable
                 true, //maximizable
                 true);//iconifiable
-
+        openFrameCount = openFrame;
         setSize(500, 350);
 
         //Set the window's location.
-        setLocation(xOffset, yOffset);
+        setLocation(xOffset*openFrameCount, yOffset*openFrameCount);
 
         add(inputTopology);
 
@@ -37,5 +34,10 @@ public class TopologyInternalFrame extends JInternalFrame
     public int getYBounds()
     {
         return getBounds().height;
+    }
+
+    public void closeFrame(int openFrame){
+        openFrame--;
+        dispose();
     }
 }
