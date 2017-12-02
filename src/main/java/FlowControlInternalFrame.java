@@ -4,8 +4,10 @@ import javax.swing.*;
 
 public class FlowControlInternalFrame extends JInternalFrame{
     public static int openFrameCount = 0;
-    static final int xOffset = 25, yOffset = 25;
-    public FlowControlInternalFrame(JTextPane textPane){
+    static final int xOffset = 50, yOffset = 50;
+    private JTextArea textArea;
+
+    public FlowControlInternalFrame(JTextArea textAreaIn, int openFrames){
         super(
                 "Network Flow Control",
                 true,
@@ -13,11 +15,12 @@ public class FlowControlInternalFrame extends JInternalFrame{
                 true,
                 false
         );
-        ++openFrameCount;
+        openFrameCount = openFrames;
+        textArea = textAreaIn;
         setSize(500, 350);
         setLocation(xOffset*openFrameCount, yOffset*openFrameCount);
-
-        add(textPane);
+        textArea.append("THIS IS A STRING FORM THE TEXTAREA WITHIN THE FLOWCONTROLINTERNALFRAME");
+        add(textArea);
 
         pack();
         setVisible(true);
@@ -29,5 +32,21 @@ public class FlowControlInternalFrame extends JInternalFrame{
 
     public static int getyOffset() {
         return yOffset;
+    }
+
+    public void resetLocationCascade(int openFrameCount){
+        setLocation(xOffset*openFrameCount, yOffset*openFrameCount);
+    }
+
+    public void resetLocationTile(int winPosX, int winPosY){
+        setLocation(winPosX, winPosY);
+    }
+
+    public void append(String textOut){
+        textArea.append(textOut);
+    }
+
+    public String getText(){
+        return textArea.getText();
     }
 }

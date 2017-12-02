@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.print.*;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -21,7 +22,9 @@ public class OuterJFrame
     private JDesktopPane desktop;   // Needed for Internal JFrames
     // The next line declares the frames that are going to be used to control the internal windows
     // Is there any reason not to define them now?
-    private JInternalFrame topologyFrame, flowControlFrame, statisticFrame;
+    private TopologyInternalFrame topologyFrame;
+    private FlowControlInternalFrame flowControlFrame;
+    private StatisticsInternalFrame statisticFrame;
     private PropertiesWindow propWindow;
     private JToolBar toolBar;
     private File saveFile = new File("");
@@ -92,9 +95,9 @@ public class OuterJFrame
         menuItemNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
         menuItemNew.addActionListener(e -> {
             //TODO: Pass something meaningful instead of empty new objects
-//            topologyFrame = new TopologyInternalFrame(new JPanel());
-            flowControlFrame = new FlowControlInternalFrame(new JTextPane());
-            statisticFrame = new StatisticsInternalFrame(new JTextPane());
+            topologyFrame = new TopologyInternalFrame(new JPanel(), openFrameCount++);
+            flowControlFrame = new FlowControlInternalFrame(new JTextArea(), openFrameCount++);
+            statisticFrame = new StatisticsInternalFrame(new JTextArea(), openFrameCount++);
             desktop.add(topologyFrame);
             desktop.add(flowControlFrame);
             desktop.add(statisticFrame);
@@ -307,14 +310,93 @@ public class OuterJFrame
         //TODO: figure out a way to cascade windows (using the xoffset and yoffset?)
         // 'Properties' button under 'Windows'
         JMenuItem menuItemCascade = new JMenuItem("Cascade");
+        menuItemCascade.addActionListener(e -> {
+            topologyFrame.hide();
+            flowControlFrame.hide();
+            statisticFrame.hide();
+
+            openFrameCount = 0;
+            topologyFrame.resetLocationCascade(openFrameCount++);
+            flowControlFrame.resetLocationCascade(openFrameCount++);
+            statisticFrame.resetLocationCascade(openFrameCount++);
+
+            topologyFrame.show();
+            flowControlFrame.show();
+            statisticFrame.show();
+        });
         menuWindows.add(menuItemCascade);
 
         // 'Properties' button under 'Windows'
         JMenuItem menuItemTileV = new JMenuItem("Tile Vertical");
+        menuItemTileV.addActionListener(e -> {
+            //TODO: Find a way to use this without these exact frames
+            topologyFrame.hide();
+            flowControlFrame.hide();
+            statisticFrame.hide();
+
+            int windowPositionerX = 0;
+            int windowPositionerY = 0;
+            //Positioning Topology window
+            topologyFrame.resetLocationTile(windowPositionerX, windowPositionerY);
+
+            //Positioning Flow Control Window
+            if (windowPositionerX + topologyFrame.getWidth() + flowControlFrame.getWidth() <= desktop.getWidth()){
+                windowPositionerX += topologyFrame.getWidth();
+            } else {
+                windowPositionerX = 0;
+                windowPositionerY += topologyFrame.getHeight();
+            }
+            flowControlFrame.resetLocationTile(windowPositionerX, windowPositionerY);
+
+            //Positioning Statistics Window
+            if (windowPositionerX + flowControlFrame.getWidth() + statisticFrame.getWidth() <= desktop.getWidth()) {
+                windowPositionerX += flowControlFrame.getWidth();
+            } else {
+                windowPositionerX = 0;
+                windowPositionerY += topologyFrame.getHeight();
+            }
+            statisticFrame.resetLocationTile(windowPositionerX, windowPositionerY);
+
+            topologyFrame.show();
+            flowControlFrame.show();
+            statisticFrame.show();
+        });
         menuWindows.add(menuItemTileV);
 
         // 'Properties' button under 'Windows'
         JMenuItem menuItemTileH = new JMenuItem("Tile Horizontal");
+        menuItemTileH.addActionListener(e -> {
+            topologyFrame.hide();
+            flowControlFrame.hide();
+            statisticFrame.hide();
+
+            int windowPositionerX = 0;
+            int windowPositionerY = 0;
+            //Positioning Topology window
+            topologyFrame.resetLocationTile(windowPositionerX, windowPositionerY);
+
+            //Positioning Flow Control Window
+            if (windowPositionerY + topologyFrame.getHeight() + flowControlFrame.getHeight() <= desktop.getHeight()){
+                windowPositionerY += topologyFrame.getHeight();
+            } else {
+                windowPositionerX += topologyFrame.getWidth();
+                windowPositionerY = 0;
+            }
+            flowControlFrame.resetLocationTile(windowPositionerX, windowPositionerY);
+
+            //Positioning Statistics Window
+            if (windowPositionerY + flowControlFrame.getHeight() + statisticFrame.getHeight() <= desktop.getHeight()) {
+                windowPositionerY += flowControlFrame.getHeight();
+            } else {
+                windowPositionerX += topologyFrame.getWidth();
+                windowPositionerY = 0;
+            }
+            statisticFrame.resetLocationTile(windowPositionerX, windowPositionerY);
+
+            topologyFrame.show();
+            flowControlFrame.show();
+            statisticFrame.show();
+        });
         menuWindows.add(menuItemTileH);
 
         // 'Properties' button under 'Windows'
@@ -335,18 +417,19 @@ public class OuterJFrame
         JMenuItem menuItemRefresh = new JMenuItem("Refresh");
         menuWindows.add(menuItemRefresh);
 
-
-
+        //TODO: Come back to this and figure out what it does
         // Build the Help menu
         JMenu menuHelp = new JMenu("Help");
         menuBar.add(menuHelp);
 
+        //TODO: Come back to this and figure out what it does
         // 'Contents' button under 'Help'
         JMenuItem menuItemContents = new JMenuItem("Contents");
         menuHelp.add(menuItemContents);
 
         menuHelp.addSeparator();
 
+        //TODO: Come back to this and figure out what it does
         // 'About' button under 'Help'
         JMenuItem menuItemAbout = new JMenuItem("About");
         menuHelp.add(menuItemAbout);
@@ -369,9 +452,11 @@ public class OuterJFrame
         JButton newFile = new JButton(newFileImage);
         newFile.setToolTipText("New");
         newFile.addActionListener(e -> {
+            //This is the start for the cascade
+            //TODO: find a way to decrement openFrameCount when an Internal frame is closed or find a workaround
             topologyFrame = new TopologyInternalFrame(new JPanel(), openFrameCount++);
-            flowControlFrame = new FlowControlInternalFrame(new JTextPane());
-            statisticFrame = new StatisticsInternalFrame(new JTextPane());
+            flowControlFrame = new FlowControlInternalFrame(new JTextArea(), openFrameCount++);
+            statisticFrame = new StatisticsInternalFrame(new JTextArea(), openFrameCount++);
             desktop.add(topologyFrame);
             desktop.add(flowControlFrame);
             desktop.add(statisticFrame);
@@ -426,11 +511,36 @@ public class OuterJFrame
         });
         toolBar.add(saveFileButton);
 
-        //TODO: Is this necessary?
+        //TODO: Figure out if the content windows can be initialized at the start of the program
         ImageIcon printImage = new ImageIcon(getClass().getResource("images/print.png"));
-        JButton print = new JButton(printImage);
-        print.setToolTipText("Print");
-        toolBar.add(print);
+        JButton printButton = new JButton(printImage);
+        printButton.setToolTipText("Print");
+        printButton.addActionListener(e -> {
+            //This next line creates a new j ob for the printer
+            PrinterJob printerJob = PrinterJob.getPrinterJob();
+            //Below is where you define what you are printing a nd what is os going to look like
+            printerJob.setPrintable((graphics, pageFormat, pageIndex) -> {
+                if (pageIndex != 0) {
+                    return Printable.NO_SUCH_PAGE;
+                }
+                Graphics2D graphics2D = (Graphics2D) graphics;
+                graphics2D.setFont(new Font("Serif", Font.PLAIN, 12));
+                graphics2D.setPaint(Color.BLACK);
+                //This is where you pass it what is going to be printed
+                graphics2D.drawString(flowControlFrame.getText() + statisticFrame.getText(), 144, 144);
+
+                return Printable.PAGE_EXISTS;
+            });
+
+            if (printerJob.printDialog()){
+                try {
+                    printerJob.print();
+                } catch (PrinterException printerException){
+                    System.out.println(printerException);
+                }
+            }
+        });
+        toolBar.add(printButton);
 
         ImageIcon helpImage = new ImageIcon(getClass().getResource("images/help.png"));
         JButton help = new JButton(helpImage);
