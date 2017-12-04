@@ -36,8 +36,11 @@ public class OuterJFrame
 
     public OuterJFrame()
     {
-        network = new Mesh( 4);
+        network = new Mesh( 4, desktop);    // Creates a default network to work with
         outerFrame = new JFrame();
+        desktop = new JDesktopPane();   // DesktopPane that will hold all of the windows
+        desktop.setLayout(new GridBagLayout());
+
         panel = new JPanel(new BorderLayout());
         desktop = new JDesktopPane();
         openFrameCount = 0;
@@ -58,6 +61,9 @@ public class OuterJFrame
         outerFrame.setTitle("ENoCS Simulator");
         outerFrame.setSize(1200, 800);
         outerFrame.setLocationRelativeTo(null);
+        outerFrame.setLayout(new BorderLayout());
+
+        outerFrame.add(desktop);
     }
 
     /**
@@ -69,12 +75,55 @@ public class OuterJFrame
         JMenuBar menuBar = createMenuBar();
         outerFrame.setJMenuBar(menuBar);
 
-        //Creates the toolbar and adds it to the window on the left side
-        JToolBar toolBar = createToolBar();
-        panel.add(toolBar, BorderLayout.WEST);
+        // Creates the toolbar and adds it to the window
+        toolBar = createToolBar();
+        //outerFrame.getContentPane().add(toolBar, BorderLayout.NORTH);
+        outerFrame.add(toolBar, BorderLayout.PAGE_START);
 
         // Makes the window visible
         outerFrame.setVisible(true);
+    }
+
+    private JToolBar createToolBar()
+    {
+        JLabel cycleLabel = new JLabel("Cycle number: ");
+
+        JToolBar newToolBar = new JToolBar();
+        newToolBar.setBounds(0, 0, 9999, 20);
+        newToolBar.setFloatable( false);
+
+        JButton nextClockCycle = new JButton("Next Cycle");
+        nextClockCycle.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                cycleNumber++;
+                cycleLabel.setText("Cycle number: " + cycleNumber);
+
+                network.nextCycle();
+
+                desktop.validate();
+                desktop.repaint();
+            }
+        });
+
+        JButton newCycle = new JButton("Restart");
+        newCycle.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                cycleNumber = 0;
+                cycleLabel.setText("Cycle number: " + cycleNumber);
+
+                network.newCycle();
+            }
+        });
+
+        newToolBar.add(nextClockCycle);
+        newToolBar.add(newCycle);
+        newToolBar.add(cycleLabel);
+
+        return newToolBar;
     }
 
     /**
@@ -193,7 +242,7 @@ public class OuterJFrame
                 if(propWindow != null) {    // Opens the window with all of the existing variables if it's been opened before
                     propWindow.createPropWindow();
                 }else{
-                    propWindow = new PropertiesWindow(desktop, network);
+                    propWindow = new PropertiesWindow(desktop, network, getOuterJFrame());
                     propWindow.createPropWindow();
                 }
             }
@@ -619,5 +668,15 @@ public class OuterJFrame
     public JDesktopPane getDesktopPane()
     {
         return desktop;
+    }
+
+    public OuterJFrame getOuterJFrame()
+    {
+        return this;
+    }
+
+    public void updateNetwork(Network inputNetwork)
+    {
+        network = inputNetwork;
     }
 }

@@ -10,7 +10,7 @@ public class TopologyInternalFrame extends JInternalFrame
     public TopologyInternalFrame(JPanel inputTopology, int openFrame)
     {
         super("Network Topology",
-                true, //resizable
+                false, //resizable
                 true, //closable
                 true, //maximizable
                 false);//iconifiable

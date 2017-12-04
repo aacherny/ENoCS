@@ -13,7 +13,7 @@ interface Network
 
     String getTopology();
 
-//    void newCycle();
-//
-//    void nextCycle();
+    void nextCycle();
+
+    void newCycle();
 }

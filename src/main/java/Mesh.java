@@ -2,48 +2,149 @@ package main.java;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class Mesh implements Network
 {
     private int nodes;
 
-    protected Router[] routerArray = new Router[nodes];
+    JDesktopPane desktopPane;
 
-    public Mesh(int inputNodes)
+    protected Router[] routerArray;
+
+    public Mesh(int inputNodes, JDesktopPane inputDesktopPane)
     {
         nodes = inputNodes;
+
+        desktopPane = inputDesktopPane;
+
+        routerArray = createRouterArray(nodes);
     }
 
     public void nextCycle()
     {
-        //Below is the function to randomly create a packet
-        //It will randomly generate either a one or a zero, then if one create a packet
-        //(int)(Math.floor(Math.random()*10%2))
+        Flit[] packet1 = createPacket(1, 0, 0, 1, 1);
+        Flit[] packet2 = createPacket(1, 0, 0, 1, 0);
+        Flit[] packet3 = createPacket(1, 0, 0, 0, 1);
 
-        if ((Math.floor(Math.random()*10%2)) == 1){
-            //new Packet();
+        Flit[] packet7 = createPacket(4, 0, 0, 0, 1);
+        Flit[] packet8 = createPacket(4, 0, 0, 1, 1);
+        Flit[] packet9 = createPacket(4, 0, 0, 1, 1);
 
+
+        routerArray[0].inputPacket(packet1, 00);
+        routerArray[0].inputPacket(packet7, 01);
+        routerArray[0].inputPacket(packet2, 10);
+        routerArray[0].inputPacket(packet8, 10);
+        //routerArray[0].inputPacket(packet3, 01);
+        //routerArray[0].inputPacket(packet4, 10);
+
+
+        for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
+            routerArray[i].nextCycle();
         }
 
-        //Math.random()
-        // sometimes create new packets
-        // call the nextCycle of each router
+
         // check if each router has a packet ready to send, send to the next router if it is
     }
 
-    // TODO Add a method to create an array of Flits
+    public void newCycle()
+    {
+        for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
+            routerArray[i].newCycle();
+        }
+    }
 
+    public Flit[] createPacket(int numberOfFlits, int locX, int locY, int destX, int destY)
+    {
+        // Creates a random color for the Flit to be assigned as
+        Random rand = new Random();
+        float r = rand.nextFloat();
+        float g = rand.nextFloat();
+        float b = rand.nextFloat();
+        Color randomColor = new Color(r, g, b);
+
+        switch(numberOfFlits) {
+            default: {
+                Flit[] packet = new Flit[]{new Flit(0, locX, locY, destX, destY, randomColor)};
+                return packet;
+            }
+            case (1): {
+                Flit[] packet = new Flit[]{new Flit(0, locX, locY, destX, destY, randomColor)};
+                return packet;
+            }
+            case (4): {
+                Flit[] packet = new Flit[]{new Flit(1, locX, locY, destX, destY, randomColor),
+                        new Flit(2, locX, locY, destX, destY, randomColor),
+                        new Flit(3, locX, locY, destX, destY, randomColor),
+                        new Flit(4, locX, locY, destX, destY, randomColor)};
+                return packet;
+            }
+        }
+    }
+
+    /**
+     * Creates an array of Router objects depending on the amount of nodes there are
+     * @return Router[] An array of router objects
+     */
+    public Router[] createRouterArray(int inputNodes)
+    {
+        Router[] routers = new Router[inputNodes];
+
+        switch(nodes) { // All routers are manually assigned their number, and all of their neighboring routers
+            case 4:
+                routers[0] = new Router(0, 00,-1, 01, 10, -1, desktopPane, this);
+                routers[1] = new Router(1, 01,00, -1, 11, -1, desktopPane, this);
+                routers[2] = new Router(2, 10,-1, 11, -1, 00, desktopPane, this);
+                routers[3] = new Router(3, 11,10, -1, -1, 01, desktopPane, this);
+                break;
+            case 9:
+                routers[0] = new Router(0, 00,-1, 01, 10, -1, desktopPane, this);
+                routers[1] = new Router(1, 01,00, 02, 11, -1, desktopPane, this);
+                routers[2] = new Router(2, 02,01, -1, 12, -1, desktopPane, this);
+                routers[3] = new Router(3, 10,-1, 11, 20, 00, desktopPane, this);
+                routers[4] = new Router(4, 11,10, 12, 21, 01, desktopPane, this);
+                routers[5] = new Router(5, 12,11, -1, 22, 02, desktopPane, this);
+                routers[6] = new Router(6, 20,-1, 21, -1, 10, desktopPane, this);
+                routers[7] = new Router(7, 21,20, 22, -1, 11, desktopPane, this);
+                routers[8] = new Router(8, 22,21, -1, -1, 12, desktopPane, this);
+                break;
+            case 16:
+                routers[0] = new Router(0, 00,-1, 01, 10, -1, desktopPane, this);
+                routers[1] = new Router(1, 01,00, 02, 11, -1, desktopPane, this);
+                routers[2] = new Router(2, 02,01, 03, 12, -1, desktopPane, this);
+                routers[3] = new Router(3, 03,02, -1, 13, -1, desktopPane, this);
+                routers[4] = new Router(4, 10,-1, 11, 20, 00, desktopPane, this);
+                routers[5] = new Router(5, 11,10, 12, 21, 01, desktopPane, this);
+                routers[6] = new Router(6, 12,11, 13, 22, 02, desktopPane, this);
+                routers[7] = new Router(7, 13,12, -1, 23, 03, desktopPane, this);
+                routers[8] = new Router(8, 20,-1, 21, 30, 10, desktopPane, this);
+                routers[9] = new Router(9, 21,20, 22, 31, 11, desktopPane, this);
+                routers[10] = new Router(10, 22,21, 23, 32, 12, desktopPane, this);
+                routers[11] = new Router(11, 23,22, -1, 33, 13, desktopPane, this);
+                routers[12] = new Router(12, 30,-1, 31, -1, 20, desktopPane, this);
+                routers[13] = new Router(13, 31,30, 32, -1, 21, desktopPane, this);
+                routers[14] = new Router(14, 32,31, 33, -1, 22, desktopPane, this);
+                routers[15] = new Router(15, 33,32, -1, -1, 23, desktopPane, this);
+                break;
+        }
+
+
+
+        return routers;
+    }
+
+    /**
+     * Draws the topology of the network using the existing array of routers
+     * @return JPanel
+     */
     public JPanel drawTopology()
     {
         JPanel panelYContainer = new JPanel();
 
         int nodesSqrt = (int) Math.sqrt(nodes);
-
         int nodeCounter = 0;
 
-        for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
-            routerArray[i] = new Router(i);
-        }
 
         panelYContainer.setLayout(new GridLayout(0, nodesSqrt + nodesSqrt - 1));
 
