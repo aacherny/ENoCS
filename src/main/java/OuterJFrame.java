@@ -32,7 +32,7 @@ public class OuterJFrame
     protected Network network;
 
     protected int cycleNumber;
-    public static int openFrameCount;
+    public int openFrameCount;
 
     public OuterJFrame()
     {
@@ -84,48 +84,6 @@ public class OuterJFrame
         outerFrame.setVisible(true);
     }
 
-    private JToolBar createToolBar()
-    {
-        JLabel cycleLabel = new JLabel("Cycle number: ");
-
-        JToolBar newToolBar = new JToolBar();
-        newToolBar.setBounds(0, 0, 9999, 20);
-        newToolBar.setFloatable( false);
-
-        JButton nextClockCycle = new JButton("Next Cycle");
-        nextClockCycle.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-                cycleNumber++;
-                cycleLabel.setText("Cycle number: " + cycleNumber);
-
-                network.nextCycle();
-
-                desktop.validate();
-                desktop.repaint();
-            }
-        });
-
-        JButton newCycle = new JButton("Restart");
-        newCycle.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-                cycleNumber = 0;
-                cycleLabel.setText("Cycle number: " + cycleNumber);
-
-                network.newCycle();
-            }
-        });
-
-        newToolBar.add(nextClockCycle);
-        newToolBar.add(newCycle);
-        newToolBar.add(cycleLabel);
-
-        return newToolBar;
-    }
-
     /**
      * Creates the menu bar in the outer window, adding dropdown menus like
      * 'File' and 'Edit'
@@ -144,7 +102,7 @@ public class OuterJFrame
         menuItemNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
         menuItemNew.addActionListener(e -> {
             //TODO: Pass something meaningful instead of empty new objects
-            topologyFrame = new TopologyInternalFrame(new JPanel(), openFrameCount++);
+            topologyFrame = new TopologyInternalFrame(new JPanel());//, openFrameCount++);
             flowControlFrame = new FlowControlInternalFrame(new JTextArea(), openFrameCount++);
             statisticFrame = new StatisticsInternalFrame(new JTextArea(), openFrameCount++);
             desktop.add(topologyFrame);
@@ -495,7 +453,7 @@ public class OuterJFrame
     {
         JToolBar toolBar = new JToolBar();
         toolBar.setBounds(0, 0, 9999, 20);
-        toolBar.setFloatable( false);
+        toolBar.setFloatable(false);
 
         ImageIcon newFileImage = new ImageIcon(getClass().getResource("images/new.png"));
         JButton newFile = new JButton(newFileImage);
@@ -503,7 +461,7 @@ public class OuterJFrame
         newFile.addActionListener(e -> {
             //This is the start for the cascade
             //TODO: find a way to decrement openFrameCount when an Internal frame is closed or find a workaround
-            topologyFrame = new TopologyInternalFrame(new JPanel(), openFrameCount++);
+            topologyFrame = new TopologyInternalFrame(new JPanel());//, openFrameCount++);
             flowControlFrame = new FlowControlInternalFrame(new JTextArea(), openFrameCount++);
             statisticFrame = new StatisticsInternalFrame(new JTextArea(), openFrameCount++);
             desktop.add(topologyFrame);
@@ -615,7 +573,7 @@ public class OuterJFrame
                 cycleNumber = 0;
                 cycleLabel.setText("Cycle number: " + cycleNumber);
 
-                // network.newCycle();
+                network.newCycle();
             }
         });
         toolBar.add(refresh);
@@ -624,17 +582,22 @@ public class OuterJFrame
         JButton nextCycle = new JButton(nextCycleImage);
         nextCycle.setToolTipText("Next Cycle");
         nextCycle.addActionListener(e -> {
+            if (cycleNumber == 0){
+
+            } else {
+
+            }
             cycleNumber++;
             cycleLabel.setText("Cycle number: " + cycleNumber);
-            TopologyInternalFrame top1 = new TopologyInternalFrame(new JPanel(), openFrameCount++);
-            TopologyInternalFrame top2 = new TopologyInternalFrame(new JPanel(), openFrameCount++);
-            desktop.add(top1);
-            desktop.add(top2);
-            // network.nextCycle();
+
+            network.nextCycle();
+            desktop.validate();
+            desktop.repaint();
         });
         toolBar.add(nextCycle);
 
-        JTextField multiCycleField = new JTextField("5");
+        JTextField multiCycleField = new JTextField("5", 5);
+        multiCycleField.setMaximumSize(new Dimension(48, 24));
         toolBar.add(multiCycleField);
 
         ImageIcon multiCycleImage = new ImageIcon(getClass().getResource("images/fastforward.png"));
@@ -650,7 +613,7 @@ public class OuterJFrame
                     cycleLabel.setText("Cycle number: " + cycleNumber);
                 }
 
-                // network.nextCycle();
+                network.nextCycle();
             }
         });
         toolBar.add(multiCycle);
@@ -659,6 +622,48 @@ public class OuterJFrame
 
         return toolBar;
     }
+
+//    private JToolBar createToolBar()
+//    {
+//        JLabel cycleLabel = new JLabel("Cycle number: ");
+//
+//        JToolBar newToolBar = new JToolBar();
+//        newToolBar.setBounds(0, 0, 9999, 20);
+//        newToolBar.setFloatable( false);
+//
+//        JButton nextClockCycle = new JButton("Next Cycle");
+//        nextClockCycle.addActionListener(new ActionListener()
+//        {
+//            public void actionPerformed(ActionEvent e)
+//            {
+//                cycleNumber++;
+//                cycleLabel.setText("Cycle number: " + cycleNumber);
+//
+//                network.nextCycle();
+//
+//                desktop.validate();
+//                desktop.repaint();
+//            }
+//        });
+//
+//        JButton newCycle = new JButton("Restart");
+//        newCycle.addActionListener(new ActionListener()
+//        {
+//            public void actionPerformed(ActionEvent e)
+//            {
+//                cycleNumber = 0;
+//                cycleLabel.setText("Cycle number: " + cycleNumber);
+//
+//                network.newCycle();
+//            }
+//        });
+//
+//        newToolBar.add(nextClockCycle);
+//        newToolBar.add(newCycle);
+//        newToolBar.add(cycleLabel);
+//
+//        return newToolBar;
+//    }
 
 
     /**
