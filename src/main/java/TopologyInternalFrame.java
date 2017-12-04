@@ -7,14 +7,15 @@ public class TopologyInternalFrame extends JInternalFrame
     int openFrameCount;
     static final int xOffset = 50, yOffset = 50;
 
-    public TopologyInternalFrame(JPanel inputTopology, int openFrame)
+    //TODO: fix the openFrame count thing
+    public TopologyInternalFrame(JPanel inputTopology)//, int openFrame)
     {
         super("Network Topology",
-                false, //resizable
+                true, //resizable
                 true, //closable
                 true, //maximizable
                 false);//iconifiable
-        openFrameCount = openFrame;
+        //openFrameCount = openFrame;
         setSize(500, 350);
 
         //Set the window's location.
