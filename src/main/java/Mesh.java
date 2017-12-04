@@ -22,7 +22,9 @@ public class Mesh implements Network
 
     public void nextCycle()
     {
-        generatePacket();
+        //generatePacket();
+        Flit[] packet = createPacket(1, 0, 0, 1, 1);
+        routerArray[0].inputPacket(packet, 00);
 
         for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
             routerArray[i].nextCycle();
