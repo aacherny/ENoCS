@@ -3,6 +3,7 @@ package main.java;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Mesh implements Network
 {
@@ -15,37 +16,69 @@ public class Mesh implements Network
     public Mesh(int inputNodes, JDesktopPane inputDesktopPane)
     {
         nodes = inputNodes;
-
         desktopPane = inputDesktopPane;
-
         routerArray = createRouterArray(nodes);
     }
 
     public void nextCycle()
     {
-        Flit[] packet1 = createPacket(1, 0, 0, 1, 1);
-        Flit[] packet2 = createPacket(1, 0, 0, 1, 0);
-        Flit[] packet3 = createPacket(1, 0, 0, 0, 1);
-
-        Flit[] packet7 = createPacket(4, 0, 0, 0, 1);
-        Flit[] packet8 = createPacket(4, 0, 0, 1, 1);
-        Flit[] packet9 = createPacket(4, 0, 0, 1, 1);
-
-
-        routerArray[0].inputPacket(packet1, 00);
-        routerArray[0].inputPacket(packet7, 01);
-        routerArray[0].inputPacket(packet2, 10);
-        routerArray[0].inputPacket(packet8, 10);
-        //routerArray[0].inputPacket(packet3, 01);
-        //routerArray[0].inputPacket(packet4, 10);
-
+        generatePacket();
 
         for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
             routerArray[i].nextCycle();
         }
 
+        for (int i = 0; i < nodes; i++) {    // Sends ready-to-send packets from one router to the other
+            if(routerArray[i].outputNorth != null){
+                Flit[] tempFlit = new Flit[] {routerArray[i].outputNorth};
+                routerArray[i-1].inputPacket(tempFlit, routerArray[i].getRouterLocation());
 
-        // check if each router has a packet ready to send, send to the next router if it is
+                routerArray[i].outputNorth = null;
+                System.out.println("Router " + routerArray[i].getRouterNumber() + " has a flit to send to " + routerArray[i-1].getRouterNumber());
+            }
+
+            if(routerArray[i].outputSouth != null){
+                Flit[] tempFlit = new Flit[] {routerArray[i].outputSouth};
+                routerArray[i+1].inputPacket(tempFlit, routerArray[i].getRouterLocation());
+
+                routerArray[i].outputSouth = null;
+                System.out.println("Router " + routerArray[i].getRouterNumber() + " has a flit to send to " + routerArray[i+1].getRouterNumber());
+            }
+
+            if(routerArray[i].outputEast != null){
+                Flit[] tempFlit = new Flit[] {routerArray[i].outputEast};
+                routerArray[i+(int)Math.sqrt(nodes)].inputPacket(tempFlit, routerArray[i].getRouterLocation());
+
+                routerArray[i].outputEast = null;
+                System.out.println("Router " + routerArray[i].getRouterNumber() + " has a flit to send to " + routerArray[i+(int)Math.sqrt(nodes)].getRouterNumber());
+            }
+
+            if(routerArray[i].outputWest != null){
+                Flit[] tempFlit = new Flit[] {routerArray[i].outputWest};
+                routerArray[i-(int)Math.sqrt(nodes)].inputPacket(tempFlit, routerArray[i].getRouterLocation());
+
+                routerArray[i].outputWest = null;
+                System.out.println("Router " + routerArray[i].getRouterNumber() + " has a flit to send to " + routerArray[i-(int)Math.sqrt(nodes)].getRouterNumber());
+            }
+        }
+    }
+
+    public void generatePacket() {
+        int randomRouter = ThreadLocalRandom.current().nextInt(0, nodes + 1);
+        int randomNumberOfFlits = ThreadLocalRandom.current().nextInt(1, 2 + 1);
+        if(randomNumberOfFlits == 2) {
+            randomNumberOfFlits = 4;
+        }
+        int randomSourceX = ThreadLocalRandom.current().nextInt(0, (int) Math.sqrt(nodes));
+        int randomSourceY = ThreadLocalRandom.current().nextInt(0, (int) Math.sqrt(nodes));
+        int randomSource = randomSourceX * 10 + randomSourceY;
+        int randomDestinationX = ThreadLocalRandom.current().nextInt(0, (int) Math.sqrt(nodes));
+        int randomDestinationY = ThreadLocalRandom.current().nextInt(0, (int) Math.sqrt(nodes));
+
+        Flit[] packet = createPacket(randomNumberOfFlits, 0, 0, randomDestinationX, randomDestinationY);
+        routerArray[randomRouter].inputPacket(packet, randomSource);
+
+        System.out.println("Random packet, Flits: " + randomNumberOfFlits + ", Source: " + randomSource + ", Destination: " + randomDestinationX + "" + randomDestinationX);
     }
 
     public void newCycle()
