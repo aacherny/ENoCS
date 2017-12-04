@@ -5,15 +5,15 @@ import javax.swing.*;
 public class TopologyInternalFrame extends JInternalFrame
 {
     int openFrameCount;
-    static final int xOffset = 25, yOffset = 25;
+    static final int xOffset = 50, yOffset = 50;
 
     public TopologyInternalFrame(JPanel inputTopology, int openFrame)
     {
         super("Network Topology",
-                true, //resizable
+                false, //resizable
                 true, //closable
                 true, //maximizable
-                true);//iconifiable
+                false);//iconifiable
         openFrameCount = openFrame;
         setSize(500, 350);
 
@@ -36,8 +36,11 @@ public class TopologyInternalFrame extends JInternalFrame
         return getBounds().height;
     }
 
-    public void closeFrame(int openFrame){
-        openFrame--;
-        dispose();
+    public void resetLocationCascade(int openFrameCount){
+        setLocation(xOffset*openFrameCount, yOffset*openFrameCount);
+    }
+
+    public void resetLocationTile(int winPosX, int winPosY){
+        setLocation(winPosX, winPosY);
     }
 }

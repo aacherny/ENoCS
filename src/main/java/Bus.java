@@ -7,23 +7,35 @@ public class Bus implements Network
 {
     private int nodes;
 
-    public Bus(int inputNodes)
-    {
+    JDesktopPane desktopPane;
+    protected Router[] routerArray;
+
+    public Bus(int inputNodes, JDesktopPane inputDesktopPane) {
         nodes = inputNodes;
+
+        routerArray = new Router[nodes];
+    }
+
+    public void nextCycle()
+    {
+        // sometimes create new packets
+        // call the nextCycle of each router
+        // check if each router has a packet ready to send, send to the next router if it is
+    }
+
+    public void newCycle()
+    {
+
     }
 
     public JPanel drawTopology() {
 
         JPanel panelYContainer = new JPanel();
 
-        int nodesSqrt = (int) Math.sqrt(nodes);
-
-        Router[] routerArray = new Router[nodes];
-
         int nodeCounter = 0;
 
         for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
-            routerArray[i] = new Router(i);
+            //routerArray[i] = new Router(i, desktopPane);
         }
 
         panelYContainer.setLayout(new GridLayout(0, nodes));
