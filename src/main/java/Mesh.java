@@ -13,13 +13,15 @@ public class Mesh implements Network
 
     private TextFrame scrollingTextFrame;
 
+    private OuterJFrame OJFrame;
 
     protected Router[] routerArray;
 
-    public Mesh(int inputNodes, JDesktopPane inputDesktopPane)
+    public Mesh(int inputNodes, JDesktopPane inputDesktopPane, OuterJFrame inputOJFrame)
     {
         nodes = inputNodes;
         desktopPane = inputDesktopPane;
+        OJFrame = inputOJFrame;
         scrollingTextFrame = new TextFrame();
 
         routerArray = createRouterArray(nodes);
@@ -27,10 +29,7 @@ public class Mesh implements Network
 
     public void nextCycle()
     {
-        generatePacket();
-        //Flit[] packet = createPacket(1, 0, 0, 1, 1);
-        //routerArray[0].inputPacket(packet, 00);
-        //scrollingTextFrame.addText("A " + 1 + " flit packet has been created at router " + 0);
+        generatePacket(OJFrame.getPacketChance());
 
         for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
             routerArray[i].nextCycle();
@@ -71,25 +70,26 @@ public class Mesh implements Network
         }
     }
 
-    public void generatePacket() {
-        int randomRouter = ThreadLocalRandom.current().nextInt(0, nodes + 1);
-        int randomNumberOfFlits = ThreadLocalRandom.current().nextInt(1, 2 + 1);
-        if(randomNumberOfFlits == 2) {
-            randomNumberOfFlits = 4;
+    public void generatePacket(double chance) {
+        for(int i = 0; i < nodes; i++)
+        {
+            int probability = ThreadLocalRandom.current().nextInt(0, 101);
+
+            if(probability < (int) (chance * 100))
+            {
+                int randomNumberOfFlits = ThreadLocalRandom.current().nextInt(1, 2 + 1);
+                if (randomNumberOfFlits == 2) {
+                    randomNumberOfFlits = 4;
+                }
+                int randomDestinationX = ThreadLocalRandom.current().nextInt(0, (int) Math.sqrt(nodes));
+                int randomDestinationY = ThreadLocalRandom.current().nextInt(0, (int) Math.sqrt(nodes));
+
+                Flit[] packet = createPacket(randomNumberOfFlits, 0, 0, randomDestinationX, randomDestinationY);
+                routerArray[i].inputPacket(packet, 999);
+
+                scrollingTextFrame.addText("A " + randomNumberOfFlits + "-flit packet has been created at router " + i + ", destination: " + randomDestinationX + "" + randomDestinationY);
+            }
         }
-        int randomSourceX = ThreadLocalRandom.current().nextInt(0, (int) Math.sqrt(nodes));
-        int randomSourceY = ThreadLocalRandom.current().nextInt(0, (int) Math.sqrt(nodes));
-        int randomSource = randomSourceX * 10 + randomSourceY;
-        int randomDestinationX = ThreadLocalRandom.current().nextInt(0, (int) Math.sqrt(nodes));
-        int randomDestinationY = ThreadLocalRandom.current().nextInt(0, (int) Math.sqrt(nodes));
-
-        Flit[] packet = createPacket(randomNumberOfFlits, 0, 0, randomDestinationX, randomDestinationY);
-        routerArray[randomRouter].inputPacket(packet, -1);
-
-        System.out.println("Random packet, Flits: " + randomNumberOfFlits + ", Source: " + randomSource + ", Destination: " + randomDestinationX + "" + randomDestinationX);
-
-        scrollingTextFrame.addText("A " + randomNumberOfFlits + "-flit packet has been created at router " + randomRouter);
-        scrollingTextFrame.addText("Destination: " + randomDestinationX + "" + randomDestinationX);
     }
 
     public void newCycle()

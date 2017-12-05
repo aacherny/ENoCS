@@ -20,6 +20,7 @@ public class PropertiesWindow
 
     private String selectedTopology;
     private int selectedNodes;
+    private double selectedInjection;
 
     //Setting for the properties window runtime options frame
     public int ccPerStep = 3;
@@ -199,19 +200,22 @@ public class PropertiesWindow
 
                 network.removeTextWindow();
 
+                // Updates the parent class that "network" is now different
+                OJFrame.updateNetwork(network);
+
                 switch(selectedTopology) {  // sets the default value of the dropdown to the value of the object
                 default:
-                    network = new Mesh(selectedNodes, desktopPane);
+                    network = new Mesh(selectedNodes, desktopPane, OJFrame);
                     break;
                 case "mesh":
-                    network = new Mesh(selectedNodes, desktopPane);
+                    network = new Mesh(selectedNodes, desktopPane, OJFrame);
                     break;
                 case "bus":
-                    network = new Bus(selectedNodes, desktopPane);
+                    network = new Bus(selectedNodes, desktopPane, OJFrame);
                     break;
                 }
 
-                // Updates the parent class that "network" is now different
+                // Updates the parent class that "network" is different again
                 OJFrame.updateNetwork(network);
 
                 topologyFrame = new TopologyInternalFrame(network.drawTopology());
@@ -251,10 +255,13 @@ public class PropertiesWindow
         //Below contains the injection rate percent and the traffic pattern
         JPanel injectionRatePanel = new JPanel();
         JLabel injectionRateLabel = new JLabel("Injection Rate");
-        JTextField injectionRateField = new JTextField("10", 3);
+
+        String[] injectionRateField = { "0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100"};
+        final JComboBox<String> boxInjection = new JComboBox<String>(injectionRateField);
+
         JLabel injectionRatePercentLabel = new JLabel("%");
         injectionRatePanel.add(injectionRateLabel);
-        injectionRatePanel.add(injectionRateField);
+        injectionRatePanel.add(boxInjection);
         injectionRatePanel.add(injectionRatePercentLabel);
 
         //Below will contain the packet generation options
@@ -271,9 +278,8 @@ public class PropertiesWindow
         JPanel okayCancelPanel = new JPanel();
         JButton okayButton = new JButton("Okay");
         okayButton.addActionListener(e -> {
-            //TODO: Collect information gathered from the options
-            //setProperties(propertiesFrame);
-
+            selectedInjection = Integer.parseInt(boxInjection.getSelectedItem().toString());
+            OJFrame.setPacketChance(selectedInjection);
 
             propertiesFrame.dispose();
         });

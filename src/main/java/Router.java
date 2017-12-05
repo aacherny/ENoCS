@@ -457,15 +457,13 @@ public class Router {
             {
                 channelWest.addLast(inputPacket[0]);
             }
-
         } else if (inputPacket.length == 4) {
-            if (source == -1)  // If the source of the packet is from the home node
+            if (source == 999)  // If the source of the packet is from the home node
             {
                 channelHome.addLast(inputPacket[0]);  // Add the packet to the list of packets from the home node
                 channelHome.addLast(inputPacket[1]);
                 channelHome.addLast(inputPacket[2]);
                 channelHome.addLast(inputPacket[3]);
-
             }
             if (source == routerLocation)  // If the source of the packet is also from the home node
             {

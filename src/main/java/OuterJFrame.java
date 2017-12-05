@@ -28,6 +28,7 @@ public class OuterJFrame
     private StatisticsInternalFrame statisticFrame;
     private PropertiesWindow propWindow;
     private JToolBar toolBar;
+    private double packetChance = 1;
     private File saveFile = new File("");
 
     protected Network network;
@@ -41,7 +42,7 @@ public class OuterJFrame
         desktop = new JDesktopPane();   // DesktopPane that will hold all of the windows
         desktop.setLayout(new FlowLayout());
 
-        network = new Mesh( 4, desktop);    // Creates a default network to work with
+        network = new Mesh( 4, desktop, this);    // Creates a default network to work with
 
         panel = new JPanel(new BorderLayout());
         openFrameCount = 0;
@@ -603,9 +604,9 @@ public class OuterJFrame
                 for (int i = 0; i < Integer.parseInt(multiCycleField.getText()); i++){
                     cycleNumber++;
                     cycleLabel.setText("Cycle number: " + cycleNumber);
-                }
 
-                network.nextCycle();
+                    network.nextCycle();
+                }
             }
         });
         toolBar.add(multiCycle);
@@ -615,47 +616,11 @@ public class OuterJFrame
         return toolBar;
     }
 
-//    private JToolBar createToolBar()
-//    {
-//        JLabel cycleLabel = new JLabel("Cycle number: ");
-//
-//        JToolBar newToolBar = new JToolBar();
-//        newToolBar.setBounds(0, 0, 9999, 20);
-//        newToolBar.setFloatable( false);
-//
-//        JButton nextClockCycle = new JButton("Next Cycle");
-//        nextClockCycle.addActionListener(new ActionListener()
-//        {
-//            public void actionPerformed(ActionEvent e)
-//            {
-//                cycleNumber++;
-//                cycleLabel.setText("Cycle number: " + cycleNumber);
-//
-//                network.nextCycle();
-//
-//                desktop.validate();
-//                desktop.repaint();
-//            }
-//        });
-//
-//        JButton newCycle = new JButton("Restart");
-//        newCycle.addActionListener(new ActionListener()
-//        {
-//            public void actionPerformed(ActionEvent e)
-//            {
-//                cycleNumber = 0;
-//                cycleLabel.setText("Cycle number: " + cycleNumber);
-//
-//                network.newCycle();
-//            }
-//        });
-//
-//        newToolBar.add(nextClockCycle);
-//        newToolBar.add(newCycle);
-//        newToolBar.add(cycleLabel);
-//
-//        return newToolBar;
-//    }
+
+    public void setPacketChance(double inputPacketChance)
+    {
+        packetChance = inputPacketChance;
+    }
 
 
     /**
@@ -670,6 +635,11 @@ public class OuterJFrame
     public OuterJFrame getOuterJFrame()
     {
         return this;
+    }
+
+    public double getPacketChance()
+    {
+        return packetChance;
     }
 
     public void updateNetwork(Network inputNetwork)

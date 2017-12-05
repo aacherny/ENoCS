@@ -28,7 +28,7 @@ public class TextFrame extends JInternalFrame {
     }
 
     private void initTextWindow(){
-        textArea = new JTextArea("", 10, 50);
+        textArea = new JTextArea("", 10, 65);
         textArea.setLineWrap(true);
         textArea.setEditable(false);
 
