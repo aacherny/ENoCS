@@ -2,9 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6effbb56-f5b0-4b79-a23a-cf22072d6528" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Mesh.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Mesh.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/images/fastforward.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/images/help.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/images/new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/images/open.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/images/play.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/images/print.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/images/refresh.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/images/save.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/FlowControlInternalFrame.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Packet.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/StatisticsInternalFrame.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Main.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame$2.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame$3.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/PropertiesWindow$1.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/PropertiesWindow$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/PropertiesWindow.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/PropertiesWindow.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Router$1.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Router$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/RouterDiagram.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/RouterDiagram.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/TopologyInternalFrame.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/TopologyInternalFrame.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/RouterDiagram.java" afterPath="$PROJECT_DIR$/src/main/java/RouterDiagram.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/OuterJFrame.java" afterPath="$PROJECT_DIR$/src/main/java/OuterJFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/PropertiesWindow.java" afterPath="$PROJECT_DIR$/src/main/java/PropertiesWindow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/TopologyInternalFrame.java" afterPath="$PROJECT_DIR$/src/main/java/TopologyInternalFrame.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,14 +53,9 @@
           <file leaf-file-name="OuterJFrame.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/OuterJFrame.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2397">
-                  <caret line="147" column="30" lean-forward="false" selection-start-line="147" selection-start-column="30" selection-end-line="147" selection-end-column="30" />
-                  <folding>
-                    <element signature="e#8254#8255#0" expanded="true" />
-                    <element signature="e#8281#8282#0" expanded="true" />
-                    <element signature="e#8340#8341#0" expanded="true" />
-                    <element signature="e#8378#8379#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="2346">
+                  <caret line="147" column="17" lean-forward="false" selection-start-line="147" selection-start-column="17" selection-end-line="147" selection-end-column="17" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -46,7 +63,7 @@
           <file leaf-file-name="PropertiesWindow.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/PropertiesWindow.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3060">
+                <state relative-caret-position="3043">
                   <caret line="183" column="37" lean-forward="false" selection-start-line="183" selection-start-column="37" selection-end-line="183" selection-end-column="37" />
                   <folding />
                 </state>
@@ -58,9 +75,7 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="0">
                   <caret line="0" column="18" lean-forward="false" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -68,12 +83,10 @@
           <file leaf-file-name="Mesh.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="612">
-                  <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+                <state relative-caret-position="442">
+                  <caret line="38" column="81" lean-forward="false" selection-start-line="38" selection-start-column="81" selection-end-line="38" selection-end-column="81" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <marker date="1512390457479" expanded="true" signature="8353:10410" ph="{...}" />
-                    <marker date="1512390457479" expanded="true" signature="10183:10410" ph="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -86,7 +99,7 @@
           <file leaf-file-name="Network.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/Network.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="238">
+                <state relative-caret-position="255">
                   <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -108,7 +121,7 @@
           <file leaf-file-name="Router.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="17">
+                <state relative-caret-position="2975">
                   <caret line="179" column="72" lean-forward="false" selection-start-line="179" selection-start-column="72" selection-end-line="179" selection-end-column="72" />
                   <folding>
                     <element signature="method#newCycle#0;class#Router#0" expanded="false" />
@@ -126,8 +139,6 @@
                   <caret line="116" column="23" lean-forward="false" selection-start-line="116" selection-start-column="23" selection-end-line="116" selection-end-column="23" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#1877#1878#0" expanded="true" />
-                    <element signature="e#1922#1923#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -249,9 +260,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -289,6 +297,9 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -461,6 +472,7 @@
       <workItem from="1512347650408" duration="5471000" />
       <workItem from="1512389540409" duration="782000" />
       <workItem from="1512492215995" duration="925000" />
+      <workItem from="1512494170270" duration="132000" />
     </task>
     <task id="LOCAL-00001" summary="Another test commit">
       <created>1506367699156</created>
@@ -690,7 +702,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183143000" />
+    <option name="totallyTimeSpent" value="183275000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -707,13 +719,12 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17151608" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924962" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32924962" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2139535" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2139535" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21656977" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -724,13 +735,14 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39969373" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2125" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924962" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17151608" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27122092" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout>
@@ -882,12 +894,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="e#8254#8255#0" expanded="true" />
-            <element signature="e#8281#8282#0" expanded="true" />
-            <element signature="e#8340#8341#0" expanded="true" />
-            <element signature="e#8378#8379#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1138,7 +1145,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Network.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="255">
           <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1150,9 +1157,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="18" lean-forward="false" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1165,14 +1170,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/OuterJFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2397">
-          <caret line="147" column="30" lean-forward="false" selection-start-line="147" selection-start-column="30" selection-end-line="147" selection-end-column="30" />
-          <folding>
-            <element signature="e#8254#8255#0" expanded="true" />
-            <element signature="e#8281#8282#0" expanded="true" />
-            <element signature="e#8340#8341#0" expanded="true" />
-            <element signature="e#8378#8379#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="2346">
+          <caret line="147" column="17" lean-forward="false" selection-start-line="147" selection-start-column="17" selection-end-line="147" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1204,7 +1204,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="2975">
           <caret line="179" column="72" lean-forward="false" selection-start-line="179" selection-start-column="72" selection-end-line="179" selection-end-column="72" />
           <folding>
             <element signature="method#newCycle#0;class#Router#0" expanded="false" />
@@ -1216,21 +1216,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/PropertiesWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3060">
+        <state relative-caret-position="3043">
           <caret line="183" column="37" lean-forward="false" selection-start-line="183" selection-start-column="37" selection-end-line="183" selection-end-column="37" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1512390457479" expanded="true" signature="8353:10410" ph="{...}" />
-            <marker date="1512390457479" expanded="true" signature="10183:10410" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1240,8 +1228,16 @@
           <caret line="116" column="23" lean-forward="false" selection-start-line="116" selection-start-column="23" selection-end-line="116" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1877#1878#0" expanded="true" />
-            <element signature="e#1922#1923#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="38" column="81" lean-forward="false" selection-start-line="38" selection-start-column="81" selection-end-line="38" selection-end-column="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
