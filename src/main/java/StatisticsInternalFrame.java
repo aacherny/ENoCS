@@ -7,9 +7,27 @@ public class StatisticsInternalFrame extends JInternalFrame{
 
     public static int openFrameCount = 0;
     static final int xOffset = 50, yOffset = 50;
-    private JTextArea textArea;
+    private int avgNetworkLatCC = 0;
+    private int avgNetworkLatHops = 0;
+    private int networkBandwidth = 0;
+    private int networkThroughput = 0;
+    private int networkArea = 9;
+    private int powerConsumption = 0;
+    private int numFlitsDropped = 0;
 
-    StatisticsInternalFrame(JTextArea textAreaIn, int openFrames){
+    //A place for the statisticcs to go
+    private JPanel statPanel = new JPanel();
+
+    private JLabel avgNetworkLatCCLabel;
+    private JLabel avgNetworkLatHopsLabel;
+    private JLabel networkBandwidthLabel;
+    private JLabel networkThroughputLabel;
+    private JLabel networkAreaLabel;
+    private JLabel powerConsumptionLabel;
+    private JLabel numFlitsDroppedLabel;
+
+
+    StatisticsInternalFrame(int openFrames){
         super(
                 "Statistics",
                 true,
@@ -19,12 +37,24 @@ public class StatisticsInternalFrame extends JInternalFrame{
         );
 
         openFrameCount = openFrames;
-        textArea = textAreaIn;
         setSize(500, 350);
         setLocation(xOffset*openFrameCount, yOffset*openFrameCount);
-        textArea.append("this is a test string from the textArea within the statisticinternalframe");
-        add(textArea);
-        pack();
+        statPanel.setLayout(new BoxLayout(statPanel, BoxLayout.Y_AXIS));
+        avgNetworkLatCCLabel = new JLabel("Average Network Latency in ClockCycles: " + avgNetworkLatCC);
+        avgNetworkLatHopsLabel = new JLabel("Average Network Latency in Hops: " + avgNetworkLatHops);
+        networkBandwidthLabel = new JLabel("Network Bandwidth: " + networkBandwidth);
+        networkThroughputLabel = new JLabel("Network Throughput: " + networkThroughput);
+        networkAreaLabel = new JLabel("Area of Network: " + networkArea);
+        powerConsumptionLabel = new JLabel("Power Consumption: " + powerConsumption);
+        numFlitsDroppedLabel = new JLabel("Number of Flits Dropped: " + numFlitsDropped);
+        statPanel.add(avgNetworkLatCCLabel);
+        statPanel.add(avgNetworkLatHopsLabel);
+        statPanel.add(networkBandwidthLabel);
+        statPanel.add(networkAreaLabel);
+        statPanel.add(networkAreaLabel);
+        statPanel.add(powerConsumptionLabel);
+        statPanel.add(numFlitsDroppedLabel);
+        add(statPanel);
         setVisible(true);
     }
 
@@ -36,11 +66,59 @@ public class StatisticsInternalFrame extends JInternalFrame{
         setLocation(winPosX, winPosY);
     }
 
-    public void append(String textOut){
-        textArea.append(textOut);
+    public int getAvgNetworkLatCC() {
+        return avgNetworkLatCC;
     }
 
-    public String getText(){
-        return textArea.getText();
+    public void setAvgNetworkLatCC(int avgNetworkLatCC) {
+        this.avgNetworkLatCC = avgNetworkLatCC;
+    }
+
+    public int getAvgNetworkLatHops() {
+        return avgNetworkLatHops;
+    }
+
+    public void setAvgNetworkLatHops(int avgNetworkLatHops) {
+        this.avgNetworkLatHops = avgNetworkLatHops;
+    }
+
+    public int getNetworkBandwidth() {
+        return networkBandwidth;
+    }
+
+    public void setNetworkBandwidth(int networkBandwidth) {
+        this.networkBandwidth = networkBandwidth;
+    }
+
+    public int getNetworkThroughput() {
+        return networkThroughput;
+    }
+
+    public void setNetworkThroughput(int networkThroughput) {
+        this.networkThroughput = networkThroughput;
+    }
+
+    public int getNetworkArea() {
+        return networkArea;
+    }
+
+    public void setNetworkArea(int networkArea) {
+        this.networkArea = networkArea;
+    }
+
+    public int getPowerConsumption() {
+        return powerConsumption;
+    }
+
+    public void setPowerConsumption(int powerConsumption) {
+        this.powerConsumption = powerConsumption;
+    }
+
+    public int getNumFlitsDropped() {
+        return numFlitsDropped;
+    }
+
+    public void setNumFlitsDropped(int numFlitsDropped) {
+        this.numFlitsDropped = numFlitsDropped;
     }
 }

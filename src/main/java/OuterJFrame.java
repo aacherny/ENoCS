@@ -104,7 +104,7 @@ public class OuterJFrame
             //TODO: Pass something meaningful instead of empty new objects
             topologyFrame = new TopologyInternalFrame(new JPanel());//, openFrameCount++);
             flowControlFrame = new FlowControlInternalFrame(new JTextArea(), openFrameCount++);
-            statisticFrame = new StatisticsInternalFrame(new JTextArea(), openFrameCount++);
+            statisticFrame = new StatisticsInternalFrame(openFrameCount++);
             desktop.add(topologyFrame);
             desktop.add(flowControlFrame);
             desktop.add(statisticFrame);
@@ -463,7 +463,7 @@ public class OuterJFrame
             //TODO: find a way to decrement openFrameCount when an Internal frame is closed or find a workaround
             topologyFrame = new TopologyInternalFrame(new JPanel());//, openFrameCount++);
             flowControlFrame = new FlowControlInternalFrame(new JTextArea(), openFrameCount++);
-            statisticFrame = new StatisticsInternalFrame(new JTextArea(), openFrameCount++);
+            statisticFrame = new StatisticsInternalFrame(openFrameCount++);
             desktop.add(topologyFrame);
             desktop.add(flowControlFrame);
             desktop.add(statisticFrame);
@@ -534,7 +534,8 @@ public class OuterJFrame
                 graphics2D.setFont(new Font("Serif", Font.PLAIN, 12));
                 graphics2D.setPaint(Color.BLACK);
                 //This is where you pass it what is going to be printed
-                graphics2D.drawString(flowControlFrame.getText() + statisticFrame.getText(), 144, 144);
+                //TODO: fix the statistic frame saving
+//                graphics2D.drawString(flowControlFrame.getText() + statisticFrame.getText(), 144, 144);
 
                 return Printable.PAGE_EXISTS;
             });
