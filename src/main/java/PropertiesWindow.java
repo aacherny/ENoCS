@@ -212,6 +212,7 @@ public class PropertiesWindow
                 // Updates the parent class that "network" is now different
                 OJFrame.updateNetwork(network);
 
+                //TODO: Come and edit openFrame as needed
                 topologyFrame = new TopologyInternalFrame(network.drawTopology());
 
                 topologyFrame.setVisible(true);
@@ -299,7 +300,7 @@ public class PropertiesWindow
         JButton okayButton = new JButton("Okay");
         okayButton.addActionListener(e -> {
             //TODO: Collect information gathered from the options
-            setProperties(propertiesFrame);
+            //setProperties(propertiesFrame);
 
 
             propertiesFrame.dispose();
@@ -325,8 +326,9 @@ public class PropertiesWindow
         return borderLayout;
     }
 
-    private void setProperties(JFrame propertiesFrame) {
+    private void setProperties() {
 //        TODO: Figure out how to pass settings from the properties window the main window
+
     }
 
     private JPanel createRouterMAPanel(){
