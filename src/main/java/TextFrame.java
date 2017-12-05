@@ -39,6 +39,10 @@ public class TextFrame extends JInternalFrame {
     }
 
     public void addText(String inputText){
-        textArea.append(inputText + "\n");
+        try {
+            textArea.append(inputText + "\n");
+        }catch(Exception e){
+            System.out.println(e);
+        }
     }
 }

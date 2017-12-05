@@ -10,7 +10,7 @@ public class Bus implements Network
     JDesktopPane desktopPane;
     protected Router[] routerArray;
 
-    public Bus(int inputNodes, JDesktopPane inputDesktopPane) {
+    public Bus(int inputNodes, JDesktopPane inputDesktopPane, OuterJFrame OJFrame) {
         nodes = inputNodes;
 
         routerArray = new Router[nodes];

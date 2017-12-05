@@ -89,8 +89,6 @@ public class Router {
         routerDiagram = new RouterDiagram(this);
         JPanel jpan = routerDiagram.addDiagram();
         routerDiagram.add(jpan);
-
-        System.out.println("Router " + routerNumber + " created");
     }
 
     /**

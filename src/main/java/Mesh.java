@@ -9,14 +9,16 @@ public class Mesh implements Network
 {
     private int nodes;
 
-    JDesktopPane desktopPane;
+    private JDesktopPane desktopPane;
+    protected OuterJFrame OJFrame;
 
     protected Router[] routerArray;
 
-    public Mesh(int inputNodes, JDesktopPane inputDesktopPane)
+    public Mesh(int inputNodes, JDesktopPane inputDesktopPane, OuterJFrame inputOJFrame)
     {
         nodes = inputNodes;
         desktopPane = inputDesktopPane;
+        OJFrame = inputOJFrame;
         routerArray = createRouterArray(nodes);
     }
 

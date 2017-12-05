@@ -50,7 +50,6 @@ public class PropertiesWindow
     public boolean showPower = false;
 
     TopologyInternalFrame topologyFrame;
-    TextFrame scrollingTextFrame;
     OuterJFrame OJFrame;
 
     public PropertiesWindow(JDesktopPane inputJDesktopPane, Network inputNetwork, OuterJFrame inputOuterJFrame)
@@ -58,7 +57,6 @@ public class PropertiesWindow
         desktopPane = inputJDesktopPane;
         network = inputNetwork;
         OJFrame = inputOuterJFrame;
-        scrollingTextFrame = new TextFrame();
 
         // General things like window title and size
         propertiesFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -201,13 +199,13 @@ public class PropertiesWindow
 
                 switch(selectedTopology) {  // sets the default value of the dropdown to the value of the object
                 default:
-                    network = new Mesh(selectedNodes, desktopPane);
+                    network = new Mesh(selectedNodes, desktopPane, OJFrame);
                     break;
                 case "mesh":
-                    network = new Mesh(selectedNodes, desktopPane);
+                    network = new Mesh(selectedNodes, desktopPane, OJFrame);
                     break;
                 case "bus":
-                    network = new Bus(selectedNodes, desktopPane);
+                    network = new Bus(selectedNodes, desktopPane, OJFrame);
                     break;
                 }
 
@@ -218,12 +216,7 @@ public class PropertiesWindow
 
                 desktopPane.add(topologyFrame); // Adds the topology jframe to the desktop
 
-                desktopPane.add(scrollingTextFrame);    // Adds the scrolling text window to the desktop
-
-                scrollingTextFrame.addText("Test");
-                scrollingTextFrame.addText("Test1");
-                scrollingTextFrame.addText("Test2");
-                scrollingTextFrame.addText("Test3");
+                desktopPane.add(OJFrame.getTextFrame());    // Adds the scrolling text window to the desktop
 
                 propertiesFrame.dispose();
             }
