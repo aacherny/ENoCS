@@ -111,21 +111,26 @@ public class RouterDiagram extends JInternalFrame
             BufferedImage inputNode = ImageIO.read(this.getClass().getResource("/main/resources/inputNode.png"));
             BufferedImage ouputNode = ImageIO.read(this.getClass().getResource("/main/resources/outputNode.png"));
 
-            JLabel channelLabel = new JLabel();
-            channelLabel.setText(label);
+            JLabel channelLabelLeft = new JLabel();
+            JLabel channelLabelRight = new JLabel();
+            channelLabelLeft.setText(label);
+            channelLabelRight.setText(label);
             JLabel inputLabel = new JLabel(new ImageIcon(inputNode));
             JLabel outputLabel = new JLabel(new ImageIcon(ouputNode));
 
 
-            channelLabel.setFont(new Font("Arial",Font.PLAIN,12));
+            channelLabelLeft.setFont(new Font("Arial",Font.PLAIN,12));
+            channelLabelRight.setFont(new Font("Arial",Font.PLAIN,12));
             inputLabel.setSize(new Dimension(inputNode.getWidth(), inputNode.getHeight()));
             outputLabel.setSize(new Dimension(ouputNode.getWidth(), ouputNode.getHeight()));
 
-            channelLabel.setBounds(20, 17 + locationY, 200, 50);
+            channelLabelLeft.setBounds(20, 17 + locationY, 200, 50);
+            channelLabelRight.setBounds(559, 17 + locationY, 200, 50);
             inputLabel.setLocation(20, 50 + locationY);
             outputLabel.setLocation(515 , 50 + locationY);
 
-            panelInput.add(channelLabel);
+            panelInput.add(channelLabelLeft);
+            panelInput.add(channelLabelRight);
             panelInput.add(inputLabel);
             panelInput.add(outputLabel);
         } catch (IOException ex) {
