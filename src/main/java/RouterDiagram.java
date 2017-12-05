@@ -118,7 +118,6 @@ public class RouterDiagram extends JInternalFrame
             JLabel inputLabel = new JLabel(new ImageIcon(inputNode));
             JLabel outputLabel = new JLabel(new ImageIcon(ouputNode));
 
-
             channelLabelLeft.setFont(new Font("Arial",Font.PLAIN,12));
             channelLabelRight.setFont(new Font("Arial",Font.PLAIN,12));
             inputLabel.setSize(new Dimension(inputNode.getWidth(), inputNode.getHeight()));

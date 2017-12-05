@@ -50,6 +50,7 @@ public class PropertiesWindow
     public boolean showPower = false;
 
     TopologyInternalFrame topologyFrame;
+    TextFrame scrollingTextFrame;
     OuterJFrame OJFrame;
 
     public PropertiesWindow(JDesktopPane inputJDesktopPane, Network inputNetwork, OuterJFrame inputOuterJFrame)
@@ -57,6 +58,7 @@ public class PropertiesWindow
         desktopPane = inputJDesktopPane;
         network = inputNetwork;
         OJFrame = inputOuterJFrame;
+        scrollingTextFrame = new TextFrame();
 
         // General things like window title and size
         propertiesFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -212,12 +214,16 @@ public class PropertiesWindow
                 // Updates the parent class that "network" is now different
                 OJFrame.updateNetwork(network);
 
-                //TODO: Come and edit openFrame as needed
                 topologyFrame = new TopologyInternalFrame(network.drawTopology());
 
-                topologyFrame.setVisible(true);
+                desktopPane.add(topologyFrame); // Adds the topology jframe to the desktop
 
-                desktopPane.add(topologyFrame);
+                desktopPane.add(scrollingTextFrame);    // Adds the scrolling text window to the desktop
+
+                scrollingTextFrame.addText("Test");
+                scrollingTextFrame.addText("Test1");
+                scrollingTextFrame.addText("Test2");
+                scrollingTextFrame.addText("Test3");
 
                 propertiesFrame.dispose();
             }
@@ -239,16 +245,6 @@ public class PropertiesWindow
         CCPerStepPanel.add(CCPerStepLabel);
         CCPerStepPanel.add(CCPerStepField);
 
-        //Below contains the hotspot traffic rate options
-        JPanel hotspotTrafficRatePanel = new JPanel();
-        JLabel hotspotTrafficRateLabel = new JLabel("Hotspot TrafficRate");
-        JTextField hotspotTrafficRateField = new JTextField("100", 3);
-        JLabel hotspotPercentLabel = new JLabel("%");
-        hotspotTrafficRatePanel.add(hotspotTrafficRateLabel);
-        hotspotTrafficRatePanel.add(hotspotTrafficRateField);
-        hotspotTrafficRatePanel.add(hotspotPercentLabel);
-
-
 
         //Below contains the injection type
         JPanel injectionTypePanel = new JPanel();
@@ -259,13 +255,6 @@ public class PropertiesWindow
         injectionTypePanel.add(injectionTypeLabel);
         injectionTypePanel.add(injectionTypeBox);
 
-        //Below contains the option to change the number of hotspot nodes
-        JPanel hotspotNodePanel = new JPanel();
-        JLabel hotspotNodeLabel = new JLabel("Hotspot Node");
-        JTextField hotspotNodeField = new JTextField("0",3);
-        hotspotNodePanel.add(hotspotNodeLabel);
-        hotspotNodePanel.add(hotspotNodeField);
-
         //Below contains the injection rate percent and the traffic pattern
         JPanel injectionRatePanel = new JPanel();
         JLabel injectionRateLabel = new JLabel("Injection Rate");
@@ -274,16 +263,6 @@ public class PropertiesWindow
         injectionRatePanel.add(injectionRateLabel);
         injectionRatePanel.add(injectionRateField);
         injectionRatePanel.add(injectionRatePercentLabel);
-
-        //Below is the traffic pattern option
-        JPanel trafficPatternPanel = new JPanel();
-        JLabel trafficPatternLabel = new JLabel("Traffic Pattern");
-        JComboBox<String> trafficPatternBox = new JComboBox<>();
-        trafficPatternBox.addItem("Uniform Random");
-        trafficPatternBox.addItem("Tornado");
-        trafficPatternBox.addItem("Hotspot");
-        trafficPatternPanel.add(trafficPatternLabel);
-        trafficPatternPanel.add(trafficPatternBox);
 
         //Below will contain the packet generation options
         JPanel packetGenerationPanel = new JPanel();
@@ -305,6 +284,7 @@ public class PropertiesWindow
 
             propertiesFrame.dispose();
         });
+
         JButton cancelButton = new JButton("Cancel");
         cancelButton.addActionListener(e -> {
             propertiesFrame.dispose();
@@ -316,9 +296,6 @@ public class PropertiesWindow
         runtimeOptions.add(CCPerStepPanel);
         runtimeOptions.add(injectionTypePanel);
         runtimeOptions.add(injectionRatePanel);
-        runtimeOptions.add(hotspotTrafficRatePanel);
-        runtimeOptions.add(hotspotNodePanel);
-        runtimeOptions.add(trafficPatternPanel);
         runtimeOptions.add(packetGenerationPanel);
         borderLayout.add(runtimeOptions, BorderLayout.CENTER);
         borderLayout.add(okayCancelPanel, BorderLayout.SOUTH);
@@ -338,46 +315,6 @@ public class PropertiesWindow
         //The below panel is where all of he options for the routerMA panel will go
         JPanel routerMAPanel = new JPanel();
 
-        //Buffer design option
-        JPanel bufferDesignPanel = new JPanel();
-        JLabel bufferDesignLabel = new JLabel("Buffer Design");
-        JComboBox<String> bufferDesignBox = new JComboBox<>();
-        bufferDesignBox.addItem("1 buffer w/ 0 VCs per Node");
-        bufferDesignBox.addItem("1 buffer w/ 2 VCs per Node");
-        bufferDesignBox.addItem("1 buffer w/ 3 VCs per Node");
-        bufferDesignBox.addItem("#buffers = #inputs w/ 0 VCs per Node");
-        bufferDesignBox.addItem("#buffers = #inputs w/ 2 VCs per Node");
-        bufferDesignBox.addItem("#buffers = #inputs w/ 3 VCs per Node");
-        bufferDesignBox.addItem("Bufferless");
-        bufferDesignPanel.add(bufferDesignLabel);
-        bufferDesignPanel.add(bufferDesignBox);
-
-        //Buffer Size option
-        JPanel bufferSizePanel = new JPanel();
-        JLabel bufferSizeLabel = new JLabel("Buffer Size");
-        JTextField bufferSizeField = new JTextField("4", 3);
-        bufferSizePanel.add(bufferSizeLabel);
-        bufferSizePanel.add(bufferSizeField);
-
-        //Flow Control Option
-        JPanel flowControlPanel = new JPanel();
-        JLabel flowControlLabel = new JLabel("Flow Control");
-        JComboBox<String> flowControlBox = new JComboBox<>();
-        flowControlBox.addItem("RoundRobin");
-        flowControlBox.addItem("Priority");
-        flowControlBox.addItem("Wormhole");
-        flowControlPanel.add(flowControlLabel);
-        flowControlPanel.add(flowControlBox);
-
-        //Pipeline Type Options
-        JPanel pipelineTypePanel = new JPanel();
-        JLabel pipelineTypeLabel = new JLabel("Pipeline Type");
-        JComboBox<String> pipelineTypeBox = new JComboBox<>();
-        pipelineTypeBox.addItem("Fixed Pipeline");
-        pipelineTypeBox.addItem("Flexible Pipeline");
-        pipelineTypePanel.add(pipelineTypeLabel);
-        pipelineTypePanel.add(pipelineTypeBox);
-
         //Pipeline Stages Options
         JPanel pipelineStagesPanel = new JPanel();
         JLabel pipelineStagesLabel = new JLabel("Number of Pipeline Stages");
@@ -389,10 +326,6 @@ public class PropertiesWindow
         pipelineStagesSlider.setPaintLabels(true);
         pipelineStagesPanel.add(pipelineStagesLabel);
         pipelineStagesPanel.add(pipelineStagesSlider);
-
-        //Credit Based Flow Control Options
-        JCheckBox creditBasedCheck = new JCheckBox("Credit Based Flow Control");
-        creditBasedCheck.setSelected(true);
 
         //Okay and Cancel buttons
         JPanel okayCancelPanel = new JPanel();
@@ -408,12 +341,7 @@ public class PropertiesWindow
         okayCancelPanel.add(okayButton);
         okayCancelPanel.add(cancelButton);
 
-        routerMAPanel.add(bufferDesignPanel);
-        routerMAPanel.add(bufferSizePanel);
-        routerMAPanel.add(flowControlPanel);
-        routerMAPanel.add(pipelineTypePanel);
         routerMAPanel.add(pipelineStagesPanel);
-        routerMAPanel.add(creditBasedCheck);
         borderLayout.add(routerMAPanel, BorderLayout.CENTER);
         borderLayout.add(okayCancelPanel, BorderLayout.SOUTH);
 

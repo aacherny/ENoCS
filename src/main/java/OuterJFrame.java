@@ -39,22 +39,11 @@ public class OuterJFrame
         network = new Mesh( 4, desktop);    // Creates a default network to work with
         outerFrame = new JFrame();
         desktop = new JDesktopPane();   // DesktopPane that will hold all of the windows
-        desktop.setLayout(new GridBagLayout());
+        desktop.setLayout(new FlowLayout());
 
         panel = new JPanel(new BorderLayout());
-        desktop = new JDesktopPane();
         openFrameCount = 0;
         cycleNumber = 0;
-
-        /*
-        The next line adds a BorderLayout to outerFrame's content pane
-        This allows the panel for the toolbar and the desktoppane
-        to play nice together otherwise they will overlap eachother
-        */
-        outerFrame.getContentPane().setLayout(new BorderLayout());
-        outerFrame.getContentPane().add(panel, BorderLayout.PAGE_START);
-        outerFrame.getContentPane().add(desktop, BorderLayout.CENTER);
-
 
         // General things like window title and size
         outerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
