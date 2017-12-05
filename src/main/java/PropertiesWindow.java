@@ -197,15 +197,17 @@ public class PropertiesWindow
                     topologyFrame.dispose();
                 }
 
+                network.removeTextWindow();
+
                 switch(selectedTopology) {  // sets the default value of the dropdown to the value of the object
                 default:
-                    network = new Mesh(selectedNodes, desktopPane, OJFrame);
+                    network = new Mesh(selectedNodes, desktopPane);
                     break;
                 case "mesh":
-                    network = new Mesh(selectedNodes, desktopPane, OJFrame);
+                    network = new Mesh(selectedNodes, desktopPane);
                     break;
                 case "bus":
-                    network = new Bus(selectedNodes, desktopPane, OJFrame);
+                    network = new Bus(selectedNodes, desktopPane);
                     break;
                 }
 
@@ -215,8 +217,6 @@ public class PropertiesWindow
                 topologyFrame = new TopologyInternalFrame(network.drawTopology());
 
                 desktopPane.add(topologyFrame); // Adds the topology jframe to the desktop
-
-                desktopPane.add(OJFrame.getTextFrame());    // Adds the scrolling text window to the desktop
 
                 propertiesFrame.dispose();
             }

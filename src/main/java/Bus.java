@@ -10,7 +10,7 @@ public class Bus implements Network
     JDesktopPane desktopPane;
     protected Router[] routerArray;
 
-    public Bus(int inputNodes, JDesktopPane inputDesktopPane, OuterJFrame OJFrame) {
+    public Bus(int inputNodes, JDesktopPane inputDesktopPane) {
         nodes = inputNodes;
 
         routerArray = new Router[nodes];
@@ -27,6 +27,7 @@ public class Bus implements Network
     {
 
     }
+
 
     public JPanel drawTopology() {
 
@@ -96,4 +97,6 @@ public class Bus implements Network
     {
         return "bus";
     }
+
+    public void removeTextWindow(){}
 }

@@ -18,7 +18,7 @@ public class TextFrame extends JInternalFrame {
 
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
-        setSize(500, 350);
+        setSize(500, 500);
         setLayout(new FlowLayout());
 
         initTextWindow();
@@ -28,9 +28,9 @@ public class TextFrame extends JInternalFrame {
     }
 
     private void initTextWindow(){
-        textArea = new JTextArea("", 5, 50);
+        textArea = new JTextArea("", 10, 50);
         textArea.setLineWrap(true);
-        textArea.setEditable(true);
+        textArea.setEditable(false);
 
         scrollPane =  new JScrollPane(textArea);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);

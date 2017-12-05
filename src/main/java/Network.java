@@ -16,4 +16,6 @@ interface Network
     void nextCycle();
 
     void newCycle();
+
+    void removeTextWindow();
 }

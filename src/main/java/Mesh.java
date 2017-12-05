@@ -10,23 +10,27 @@ public class Mesh implements Network
     private int nodes;
 
     private JDesktopPane desktopPane;
-    protected OuterJFrame OJFrame;
+
+    private TextFrame scrollingTextFrame;
+
 
     protected Router[] routerArray;
 
-    public Mesh(int inputNodes, JDesktopPane inputDesktopPane, OuterJFrame inputOJFrame)
+    public Mesh(int inputNodes, JDesktopPane inputDesktopPane)
     {
         nodes = inputNodes;
         desktopPane = inputDesktopPane;
-        OJFrame = inputOJFrame;
+        scrollingTextFrame = new TextFrame();
+
         routerArray = createRouterArray(nodes);
     }
 
     public void nextCycle()
     {
-        //generatePacket();
-        Flit[] packet = createPacket(1, 0, 0, 1, 1);
-        routerArray[0].inputPacket(packet, 00);
+        generatePacket();
+        //Flit[] packet = createPacket(1, 0, 0, 1, 1);
+        //routerArray[0].inputPacket(packet, 00);
+        //scrollingTextFrame.addText("A " + 1 + " flit packet has been created at router " + 0);
 
         for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
             routerArray[i].nextCycle();
@@ -80,9 +84,12 @@ public class Mesh implements Network
         int randomDestinationY = ThreadLocalRandom.current().nextInt(0, (int) Math.sqrt(nodes));
 
         Flit[] packet = createPacket(randomNumberOfFlits, 0, 0, randomDestinationX, randomDestinationY);
-        routerArray[randomRouter].inputPacket(packet, randomSource);
+        routerArray[randomRouter].inputPacket(packet, -1);
 
         System.out.println("Random packet, Flits: " + randomNumberOfFlits + ", Source: " + randomSource + ", Destination: " + randomDestinationX + "" + randomDestinationX);
+
+        scrollingTextFrame.addText("A " + randomNumberOfFlits + "-flit packet has been created at router " + randomRouter);
+        scrollingTextFrame.addText("Destination: " + randomDestinationX + "" + randomDestinationX);
     }
 
     public void newCycle()
@@ -126,6 +133,7 @@ public class Mesh implements Network
      */
     public Router[] createRouterArray(int inputNodes)
     {
+
         Router[] routers = new Router[inputNodes];
 
         switch(nodes) { // All routers are manually assigned their number, and all of their neighboring routers
@@ -134,6 +142,10 @@ public class Mesh implements Network
                 routers[1] = new Router(1, 01,00, -1, 11, -1, desktopPane, this);
                 routers[2] = new Router(2, 10,-1, 11, -1, 00, desktopPane, this);
                 routers[3] = new Router(3, 11,10, -1, -1, 01, desktopPane, this);
+                scrollingTextFrame.addText("Router 0 Created");
+                scrollingTextFrame.addText("Router 1 Created");
+                scrollingTextFrame.addText("Router 2 Created");
+                scrollingTextFrame.addText("Router 3 Created");
                 break;
             case 9:
                 routers[0] = new Router(0, 00,-1, 01, 10, -1, desktopPane, this);
@@ -145,6 +157,15 @@ public class Mesh implements Network
                 routers[6] = new Router(6, 20,-1, 21, -1, 10, desktopPane, this);
                 routers[7] = new Router(7, 21,20, 22, -1, 11, desktopPane, this);
                 routers[8] = new Router(8, 22,21, -1, -1, 12, desktopPane, this);
+                scrollingTextFrame.addText("Router 0 Created");
+                scrollingTextFrame.addText("Router 1 Created");
+                scrollingTextFrame.addText("Router 2 Created");
+                scrollingTextFrame.addText("Router 3 Created");
+                scrollingTextFrame.addText("Router 4 Created");
+                scrollingTextFrame.addText("Router 5 Created");
+                scrollingTextFrame.addText("Router 6 Created");
+                scrollingTextFrame.addText("Router 7 Created");
+                scrollingTextFrame.addText("Router 8 Created");
                 break;
             case 16:
                 routers[0] = new Router(0, 00,-1, 01, 10, -1, desktopPane, this);
@@ -163,6 +184,22 @@ public class Mesh implements Network
                 routers[13] = new Router(13, 31,30, 32, -1, 21, desktopPane, this);
                 routers[14] = new Router(14, 32,31, 33, -1, 22, desktopPane, this);
                 routers[15] = new Router(15, 33,32, -1, -1, 23, desktopPane, this);
+                scrollingTextFrame.addText("Router 0 Created");
+                scrollingTextFrame.addText("Router 1 Created");
+                scrollingTextFrame.addText("Router 2 Created");
+                scrollingTextFrame.addText("Router 3 Created");
+                scrollingTextFrame.addText("Router 4 Created");
+                scrollingTextFrame.addText("Router 5 Created");
+                scrollingTextFrame.addText("Router 6 Created");
+                scrollingTextFrame.addText("Router 7 Created");
+                scrollingTextFrame.addText("Router 8 Created");
+                scrollingTextFrame.addText("Router 9 Created");
+                scrollingTextFrame.addText("Router 10 Created");
+                scrollingTextFrame.addText("Router 11 Created");
+                scrollingTextFrame.addText("Router 12 Created");
+                scrollingTextFrame.addText("Router 13 Created");
+                scrollingTextFrame.addText("Router 14 Created");
+                scrollingTextFrame.addText("Router 15 Created");
                 break;
         }
 
@@ -177,6 +214,8 @@ public class Mesh implements Network
      */
     public JPanel drawTopology()
     {
+        desktopPane.add(scrollingTextFrame);
+
         JPanel panelYContainer = new JPanel();
 
         int nodesSqrt = (int) Math.sqrt(nodes);
@@ -244,5 +283,13 @@ public class Mesh implements Network
     public String getTopology()
     {
         return "mesh";
+    }
+
+    public void removeTextWindow(){
+        try{
+            desktopPane.remove(scrollingTextFrame);
+        }catch(Exception e) {
+            System.out.println(e);
+        }
     }
 }

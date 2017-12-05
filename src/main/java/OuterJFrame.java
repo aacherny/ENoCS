@@ -30,8 +30,6 @@ public class OuterJFrame
     private JToolBar toolBar;
     private File saveFile = new File("");
 
-    TextFrame scrollingTextFrame;
-
     protected Network network;
 
     protected int cycleNumber;
@@ -39,12 +37,11 @@ public class OuterJFrame
 
     public OuterJFrame()
     {
-        network = new Mesh( 4, desktop, getOuterJFrame());    // Creates a default network to work with
         outerFrame = new JFrame();
         desktop = new JDesktopPane();   // DesktopPane that will hold all of the windows
         desktop.setLayout(new FlowLayout());
 
-        scrollingTextFrame = new TextFrame();
+        network = new Mesh( 4, desktop);    // Creates a default network to work with
 
         panel = new JPanel(new BorderLayout());
         openFrameCount = 0;
@@ -616,10 +613,6 @@ public class OuterJFrame
         toolBar.add(cycleLabel);
 
         return toolBar;
-    }
-
-    public TextFrame getTextFrame(){
-        return scrollingTextFrame;
     }
 
 //    private JToolBar createToolBar()
