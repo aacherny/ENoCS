@@ -13,6 +13,8 @@ public class PropertiesWindow
 
     public Network network;
 
+    private FlowControlInternalFrame fc;
+
     private JPanel runtimeOptions;
 //    private JPanel networkSettings;
     private JPanel routerMA;
@@ -49,14 +51,42 @@ public class PropertiesWindow
     public boolean showArea = false;
     public boolean showPower = false;
 
+    //Runtime Options
+    private JTextField CCPerStepField;
+    private JTextField hotspotTrafficRateField;
+    private JComboBox<String> injectionTypeBox;
+    private JTextField hotspotNodeField;
+    private JTextField injectionRateField;
+    private JComboBox<String> trafficPatternBox;
+    private JComboBox<String> packetGenerationBox;
+
+    //RouterMA Options
+    private JComboBox<String> bufferDesignBox;
+    private JTextField bufferSizeField;
+    private JComboBox<String> flowControlBox;
+    private JComboBox<String> pipelineTypeBox;
+    private JSlider pipelineStagesSlider;
+    private JCheckBox creditBasedCheck;
+
+    //Statistic Options
+    private JCheckBox clockCyclesCheck;
+    private JCheckBox hopsCheck;
+    private JCheckBox bandwidthCheck;
+    private JCheckBox throughputCheck;
+    private JCheckBox droppedFlitsCheck;
+    private JCheckBox areaCheck;
+    private JCheckBox powerCheck;
+
     TopologyInternalFrame topologyFrame;
     OuterJFrame OJFrame;
 
-    public PropertiesWindow(JDesktopPane inputJDesktopPane, Network inputNetwork, OuterJFrame inputOuterJFrame)
+    public PropertiesWindow(JDesktopPane inputJDesktopPane, Network inputNetwork, OuterJFrame inputOuterJFrame, FlowControlInternalFrame flowControl)
     {
         desktopPane = inputJDesktopPane;
         network = inputNetwork;
         OJFrame = inputOuterJFrame;
+
+        fc = flowControl;
 
         // General things like window title and size
         propertiesFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -199,10 +229,10 @@ public class PropertiesWindow
 
                 switch(selectedTopology) {  // sets the default value of the dropdown to the value of the object
                 default:
-                    network = new Mesh(selectedNodes, desktopPane);
+                    network = new Mesh(selectedNodes, desktopPane, fc);
                     break;
                 case "mesh":
-                    network = new Mesh(selectedNodes, desktopPane);
+                    network = new Mesh(selectedNodes, desktopPane, fc);
                     break;
                 case "bus":
                     network = new Bus(selectedNodes, desktopPane);
@@ -235,25 +265,23 @@ public class PropertiesWindow
         //Below contains the CC per step
         JPanel CCPerStepPanel = new JPanel();
         JLabel CCPerStepLabel = new JLabel("Clock Cycles Per Step");
-        JTextField CCPerStepField = new JTextField("3", 3);
+        CCPerStepField = new JTextField("3", 3);
         CCPerStepPanel.add(CCPerStepLabel);
         CCPerStepPanel.add(CCPerStepField);
 
         //Below contains the hotspot traffic rate options
         JPanel hotspotTrafficRatePanel = new JPanel();
         JLabel hotspotTrafficRateLabel = new JLabel("Hotspot TrafficRate");
-        JTextField hotspotTrafficRateField = new JTextField("100", 3);
+        hotspotTrafficRateField = new JTextField("100", 3);
         JLabel hotspotPercentLabel = new JLabel("%");
         hotspotTrafficRatePanel.add(hotspotTrafficRateLabel);
         hotspotTrafficRatePanel.add(hotspotTrafficRateField);
         hotspotTrafficRatePanel.add(hotspotPercentLabel);
 
-
-
         //Below contains the injection type
         JPanel injectionTypePanel = new JPanel();
         JLabel injectionTypeLabel = new JLabel("Injection Type");
-        JComboBox<String> injectionTypeBox = new JComboBox<>();
+        injectionTypeBox = new JComboBox<>();
         injectionTypeBox.addItem("By Flit");
         injectionTypeBox.addItem("By Packet");
         injectionTypePanel.add(injectionTypeLabel);
@@ -262,14 +290,14 @@ public class PropertiesWindow
         //Below contains the option to change the number of hotspot nodes
         JPanel hotspotNodePanel = new JPanel();
         JLabel hotspotNodeLabel = new JLabel("Hotspot Node");
-        JTextField hotspotNodeField = new JTextField("0",3);
+        hotspotNodeField = new JTextField("0",3);
         hotspotNodePanel.add(hotspotNodeLabel);
         hotspotNodePanel.add(hotspotNodeField);
 
         //Below contains the injection rate percent and the traffic pattern
         JPanel injectionRatePanel = new JPanel();
         JLabel injectionRateLabel = new JLabel("Injection Rate");
-        JTextField injectionRateField = new JTextField("10", 3);
+        injectionRateField = new JTextField("10", 3);
         JLabel injectionRatePercentLabel = new JLabel("%");
         injectionRatePanel.add(injectionRateLabel);
         injectionRatePanel.add(injectionRateField);
@@ -278,7 +306,7 @@ public class PropertiesWindow
         //Below is the traffic pattern option
         JPanel trafficPatternPanel = new JPanel();
         JLabel trafficPatternLabel = new JLabel("Traffic Pattern");
-        JComboBox<String> trafficPatternBox = new JComboBox<>();
+        trafficPatternBox = new JComboBox<>();
         trafficPatternBox.addItem("Uniform Random");
         trafficPatternBox.addItem("Tornado");
         trafficPatternBox.addItem("Hotspot");
@@ -288,7 +316,7 @@ public class PropertiesWindow
         //Below will contain the packet generation options
         JPanel packetGenerationPanel = new JPanel();
         JLabel packetGenerationLabel = new JLabel("Packet Generation");
-        JComboBox<String> packetGenerationBox = new JComboBox<>();
+        packetGenerationBox = new JComboBox<>();
         packetGenerationBox.addItem("Drop packets generated at nodes with full input buffer");
         packetGenerationBox.addItem("Do not generate packets at nodes with full input buffer");
         packetGenerationBox.addItem("Unlimited buffer space at nodes for generated packets");
@@ -299,10 +327,7 @@ public class PropertiesWindow
         JPanel okayCancelPanel = new JPanel();
         JButton okayButton = new JButton("Okay");
         okayButton.addActionListener(e -> {
-            //TODO: Collect information gathered from the options
-            //setProperties(propertiesFrame);
-
-
+            setProperties();
             propertiesFrame.dispose();
         });
         JButton cancelButton = new JButton("Cancel");
@@ -326,11 +351,6 @@ public class PropertiesWindow
         return borderLayout;
     }
 
-    private void setProperties() {
-//        TODO: Figure out how to pass settings from the properties window the main window
-
-    }
-
     private JPanel createRouterMAPanel(){
         //The below panel is for the proper positioning of the okay and cancel buttons
         JPanel borderLayout = new JPanel(new BorderLayout());
@@ -341,7 +361,7 @@ public class PropertiesWindow
         //Buffer design option
         JPanel bufferDesignPanel = new JPanel();
         JLabel bufferDesignLabel = new JLabel("Buffer Design");
-        JComboBox<String> bufferDesignBox = new JComboBox<>();
+        bufferDesignBox = new JComboBox<>();
         bufferDesignBox.addItem("1 buffer w/ 0 VCs per Node");
         bufferDesignBox.addItem("1 buffer w/ 2 VCs per Node");
         bufferDesignBox.addItem("1 buffer w/ 3 VCs per Node");
@@ -355,14 +375,14 @@ public class PropertiesWindow
         //Buffer Size option
         JPanel bufferSizePanel = new JPanel();
         JLabel bufferSizeLabel = new JLabel("Buffer Size");
-        JTextField bufferSizeField = new JTextField("4", 3);
+        bufferSizeField = new JTextField("4", 3);
         bufferSizePanel.add(bufferSizeLabel);
         bufferSizePanel.add(bufferSizeField);
 
         //Flow Control Option
         JPanel flowControlPanel = new JPanel();
         JLabel flowControlLabel = new JLabel("Flow Control");
-        JComboBox<String> flowControlBox = new JComboBox<>();
+        flowControlBox = new JComboBox<>();
         flowControlBox.addItem("RoundRobin");
         flowControlBox.addItem("Priority");
         flowControlBox.addItem("Wormhole");
@@ -372,7 +392,7 @@ public class PropertiesWindow
         //Pipeline Type Options
         JPanel pipelineTypePanel = new JPanel();
         JLabel pipelineTypeLabel = new JLabel("Pipeline Type");
-        JComboBox<String> pipelineTypeBox = new JComboBox<>();
+        pipelineTypeBox = new JComboBox<>();
         pipelineTypeBox.addItem("Fixed Pipeline");
         pipelineTypeBox.addItem("Flexible Pipeline");
         pipelineTypePanel.add(pipelineTypeLabel);
@@ -381,7 +401,7 @@ public class PropertiesWindow
         //Pipeline Stages Options
         JPanel pipelineStagesPanel = new JPanel();
         JLabel pipelineStagesLabel = new JLabel("Number of Pipeline Stages");
-        JSlider pipelineStagesSlider = new JSlider(0, 5, 4);
+        pipelineStagesSlider = new JSlider(0, 5, 4);
         pipelineStagesSlider.setMajorTickSpacing(1);
         pipelineStagesSlider.setMinorTickSpacing(1);
         pipelineStagesSlider.setSnapToTicks(true);
@@ -391,14 +411,14 @@ public class PropertiesWindow
         pipelineStagesPanel.add(pipelineStagesSlider);
 
         //Credit Based Flow Control Options
-        JCheckBox creditBasedCheck = new JCheckBox("Credit Based Flow Control");
+        creditBasedCheck = new JCheckBox("Credit Based Flow Control");
         creditBasedCheck.setSelected(true);
 
         //Okay and Cancel buttons
         JPanel okayCancelPanel = new JPanel();
         JButton okayButton = new JButton("Okay");
         okayButton.addActionListener(e -> {
-            //TODO: Collect all of the options and apply them to variables
+            setProperties();
             propertiesFrame.dispose();
         });
         JButton cancelButton = new JButton("Cancel");
@@ -431,19 +451,19 @@ public class PropertiesWindow
         JLabel latencyStatsLabel = new JLabel("Latency Statistics");
 
         JPanel latencyStatsPanel = new JPanel();
-        JCheckBox clockCyclesCheck = new JCheckBox("Clock Cycles", true);
-        JCheckBox hopsCheck = new JCheckBox("Hops", true);
+        clockCyclesCheck = new JCheckBox("Clock Cycles", true);
+        hopsCheck = new JCheckBox("Hops", true);
         latencyStatsPanel.add(clockCyclesCheck);
         latencyStatsPanel.add(hopsCheck);
 
         JLabel otherStatsLabel = new JLabel("Other Statistics");
 
         JPanel otherStatsPanel = new JPanel();
-        JCheckBox bandwidthCheck = new JCheckBox("Bandwidth", false);
-        JCheckBox throughputCheck = new JCheckBox("Throughput", false);
-        JCheckBox droppedFlitsCheck = new JCheckBox("Dropped Flits", true);
-        JCheckBox areaCheck = new JCheckBox("Area", false);
-        JCheckBox powerCheck = new JCheckBox("Power", false);
+        bandwidthCheck = new JCheckBox("Bandwidth", false);
+        throughputCheck = new JCheckBox("Throughput", false);
+        droppedFlitsCheck = new JCheckBox("Dropped Flits", true);
+        areaCheck = new JCheckBox("Area", false);
+        powerCheck = new JCheckBox("Power", false);
         otherStatsPanel.add(bandwidthCheck);
         otherStatsPanel.add(throughputCheck);
         otherStatsPanel.add(droppedFlitsCheck);
@@ -454,7 +474,7 @@ public class PropertiesWindow
         JPanel okayCancelPanel = new JPanel();
         JButton okayButton = new JButton("Okay");
         okayButton.addActionListener(e -> {
-            //TODO: Collect all of the options and apply them to variables
+            setProperties();
             propertiesFrame.dispose();
         });
         JButton cancelButton = new JButton("Cancel");
@@ -472,5 +492,39 @@ public class PropertiesWindow
         borderLayout.add(okayCancelPanel, BorderLayout.SOUTH);
 
         return borderLayout;
+    }
+
+    private void setProperties() {
+//        TODO: Figure out how to pass settings from the properties window the main window
+        //Runtime Options
+        ccPerStep = Integer.parseInt(CCPerStepField.getText());
+        injectionType = (String) injectionTypeBox.getSelectedItem();
+        injectionRate = Integer.parseInt(injectionRateField.getText());
+        hotspotTrafficRate = Integer.parseInt(hotspotTrafficRateField.getText());
+        hotspotNode = Integer.parseInt(hotspotNodeField.getText());
+        trafficPattern = (String) trafficPatternBox.getSelectedItem();
+        packetGeneration = (String) packetGenerationBox.getSelectedItem();
+
+        //Network Settings
+        //Double check that these are right
+        topology = selectedTopology;
+        nodes = selectedNodes;
+
+        //Router Micro Architecture Options
+        bufferDesign = (String) bufferDesignBox.getSelectedItem();
+        bufferSize = Integer.parseInt(bufferSizeField.getText());
+        flowControl = (String) flowControlBox.getSelectedItem();
+        pipelineType = (String) pipelineTypeBox.getSelectedItem();
+        pipelineStages = pipelineStagesSlider.getValue();
+        creditBased = creditBasedCheck.isSelected();
+
+        //Statistic Options
+        showClockCycles = clockCyclesCheck.isSelected();
+        showHops = hopsCheck.isSelected();
+        showBandwidth = bandwidthCheck.isSelected();
+        showThroughput = throughputCheck.isSelected();
+        showDroppedFlits = droppedFlitsCheck.isSelected();
+        showArea = areaCheck.isSelected();
+        showPower = powerCheck.isSelected();
     }
 }

@@ -17,26 +17,26 @@ import java.io.FileWriter;
  */
 public class OuterJFrame
 {
+    protected int cycleNumber;
+    public int openFrameCount;
+
     private JFrame outerFrame;      // Outer window
     private JPanel panel;           // Needed for toolbar
     private JDesktopPane desktop;   // Needed for Internal JFrames
     // The next line declares the frames that are going to be used to control the internal windows
     // Is there any reason not to define them now?
-    private TopologyInternalFrame topologyFrame;
-    private FlowControlInternalFrame flowControlFrame;
-    private StatisticsInternalFrame statisticFrame;
+    private TopologyInternalFrame topologyFrame = new TopologyInternalFrame(new JPanel());
+    private FlowControlInternalFrame flowControlFrame = new FlowControlInternalFrame(++openFrameCount);
+    private StatisticsInternalFrame statisticFrame = new StatisticsInternalFrame(++openFrameCount);
     private PropertiesWindow propWindow;
     private JToolBar toolBar;
     private File saveFile = new File("");
 
     protected Network network;
 
-    protected int cycleNumber;
-    public int openFrameCount;
-
     public OuterJFrame()
     {
-        network = new Mesh( 4, desktop);    // Creates a default network to work with
+        network = new Mesh( 4, desktop, flowControlFrame);    // Creates a default network to work with
         outerFrame = new JFrame();
         desktop = new JDesktopPane();   // DesktopPane that will hold all of the windows
         desktop.setLayout(new GridBagLayout());
@@ -103,7 +103,7 @@ public class OuterJFrame
         menuItemNew.addActionListener(e -> {
             //TODO: Pass something meaningful instead of empty new objects
             topologyFrame = new TopologyInternalFrame(new JPanel());//, openFrameCount++);
-            flowControlFrame = new FlowControlInternalFrame(new JTextArea(), openFrameCount++);
+            flowControlFrame = new FlowControlInternalFrame(openFrameCount++);
             statisticFrame = new StatisticsInternalFrame(openFrameCount++);
             desktop.add(topologyFrame);
             desktop.add(flowControlFrame);
@@ -200,7 +200,7 @@ public class OuterJFrame
                 if(propWindow != null) {    // Opens the window with all of the existing variables if it's been opened before
                     propWindow.createPropWindow();
                 }else{
-                    propWindow = new PropertiesWindow(desktop, network, getOuterJFrame());
+                    propWindow = new PropertiesWindow(desktop, network, getOuterJFrame(), flowControlFrame);
                     propWindow.createPropWindow();
                 }
             }
@@ -462,7 +462,7 @@ public class OuterJFrame
             //This is the start for the cascade
             //TODO: find a way to decrement openFrameCount when an Internal frame is closed or find a workaround
             topologyFrame = new TopologyInternalFrame(new JPanel());//, openFrameCount++);
-            flowControlFrame = new FlowControlInternalFrame(new JTextArea(), openFrameCount++);
+            flowControlFrame = new FlowControlInternalFrame(openFrameCount++);
             statisticFrame = new StatisticsInternalFrame(openFrameCount++);
             desktop.add(topologyFrame);
             desktop.add(flowControlFrame);
@@ -584,9 +584,9 @@ public class OuterJFrame
         nextCycle.setToolTipText("Next Cycle");
         nextCycle.addActionListener(e -> {
             if (cycleNumber == 0){
-
-            } else {
-
+                desktop.add(topologyFrame);
+                desktop.add(flowControlFrame);
+                desktop.add(statisticFrame);
             }
             cycleNumber++;
             cycleLabel.setText("Cycle number: " + cycleNumber);

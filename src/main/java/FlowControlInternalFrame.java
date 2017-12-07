@@ -7,7 +7,7 @@ public class FlowControlInternalFrame extends JInternalFrame{
     static final int xOffset = 50, yOffset = 50;
     private JTextArea textArea;
 
-    public FlowControlInternalFrame(JTextArea textAreaIn, int openFrames){
+    public FlowControlInternalFrame(int openFrames){
         super(
                 "Network Flow Control",
                 true,
@@ -16,7 +16,7 @@ public class FlowControlInternalFrame extends JInternalFrame{
                 false
         );
         openFrameCount = openFrames;
-        textArea = textAreaIn;
+        textArea = new JTextArea();
         setSize(500, 350);
         setLocation(xOffset*openFrameCount, yOffset*openFrameCount);
         textArea.append("THIS IS A STRING FORM THE TEXTAREA WITHIN THE FLOWCONTROLINTERNALFRAME");
