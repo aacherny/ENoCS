@@ -624,49 +624,6 @@ public class OuterJFrame
         return toolBar;
     }
 
-//    private JToolBar createToolBar()
-//    {
-//        JLabel cycleLabel = new JLabel("Cycle number: ");
-//
-//        JToolBar newToolBar = new JToolBar();
-//        newToolBar.setBounds(0, 0, 9999, 20);
-//        newToolBar.setFloatable( false);
-//
-//        JButton nextClockCycle = new JButton("Next Cycle");
-//        nextClockCycle.addActionListener(new ActionListener()
-//        {
-//            public void actionPerformed(ActionEvent e)
-//            {
-//                cycleNumber++;
-//                cycleLabel.setText("Cycle number: " + cycleNumber);
-//
-//                network.nextCycle();
-//
-//                desktop.validate();
-//                desktop.repaint();
-//            }
-//        });
-//
-//        JButton newCycle = new JButton("Restart");
-//        newCycle.addActionListener(new ActionListener()
-//        {
-//            public void actionPerformed(ActionEvent e)
-//            {
-//                cycleNumber = 0;
-//                cycleLabel.setText("Cycle number: " + cycleNumber);
-//
-//                network.newCycle();
-//            }
-//        });
-//
-//        newToolBar.add(nextClockCycle);
-//        newToolBar.add(newCycle);
-//        newToolBar.add(cycleLabel);
-//
-//        return newToolBar;
-//    }
-
-
     /**
      * Returns the desktop pane of the JPanel
      * @return {JDesktopPane}
