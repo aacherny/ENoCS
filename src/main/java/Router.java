@@ -95,6 +95,7 @@ public class Router {
         routerDiagram.add(jpan);
 
         System.out.println("Router " + routerNumber + " created");
+//        fc.append("Router " + routerNumber + " created");
     }
 
     public void nextCycle() {
