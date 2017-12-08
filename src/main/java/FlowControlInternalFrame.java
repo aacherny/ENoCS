@@ -5,7 +5,7 @@ import javax.swing.*;
 public class FlowControlInternalFrame extends JInternalFrame{
     public static int openFrameCount = 0;
     static final int xOffset = 50, yOffset = 50;
-    private JTextArea textArea;
+    private JTextArea textArea = new JTextArea("");
 
     public FlowControlInternalFrame(int openFrames){
         super(
@@ -16,10 +16,9 @@ public class FlowControlInternalFrame extends JInternalFrame{
                 false
         );
         openFrameCount = openFrames;
-        textArea = new JTextArea();
         setSize(500, 350);
         setLocation(xOffset*openFrameCount, yOffset*openFrameCount);
-        textArea.append("THIS IS A STRING FORM THE TEXTAREA WITHIN THE FLOWCONTROLINTERNALFRAME");
+        textArea.append("Flow Control Test");
         add(textArea);
 
         pack();

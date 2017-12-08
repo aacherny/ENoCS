@@ -29,7 +29,7 @@ public class OuterJFrame
     private FlowControlInternalFrame flowControlFrame = new FlowControlInternalFrame(++openFrameCount);
     private StatisticsInternalFrame statisticFrame = new StatisticsInternalFrame(++openFrameCount);
     private PropertiesWindow propWindow;
-    private JToolBar toolBar;
+    private JToolBar toolBar = createToolBar();
     private File saveFile = new File("");
 
     protected Network network;
@@ -75,8 +75,9 @@ public class OuterJFrame
         JMenuBar menuBar = createMenuBar();
         outerFrame.setJMenuBar(menuBar);
 
-        // Creates the toolbar and adds it to the window
-        toolBar = createToolBar();
+//        // Creates the toolbar and adds it to the window
+//        toolBar = createToolBar();
+
         //outerFrame.getContentPane().add(toolBar, BorderLayout.NORTH);
         outerFrame.add(toolBar, BorderLayout.PAGE_START);
 
@@ -102,9 +103,6 @@ public class OuterJFrame
         menuItemNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
         menuItemNew.addActionListener(e -> {
             //TODO: Pass something meaningful instead of empty new objects
-            topologyFrame = new TopologyInternalFrame(new JPanel());//, openFrameCount++);
-            flowControlFrame = new FlowControlInternalFrame(openFrameCount++);
-            statisticFrame = new StatisticsInternalFrame(openFrameCount++);
             desktop.add(topologyFrame);
             desktop.add(flowControlFrame);
             desktop.add(statisticFrame);
@@ -183,6 +181,7 @@ public class OuterJFrame
             topologyFrame.dispose();
             flowControlFrame.dispose();
             statisticFrame.dispose();
+            System.exit(0);
         });
         menuFile.add(menuItemExit);
 
@@ -214,16 +213,21 @@ public class OuterJFrame
 
         // 'Toolbar' button under 'View'
         JCheckBoxMenuItem menuItemToolbar = new JCheckBoxMenuItem("Toolbar");
-        menuItemToolbar.setState(true);
-        if (menuItemToolbar.getState()){
-            //TODO: Set toolbar on
-            //Uncommenting below will break the program because at this point the toolbar is not defined
-//            desktop.add(toolBar);
-        } else {
-            //TODO: set toolbar off
-            //Uncommenting below will break the program because at this point the toolbar is not defined
-//            desktop.remove(toolBar);
-        }
+        System.out.println("Before the setSelected statement the state is " + menuItemToolbar.isSelected());
+        menuItemToolbar.setSelected(true);
+        System.out.println("After the setSelected statement the state is " + menuItemToolbar.isSelected());
+        menuItemToolbar.addActionListener(e -> {
+            System.out.println("State is " + menuItemToolbar.isSelected());
+            desktop.setVisible(false);
+            if (!menuItemToolbar.isSelected()) {
+                System.out.println("Removing toolbar");
+                desktop.remove(toolBar);
+            }else {
+                System.out.println("Adding toolbar");
+                desktop.add(toolBar, BorderLayout.PAGE_START);
+            }
+            desktop.setVisible(true);
+        });
         menuView.add(menuItemToolbar);
 
         //TODO: add statusbar if a reason for can be thought of
@@ -461,9 +465,6 @@ public class OuterJFrame
         newFile.addActionListener(e -> {
             //This is the start for the cascade
             //TODO: find a way to decrement openFrameCount when an Internal frame is closed or find a workaround
-            topologyFrame = new TopologyInternalFrame(new JPanel());//, openFrameCount++);
-            flowControlFrame = new FlowControlInternalFrame(openFrameCount++);
-            statisticFrame = new StatisticsInternalFrame(openFrameCount++);
             desktop.add(topologyFrame);
             desktop.add(flowControlFrame);
             desktop.add(statisticFrame);
@@ -604,18 +605,18 @@ public class OuterJFrame
         ImageIcon multiCycleImage = new ImageIcon(getClass().getResource("images/fastforward.png"));
         JButton multiCycle = new JButton(multiCycleImage);
         multiCycle.setToolTipText("Run Multiple Cycles");
-        multiCycle.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-
-                for (int i = 0; i < Integer.parseInt(multiCycleField.getText()); i++){
-                    cycleNumber++;
-                    cycleLabel.setText("Cycle number: " + cycleNumber);
-                }
-
-                network.nextCycle();
+        multiCycle.addActionListener(e -> {
+            if (cycleNumber == 0){
+                desktop.add(topologyFrame);
+                desktop.add(flowControlFrame);
+                desktop.add(statisticFrame);
             }
+            for (int i = 0; i < Integer.parseInt(multiCycleField.getText()); i++){
+                cycleNumber++;
+                cycleLabel.setText("Cycle number: " + cycleNumber);
+            }
+
+            network.nextCycle();
         });
         toolBar.add(multiCycle);
 
