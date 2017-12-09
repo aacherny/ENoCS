@@ -258,6 +258,7 @@ public class PropertiesWindow
 
         String[] injectionRateField = { "0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100"};
         final JComboBox<String> boxInjection = new JComboBox<String>(injectionRateField);
+        boxInjection.setSelectedIndex(10);
 
         JLabel injectionRatePercentLabel = new JLabel("%");
         injectionRatePanel.add(injectionRateLabel);
@@ -280,6 +281,7 @@ public class PropertiesWindow
         okayButton.addActionListener(e -> {
             selectedInjection = Integer.parseInt(boxInjection.getSelectedItem().toString());
             OJFrame.setPacketChance(selectedInjection);
+            network.setPacketChance(selectedInjection);
 
             propertiesFrame.dispose();
         });

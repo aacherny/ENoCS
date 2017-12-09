@@ -83,6 +83,9 @@ public class Bus implements Network
         return panelYContainer;
     }
 
+    public void setPacketChance(double inputPacketChance ){
+    }
+
     public void setNodes(int inputNodes)
     {
         nodes = inputNodes;

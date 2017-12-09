@@ -15,6 +15,8 @@ public class Mesh implements Network
 
     private OuterJFrame OJFrame;
 
+    private double packetChance;
+
     protected Router[] routerArray;
 
     public Mesh(int inputNodes, JDesktopPane inputDesktopPane, OuterJFrame inputOJFrame)
@@ -24,12 +26,14 @@ public class Mesh implements Network
         OJFrame = inputOJFrame;
         scrollingTextFrame = new TextFrame();
 
+        packetChance = OJFrame.getPacketChance();
+
         routerArray = createRouterArray(nodes);
     }
 
     public void nextCycle()
     {
-        generatePacket(OJFrame.getPacketChance());
+        scrollingTextFrame.addText("Next cycle");
 
         for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
             routerArray[i].nextCycle();
@@ -68,6 +72,8 @@ public class Mesh implements Network
                 System.out.println("Router " + routerArray[i].getRouterNumber() + " has a flit to send to " + routerArray[i-(int)Math.sqrt(nodes)].getRouterNumber());
             }
         }
+
+        generatePacket(packetChance);
     }
 
     public void generatePacket(double chance) {
@@ -85,7 +91,9 @@ public class Mesh implements Network
                 int randomDestinationY = ThreadLocalRandom.current().nextInt(0, (int) Math.sqrt(nodes));
 
                 Flit[] packet = createPacket(randomNumberOfFlits, 0, 0, randomDestinationX, randomDestinationY);
-                routerArray[i].inputPacket(packet, 999);
+                if(routerArray[i].getChannelHome().size() < 13) {
+                    routerArray[i].inputPacket(packet, 999);
+                }
 
                 scrollingTextFrame.addText("A " + randomNumberOfFlits + "-flit packet has been created at router " + i + ", destination: " + randomDestinationX + "" + randomDestinationY);
             }
@@ -97,6 +105,8 @@ public class Mesh implements Network
         for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
             routerArray[i].newCycle();
         }
+
+        scrollingTextFrame.addText("Simulation restarted");
     }
 
     public Flit[] createPacket(int numberOfFlits, int locX, int locY, int destX, int destY)
@@ -283,6 +293,12 @@ public class Mesh implements Network
     public String getTopology()
     {
         return "mesh";
+    }
+
+    public void setPacketChance(double inputPacketChance ){
+        packetChance = inputPacketChance / 100;
+
+        scrollingTextFrame.addText("Injection rate is now " + String.format("%.0f", inputPacketChance) + "%");
     }
 
     public void removeTextWindow(){

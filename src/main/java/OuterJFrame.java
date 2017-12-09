@@ -41,6 +41,7 @@ public class OuterJFrame
         outerFrame = new JFrame();
         desktop = new JDesktopPane();   // DesktopPane that will hold all of the windows
         desktop.setLayout(new FlowLayout());
+        desktop.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
 
         network = new Mesh( 4, desktop, this);    // Creates a default network to work with
 
@@ -619,7 +620,7 @@ public class OuterJFrame
 
     public void setPacketChance(double inputPacketChance)
     {
-        packetChance = inputPacketChance;
+        packetChance = inputPacketChance / 100;
     }
 
 

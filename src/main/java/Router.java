@@ -173,32 +173,8 @@ public class Router {
         createRectanglesFromPipeline(SwitchAllocator, 18);
         createRectanglesFromPipeline(SwitchTraversal, 19);
 
-
-        if(outputHome != null) {
-            routerDiagram.addRectangle(new ColoredRectangle(outputHome.getColor(), 20, homeIndex));
-        } else {
-            routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, homeIndex));
-        }
-        if(outputNorth != null) {
-            routerDiagram.addRectangle(new ColoredRectangle(outputNorth.getColor(), 20, northIndex));
-        } else {
-            routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, northIndex));
-        }
-        if(outputSouth != null) {
-            routerDiagram.addRectangle(new ColoredRectangle(outputSouth.getColor(), 20, southIndex));
-        } else {
-            routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, southIndex));
-        }
-        if(outputEast != null) {
-            routerDiagram.addRectangle(new ColoredRectangle(outputEast.getColor(), 20, eastIndex));
-        } else {
-            routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, eastIndex));
-        }
-        if(outputWest != null) {
-            routerDiagram.addRectangle(new ColoredRectangle(outputWest.getColor(), 20, westIndex));
-        } else {
-            routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, westIndex));
-        }
+        // If a slot in the pipeline is empty, paint a white rectangle over it
+        clearPipelineSlots();
 
         // Update the window for each router
         routerDiagram.invalidate();
@@ -207,76 +183,36 @@ public class Router {
     }
 
     public void newCycle() {
-        if (channelHome != null) {
-            System.out.print("Router " + routerNumber + ", Home channel: ");
-            for (int i = 0; i < channelHome.size(); i++) {
-                System.out.print(channelHome.get(i).getIndex());
-            }
+        channelHome = new LinkedList<Flit>();
+
+        if(channelNorth != null) {
+            channelNorth = new LinkedList<Flit>();
         }
 
-        System.out.println("");
-
-        if (channelNorth != null) {
-            System.out.print("Router " + routerNumber + ", North channel: ");
-            for (int i = 0; i < channelNorth.size(); i++) {
-                System.out.print(channelNorth.get(i).getIndex());
-            }
-
-            System.out.println("");
+        if(channelSouth != null) {
+            channelSouth = new LinkedList<Flit>();
         }
 
-        if (channelSouth != null) {
-            System.out.print("Router " + routerNumber + ", South channel: ");
-            for (int i = 0; i < channelSouth.size(); i++) {
-                System.out.print(channelSouth.get(i).getIndex());
-            }
-
-            System.out.println("");
+        if(channelEast != null) {
+            channelEast = new LinkedList<Flit>();
         }
 
-        if (channelEast != null) {
-            System.out.print("Router " + routerNumber + ", East channel: ");
-            for (int i = 0; i < channelEast.size(); i++) {
-                System.out.print(channelEast.get(i).getIndex());
-            }
-
-            System.out.println("");
+        if(channelWest != null) {
+            channelWest = new LinkedList<Flit>();
         }
 
-        if (channelWest != null) {
-            System.out.print("Router " + routerNumber + ", West channel: ");
-            for (int i = 0; i < channelWest.size(); i++) {
-                System.out.print(channelWest.get(i).getIndex());
-            }
+        RouteComputation = null;
+        VCAllocator = null;
+        SwitchAllocator = null;
+        SwitchTraversal = null;
 
-            System.out.println("");
-        }
+        outputHome = null;
+        outputNorth = null;
+        outputSouth = null;
+        outputEast = null;
+        outputWest = null;
 
-
-        if (RouteComputation != null) {
-            System.out.println("Router " + routerNumber + ", RouteComputation: " + RouteComputation.getIndex());
-        }
-        if (VCAllocator != null) {
-            System.out.println("Router " + routerNumber + ", VCAllocator: " + VCAllocator.getIndex());
-        }
-        if (SwitchAllocator != null) {
-            System.out.println("Router " + routerNumber + ", SwitchAllocator: " + SwitchAllocator.getIndex());
-        }
-        if (SwitchTraversal != null) {
-            System.out.println("Router " + routerNumber + ", SwitchTraversal: " + SwitchTraversal.getIndex());
-        }
-        if (outputNorth != null) {
-            System.out.println("Router " + routerNumber + ", outputNorth: " + outputNorth.getIndex());
-        }
-        if (outputSouth != null) {
-            System.out.println("Router " + routerNumber + ", outputSouth: " + outputSouth.getIndex());
-        }
-        if (outputEast != null) {
-            System.out.println("Router " + routerNumber + ", outputEast: " + outputEast.getIndex());
-        }
-        if (outputWest != null) {
-            System.out.println("Router " + routerNumber + ", outputWest: " + outputWest.getIndex());
-        }
+        clearPipelineSlots();
     }
 
     /**
@@ -398,6 +334,84 @@ public class Router {
         }
     }
 
+    /**
+     * Checks for stages in the pipeline that are null, paints a while rectangle at that spot if it's null
+     */
+    private void clearPipelineSlots() {
+
+        if(outputHome != null) {
+            routerDiagram.addRectangle(new ColoredRectangle(outputHome.getColor(), 20, homeIndex));
+        } else {
+            routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, homeIndex));
+        }
+        if(outputNorth != null) {
+            routerDiagram.addRectangle(new ColoredRectangle(outputNorth.getColor(), 20, northIndex));
+        } else {
+            routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, northIndex));
+        }
+        if(outputSouth != null) {
+            routerDiagram.addRectangle(new ColoredRectangle(outputSouth.getColor(), 20, southIndex));
+        } else {
+            routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, southIndex));
+        }
+        if(outputEast != null) {
+            routerDiagram.addRectangle(new ColoredRectangle(outputEast.getColor(), 20, eastIndex));
+        } else {
+            routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, eastIndex));
+        }
+        if(outputWest != null) {
+            routerDiagram.addRectangle(new ColoredRectangle(outputWest.getColor(), 20, westIndex));
+        } else {
+            routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, westIndex));
+        }
+
+        if (SwitchTraversal == null) {
+            routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 19, southIndex));
+        }
+
+        if (SwitchAllocator == null) {
+            routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 18, southIndex));
+        }
+
+        if (VCAllocator == null) {
+            routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 17, southIndex));
+        }
+
+        if (RouteComputation == null) {
+            routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 16, southIndex));
+        }
+
+        if(channelHome != null) {
+            for (int i = 0; i < 16 - channelHome.size(); i++){
+                routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, i, homeIndex));
+            }
+        }
+
+        if(channelNorth != null) {
+            for (int i = 0; i < 16 - channelNorth.size(); i++){
+                routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, i, northIndex));
+            }
+        }
+
+        if(channelSouth != null) {
+            for (int i = 0; i < 16 - channelSouth.size(); i++){
+                routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, i, southIndex));
+            }
+        }
+
+        if(channelEast != null) {
+            for (int i = 0; i < 16 - channelEast.size(); i++){
+                routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, i, eastIndex));
+            }
+        }
+
+        if(channelWest != null) {
+            for (int i = 0; i < 16 - channelWest.size(); i++){
+                routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, i, westIndex));
+            }
+        }
+    }
+
     private void createRectanglesFromFlitList(LinkedList<Flit> list, int channel) {
         if (list != null) {
             for (int i = 0; i < list.size(); i++) {
@@ -438,7 +452,7 @@ public class Router {
     public void inputPacket(Flit[] inputPacket, int source) {
 
         if (inputPacket.length == 1) {  // If it's a single Flit packet, add the flit to the correct channel
-            if (source == -1)  // If the source of the packet is from the home node
+            if (source == 999)  // If the source of the packet is from the home node
             {
                 channelHome.addLast(inputPacket[0]);  // Add the packet to the list of packets from the home node
             } else if (source == routerLocation)  // If the source of the packet is also from the home node
@@ -512,9 +526,13 @@ public class Router {
         circle.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
 
-                routerDiagram.setVisible(true);
+                try {
+                    routerDiagram.setVisible(true);
 
-                desktopPane.add(routerDiagram);
+                    desktopPane.add(routerDiagram);
+                } catch(Exception a) {
+                    System.out.println(a);
+                }
 
             }
         });
@@ -545,4 +563,6 @@ public class Router {
     public int getRouterLocation() {
         return routerLocation;
     }
+
+    public LinkedList<Flit> getChannelHome() { return channelHome; }
 }

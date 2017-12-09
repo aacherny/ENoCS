@@ -9,6 +9,8 @@ interface Network
 
     void setNodes(int inputNodes);
 
+    public void setPacketChance(double inputPacketChance);
+
     int getNodes();
 
     String getTopology();
