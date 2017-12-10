@@ -70,17 +70,14 @@ public class Torus implements Network
             }
         }
 
-        //generatePacket(packetChance);
+        generatePacket(packetChance);
     }
 
     public void newCycle()
     {
         for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
-            //routerArray[i].newCycle();
+            routerArray[i].newCycle();
         }
-
-        Flit[] packet = createPacket(1, 0, 0, 2, 2);
-        routerArray[0].inputPacket(packet, 999);
 
         scrollingTextFrame.addText("Simulation restarted");
     }
@@ -285,6 +282,10 @@ public class Torus implements Network
     public String getTopology()
     {
         return "torus";
+    }
+
+    public TextFrame getScrollingTextFrame(){
+        return scrollingTextFrame;
     }
 
     public void setPacketChance(double inputPacketChance ){

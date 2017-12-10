@@ -275,6 +275,10 @@ public class Mesh implements Network
         return "mesh";
     }
 
+    public TextFrame getScrollingTextFrame(){
+        return scrollingTextFrame;
+    }
+
     public void setPacketChance(double inputPacketChance ){
         packetChance = inputPacketChance / 100;
 

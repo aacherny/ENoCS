@@ -226,38 +226,29 @@ public class Router {
             if ((routerLocation / 10 == inputFlit.getDestinationX()) && (routerLocation % 10 == inputFlit.getDestinationY())) {
                 outputHome = inputFlit;
 
-                System.out.println("Packet arrived Home");
+                network.getScrollingTextFrame().addText("A packet has reached its destination at router " + locationToIndex(inputFlit.getDestinationX()*10 + inputFlit.getDestinationY()));
 
             } else if (routerLocation / 10 > inputFlit.getDestinationX()) {
                 outputWest = inputFlit;
 
-                System.out.println("Packet (" + inputFlit.getDestinationX() + inputFlit.getDestinationY() + ") from router (" + routerLocation + ") " + routerNumber + " sent to west");
-
             } else if (routerLocation / 10 < inputFlit.getDestinationX()) {
                 outputEast = inputFlit;
-
-                System.out.println("Packet (" + inputFlit.getDestinationX() + inputFlit.getDestinationY() + ") from router (" + routerLocation + ") " + routerNumber + " sent to east");
 
             } else if (routerLocation % 10 > inputFlit.getDestinationY()) {
                 outputNorth = inputFlit;
 
-                System.out.println("Packet (" + inputFlit.getDestinationX() + inputFlit.getDestinationY() + ") from router (" + routerLocation + ") " + routerNumber + " sent to north");
-
             } else if (routerLocation % 10 < inputFlit.getDestinationY()) {
                 outputSouth = inputFlit;
-
-                System.out.println("Packet (" + inputFlit.getDestinationX() + inputFlit.getDestinationY() + ") from router (" + routerLocation + ") " + routerNumber + " sent to south");
-
             }
         }
         else if(network.getTopology() == "bus") {
             if ((routerLocation / 10 == inputFlit.getDestinationX()) && (routerLocation % 10 == inputFlit.getDestinationY())) {
                 outputHome = inputFlit;
+                network.getScrollingTextFrame().addText("A packet has reached its destination at router " + locationToIndex(inputFlit.getDestinationX()*10 + inputFlit.getDestinationY()));
             }else {
                 outputSouth = inputFlit;
             }
         }
-
         else if(network.getTopology() == "torus") {
             int routerLocationX = routerLocation / 10 + 1;
             int routerLocationY = routerLocation % 10 + 1;
@@ -265,10 +256,9 @@ public class Router {
             int flitDestinationY = inputFlit.getDestinationY() + 1;
             int sqrtNodes = (int) Math.sqrt(network.getNodes());
 
-            System.out.println("RouterX: " + routerLocationX + ", RouterY: " + routerLocationY + ", FlitX: " + flitDestinationX + ", FlitY: " + flitDestinationY);
-
             if ((routerLocationX == flitDestinationX) && (routerLocationY == flitDestinationY)) {
                 outputHome = inputFlit;
+                network.getScrollingTextFrame().addText("A packet has reached its destination at router " + locationToIndex(inputFlit.getDestinationX()*10 + inputFlit.getDestinationY()));
             } else if (routerLocationX == flitDestinationX) {
                 if (sqrtNodes - routerLocationY + flitDestinationY < routerLocationY - flitDestinationY) {
                     outputSouth = inputFlit;
@@ -602,6 +592,12 @@ public class Router {
 
     public int getRouterLocation() {
         return routerLocation;
+    }
+
+    private int locationToIndex(int inputLocation){
+        int locationX = inputLocation / 10;
+        int locationY = inputLocation % 10;
+        return ((int)Math.sqrt(network.getNodes()) * locationX + locationY);
     }
 
     public LinkedList<Flit> getChannelHome() { return channelHome; }

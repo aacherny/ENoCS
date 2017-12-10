@@ -213,6 +213,10 @@ public class Bus implements Network
         return "bus";
     }
 
+    public TextFrame getScrollingTextFrame(){
+        return scrollingTextFrame;
+    }
+
     public void setPacketChance(double inputPacketChance ){
         packetChance = inputPacketChance / 100;
 

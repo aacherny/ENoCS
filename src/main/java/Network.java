@@ -20,4 +20,7 @@ interface Network
     void newCycle();
 
     void removeTextWindow();
+
+
+    TextFrame getScrollingTextFrame();
 }
