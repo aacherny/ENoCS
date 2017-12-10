@@ -8,14 +8,12 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Mesh implements Network
 {
     private int nodes;
+    private double packetChance;
+    protected int pipelineStages;
 
     private JDesktopPane desktopPane;
-
     private TextFrame scrollingTextFrame;
-
     private OuterJFrame OJFrame;
-
-    private double packetChance;
 
     protected Router[] routerArray;
 
@@ -27,6 +25,7 @@ public class Mesh implements Network
         scrollingTextFrame = new TextFrame();
 
         packetChance = OJFrame.getPacketChance();
+        pipelineStages = 4;
 
         routerArray = createRouterArray(nodes);
     }
@@ -283,6 +282,14 @@ public class Mesh implements Network
         packetChance = inputPacketChance / 100;
 
         scrollingTextFrame.addText("Injection rate is now " + String.format("%.0f", inputPacketChance) + "%");
+    }
+
+    public void setPipelineStages(int inputStages){
+        pipelineStages = inputStages;
+    }
+
+    public int getPipelineStages(){
+        return pipelineStages;
     }
 
     public void removeTextWindow(){

@@ -312,7 +312,7 @@ public class PropertiesWindow {
         //Pipeline Stages Options
         JPanel pipelineStagesPanel = new JPanel();
         JLabel pipelineStagesLabel = new JLabel("Number of Pipeline Stages");
-        JSlider pipelineStagesSlider = new JSlider(0, 5, 4);
+        JSlider pipelineStagesSlider = new JSlider(0, 4, network.getPipelineStages());
         pipelineStagesSlider.setMajorTickSpacing(1);
         pipelineStagesSlider.setMinorTickSpacing(1);
         pipelineStagesSlider.setSnapToTicks(true);
@@ -325,7 +325,8 @@ public class PropertiesWindow {
         JPanel okayCancelPanel = new JPanel();
         JButton okayButton = new JButton("Okay");
         okayButton.addActionListener(e -> {
-            //TODO: Collect all of the options and apply them to variables
+            network.setPipelineStages(pipelineStagesSlider.getValue());
+
             propertiesFrame.dispose();
         });
         JButton cancelButton = new JButton("Cancel");

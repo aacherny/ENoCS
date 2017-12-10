@@ -9,6 +9,7 @@ public class Bus implements Network
 {
     private int nodes;
     private double packetChance;
+    protected int pipelineStages;
 
     private JDesktopPane desktopPane;
     private TextFrame scrollingTextFrame;
@@ -24,6 +25,7 @@ public class Bus implements Network
         scrollingTextFrame = new TextFrame();
 
         packetChance = OJFrame.getPacketChance();
+        pipelineStages = 4;
 
         routerArray = createRouterArray(nodes);
     }
@@ -151,7 +153,7 @@ public class Bus implements Network
 
             panelXContainer.add(routerArray[nodeCounter++].drawCircle());  // Adds an upper branch from the bus linking to a node
             panelXContainer.add(new vertLine());
-            panelXContainer.add(new tSegmentUp());
+            panelXContainer.add(new shapeTSegmentUp());
             panelXContainer.add(new blankSpace());
             panelXContainer.add(new blankSpace());
 
@@ -162,7 +164,7 @@ public class Bus implements Network
 
             panelXContainer.add(new blankSpace());  // Adds a lower branch
             panelXContainer.add(new blankSpace());
-            panelXContainer.add(new tSegmentDown());
+            panelXContainer.add(new shapeTSegmentDown());
             panelXContainer.add(new vertLine());
             panelXContainer.add(routerArray[nodeCounter++].drawCircle());
 
@@ -176,7 +178,7 @@ public class Bus implements Network
 
             panelXContainer.add(routerArray[nodeCounter].drawCircle());  // If there's an odd number of nodes, adds a final upper branch at the end of the bus
             panelXContainer.add(new vertLine());
-            panelXContainer.add(new tSegmentUp());
+            panelXContainer.add(new shapeTSegmentUp());
             panelXContainer.add(new blankSpace());
             panelXContainer.add(new blankSpace());
 
@@ -221,6 +223,14 @@ public class Bus implements Network
         packetChance = inputPacketChance / 100;
 
         scrollingTextFrame.addText("Injection rate is now " + String.format("%.0f", inputPacketChance) + "%");
+    }
+
+    public void setPipelineStages(int inputStages){
+        pipelineStages = inputStages;
+    }
+
+    public int getPipelineStages(){
+        return pipelineStages;
     }
 
     public void removeTextWindow(){

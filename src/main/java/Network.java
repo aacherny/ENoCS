@@ -21,6 +21,9 @@ interface Network
 
     void removeTextWindow();
 
+    void setPipelineStages(int inputStages);
+
+    int getPipelineStages();
 
     TextFrame getScrollingTextFrame();
 }

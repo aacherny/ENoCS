@@ -3,9 +3,9 @@ package main.java;
 import javax.swing.*;
 import java.awt.*;
 
-public class tSegmentDown extends JPanel {
+public class shapeTSegmentUp extends JPanel {
 
-    public tSegmentDown(){
+    public shapeTSegmentUp(){
         setPreferredSize(new Dimension(26, 26));
         setLocation(0,0);
     }
@@ -14,7 +14,7 @@ public class tSegmentDown extends JPanel {
         super.paintComponent(g);
 
         g.setColor(Color.BLACK);
-        g.drawLine(13, 13, 13, 26);
+        g.drawLine(13, 0, 13, 13);
         g.drawLine(0, 13, 26, 13);
     }
 }
