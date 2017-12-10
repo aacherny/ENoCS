@@ -33,6 +33,7 @@ public class OuterJFrame {
     private JTextField multiCycleField;
 
     protected int cycleNumber;
+    private int injectType;
     public int openFrameCount;
 
     public OuterJFrame() {
@@ -405,5 +406,13 @@ public class OuterJFrame {
 
     public void setCyclePerStep(int cycles){
         multiCycleField.setText(cycles+"");
+    }
+
+    public int getInjectType(){
+        return injectType;
+    }
+
+    public void setInjectType(int inputInjectType){
+        injectType = inputInjectType;
     }
 }

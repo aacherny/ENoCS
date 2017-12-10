@@ -273,8 +273,10 @@ public class PropertiesWindow {
         okayButton.addActionListener(e -> {
             selectedInjection = Integer.parseInt(boxInjection.getSelectedItem().toString());
             int selectedCyclesPerStep = Integer.parseInt(CCPerStepField.getText());
+            int selectedInjectType = injectionTypeBox.getSelectedIndex();
             OJFrame.setPacketChance(selectedInjection);
             OJFrame.setCyclePerStep(selectedCyclesPerStep);
+            OJFrame.setInjectType(selectedInjectType);
             network.setPacketChance(selectedInjection);
 
             propertiesFrame.dispose();

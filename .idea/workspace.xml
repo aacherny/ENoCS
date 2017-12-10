@@ -2,13 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6effbb56-f5b0-4b79-a23a-cf22072d6528" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Bus.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Bus.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Mesh.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Mesh.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame$1.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame$2.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame$3.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/PropertiesWindow.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/PropertiesWindow.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Router$1.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Router$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Router.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Router.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Bus.java" afterPath="$PROJECT_DIR$/src/main/java/Bus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mesh.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Router.java" afterPath="$PROJECT_DIR$/src/main/java/Router.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Torus.java" afterPath="$PROJECT_DIR$/src/main/java/Torus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/shapeTSegmentDown.java" afterPath="$PROJECT_DIR$/src/main/java/shapeTSegmentDown.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/shapeTSegmentUp.java" afterPath="$PROJECT_DIR$/src/main/java/shapeTSegmentUp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/OuterJFrame.java" afterPath="$PROJECT_DIR$/src/main/java/OuterJFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/PropertiesWindow.java" afterPath="$PROJECT_DIR$/src/main/java/PropertiesWindow.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,7 +24,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.48358586">
+    <splitter split-orientation="horizontal" split-proportion="0.47727272">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
@@ -35,14 +40,18 @@
           <file leaf-file-name="OuterJFrame.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/OuterJFrame.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="409">
-                  <caret line="218" column="21" lean-forward="false" selection-start-line="218" selection-start-column="20" selection-end-line="218" selection-end-column="21" />
+                <state relative-caret-position="1031">
+                  <caret line="411" column="21" lean-forward="false" selection-start-line="411" selection-start-column="21" selection-end-line="411" selection-end-column="21" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#16030#16031#0" expanded="true" />
-                    <element signature="e#16096#16097#0" expanded="true" />
-                    <element signature="e#16142#16143#0" expanded="true" />
-                    <element signature="e#16192#16193#0" expanded="true" />
+                    <element signature="e#16058#16059#0" expanded="true" />
+                    <element signature="e#16124#16125#0" expanded="true" />
+                    <element signature="e#16170#16171#0" expanded="true" />
+                    <element signature="e#16220#16221#0" expanded="true" />
+                    <element signature="e#16253#16254#0" expanded="true" />
+                    <element signature="e#16286#16287#0" expanded="true" />
+                    <element signature="e#16339#16340#0" expanded="true" />
+                    <element signature="e#16383#16384#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -51,8 +60,8 @@
           <file leaf-file-name="PropertiesWindow.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/PropertiesWindow.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="409">
-                  <caret line="76" column="23" lean-forward="false" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
+                <state relative-caret-position="603">
+                  <caret line="278" column="29" lean-forward="true" selection-start-line="278" selection-start-column="29" selection-end-line="278" selection-end-column="29" />
                   <folding />
                 </state>
               </provider>
@@ -70,26 +79,26 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Mesh.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Mesh.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="731">
-                  <caret line="283" column="74" lean-forward="true" selection-start-line="283" selection-start-column="74" selection-end-line="283" selection-end-column="74" />
+                <state relative-caret-position="465">
+                  <caret line="140" column="0" lean-forward="true" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#11594#11595#0" expanded="true" />
                     <element signature="e#11631#11632#0" expanded="true" />
-                    <marker date="1512945096131" expanded="true" signature="12020:12026" ph="{...}" />
+                    <marker date="1512947469140" expanded="true" signature="12020:12026" ph="{...}" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Torus.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Torus.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/Torus.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="409">
-                  <caret line="165" column="48" lean-forward="false" selection-start-line="165" selection-start-column="44" selection-end-line="165" selection-end-column="48" />
+                <state relative-caret-position="471">
+                  <caret line="164" column="55" lean-forward="true" selection-start-line="164" selection-start-column="55" selection-end-line="164" selection-end-column="55" />
                   <folding>
                     <element signature="e#3137#3168#0" expanded="true" />
                     <element signature="e#6391#6422#0" expanded="true" />
@@ -133,7 +142,7 @@
           <file leaf-file-name="Router.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2432">
+                <state relative-caret-position="-3790">
                   <caret line="217" column="9" lean-forward="true" selection-start-line="217" selection-start-column="9" selection-end-line="217" selection-end-column="9" />
                   <folding>
                     <element signature="e#30740#31066#0" expanded="true" />
@@ -218,8 +227,8 @@
       <find>stages</find>
       <find>text</find>
       <find>textf</find>
-      <find>home</find>
       <find>torus</find>
+      <find>home</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -262,15 +271,15 @@
         <option value="$PROJECT_DIR$/src/main/java/shapeSemiCircleNorth.java" />
         <option value="$PROJECT_DIR$/src/main/java/shapeSemiCircleEast.java" />
         <option value="$PROJECT_DIR$/src/main/java/shapeSemiCircleSouth.java" />
-        <option value="$PROJECT_DIR$/src/main/java/OuterJFrame.java" />
         <option value="$PROJECT_DIR$/src/main/java/Network.java" />
-        <option value="$PROJECT_DIR$/src/main/java/PropertiesWindow.java" />
         <option value="$PROJECT_DIR$/src/main/java/shapeTSegmentUp.java" />
         <option value="$PROJECT_DIR$/src/main/java/shapeTSegmentDown.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Mesh.java" />
         <option value="$PROJECT_DIR$/src/main/java/Torus.java" />
         <option value="$PROJECT_DIR$/src/main/java/Router.java" />
         <option value="$PROJECT_DIR$/src/main/java/Bus.java" />
+        <option value="$PROJECT_DIR$/src/main/java/PropertiesWindow.java" />
+        <option value="$PROJECT_DIR$/src/main/java/OuterJFrame.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Mesh.java" />
       </list>
     </option>
   </component>
@@ -522,7 +531,7 @@
       <workItem from="1512749828351" duration="1195000" />
       <workItem from="1512847209618" duration="27529000" />
       <workItem from="1512882678317" duration="1283000" />
-      <workItem from="1512936350431" duration="8937000" />
+      <workItem from="1512936350431" duration="9726000" />
     </task>
     <task id="LOCAL-00001" summary="Another test commit">
       <created>1506367699156</created>
@@ -818,11 +827,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512944941805</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Pipeline stages are configurable">
+      <created>1512946715033</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1512946715033</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="233666000" />
+    <option name="totallyTimeSpent" value="234455000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -846,7 +862,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13093415" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21656977" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21308139" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21308139" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -900,7 +916,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Methods added to Mesh and Router" />
     <MESSAGE value="Clicking on a router in a Network Topology window opens a diagram of the router" />
     <MESSAGE value="The diagram now shows a single input channel and a single output channel" />
     <MESSAGE value="Clicking on a router in the topology diagram now opens a Router Diagram, with the correct channels depending on which router is selected" />
@@ -925,7 +940,8 @@
     <MESSAGE value="Topology can be drawn for Torus" />
     <MESSAGE value="Clock cycles per step on the main page updates the value in the properties window, and updating the properties window updates the value on the main page" />
     <MESSAGE value="The pipeline stage counter updates based on the stored value of the network object" />
-    <option name="LAST_COMMIT_MESSAGE" value="The pipeline stage counter updates based on the stored value of the network object" />
+    <MESSAGE value="Pipeline stages are configurable" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pipeline stages are configurable" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -966,10 +982,14 @@
           <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#16030#16031#0" expanded="true" />
-            <element signature="e#16096#16097#0" expanded="true" />
-            <element signature="e#16142#16143#0" expanded="true" />
-            <element signature="e#16192#16193#0" expanded="true" />
+            <element signature="e#16058#16059#0" expanded="true" />
+            <element signature="e#16124#16125#0" expanded="true" />
+            <element signature="e#16170#16171#0" expanded="true" />
+            <element signature="e#16220#16221#0" expanded="true" />
+            <element signature="e#16253#16254#0" expanded="true" />
+            <element signature="e#16286#16287#0" expanded="true" />
+            <element signature="e#16339#16340#0" expanded="true" />
+            <element signature="e#16383#16384#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1183,14 +1203,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="18" lean-forward="false" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/vertLine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1327,41 +1339,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/OuterJFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="218" column="21" lean-forward="false" selection-start-line="218" selection-start-column="20" selection-end-line="218" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#16030#16031#0" expanded="true" />
-            <element signature="e#16096#16097#0" expanded="true" />
-            <element signature="e#16142#16143#0" expanded="true" />
-            <element signature="e#16192#16193#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/PropertiesWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="76" column="23" lean-forward="false" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="283" column="74" lean-forward="true" selection-start-line="283" selection-start-column="74" selection-end-line="283" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#11594#11595#0" expanded="true" />
-            <element signature="e#11631#11632#0" expanded="true" />
-            <marker date="1512945096131" expanded="true" signature="12020:12026" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Bus.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
@@ -1373,10 +1350,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3790">
+          <caret line="217" column="9" lean-forward="true" selection-start-line="217" selection-start-column="9" selection-end-line="217" selection-end-column="9" />
+          <folding>
+            <element signature="e#30740#31066#0" expanded="true" />
+            <element signature="e#31065#31066#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Torus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="165" column="48" lean-forward="false" selection-start-line="165" selection-start-column="44" selection-end-line="165" selection-end-column="48" />
+        <state relative-caret-position="471">
+          <caret line="164" column="55" lean-forward="true" selection-start-line="164" selection-start-column="55" selection-end-line="164" selection-end-column="55" />
           <folding>
             <element signature="e#3137#3168#0" expanded="true" />
             <element signature="e#6391#6422#0" expanded="true" />
@@ -1387,13 +1375,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2432">
-          <caret line="217" column="9" lean-forward="true" selection-start-line="217" selection-start-column="9" selection-end-line="217" selection-end-column="9" />
+        <state relative-caret-position="0">
+          <caret line="0" column="18" lean-forward="false" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/PropertiesWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="603">
+          <caret line="278" column="29" lean-forward="true" selection-start-line="278" selection-start-column="29" selection-end-line="278" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/OuterJFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1031">
+          <caret line="411" column="21" lean-forward="false" selection-start-line="411" selection-start-column="21" selection-end-line="411" selection-end-column="21" />
           <folding>
-            <element signature="e#30740#31066#0" expanded="true" />
-            <element signature="e#31065#31066#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#16058#16059#0" expanded="true" />
+            <element signature="e#16124#16125#0" expanded="true" />
+            <element signature="e#16170#16171#0" expanded="true" />
+            <element signature="e#16220#16221#0" expanded="true" />
+            <element signature="e#16253#16254#0" expanded="true" />
+            <element signature="e#16286#16287#0" expanded="true" />
+            <element signature="e#16339#16340#0" expanded="true" />
+            <element signature="e#16383#16384#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="140" column="0" lean-forward="true" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#11594#11595#0" expanded="true" />
+            <element signature="e#11631#11632#0" expanded="true" />
+            <marker date="1512947469140" expanded="true" signature="12020:12026" ph="{...}" />
           </folding>
         </state>
       </provider>
