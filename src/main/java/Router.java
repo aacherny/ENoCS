@@ -97,60 +97,27 @@ public class Router {
     public void nextCycle() {
         System.out.println("Next cycle for router: " + routerNumber + ", next channel is: " + nextRouter);
 
-        if (SwitchTraversal != null) {
-            routeComputation(SwitchTraversal);
+
+        switch (network.getPipelineStages()){
+            default:
+                pipeline(4);
+                break;
+            case 0:
+                pipeline(0);
+                break;
+            case 1:
+                pipeline(1);
+                break;
+            case 2:
+                pipeline(2);
+                break;
+            case 3:
+                pipeline(3);
+                break;
+            case 4:
+                pipeline(4);
+                break;
         }
-
-        if (SwitchAllocator != null) {
-            SwitchTraversal = SwitchAllocator;
-        }
-
-        if (VCAllocator != null) {
-            SwitchAllocator = VCAllocator;
-        }
-
-        if (RouteComputation != null) {
-            VCAllocator = RouteComputation;
-        }
-
-        if ((nextRouter == "home") && (channelHome.peekFirst() != null) && (channelHome != null)) {
-            RouteComputation = channelHome.getFirst();
-
-            setNextChannel(nextRouter, channelHome.getFirst().getIndex());
-
-            channelHome.removeFirst();
-
-        } else if ((nextRouter == "north") && (channelNorth.peekFirst() != null) && (channelNorth != null)) {
-            RouteComputation = channelNorth.getFirst();
-
-            setNextChannel(nextRouter, channelNorth.getFirst().getIndex());
-
-            channelNorth.removeFirst();
-
-        } else if ((nextRouter == "south") && (channelSouth.peekFirst() != null) && (channelSouth != null)) {
-            RouteComputation = channelSouth.getFirst();
-
-            setNextChannel(nextRouter, channelSouth.getFirst().getIndex());
-
-            channelSouth.removeFirst();
-
-        } else if ((nextRouter == "east") && (channelEast.peekFirst() != null) && (channelEast != null)) {
-            RouteComputation = channelEast.getFirst();
-
-            setNextChannel(nextRouter, channelEast.getFirst().getIndex());
-
-            channelEast.removeFirst();
-
-        } else if ((nextRouter == "west") && (channelWest.peekFirst() != null) && (channelWest != null)) {
-            RouteComputation = channelWest.getFirst();
-
-            setNextChannel(nextRouter, channelWest.getFirst().getIndex());
-
-            channelWest.removeFirst();
-        } else {
-            setNextChannel(nextRouter, 0);
-        }
-
 
         // Go through each list and draw the rectangle on the diagram for every flit in the router
 
@@ -542,6 +509,246 @@ public class Router {
             }
         }
     }
+
+
+
+
+    public void pipeline(int inputPipelineStages) {
+        if (inputPipelineStages == 4) {
+            if (SwitchTraversal != null) {
+                routeComputation(SwitchTraversal);
+            }
+
+            if (SwitchAllocator != null) {
+                SwitchTraversal = SwitchAllocator;
+            }
+
+            if (VCAllocator != null) {
+                SwitchAllocator = VCAllocator;
+            }
+
+            if (RouteComputation != null) {
+                VCAllocator = RouteComputation;
+            }
+
+            if ((nextRouter == "home") && (channelHome.peekFirst() != null) && (channelHome != null)) {
+                RouteComputation = channelHome.getFirst();
+
+                setNextChannel(nextRouter, channelHome.getFirst().getIndex());
+
+                channelHome.removeFirst();
+
+            } else if ((nextRouter == "north") && (channelNorth.peekFirst() != null) && (channelNorth != null)) {
+                RouteComputation = channelNorth.getFirst();
+
+                setNextChannel(nextRouter, channelNorth.getFirst().getIndex());
+
+                channelNorth.removeFirst();
+
+            } else if ((nextRouter == "south") && (channelSouth.peekFirst() != null) && (channelSouth != null)) {
+                RouteComputation = channelSouth.getFirst();
+
+                setNextChannel(nextRouter, channelSouth.getFirst().getIndex());
+
+                channelSouth.removeFirst();
+
+            } else if ((nextRouter == "east") && (channelEast.peekFirst() != null) && (channelEast != null)) {
+                RouteComputation = channelEast.getFirst();
+
+                setNextChannel(nextRouter, channelEast.getFirst().getIndex());
+
+                channelEast.removeFirst();
+
+            } else if ((nextRouter == "west") && (channelWest.peekFirst() != null) && (channelWest != null)) {
+                RouteComputation = channelWest.getFirst();
+
+                setNextChannel(nextRouter, channelWest.getFirst().getIndex());
+
+                channelWest.removeFirst();
+            } else {
+                setNextChannel(nextRouter, 0);
+            }
+        } else if(inputPipelineStages == 3){
+            if (SwitchTraversal != null) {
+                routeComputation(SwitchTraversal);
+            }
+
+            if (SwitchAllocator != null) {
+                SwitchTraversal = SwitchAllocator;
+            }
+
+            if (VCAllocator != null) {
+                SwitchAllocator = VCAllocator;
+            }
+
+            if ((nextRouter == "home") && (channelHome.peekFirst() != null) && (channelHome != null)) {
+                VCAllocator = channelHome.getFirst();
+
+                setNextChannel(nextRouter, channelHome.getFirst().getIndex());
+
+                channelHome.removeFirst();
+
+            } else if ((nextRouter == "north") && (channelNorth.peekFirst() != null) && (channelNorth != null)) {
+                VCAllocator = channelNorth.getFirst();
+
+                setNextChannel(nextRouter, channelNorth.getFirst().getIndex());
+
+                channelNorth.removeFirst();
+
+            } else if ((nextRouter == "south") && (channelSouth.peekFirst() != null) && (channelSouth != null)) {
+                VCAllocator = channelSouth.getFirst();
+
+                setNextChannel(nextRouter, channelSouth.getFirst().getIndex());
+
+                channelSouth.removeFirst();
+
+            } else if ((nextRouter == "east") && (channelEast.peekFirst() != null) && (channelEast != null)) {
+                VCAllocator = channelEast.getFirst();
+
+                setNextChannel(nextRouter, channelEast.getFirst().getIndex());
+
+                channelEast.removeFirst();
+
+            } else if ((nextRouter == "west") && (channelWest.peekFirst() != null) && (channelWest != null)) {
+                VCAllocator = channelWest.getFirst();
+
+                setNextChannel(nextRouter, channelWest.getFirst().getIndex());
+
+                channelWest.removeFirst();
+            } else {
+                setNextChannel(nextRouter, 0);
+            }
+        } else if(inputPipelineStages == 2){
+            if (SwitchTraversal != null) {
+                routeComputation(SwitchTraversal);
+            }
+
+            if (SwitchAllocator != null) {
+                SwitchTraversal = SwitchAllocator;
+            }
+
+            if ((nextRouter == "home") && (channelHome.peekFirst() != null) && (channelHome != null)) {
+                SwitchAllocator = channelHome.getFirst();
+
+                setNextChannel(nextRouter, channelHome.getFirst().getIndex());
+
+                channelHome.removeFirst();
+
+            } else if ((nextRouter == "north") && (channelNorth.peekFirst() != null) && (channelNorth != null)) {
+                SwitchAllocator = channelNorth.getFirst();
+
+                setNextChannel(nextRouter, channelNorth.getFirst().getIndex());
+
+                channelNorth.removeFirst();
+
+            } else if ((nextRouter == "south") && (channelSouth.peekFirst() != null) && (channelSouth != null)) {
+                SwitchAllocator = channelSouth.getFirst();
+
+                setNextChannel(nextRouter, channelSouth.getFirst().getIndex());
+
+                channelSouth.removeFirst();
+
+            } else if ((nextRouter == "east") && (channelEast.peekFirst() != null) && (channelEast != null)) {
+                SwitchAllocator = channelEast.getFirst();
+
+                setNextChannel(nextRouter, channelEast.getFirst().getIndex());
+
+                channelEast.removeFirst();
+
+            } else if ((nextRouter == "west") && (channelWest.peekFirst() != null) && (channelWest != null)) {
+                SwitchAllocator = channelWest.getFirst();
+
+                setNextChannel(nextRouter, channelWest.getFirst().getIndex());
+
+                channelWest.removeFirst();
+            } else {
+                setNextChannel(nextRouter, 0);
+            }
+        } else if(inputPipelineStages == 1){
+            if (SwitchTraversal != null) {
+                routeComputation(SwitchTraversal);
+            }
+
+            if ((nextRouter == "home") && (channelHome.peekFirst() != null) && (channelHome != null)) {
+                SwitchTraversal = channelHome.getFirst();
+
+                setNextChannel(nextRouter, channelHome.getFirst().getIndex());
+
+                channelHome.removeFirst();
+
+            } else if ((nextRouter == "north") && (channelNorth.peekFirst() != null) && (channelNorth != null)) {
+                SwitchTraversal = channelNorth.getFirst();
+
+                setNextChannel(nextRouter, channelNorth.getFirst().getIndex());
+
+                channelNorth.removeFirst();
+
+            } else if ((nextRouter == "south") && (channelSouth.peekFirst() != null) && (channelSouth != null)) {
+                SwitchTraversal = channelSouth.getFirst();
+
+                setNextChannel(nextRouter, channelSouth.getFirst().getIndex());
+
+                channelSouth.removeFirst();
+
+            } else if ((nextRouter == "east") && (channelEast.peekFirst() != null) && (channelEast != null)) {
+                SwitchTraversal = channelEast.getFirst();
+
+                setNextChannel(nextRouter, channelEast.getFirst().getIndex());
+
+                channelEast.removeFirst();
+
+            } else if ((nextRouter == "west") && (channelWest.peekFirst() != null) && (channelWest != null)) {
+                SwitchTraversal = channelWest.getFirst();
+
+                setNextChannel(nextRouter, channelWest.getFirst().getIndex());
+
+                channelWest.removeFirst();
+            } else {
+                setNextChannel(nextRouter, 0);
+            }
+        } else if(inputPipelineStages == 0){
+            if ((nextRouter == "home") && (channelHome.peekFirst() != null) && (channelHome != null)) {
+                routeComputation(channelHome.getFirst());
+
+                setNextChannel(nextRouter, channelHome.getFirst().getIndex());
+
+                channelHome.removeFirst();
+
+            } else if ((nextRouter == "north") && (channelNorth.peekFirst() != null) && (channelNorth != null)) {
+                routeComputation(channelNorth.getFirst());
+
+                setNextChannel(nextRouter, channelNorth.getFirst().getIndex());
+
+                channelNorth.removeFirst();
+
+            } else if ((nextRouter == "south") && (channelSouth.peekFirst() != null) && (channelSouth != null)) {
+                routeComputation(channelSouth.getFirst());
+
+                setNextChannel(nextRouter, channelSouth.getFirst().getIndex());
+
+                channelSouth.removeFirst();
+
+            } else if ((nextRouter == "east") && (channelEast.peekFirst() != null) && (channelEast != null)) {
+                routeComputation(channelEast.getFirst());
+
+                setNextChannel(nextRouter, channelEast.getFirst().getIndex());
+
+                channelEast.removeFirst();
+
+            } else if ((nextRouter == "west") && (channelWest.peekFirst() != null) && (channelWest != null)) {
+                routeComputation(channelWest.getFirst());
+
+                setNextChannel(nextRouter, channelWest.getFirst().getIndex());
+
+                channelWest.removeFirst();
+            } else {
+                setNextChannel(nextRouter, 0);
+            }
+        }
+    }
+
+
+
 
     /**
      * Returns a Jpanel containing a circle with the number of the node in the center

@@ -6,7 +6,7 @@ import java.awt.*;
 public class shapeTSegmentUp extends JPanel {
 
     public shapeTSegmentUp(){
-        setPreferredSize(new Dimension(26, 26));
+        setPreferredSize(new Dimension(36, 36));
         setLocation(0,0);
     }
 
@@ -14,7 +14,7 @@ public class shapeTSegmentUp extends JPanel {
         super.paintComponent(g);
 
         g.setColor(Color.BLACK);
-        g.drawLine(13, 0, 13, 13);
-        g.drawLine(0, 13, 26, 13);
+        g.drawLine(18, 0, 18, 18);
+        g.drawLine(0, 18, 36, 18);
     }
 }

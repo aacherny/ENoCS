@@ -227,6 +227,9 @@ public class Bus implements Network
 
     public void setPipelineStages(int inputStages){
         pipelineStages = inputStages;
+        newCycle();
+
+        scrollingTextFrame.addText("The pipeline now has " + inputStages + " stages");
     }
 
     public int getPipelineStages(){

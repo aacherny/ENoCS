@@ -333,6 +333,8 @@ public class Torus implements Network
 
     public void setPipelineStages(int inputStages){
         pipelineStages = inputStages;
+
+        scrollingTextFrame.addText("The pipeline now has " + inputStages + " stages");
     }
 
     public int getPipelineStages(){
