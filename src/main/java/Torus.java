@@ -209,27 +209,44 @@ public class Torus implements Network
         int nodeCounter = 0;
 
 
-        panelYContainer.setLayout(new GridLayout(0, nodesSqrt + nodesSqrt - 1));
+        panelYContainer.setLayout(new GridLayout(0, nodesSqrt + nodesSqrt + 1));
 
         JPanel panelXContainer = new JPanel();
-        panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt - 1, 0));
+        panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt + 1, 0));
 
+
+        // The leftmost column made out of alternating black spacers and west semicircles
+        panelXContainer.add(new blankSpace());  // The first blank space
+        for (int i = 0; i < nodesSqrt; i++) {   // Alternating west semicircles and blank spaces
+
+            panelXContainer.add(new shapeSemiCircleWest());
+            panelXContainer.add(new blankSpace());
+
+        }
+        panelYContainer.add(panelXContainer);
+
+        // The first column made out of circles and vertical lines
+        panelXContainer = new JPanel();
+        panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt + 1, 0));
+        panelXContainer.add(new shapeSemiCircleNorth());  // Adds the very top-left circle
         panelXContainer.add(routerArray[nodeCounter++].drawCircle());  // Adds the very top-left circle
-
         for (int i = 0; i < nodesSqrt - 1; i++) {   // Adds on more line+circle combos to the same column
 
             panelXContainer.add(new vertLine());
             panelXContainer.add(routerArray[nodeCounter++].drawCircle());
 
         }
-
+        panelXContainer.add(new shapeSemiCircleSouth());  // Adds the very top-left circle
         panelYContainer.add(panelXContainer);   // Adds that column of circle+vertLines as the leftmost column
 
-        for (int i = 0; i < nodesSqrt - 1; i++) {   // for the rest of the columns in the mesh
+
+        // Alternating columns of blank space + horizontal line, and circle + vertical line
+        for (int i = 0; i < nodesSqrt - 1; i++) {   // for the rest of the columns
 
             panelXContainer = new JPanel();
-            panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt - 1, 0));
+            panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt + 1, 0));
 
+            panelXContainer.add(new blankSpace());
             panelXContainer.add(new horiLine());  // Adds the top horizontal line to the column to the right of the previous one
 
             for (int j = 0; j < nodesSqrt - 1; j++) {   // Adds on more blankspace+horiline combos to the same column
@@ -238,11 +255,15 @@ public class Torus implements Network
                 panelXContainer.add(new horiLine());
 
             }
+            panelXContainer.add(new blankSpace());
             panelYContainer.add(panelXContainer);   // Adds the column of horiline+blackspaces to the right of the previous column
 
-            panelXContainer = new JPanel();
-            panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt - 1, 0));
 
+
+            panelXContainer = new JPanel();
+            panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt + 1, 0));
+
+            panelXContainer.add(new shapeSemiCircleNorth());  // Adds the very top-left circle
             panelXContainer.add(routerArray[nodeCounter++].drawCircle());  // Adds a top circle
 
             for (int j = 0; j < nodesSqrt - 1; j++) {   // Adds on more line+circle combos to the column
@@ -251,8 +272,22 @@ public class Torus implements Network
                 panelXContainer.add(routerArray[nodeCounter++].drawCircle());
 
             }
+            panelXContainer.add(new shapeSemiCircleSouth());  // Adds the very top-left circle
             panelYContainer.add(panelXContainer);   // Adds the column of circles+vertLines to the right of the previous column
         }
+
+        // Rightmost column with alternating blank spaces and east semicircles
+        panelXContainer = new JPanel();
+        panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt + 1, 0));
+        panelXContainer.add(new blankSpace());  // The first blank space
+        for (int i = 0; i < nodesSqrt; i++) {   // Alternating east semicircles and blank spaces
+
+            panelXContainer.add(new shapeSemiCircleEast());
+            panelXContainer.add(new blankSpace());
+
+        }
+        panelYContainer.add(panelXContainer);
+
 
         return panelYContainer;
     }
