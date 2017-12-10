@@ -251,7 +251,43 @@ public class Router {
             }
         }
         else if(network.getTopology() == "bus") {
-            outputSouth = inputFlit;
+            if ((routerLocation / 10 == inputFlit.getDestinationX()) && (routerLocation % 10 == inputFlit.getDestinationY())) {
+                outputHome = inputFlit;
+            }else {
+                outputSouth = inputFlit;
+            }
+        }
+
+        else if(network.getTopology() == "torus") {
+            int routerLocationX = routerLocation / 10 + 1;
+            int routerLocationY = routerLocation % 10 + 1;
+            int flitDestinationX = inputFlit.getDestinationX() + 1;
+            int flitDestinationY = inputFlit.getDestinationY() + 1;
+            int sqrtNodes = (int) Math.sqrt(network.getNodes());
+
+            System.out.println("RouterX: " + routerLocationX + ", RouterY: " + routerLocationY + ", FlitX: " + flitDestinationX + ", FlitY: " + flitDestinationY);
+
+            if ((routerLocationX == flitDestinationX) && (routerLocationY == flitDestinationY)) {
+                outputHome = inputFlit;
+            } else if (routerLocationX == flitDestinationX) {
+                if (sqrtNodes - routerLocationY + flitDestinationY < routerLocationY - flitDestinationY) {
+                    outputSouth = inputFlit;
+                } else if (sqrtNodes - flitDestinationY + routerLocationY < flitDestinationY - routerLocationY) {
+                    outputNorth = inputFlit;
+                } else if (routerLocationY - flitDestinationY <= sqrtNodes - routerLocationY + flitDestinationY) {
+                    outputSouth = inputFlit;
+                } else if (flitDestinationY - routerLocationY <= sqrtNodes - flitDestinationY + routerLocationY) {
+                    outputNorth = inputFlit;
+                }
+            } else if (sqrtNodes - routerLocationX + flitDestinationX < routerLocationX - flitDestinationX) {
+                outputEast = inputFlit;
+            } else if (sqrtNodes - flitDestinationX + routerLocationX < flitDestinationX - routerLocationX) {
+                outputWest = inputFlit;
+            } else if (routerLocationX - flitDestinationX <= sqrtNodes - routerLocationX + flitDestinationX) {
+                outputWest = inputFlit;
+            } else if (flitDestinationX - routerLocationX <= sqrtNodes - flitDestinationX + routerLocationX) {
+                outputEast = inputFlit;
+            }
         }
     }
 

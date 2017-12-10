@@ -37,39 +37,111 @@ public class Torus implements Network
         }
 
         for (int i = 0; i < nodes; i++) {    // Sends ready-to-send packets from one router to the other
+            if(routerArray[i].outputNorth != null){
+                Flit[] tempFlit = new Flit[] {routerArray[i].outputNorth};
+                int northRouter = routerArray[i].getRouterNorth();
+                routerArray[locationToIndex(northRouter)].inputPacket(tempFlit, routerArray[i].getRouterLocation());
 
-            // If the router has a flit ready to send in it's South channel (the only output channel that Bus Routers have is south)
+                routerArray[i].outputNorth = null;
+            }
+
             if(routerArray[i].outputSouth != null){
-                Flit tempFlit = routerArray[i].outputSouth;
-                // Calculates the destination coordinates of the flit that's being sent
-                int tempFlitDestination = tempFlit.getDestinationX()*10 + tempFlit.getDestinationY();
-                // Inputs the packet into the packet's destination router, from that router's southern direction
-                routerArray[locationToIndex(tempFlitDestination)].addPacket(tempFlit);
+                Flit[] tempFlit = new Flit[] {routerArray[i].outputSouth};
+                int southRouter = routerArray[i].getRouterSouth();
+                routerArray[locationToIndex(southRouter)].inputPacket(tempFlit, routerArray[i].getRouterLocation());
 
                 routerArray[i].outputSouth = null;
             }
+
+            if(routerArray[i].outputEast != null){
+                Flit[] tempFlit = new Flit[] {routerArray[i].outputEast};
+                int eastRouter = routerArray[i].getRouterEast();
+                routerArray[locationToIndex(eastRouter)].inputPacket(tempFlit, routerArray[i].getRouterLocation());
+
+                routerArray[i].outputEast = null;
+            }
+
+            if(routerArray[i].outputWest != null){
+                Flit[] tempFlit = new Flit[] {routerArray[i].outputWest};
+                int westRouter = routerArray[i].getRouterWest();
+                routerArray[locationToIndex(westRouter)].inputPacket(tempFlit, routerArray[i].getRouterLocation());
+
+                routerArray[i].outputWest = null;
+            }
         }
 
-        generatePacket(packetChance);
+        //generatePacket(packetChance);
     }
 
     public void newCycle()
     {
         for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
-            routerArray[i].newCycle();
+            //routerArray[i].newCycle();
         }
+
+        Flit[] packet = createPacket(1, 0, 0, 2, 2);
+        routerArray[0].inputPacket(packet, 999);
 
         scrollingTextFrame.addText("Simulation restarted");
     }
 
+    /**
+     * Creates an array of Router objects depending on the amount of nodes there are
+     * @return Router[] An array of router objects
+     */
     @SuppressWarnings("Duplicates")
-    public Router[] createRouterArray(int inputNodes) {
-
+    public Router[] createRouterArray(int inputNodes)
+    {
         Router[] routers = new Router[inputNodes];
 
-        for(int i = 0; i < nodes; i++){
-            routers[i] = new Router(i, 00,-1, 01, -1, -1, desktopPane, this);
-            scrollingTextFrame.addText("Router " + i + " Created");
+        switch(nodes) { // All routers are manually assigned their number, and all of their neighboring routers
+            case 4:
+                routers[0] = new Router(0, 00,10, 01, 10, 10, desktopPane, this);
+                routers[1] = new Router(1, 01,00, 00, 11, 11, desktopPane, this);
+                routers[2] = new Router(2, 10,11, 11, 00, 00, desktopPane, this);
+                routers[3] = new Router(3, 11,10, 10, 01, 01, desktopPane, this);
+
+                for(int i = 0; i < nodes; i++) {
+                    scrollingTextFrame.addText("Router " + i + " Created");
+                }
+                break;
+            case 9:
+                routers[0] = new Router(0, 00,02, 01, 10, 20, desktopPane, this);
+                routers[1] = new Router(1, 01,00, 02, 11, 21, desktopPane, this);
+                routers[2] = new Router(2, 02,01, 00, 12, 22, desktopPane, this);
+                routers[3] = new Router(3, 10,12, 11, 20, 00, desktopPane, this);
+                routers[4] = new Router(4, 11,10, 12, 21, 01, desktopPane, this);
+                routers[5] = new Router(5, 12,11, 10, 22, 02, desktopPane, this);
+                routers[6] = new Router(6, 20,22, 21, 00, 10, desktopPane, this);
+                routers[7] = new Router(7, 21,20, 22, 01, 11, desktopPane, this);
+                routers[8] = new Router(8, 22,21, 20, 02, 12, desktopPane, this);
+
+                for(int i = 0; i < nodes; i++) {
+                    scrollingTextFrame.addText("Router " + i + " Created");
+                }
+                break;
+            case 16:
+                routers[0] = new Router(0, 00,03, 01, 10, 30, desktopPane, this);
+                routers[1] = new Router(1, 01,00, 02, 11, 31, desktopPane, this);
+                routers[2] = new Router(2, 02,01, 03, 12, 32, desktopPane, this);
+                routers[3] = new Router(3, 03,02, 00, 13, 33, desktopPane, this);
+                routers[4] = new Router(4, 10,13, 11, 20, 00, desktopPane, this);
+                routers[5] = new Router(5, 11,10, 12, 21, 01, desktopPane, this);
+                routers[6] = new Router(6, 12,11, 13, 22, 02, desktopPane, this);
+                routers[7] = new Router(7, 13,12, 10, 23, 03, desktopPane, this);
+                routers[8] = new Router(8, 20,23, 21, 30, 10, desktopPane, this);
+                routers[9] = new Router(9, 21,20, 22, 31, 11, desktopPane, this);
+                routers[10] = new Router(10, 22,21, 23, 32, 12, desktopPane, this);
+                routers[11] = new Router(11, 23,22, 20, 33, 13, desktopPane, this);
+                routers[12] = new Router(12, 30,33, 31, 00, 20, desktopPane, this);
+                routers[13] = new Router(13, 31,30, 32, 01, 21, desktopPane, this);
+                routers[14] = new Router(14, 32,31, 33, 02, 22, desktopPane, this);
+                routers[15] = new Router(15, 33,32, 30, 03, 23, desktopPane, this);
+
+                for(int i = 0; i < nodes; i++) {
+                    scrollingTextFrame.addText("Router " + i + " Created");
+                }
+                break;
         }
 
         return routers;
@@ -130,57 +202,59 @@ public class Torus implements Network
         }
     }
 
-    public JPanel drawTopology() {
-
+    public JPanel drawTopology()
+    {
         desktopPane.add(scrollingTextFrame);
 
         JPanel panelYContainer = new JPanel();
 
+        int nodesSqrt = (int) Math.sqrt(nodes);
         int nodeCounter = 0;
 
-        for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
-            //routerArray[i] = new Router(i, desktopPane);
-        }
 
-        panelYContainer.setLayout(new GridLayout(0, nodes));
+        panelYContainer.setLayout(new GridLayout(0, nodesSqrt + nodesSqrt - 1));
 
-        for (int i = 0; i < nodes / 2; i++) {
+        JPanel panelXContainer = new JPanel();
+        panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt - 1, 0));
 
-            JPanel panelXContainer = new JPanel();
-            panelXContainer.setLayout(new GridLayout(5, 0));
+        panelXContainer.add(routerArray[nodeCounter++].drawCircle());  // Adds the very top-left circle
 
-            panelXContainer.add(routerArray[nodeCounter++].drawCircle());  // Adds an upper branch from the bus linking to a node
-            panelXContainer.add(new vertLine());
-            panelXContainer.add(new tSegmentUp());
-            panelXContainer.add(new blankSpace());
-            panelXContainer.add(new blankSpace());
+        for (int i = 0; i < nodesSqrt - 1; i++) {   // Adds on more line+circle combos to the same column
 
-            panelYContainer.add(panelXContainer);
-
-            panelXContainer = new JPanel();
-            panelXContainer.setLayout(new GridLayout(5, 0));
-
-            panelXContainer.add(new blankSpace());  // Adds a lower branch
-            panelXContainer.add(new blankSpace());
-            panelXContainer.add(new tSegmentDown());
             panelXContainer.add(new vertLine());
             panelXContainer.add(routerArray[nodeCounter++].drawCircle());
 
-            panelYContainer.add(panelXContainer);
         }
 
-        if (nodes % 2 == 1) {
+        panelYContainer.add(panelXContainer);   // Adds that column of circle+vertLines as the leftmost column
 
-            JPanel panelXContainer = new JPanel();
-            panelXContainer.setLayout(new GridLayout(5, 0));
+        for (int i = 0; i < nodesSqrt - 1; i++) {   // for the rest of the columns in the mesh
 
-            panelXContainer.add(routerArray[nodeCounter].drawCircle());  // If there's an odd number of nodes, adds a final upper branch at the end of the bus
-            panelXContainer.add(new vertLine());
-            panelXContainer.add(new tSegmentUp());
-            panelXContainer.add(new blankSpace());
-            panelXContainer.add(new blankSpace());
+            panelXContainer = new JPanel();
+            panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt - 1, 0));
 
-            panelYContainer.add(panelXContainer);
+            panelXContainer.add(new horiLine());  // Adds the top horizontal line to the column to the right of the previous one
+
+            for (int j = 0; j < nodesSqrt - 1; j++) {   // Adds on more blankspace+horiline combos to the same column
+
+                panelXContainer.add(new blankSpace());
+                panelXContainer.add(new horiLine());
+
+            }
+            panelYContainer.add(panelXContainer);   // Adds the column of horiline+blackspaces to the right of the previous column
+
+            panelXContainer = new JPanel();
+            panelXContainer.setLayout(new GridLayout(nodesSqrt + nodesSqrt - 1, 0));
+
+            panelXContainer.add(routerArray[nodeCounter++].drawCircle());  // Adds a top circle
+
+            for (int j = 0; j < nodesSqrt - 1; j++) {   // Adds on more line+circle combos to the column
+
+                panelXContainer.add(new vertLine());
+                panelXContainer.add(routerArray[nodeCounter++].drawCircle());
+
+            }
+            panelYContainer.add(panelXContainer);   // Adds the column of circles+vertLines to the right of the previous column
         }
 
         return panelYContainer;
