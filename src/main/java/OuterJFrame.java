@@ -21,7 +21,6 @@ public class OuterJFrame {
     private JPanel panel;           // Needed for toolbar
     private JDesktopPane desktop;   // Needed for Internal JFrames
     // The next line declares the frames that are going to be used to control the internal windows
-    // Is there any reason not to define them now?
     private TopologyInternalFrame topologyFrame;
     private FlowControlInternalFrame flowControlFrame;
     private StatisticsInternalFrame statisticFrame;
@@ -31,6 +30,7 @@ public class OuterJFrame {
     private File saveFile = new File("");
 
     protected Network network;
+    private JTextField multiCycleField;
 
     protected int cycleNumber;
     public int openFrameCount;
@@ -580,7 +580,7 @@ public class OuterJFrame {
         });
         toolBar.add(nextCycle);
 
-        JTextField multiCycleField = new JTextField("5", 5);
+        multiCycleField = new JTextField("5", 5);
         multiCycleField.setMaximumSize(new Dimension(48, 24));
         toolBar.add(multiCycleField);
 
@@ -630,5 +630,13 @@ public class OuterJFrame {
 
     public void updateNetwork(Network inputNetwork) {
         network = inputNetwork;
+    }
+
+    public int getCyclePerStep(){
+        return Integer.parseInt(multiCycleField.getText());
+    }
+
+    public void setCyclePerStep(int cycles){
+        multiCycleField.setText(cycles+"");
     }
 }

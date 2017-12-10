@@ -88,16 +88,6 @@ public class PropertiesWindow {
         tabbedPane.addTab("Router MicroArchitecture", routerMA);
 
 
-        // 'Stat Window' panel
-        statWindow = createStatWindowPanel();
-        tabbedPane.addTab("Stat Window", statWindow);
-
-
-        // 'Misc' panel
-        JPanel misc = new JPanel(new BorderLayout());
-        tabbedPane.addTab("Misc", misc);
-
-
         // Adds the tabbed pane to the Properties window
         propertiesFrame.add(tabbedPane);
 
@@ -250,7 +240,7 @@ public class PropertiesWindow {
         //Below contains the CC per step
         JPanel CCPerStepPanel = new JPanel();
         JLabel CCPerStepLabel = new JLabel("Clock Cycles Per Step");
-        JTextField CCPerStepField = new JTextField("3", 3);
+        JTextField CCPerStepField = new JTextField(OJFrame.getCyclePerStep()+"", 3);
         CCPerStepPanel.add(CCPerStepLabel);
         CCPerStepPanel.add(CCPerStepField);
 
@@ -282,7 +272,9 @@ public class PropertiesWindow {
         JButton okayButton = new JButton("Okay");
         okayButton.addActionListener(e -> {
             selectedInjection = Integer.parseInt(boxInjection.getSelectedItem().toString());
+            int selectedCyclesPerStep = Integer.parseInt(CCPerStepField.getText());
             OJFrame.setPacketChance(selectedInjection);
+            OJFrame.setCyclePerStep(selectedCyclesPerStep);
             network.setPacketChance(selectedInjection);
 
             propertiesFrame.dispose();
@@ -345,60 +337,6 @@ public class PropertiesWindow {
 
         routerMAPanel.add(pipelineStagesPanel);
         borderLayout.add(routerMAPanel, BorderLayout.CENTER);
-        borderLayout.add(okayCancelPanel, BorderLayout.SOUTH);
-
-        return borderLayout;
-    }
-
-    private JPanel createStatWindowPanel() {
-        //The below JPanel is used to correctly position the okay and cancel buttons
-        JPanel borderLayout = new JPanel(new BorderLayout());
-
-        //The below JPanel is used to hold all of the options for the Stats Window
-        JPanel statWindowPanel = new JPanel();
-        statWindowPanel.setLayout(new BoxLayout(statWindowPanel, BoxLayout.Y_AXIS));
-
-        JLabel latencyStatsLabel = new JLabel("Latency Statistics");
-
-        JPanel latencyStatsPanel = new JPanel();
-        JCheckBox clockCyclesCheck = new JCheckBox("Clock Cycles", true);
-        JCheckBox hopsCheck = new JCheckBox("Hops", true);
-        latencyStatsPanel.add(clockCyclesCheck);
-        latencyStatsPanel.add(hopsCheck);
-
-        JLabel otherStatsLabel = new JLabel("Other Statistics");
-
-        JPanel otherStatsPanel = new JPanel();
-        JCheckBox bandwidthCheck = new JCheckBox("Bandwidth", false);
-        JCheckBox throughputCheck = new JCheckBox("Throughput", false);
-        JCheckBox droppedFlitsCheck = new JCheckBox("Dropped Flits", true);
-        JCheckBox areaCheck = new JCheckBox("Area", false);
-        JCheckBox powerCheck = new JCheckBox("Power", false);
-        otherStatsPanel.add(bandwidthCheck);
-        otherStatsPanel.add(throughputCheck);
-        otherStatsPanel.add(droppedFlitsCheck);
-        otherStatsPanel.add(areaCheck);
-        otherStatsPanel.add(powerCheck);
-
-        //Okay and Cancel buttons
-        JPanel okayCancelPanel = new JPanel();
-        JButton okayButton = new JButton("Okay");
-        okayButton.addActionListener(e -> {
-            //TODO: Collect all of the options and apply them to variables
-            propertiesFrame.dispose();
-        });
-        JButton cancelButton = new JButton("Cancel");
-        cancelButton.addActionListener(e -> {
-            propertiesFrame.dispose();
-        });
-        okayCancelPanel.add(okayButton);
-        okayCancelPanel.add(cancelButton);
-
-        statWindowPanel.add(latencyStatsLabel);
-        statWindowPanel.add(latencyStatsPanel);
-        statWindowPanel.add(otherStatsLabel);
-        statWindowPanel.add(otherStatsPanel);
-        borderLayout.add(statWindowPanel, BorderLayout.CENTER);
         borderLayout.add(okayCancelPanel, BorderLayout.SOUTH);
 
         return borderLayout;
