@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6effbb56-f5b0-4b79-a23a-cf22072d6528" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Router$1.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Router$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Router.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Router.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Router.java" afterPath="$PROJECT_DIR$/src/main/java/Router.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Torus.java" afterPath="$PROJECT_DIR$/src/main/java/Torus.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -127,8 +127,8 @@
           <file leaf-file-name="Router.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="898">
-                  <caret line="303" column="49" lean-forward="true" selection-start-line="303" selection-start-column="49" selection-end-line="303" selection-end-column="49" />
+                <state relative-caret-position="558">
+                  <caret line="283" column="59" lean-forward="false" selection-start-line="283" selection-start-column="59" selection-end-line="283" selection-end-column="59" />
                   <folding>
                     <element signature="e#23373#23699#0" expanded="true" />
                     <element signature="e#23698#23699#0" expanded="true" />
@@ -500,7 +500,7 @@
       <workItem from="1512494170270" duration="132000" />
       <workItem from="1512499146620" duration="6839000" />
       <workItem from="1512749828351" duration="1195000" />
-      <workItem from="1512847209618" duration="27459000" />
+      <workItem from="1512847209618" duration="27529000" />
     </task>
     <task id="LOCAL-00001" summary="Another test commit">
       <created>1506367699156</created>
@@ -754,11 +754,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512872992143</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Torus route computation works correctly">
+      <created>1512882272470</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1512882272470</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="223350000" />
+    <option name="totallyTimeSpent" value="223420000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -836,7 +843,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created a Flit class with get/set functions for the flit's location" />
     <MESSAGE value="Turned Network into an interface, and split its methods between Mesh, Bus, etc" />
     <MESSAGE value="Class made to create a window for the diagram of a router that's clicked on" />
     <MESSAGE value="Modified Flit class" />
@@ -861,7 +867,8 @@
     <MESSAGE value="The text window is now created when Routers are created&#10;Key information during the simulation can be sent to the text window to display" />
     <MESSAGE value="Empty flit slots are now painted over with white rectangles to show they're empty&#10;Flit injection rate can be changed in the options window" />
     <MESSAGE value="Bus now works, and can send packets along the bus to the target Router" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bus now works, and can send packets along the bus to the target Router" />
+    <MESSAGE value="Torus route computation works correctly" />
+    <option name="LAST_COMMIT_MESSAGE" value="Torus route computation works correctly" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1309,8 +1316,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="898">
-          <caret line="303" column="49" lean-forward="true" selection-start-line="303" selection-start-column="49" selection-end-line="303" selection-end-column="49" />
+        <state relative-caret-position="558">
+          <caret line="283" column="59" lean-forward="false" selection-start-line="283" selection-start-column="59" selection-end-line="283" selection-end-column="59" />
           <folding>
             <element signature="e#23373#23699#0" expanded="true" />
             <element signature="e#23698#23699#0" expanded="true" />
