@@ -6,7 +6,7 @@ import java.awt.*;
 public class horiLine extends JPanel {
 
     public horiLine(){
-        setPreferredSize(new Dimension(26, 26));
+        setPreferredSize(new Dimension(36, 36));
         setLocation(0,0);
     }
 
@@ -14,6 +14,6 @@ public class horiLine extends JPanel {
         super.paintComponent(g);
 
         g.setColor(Color.BLACK);
-        g.drawLine(0, 13, 26, 13);
+        g.drawLine(0, 18, 36, 18);
     }
 }

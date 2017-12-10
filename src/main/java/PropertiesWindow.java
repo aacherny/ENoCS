@@ -78,7 +78,7 @@ public class PropertiesWindow {
 
 
         // 'Network Settings' panel
-        JPanel networkSettings = new JPanel(new GridLayout(9, 2));
+        JPanel networkSettings = new JPanel(new BorderLayout());
         tabbedPane.addTab("Network Settings", networkSettings);
         createNetworkSettingsPanel(networkSettings);    // creates the content in the 'Network Settings' tab
 
@@ -112,13 +112,16 @@ public class PropertiesWindow {
      */
     private void createNetworkSettingsPanel(JPanel networkSettings) {
         // Panel for the topology
+        JPanel borderPanel = new JPanel(new GridLayout(9, 2));
+        networkSettings.add(borderPanel, BorderLayout.CENTER);
+
         JPanel topologyPanel = new JPanel(new GridLayout(1, 2)); // 2 rows 1 column
-        networkSettings.add(topologyPanel);
+        borderPanel.add(topologyPanel);
 
 
         // Panel for the nodes
         JPanel nodesPanel = new JPanel(new GridLayout(1, 2)); // 2 rows 1 column
-        networkSettings.add(nodesPanel);
+        borderPanel.add(nodesPanel);
 
         // Topology label
         JLabel labelTopology = new JLabel("Topology");
@@ -141,7 +144,7 @@ public class PropertiesWindow {
                 break;
         }
 
-        networkSettings.add(boxTopology);
+        borderPanel.add(boxTopology);
 
         // Nodes label
         JLabel labelNodes = new JLabel("Nodes");
@@ -165,7 +168,7 @@ public class PropertiesWindow {
                 break;
         }
 
-        networkSettings.add(boxNodes);
+        borderPanel.add(boxNodes);
 
         topologyPanel.add(labelTopology);
         topologyPanel.add(boxTopology);
@@ -173,12 +176,27 @@ public class PropertiesWindow {
         nodesPanel.add(labelNodes);
         nodesPanel.add(boxNodes);
 
-        // OK button at the bottom
-        JButton okButton = new JButton("OK");
-        networkSettings.add(okButton);
+        JPanel okayCancelPanel = new JPanel();
+        //Below adds the okay and cancel buttons
+        JButton networkOkayButton = new JButton("Okay");
+
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.addActionListener(e -> {
+            propertiesFrame.dispose();
+        });
+        okayCancelPanel.add(networkOkayButton);
+        okayCancelPanel.add(cancelButton);
+
+        borderPanel.add(okayCancelPanel, BorderLayout.SOUTH);
+
+
+
+
+
+
 
         // What happens when the OK button is clicked
-        okButton.addActionListener(new ActionListener() {
+        networkOkayButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 selectedTopology = boxTopology.getSelectedItem().toString().toLowerCase();
@@ -259,16 +277,6 @@ public class PropertiesWindow {
         injectionRatePanel.add(boxInjection);
         injectionRatePanel.add(injectionRatePercentLabel);
 
-        //Below will contain the packet generation options
-        JPanel packetGenerationPanel = new JPanel();
-        JLabel packetGenerationLabel = new JLabel("Packet Generation");
-        JComboBox<String> packetGenerationBox = new JComboBox<>();
-        packetGenerationBox.addItem("Drop packets generated at nodes with full input buffer");
-        packetGenerationBox.addItem("Do not generate packets at nodes with full input buffer");
-        packetGenerationBox.addItem("Unlimited buffer space at nodes for generated packets");
-        packetGenerationPanel.add(packetGenerationLabel);
-        packetGenerationPanel.add(packetGenerationBox);
-
         //Below adds the okay and cancel buttons
         JPanel okayCancelPanel = new JPanel();
         JButton okayButton = new JButton("Okay");
@@ -291,7 +299,6 @@ public class PropertiesWindow {
         runtimeOptions.add(CCPerStepPanel);
         runtimeOptions.add(injectionTypePanel);
         runtimeOptions.add(injectionRatePanel);
-        runtimeOptions.add(packetGenerationPanel);
         borderLayout.add(runtimeOptions, BorderLayout.CENTER);
         borderLayout.add(okayCancelPanel, BorderLayout.SOUTH);
 

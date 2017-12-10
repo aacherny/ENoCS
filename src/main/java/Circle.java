@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 public class Circle extends JPanel {
 
     public Circle(){
-        setPreferredSize(new Dimension(26, 26));
+        setPreferredSize(new Dimension(36, 36));
         setLocation(0,0);
     }
 
@@ -16,6 +16,6 @@ public class Circle extends JPanel {
         super.paintComponent(l);
 
         l.setColor(Color.BLACK);
-        l.drawOval(0, 0, 25, 25);
+        l.drawOval(0, 0, 35, 35);
     }
 }
