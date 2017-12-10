@@ -153,19 +153,20 @@ public class Router {
 
 
         // Go through each list and draw the rectangle on the diagram for every flit in the router
-        for (int i = 0; i <= cIndex; i++) {
-            if (channelIndex[i] == "home") {
-                createRectanglesFromFlitList(channelHome, i);
-            } else if (channelIndex[i] == "north") {
-                createRectanglesFromFlitList(channelNorth, i);
-            } else if (channelIndex[i] == "south") {
-                createRectanglesFromFlitList(channelSouth, i);
-            } else if (channelIndex[i] == "east") {
-                createRectanglesFromFlitList(channelEast, i);
-            } else if (channelIndex[i] == "west") {
-                createRectanglesFromFlitList(channelWest, i);
+
+            for (int i = 0; i <= cIndex; i++) {
+                if (channelIndex[i] == "home") {
+                    createRectanglesFromFlitList(channelHome, i);
+                } else if (channelIndex[i] == "north") {
+                    createRectanglesFromFlitList(channelNorth, i);
+                } else if (channelIndex[i] == "south") {
+                    createRectanglesFromFlitList(channelSouth, i);
+                } else if (channelIndex[i] == "east") {
+                    createRectanglesFromFlitList(channelEast, i);
+                } else if (channelIndex[i] == "west") {
+                    createRectanglesFromFlitList(channelWest, i);
+                }
             }
-        }
 
         // Adds rectangles for the flits inside the pipeline
         createRectanglesFromPipeline(RouteComputation, 16);
@@ -221,31 +222,36 @@ public class Router {
      * @param inputFlit
      */
     public void routeComputation(Flit inputFlit) {
-        if((routerLocation / 10 == inputFlit.getDestinationX()) && (routerLocation % 10 == inputFlit.getDestinationY())) {
-            outputHome = inputFlit;
+        if(network.getTopology() == "mesh") {
+            if ((routerLocation / 10 == inputFlit.getDestinationX()) && (routerLocation % 10 == inputFlit.getDestinationY())) {
+                outputHome = inputFlit;
 
-            System.out.println("Packet arrived Home");
+                System.out.println("Packet arrived Home");
 
-        }else if (routerLocation / 10 > inputFlit.getDestinationX()) {
-            outputWest = inputFlit;
+            } else if (routerLocation / 10 > inputFlit.getDestinationX()) {
+                outputWest = inputFlit;
 
-            System.out.println("Packet (" + inputFlit.getDestinationX() + inputFlit.getDestinationY() + ") from router (" + routerLocation + ") " + routerNumber + " sent to west");
+                System.out.println("Packet (" + inputFlit.getDestinationX() + inputFlit.getDestinationY() + ") from router (" + routerLocation + ") " + routerNumber + " sent to west");
 
-        } else if (routerLocation / 10 < inputFlit.getDestinationX()) {
-            outputEast = inputFlit;
+            } else if (routerLocation / 10 < inputFlit.getDestinationX()) {
+                outputEast = inputFlit;
 
-            System.out.println("Packet (" + inputFlit.getDestinationX() + inputFlit.getDestinationY() + ") from router (" + routerLocation + ") " + routerNumber + " sent to east");
+                System.out.println("Packet (" + inputFlit.getDestinationX() + inputFlit.getDestinationY() + ") from router (" + routerLocation + ") " + routerNumber + " sent to east");
 
-        } else if (routerLocation % 10 > inputFlit.getDestinationY()) {
-            outputNorth = inputFlit;
+            } else if (routerLocation % 10 > inputFlit.getDestinationY()) {
+                outputNorth = inputFlit;
 
-            System.out.println("Packet (" + inputFlit.getDestinationX() + inputFlit.getDestinationY() + ") from router (" + routerLocation + ") " + routerNumber + " sent to north");
+                System.out.println("Packet (" + inputFlit.getDestinationX() + inputFlit.getDestinationY() + ") from router (" + routerLocation + ") " + routerNumber + " sent to north");
 
-        } else if (routerLocation % 10 < inputFlit.getDestinationY()) {
+            } else if (routerLocation % 10 < inputFlit.getDestinationY()) {
+                outputSouth = inputFlit;
+
+                System.out.println("Packet (" + inputFlit.getDestinationX() + inputFlit.getDestinationY() + ") from router (" + routerLocation + ") " + routerNumber + " sent to south");
+
+            }
+        }
+        else if(network.getTopology() == "bus") {
             outputSouth = inputFlit;
-
-            System.out.println("Packet (" + inputFlit.getDestinationX() + inputFlit.getDestinationY() + ") from router (" + routerLocation + ") " + routerNumber + " sent to south");
-
         }
     }
 
@@ -416,7 +422,6 @@ public class Router {
         if (list != null) {
             for (int i = 0; i < list.size(); i++) {
                 Flit flit = list.get(i);
-
                 routerDiagram.addRectangle(new ColoredRectangle(flit.getColor(), 15 - i, channel));
             }
         }
@@ -436,11 +441,10 @@ public class Router {
         }
     }
 
-    public void createRectanglesFromOutput(Flit flit, int channel){
-        if(outputNorth != null){
-            routerDiagram.addRectangle(new ColoredRectangle(flit.getColor(), 20, channel));
+    public void addPacket(Flit inputPacket) {
+        if(channelSouth != null && channelSouth.size() < 16){
+            channelSouth.addLast(inputPacket);
         }
-
     }
 
     /**

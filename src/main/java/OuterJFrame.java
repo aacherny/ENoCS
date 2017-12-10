@@ -16,8 +16,7 @@ import java.io.FileWriter;
  * Class for the outer window that holds other windows inside it
  */
 
-public class OuterJFrame
-{
+public class OuterJFrame {
     private JFrame outerFrame;      // Outer window
     private JPanel panel;           // Needed for toolbar
     private JDesktopPane desktop;   // Needed for Internal JFrames
@@ -36,14 +35,12 @@ public class OuterJFrame
     protected int cycleNumber;
     public int openFrameCount;
 
-    public OuterJFrame()
-    {
+    public OuterJFrame() {
         outerFrame = new JFrame();
         desktop = new JDesktopPane();   // DesktopPane that will hold all of the windows
         desktop.setLayout(new FlowLayout());
-        desktop.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
 
-        network = new Mesh( 4, desktop, this);    // Creates a default network to work with
+        network = new Mesh(4, desktop, this);    // Creates a default network to work with
 
         panel = new JPanel(new BorderLayout());
         openFrameCount = 0;
@@ -62,8 +59,7 @@ public class OuterJFrame
     /**
      * Creates the JFrame that holds all of the windows inside it and makes it visible
      */
-    public void createOuterJFrame()
-    {
+    public void createOuterJFrame() {
         // Creates the menu bar and adds it to the window
         JMenuBar menuBar = createMenuBar();
         outerFrame.setJMenuBar(menuBar);
@@ -81,8 +77,7 @@ public class OuterJFrame
      * Creates the menu bar in the outer window, adding dropdown menus like
      * 'File' and 'Edit'
      */
-    private JMenuBar createMenuBar()
-    {
+    private JMenuBar createMenuBar() {
         JMenuBar menuBar = new JMenuBar();  // Menu bar within the window
 
         // TODO add icons to the JMenuItems
@@ -117,19 +112,19 @@ public class OuterJFrame
         menuItemSave.addActionListener(e -> {
             //TODO: figure out why this writes everything on one line
             //TODO: Make the state of the entire simulator recoverable from log
-            try{
+            try {
                 JFileChooser fileChooser = new JFileChooser();
                 fileChooser.setDialogTitle("Save File");
                 FileWriter fstream;
                 System.out.println(saveFile);
-                if (saveFile.getName() != ""){
+                if (saveFile.getName() != "") {
                     fstream = new FileWriter(saveFile);
                     BufferedWriter out = new BufferedWriter(fstream);
                     out.write("QUICK SAVE TEST");
                     out.close();
                 } else {
                     int userSelection = fileChooser.showSaveDialog(outerFrame);
-                    if (userSelection == JFileChooser.APPROVE_OPTION){
+                    if (userSelection == JFileChooser.APPROVE_OPTION) {
                         saveFile = fileChooser.getSelectedFile();
                         fstream = new FileWriter(saveFile);
                         BufferedWriter out = new BufferedWriter(fstream);
@@ -139,7 +134,7 @@ public class OuterJFrame
                         out.close();
                     }
                 }
-            } catch (Exception saveException){
+            } catch (Exception saveException) {
                 System.err.println("Error: " + saveException.getMessage());
             }
         });
@@ -150,10 +145,10 @@ public class OuterJFrame
         menuItemSaveAs.addActionListener(e -> {
             //TODO: figure out why this writes everything on one line
             //TODO: Make the state of the entire simulator recoverable from log
-            try{
+            try {
                 JFileChooser fileChooser = new JFileChooser();
                 int userSelection = fileChooser.showSaveDialog(outerFrame);
-                if (userSelection == JFileChooser.APPROVE_OPTION){
+                if (userSelection == JFileChooser.APPROVE_OPTION) {
                     saveFile = fileChooser.getSelectedFile();
                     FileWriter fstream = new FileWriter(saveFile);
                     BufferedWriter out = new BufferedWriter(fstream);
@@ -162,7 +157,7 @@ public class OuterJFrame
                     out.write("SAVE AS TEST");
                     out.close();
                 }
-            } catch (Exception saveException){
+            } catch (Exception saveException) {
                 System.err.println("Error: " + saveException.getMessage());
             }
         });
@@ -180,7 +175,6 @@ public class OuterJFrame
         menuFile.add(menuItemExit);
 
 
-
         // Build the File menu
         JMenu menuEdit = new JMenu("Edit");
         menuBar.add(menuEdit);
@@ -190,15 +184,14 @@ public class OuterJFrame
         menuEdit.add(menuItemProperties);
         menuItemProperties.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
-                if(propWindow != null) {    // Opens the window with all of the existing variables if it's been opened before
+                if (propWindow != null) {    // Opens the window with all of the existing variables if it's been opened before
                     propWindow.createPropWindow();
-                }else{
+                } else {
                     propWindow = new PropertiesWindow(desktop, network, getOuterJFrame());
                     propWindow.createPropWindow();
                 }
             }
         });
-
 
 
         // Build the View menu
@@ -208,7 +201,7 @@ public class OuterJFrame
         // 'Toolbar' button under 'View'
         JCheckBoxMenuItem menuItemToolbar = new JCheckBoxMenuItem("Toolbar");
         menuItemToolbar.setState(true);
-        if (menuItemToolbar.getState()){
+        if (menuItemToolbar.getState()) {
             //TODO: Set toolbar on
             //Uncommenting below will break the program because at this point the toolbar is not defined
 //            desktop.add(toolBar);
@@ -224,7 +217,7 @@ public class OuterJFrame
         // 'Status Bar' button under 'View'
         JCheckBoxMenuItem menuItemStatusBar = new JCheckBoxMenuItem("Status Bar");
         menuItemStatusBar.setState(true);
-        if (menuItemStatusBar.getState()){
+        if (menuItemStatusBar.getState()) {
 //            desktop.add(statusBar);
         } else {
 //            desktop.remove(statusBar);
@@ -234,7 +227,7 @@ public class OuterJFrame
         // 'Topology' button under 'View'
         JCheckBoxMenuItem menuItemTopology = new JCheckBoxMenuItem("Topology");
         menuItemTopology.setState(true);
-        if (menuItemTopology.getState()){
+        if (menuItemTopology.getState()) {
 //            topologyFrame.setVisible(true);
         } else {
 //            topologyFrame.setVisible(false);
@@ -245,7 +238,7 @@ public class OuterJFrame
         // 'Pipeline' button under 'View'
         JCheckBoxMenuItem menuItemPipeline = new JCheckBoxMenuItem("Pipeline");
         menuItemPipeline.setState(false);
-        if (menuItemPipeline.getState()){
+        if (menuItemPipeline.getState()) {
 //            pipelineFrame.setVisible(true);
         } else {
 //            pipelineFrame.setVisible(false);
@@ -255,7 +248,7 @@ public class OuterJFrame
         // 'Routing' button under 'View'
         JCheckBoxMenuItem menuItemRouting = new JCheckBoxMenuItem("Routing");
         menuItemRouting.setState(false);
-        if (menuItemRouting.getState()){
+        if (menuItemRouting.getState()) {
 //            routingFrame.setVisible(true);
         } else {
 //            routingFrame.setVisible(false);
@@ -266,7 +259,7 @@ public class OuterJFrame
         // 'Statistics' button under 'View'
         JCheckBoxMenuItem menuItemStatistics = new JCheckBoxMenuItem("Statistics");
         menuItemStatistics.setState(true);
-        if (menuItemStatistics.getState()){
+        if (menuItemStatistics.getState()) {
 //            statisticFrame.setVisible(true);
         } else {
 //            statisticFrame.setVisible(false);
@@ -277,7 +270,7 @@ public class OuterJFrame
         // 'Network Information' button under 'View'
         JCheckBoxMenuItem menuItemNetworkInfo = new JCheckBoxMenuItem("Network Information");
         menuItemNetworkInfo.setState(false);
-        if (menuItemNetworkInfo.getState()){
+        if (menuItemNetworkInfo.getState()) {
 //            networkInfoFrame.setVisible(true);
         } else {
 //            networkInfoFrame.setVisible(false);
@@ -289,13 +282,12 @@ public class OuterJFrame
         // 'Flow Control' button under 'View'
         JCheckBoxMenuItem menuItemFlowControl = new JCheckBoxMenuItem("Flow Control");
         menuItemFlowControl.setState(true);
-        if (menuItemFlowControl.getState()){
+        if (menuItemFlowControl.getState()) {
 //            flowControlFrame.setVisible(true);
         } else {
 //            flowControlFrame.setVisible(false);
         }
         menuView.add(menuItemFlowControl);
-
 
 
         // Build the Windows menu
@@ -340,7 +332,7 @@ public class OuterJFrame
             topologyFrame.resetLocationTile(windowPositionerX, windowPositionerY);
 
             //Positioning Flow Control Window
-            if (windowPositionerX + topologyFrame.getWidth() + flowControlFrame.getWidth() <= desktop.getWidth()){
+            if (windowPositionerX + topologyFrame.getWidth() + flowControlFrame.getWidth() <= desktop.getWidth()) {
                 windowPositionerX += topologyFrame.getWidth();
             } else {
                 windowPositionerX = 0;
@@ -376,7 +368,7 @@ public class OuterJFrame
             topologyFrame.resetLocationTile(windowPositionerX, windowPositionerY);
 
             //Positioning Flow Control Window
-            if (windowPositionerY + topologyFrame.getHeight() + flowControlFrame.getHeight() <= desktop.getHeight()){
+            if (windowPositionerY + topologyFrame.getHeight() + flowControlFrame.getHeight() <= desktop.getHeight()) {
                 windowPositionerY += topologyFrame.getHeight();
             } else {
                 windowPositionerX += topologyFrame.getWidth();
@@ -440,10 +432,10 @@ public class OuterJFrame
     /**
      * Creates the toolbar with the ability to start a new simulation and advance the
      * cycles in the current simulation.
+     *
      * @return JToolBar
      */
-    private JToolBar createToolBar()
-    {
+    private JToolBar createToolBar() {
         JToolBar toolBar = new JToolBar();
         toolBar.setBounds(0, 0, 9999, 20);
         toolBar.setFloatable(false);
@@ -471,7 +463,7 @@ public class OuterJFrame
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setDialogTitle("Open File");
             int userSelection = fileChooser.showOpenDialog(outerFrame);
-            if (userSelection == JFileChooser.APPROVE_OPTION){
+            if (userSelection == JFileChooser.APPROVE_OPTION) {
                 saveFile = fileChooser.getSelectedFile();
             }
         });
@@ -483,19 +475,19 @@ public class OuterJFrame
         saveFileButton.addActionListener(e -> {
             //TODO: figure out why this writes everything on one line
             //TODO: Make the state of the entire simulator recoverable from log
-            try{
+            try {
                 JFileChooser fileChooser = new JFileChooser();
                 fileChooser.setDialogTitle("Save File");
                 FileWriter fstream;
                 System.out.println(saveFile);
-                if (saveFile.getName() != ""){
+                if (saveFile.getName() != "") {
                     fstream = new FileWriter(saveFile);
                     BufferedWriter out = new BufferedWriter(fstream);
                     out.write("QUICK SAVE TEST");
                     out.close();
                 } else {
                     int userSelection = fileChooser.showSaveDialog(outerFrame);
-                    if (userSelection == JFileChooser.APPROVE_OPTION){
+                    if (userSelection == JFileChooser.APPROVE_OPTION) {
                         saveFile = fileChooser.getSelectedFile();
                         fstream = new FileWriter(saveFile);
                         BufferedWriter out = new BufferedWriter(fstream);
@@ -505,7 +497,7 @@ public class OuterJFrame
                         out.close();
                     }
                 }
-            } catch (Exception saveException){
+            } catch (Exception saveException) {
                 System.err.println("Error: " + saveException.getMessage());
             }
         });
@@ -533,10 +525,10 @@ public class OuterJFrame
                 return Printable.PAGE_EXISTS;
             });
 
-            if (printerJob.printDialog()){
+            if (printerJob.printDialog()) {
                 try {
                     printerJob.print();
-                } catch (PrinterException printerException){
+                } catch (PrinterException printerException) {
                     System.out.println(printerException);
                 }
             }
@@ -560,10 +552,8 @@ public class OuterJFrame
         ImageIcon refreshImage = new ImageIcon(getClass().getResource("images/refresh.png"));
         JButton refresh = new JButton(refreshImage);
         refresh.setToolTipText("Restart");
-        refresh.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
+        refresh.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 cycleNumber = 0;
                 cycleLabel.setText("Cycle number: " + cycleNumber);
 
@@ -576,7 +566,7 @@ public class OuterJFrame
         JButton nextCycle = new JButton(nextCycleImage);
         nextCycle.setToolTipText("Next Cycle");
         nextCycle.addActionListener(e -> {
-            if (cycleNumber == 0){
+            if (cycleNumber == 0) {
 
             } else {
 
@@ -597,12 +587,10 @@ public class OuterJFrame
         ImageIcon multiCycleImage = new ImageIcon(getClass().getResource("images/fastforward.png"));
         JButton multiCycle = new JButton(multiCycleImage);
         multiCycle.setToolTipText("Run Multiple Cycles");
-        multiCycle.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
+        multiCycle.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
 
-                for (int i = 0; i < Integer.parseInt(multiCycleField.getText()); i++){
+                for (int i = 0; i < Integer.parseInt(multiCycleField.getText()); i++) {
                     cycleNumber++;
                     cycleLabel.setText("Cycle number: " + cycleNumber);
 
@@ -618,33 +606,29 @@ public class OuterJFrame
     }
 
 
-    public void setPacketChance(double inputPacketChance)
-    {
+    public void setPacketChance(double inputPacketChance) {
         packetChance = inputPacketChance / 100;
     }
 
 
     /**
      * Returns the desktop pane of the JPanel
+     *
      * @return {JDesktopPane}
      */
-    public JDesktopPane getDesktopPane()
-    {
+    public JDesktopPane getDesktopPane() {
         return desktop;
     }
 
-    public OuterJFrame getOuterJFrame()
-    {
+    public OuterJFrame getOuterJFrame() {
         return this;
     }
 
-    public double getPacketChance()
-    {
+    public double getPacketChance() {
         return packetChance;
     }
 
-    public void updateNetwork(Network inputNetwork)
-    {
+    public void updateNetwork(Network inputNetwork) {
         network = inputNetwork;
     }
 }

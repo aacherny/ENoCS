@@ -5,7 +5,7 @@ import java.awt.*;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Bus implements Network
+public class Torus implements Network
 {
     private int nodes;
     private double packetChance;
@@ -16,7 +16,7 @@ public class Bus implements Network
 
     protected Router[] routerArray;
 
-    public Bus(int inputNodes, JDesktopPane inputDesktopPane, OuterJFrame inputOJFrame)
+    public Torus(int inputNodes, JDesktopPane inputDesktopPane, OuterJFrame inputOJFrame)
     {
         nodes = inputNodes;
         desktopPane = inputDesktopPane;
@@ -210,7 +210,7 @@ public class Bus implements Network
 
     public String getTopology()
     {
-        return "bus";
+        return "torus";
     }
 
     public void setPacketChance(double inputPacketChance ){

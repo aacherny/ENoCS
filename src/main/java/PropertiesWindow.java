@@ -6,15 +6,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PropertiesWindow
-{
+public class PropertiesWindow {
     private JFrame propertiesFrame = new JFrame();   // Main window that holds all of the tabs
     private JDesktopPane desktopPane;
 
     public Network network;
 
     private JPanel runtimeOptions;
-//    private JPanel networkSettings;
+    //    private JPanel networkSettings;
     private JPanel routerMA;
     private JPanel statWindow;
 
@@ -53,8 +52,7 @@ public class PropertiesWindow
     TopologyInternalFrame topologyFrame;
     OuterJFrame OJFrame;
 
-    public PropertiesWindow(JDesktopPane inputJDesktopPane, Network inputNetwork, OuterJFrame inputOuterJFrame)
-    {
+    public PropertiesWindow(JDesktopPane inputJDesktopPane, Network inputNetwork, OuterJFrame inputOuterJFrame) {
         desktopPane = inputJDesktopPane;
         network = inputNetwork;
         OJFrame = inputOuterJFrame;
@@ -70,15 +68,13 @@ public class PropertiesWindow
     /**
      * Creates the format of the Properties window and its tabs
      */
-    public void createPropWindow()
-    {
+    public void createPropWindow() {
         JTabbedPane tabbedPane = new JTabbedPane(); // Creates tabbed pane
 
         // Creates tabs and adds them to the tabbed pane
         // 'Runtime Options' panel
         runtimeOptions = createRuntimeOptionsPanel();
         tabbedPane.addTab("Runtime Options", runtimeOptions);
-
 
 
         // 'Network Settings' panel
@@ -111,10 +107,10 @@ public class PropertiesWindow
 
     /**
      * Creates the panel under the 'Network Settings' tab
+     *
      * @param networkSettings
      */
-    private void createNetworkSettingsPanel(JPanel networkSettings)
-    {
+    private void createNetworkSettingsPanel(JPanel networkSettings) {
         // Panel for the topology
         JPanel topologyPanel = new JPanel(new GridLayout(1, 2)); // 2 rows 1 column
         networkSettings.add(topologyPanel);
@@ -128,9 +124,9 @@ public class PropertiesWindow
         JLabel labelTopology = new JLabel("Topology");
 
         // Topology dropdown
-        String[] choicesTopology = { "Bus", "Mesh", "Torus", "Flattened Butterfly"};
+        String[] choicesTopology = {"Bus", "Mesh", "Torus"};
         final JComboBox<String> boxTopology = new JComboBox<String>(choicesTopology);
-        switch(network.getTopology()){  // sets the default value of the dropdown to the value of the object
+        switch (network.getTopology()) {  // sets the default value of the dropdown to the value of the object
             default:
                 boxTopology.setSelectedIndex(0);
                 break;
@@ -143,9 +139,6 @@ public class PropertiesWindow
             case "torus":
                 boxTopology.setSelectedIndex(2);
                 break;
-            case "butterfly":
-                boxTopology.setSelectedIndex(3);
-                break;
         }
 
         networkSettings.add(boxTopology);
@@ -154,22 +147,22 @@ public class PropertiesWindow
         JLabel labelNodes = new JLabel("Nodes");
 
         // Nodes dropdown
-        String[] choicesNodes = { "4", "9", "16"};
+        String[] choicesNodes = {"4", "9", "16"};
         final JComboBox<String> boxNodes = new JComboBox<String>(choicesNodes);
         boxNodes.setSelectedItem(network.getNodes());   // Sets the default value of the JComboBox
-        switch(network.getNodes()){  // sets the default value of the dropdown to the value of the object
-        default:
-            boxNodes.setSelectedIndex(0);
-            break;
-        case 4:
-            boxNodes.setSelectedIndex(0);
-            break;
-        case 9:
-            boxNodes.setSelectedIndex(1);
-            break;
-        case 16:
-            boxNodes.setSelectedIndex(2);
-            break;
+        switch (network.getNodes()) {  // sets the default value of the dropdown to the value of the object
+            default:
+                boxNodes.setSelectedIndex(0);
+                break;
+            case 4:
+                boxNodes.setSelectedIndex(0);
+                break;
+            case 9:
+                boxNodes.setSelectedIndex(1);
+                break;
+            case 16:
+                boxNodes.setSelectedIndex(2);
+                break;
         }
 
         networkSettings.add(boxNodes);
@@ -185,15 +178,13 @@ public class PropertiesWindow
         networkSettings.add(okButton);
 
         // What happens when the OK button is clicked
-        okButton.addActionListener(new ActionListener()
-        {
+        okButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 selectedTopology = boxTopology.getSelectedItem().toString().toLowerCase();
                 selectedNodes = Integer.parseInt(boxNodes.getSelectedItem().toString());
 
-                if(topologyFrame != null)   // Creates a new topology display every time it's opened
+                if (topologyFrame != null)   // Creates a new topology display every time it's opened
                 {
                     topologyFrame.dispose();
                 }
@@ -203,16 +194,19 @@ public class PropertiesWindow
                 // Updates the parent class that "network" is now different
                 OJFrame.updateNetwork(network);
 
-                switch(selectedTopology) {  // sets the default value of the dropdown to the value of the object
-                default:
-                    network = new Mesh(selectedNodes, desktopPane, OJFrame);
-                    break;
-                case "mesh":
-                    network = new Mesh(selectedNodes, desktopPane, OJFrame);
-                    break;
-                case "bus":
-                    network = new Bus(selectedNodes, desktopPane, OJFrame);
-                    break;
+                switch (selectedTopology) {  // sets the default value of the dropdown to the value of the object
+                    default:
+                        network = new Mesh(selectedNodes, desktopPane, OJFrame);
+                        break;
+                    case "mesh":
+                        network = new Mesh(selectedNodes, desktopPane, OJFrame);
+                        break;
+                    case "bus":
+                        network = new Bus(selectedNodes, desktopPane, OJFrame);
+                        break;
+                    case "torus":
+                        network = new Torus(selectedNodes, desktopPane, OJFrame);
+                        break;
                 }
 
                 // Updates the parent class that "network" is different again
@@ -227,7 +221,7 @@ public class PropertiesWindow
         });
     }
 
-    private JPanel createRuntimeOptionsPanel(){
+    private JPanel createRuntimeOptionsPanel() {
         //The below panel is for the proper positioning of the okay and cancel buttons
         JPanel borderLayout = new JPanel(new BorderLayout());
 
@@ -256,7 +250,7 @@ public class PropertiesWindow
         JPanel injectionRatePanel = new JPanel();
         JLabel injectionRateLabel = new JLabel("Injection Rate");
 
-        String[] injectionRateField = { "0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100"};
+        String[] injectionRateField = {"0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100"};
         final JComboBox<String> boxInjection = new JComboBox<String>(injectionRateField);
         boxInjection.setSelectedIndex(10);
 
@@ -309,7 +303,7 @@ public class PropertiesWindow
 
     }
 
-    private JPanel createRouterMAPanel(){
+    private JPanel createRouterMAPanel() {
         //The below panel is for the proper positioning of the okay and cancel buttons
         JPanel borderLayout = new JPanel(new BorderLayout());
 
@@ -349,7 +343,7 @@ public class PropertiesWindow
         return borderLayout;
     }
 
-    private JPanel createStatWindowPanel(){
+    private JPanel createStatWindowPanel() {
         //The below JPanel is used to correctly position the okay and cancel buttons
         JPanel borderLayout = new JPanel(new BorderLayout());
 
