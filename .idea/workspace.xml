@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6effbb56-f5b0-4b79-a23a-cf22072d6528" name="Default" comment="">
+    <list default="true" id="6effbb56-f5b0-4b79-a23a-cf22072d6528" name="Default" comment="Merge branch 'chernya-branch' of https://github.com/aacherny/ENoCS into copps-branch&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/Flit.java&#10;#&#9;src/main/java/Mesh.java&#10;#&#9;src/main/java/Network.java&#10;#&#9;src/main/java/OuterJFrame.java&#10;#&#9;src/main/java/PropertiesWindow.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Mesh.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Mesh.class" />
       <change beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame$1.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame$1.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame$2.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame$2.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame$3.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame$2.class" afterPath="" />
       <change beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/OuterJFrame.class" />
       <change beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/PropertiesWindow.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/PropertiesWindow.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Router$1.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Router$1.class" />
       <change beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Router.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Router.class" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FlowControlInternalFrame.java" afterPath="$PROJECT_DIR$/src/main/java/FlowControlInternalFrame.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/OuterJFrame.java" afterPath="$PROJECT_DIR$/src/main/java/OuterJFrame.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PropertiesWindow.java" afterPath="$PROJECT_DIR$/src/main/java/PropertiesWindow.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Router.java" afterPath="$PROJECT_DIR$/src/main/java/Router.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/StatisticsInternalFrame.java" afterPath="$PROJECT_DIR$/src/main/java/StatisticsInternalFrame.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,6 +21,14 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/ENoCS$Main.coverage" NAME="Main Coverage Results" MODIFIED="1512980950278" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>main.java.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="D:\Documents\Senior Year\Co-op\Desktop_ENoCs\ENoCS\exportToHTML" />
+  </component>
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
@@ -29,51 +36,16 @@
           <file leaf-file-name="OuterJFrame.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/OuterJFrame.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="412">
-                  <caret line="230" column="38" lean-forward="true" selection-start-line="230" selection-start-column="38" selection-end-line="230" selection-end-column="38" />
+                <state relative-caret-position="714">
+                  <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
                   <folding>
-                    <element signature="e#13005#13469#0" expanded="false" />
-                    <element signature="e#13668#15070#0" expanded="false" />
-                    <element signature="e#15269#16607#0" expanded="false" />
-                    <element signature="e#16806#17162#0" expanded="false" />
+                    <element signature="docComment;method#createOuterJFrame#0;class#OuterJFrame#0" expanded="false" />
+                    <element signature="docComment;method#createMenuBar#0;class#OuterJFrame#0" expanded="false" />
+                    <element signature="docComment;method#createToolBar#0;class#OuterJFrame#0" expanded="false" />
                     <element signature="method#createToolBar#0;class#OuterJFrame#0" expanded="false" />
-                    <element signature="e#25637#25638#0" expanded="true" />
-                    <element signature="e#25667#25668#0" expanded="true" />
-                    <element signature="e#25714#25715#0" expanded="true" />
-                    <element signature="e#25741#25742#0" expanded="true" />
-                    <element signature="e#25800#25801#0" expanded="true" />
-                    <element signature="e#25838#25839#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="PropertiesWindow.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/PropertiesWindow.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1411">
-                  <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-                  <folding>
-                    <element signature="docComment;method#createPropWindow#0;class#PropertiesWindow#0" expanded="false" />
-                    <element signature="method#createPropWindow#0;class#PropertiesWindow#0" expanded="false" />
-                    <element signature="docComment;method#createNetworkSettingsPanel#0;class#PropertiesWindow#0" expanded="false" />
-                    <element signature="method#createRuntimeOptionsPanel#0;class#PropertiesWindow#0" expanded="false" />
-                    <element signature="method#createRouterMAPanel#0;class#PropertiesWindow#0" expanded="false" />
-                    <element signature="method#createStatWindowPanel#0;class#PropertiesWindow#0" expanded="false" />
-                    <element signature="method#setProperties#0;class#PropertiesWindow#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="FlowControlInternalFrame.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/FlowControlInternalFrame.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="340">
-                  <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-                  <folding>
-                    <element signature="e#1123#1124#0" expanded="true" />
-                    <element signature="e#1163#1164#0" expanded="true" />
+                    <element signature="docComment;method#getDesktopPane#0;class#OuterJFrame#0" expanded="false" />
+                    <element signature="e#26034#26035#0" expanded="true" />
+                    <element signature="e#26068#26069#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -82,18 +54,90 @@
           <file leaf-file-name="StatisticsInternalFrame.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/StatisticsInternalFrame.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="935">
-                  <caret line="56" column="23" lean-forward="false" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
+                <state relative-caret-position="1125">
+                  <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#3980#3981#0" expanded="true" />
+                    <element signature="e#4018#4019#0" expanded="true" />
+                    <element signature="e#4077#4078#0" expanded="true" />
+                    <element signature="e#4131#4132#0" expanded="true" />
+                    <element signature="e#4172#4173#0" expanded="true" />
+                    <element signature="e#4212#4213#0" expanded="true" />
+                    <element signature="e#4275#4276#0" expanded="true" />
+                    <element signature="e#4333#4334#0" expanded="true" />
+                    <element signature="e#4373#4374#0" expanded="true" />
+                    <element signature="e#4412#4413#0" expanded="true" />
+                    <element signature="e#4473#4474#0" expanded="true" />
+                    <element signature="e#4529#4530#0" expanded="true" />
+                    <element signature="e#4570#4571#0" expanded="true" />
+                    <element signature="e#4610#4611#0" expanded="true" />
+                    <element signature="e#4673#4674#0" expanded="true" />
+                    <element signature="e#4731#4732#0" expanded="true" />
+                    <element signature="e#4766#4767#0" expanded="true" />
+                    <element signature="e#4800#4801#0" expanded="true" />
+                    <element signature="e#4851#4852#0" expanded="true" />
+                    <element signature="e#4897#4898#0" expanded="true" />
+                    <element signature="e#4937#4938#0" expanded="true" />
+                    <element signature="e#4976#4977#0" expanded="true" />
+                    <element signature="e#5037#5038#0" expanded="true" />
+                    <element signature="e#5093#5094#0" expanded="true" />
+                    <element signature="e#5132#5133#0" expanded="true" />
+                    <element signature="e#5170#5171#0" expanded="true" />
+                    <element signature="e#5229#5230#0" expanded="true" />
+                    <element signature="e#5283#5284#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Flit.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/Flit.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="675">
+                  <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Mesh.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
+          <file leaf-file-name="Router.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1547">
-                  <caret line="94" column="52" lean-forward="false" selection-start-line="94" selection-start-column="52" selection-end-line="94" selection-end-column="52" />
+                <state relative-caret-position="-382">
+                  <caret line="469" column="13" lean-forward="false" selection-start-line="472" selection-start-column="104" selection-end-line="472" selection-end-column="108" />
+                  <folding>
+                    <element signature="e#20861#21057#0" expanded="true" />
+                    <element signature="e#21056#21057#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="RouterDiagram.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/RouterDiagram.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="612">
+                  <caret line="41" column="8" lean-forward="false" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Network.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/Network.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="350">
+                  <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PropertiesWindow.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/PropertiesWindow.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-6582">
+                  <caret line="249" column="0" lean-forward="false" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -103,41 +147,34 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="PropertiesWindow.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="OuterJFrame.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/OuterJFrame.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1486">
+                  <caret line="472" column="0" lean-forward="false" selection-start-line="472" selection-start-column="0" selection-end-line="472" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PropertiesWindow.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/PropertiesWindow.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3961">
-                  <caret line="460" column="35" lean-forward="false" selection-start-line="460" selection-start-column="35" selection-end-line="460" selection-end-column="35" />
+                <state relative-caret-position="843">
+                  <caret line="531" column="56" lean-forward="false" selection-start-line="531" selection-start-column="56" selection-end-line="531" selection-end-column="56" />
                   <folding>
-                    <element signature="docComment;method#createPropWindow#0;class#PropertiesWindow#0" expanded="false" />
-                    <element signature="method#createPropWindow#0;class#PropertiesWindow#0" expanded="false" />
-                    <element signature="docComment;method#createNetworkSettingsPanel#0;class#PropertiesWindow#0" expanded="false" />
-                    <element signature="method#createRuntimeOptionsPanel#0;class#PropertiesWindow#0" expanded="false" />
-                    <element signature="method#createRouterMAPanel#0;class#PropertiesWindow#0" expanded="false" />
-                    <element signature="method#setProperties#0;class#PropertiesWindow#0" expanded="false" />
+                    <element signature="e#5489#5497#0" expanded="true" />
+                    <element signature="e#6371#6379#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Router.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
+          <file leaf-file-name="FlowControlInternalFrame.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/FlowControlInternalFrame.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="371">
-                  <caret line="407" column="13" lean-forward="true" selection-start-line="407" selection-start-column="13" selection-end-line="407" selection-end-column="13" />
-                  <folding>
-                    <element signature="e#20910#21106#0" expanded="true" />
-                    <element signature="e#21105#21106#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+                <state relative-caret-position="100">
+                  <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
                   <folding />
                 </state>
               </provider>
@@ -156,18 +193,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>L</find>
-      <find>network</find>
-      <find>the node</find>
-      <find>draw</find>
-      <find>topologyint</find>
       <find>next</find>
       <find>layout</find>
       <find>2</find>
       <find>textfield</find>
       <find>hot</find>
       <find>okay</find>
-      <find>ok</find>
       <find>properties</find>
       <find>Router 0 created</find>
       <find>print</find>
@@ -175,14 +206,23 @@
       <find>flow</find>
       <find>router</find>
       <find>println</find>
-      <find>play</find>
       <find>prop</find>
       <find>mesh</find>
       <find>fc</find>
       <find>FlowControlInternalFrame</find>
       <find>createT</find>
-      <find>toolbar</find>
       <find>add(toolbar)</find>
+      <find>toolbar</find>
+      <find>createRectanglesFromFlitList</find>
+      <find>nodes</find>
+      <find>selectednodes</find>
+      <find>getOuter</find>
+      <find>home</find>
+      <find>propWindow</find>
+      <find>PropertiesWindow</find>
+      <find>boxTop</find>
+      <find>play</find>
+      <find>ok</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -219,11 +259,11 @@
         <option value="$PROJECT_DIR$/src/main/java/ColoredRectangle.java" />
         <option value="$PROJECT_DIR$/src/main/java/RouterDiagram.java" />
         <option value="$PROJECT_DIR$/src/main/java/TopologyInternalFrame.java" />
+        <option value="$PROJECT_DIR$/src/main/java/FlowControlInternalFrame.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Mesh.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Router.java" />
         <option value="$PROJECT_DIR$/src/main/java/StatisticsInternalFrame.java" />
         <option value="$PROJECT_DIR$/src/main/java/PropertiesWindow.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Mesh.java" />
-        <option value="$PROJECT_DIR$/src/main/java/FlowControlInternalFrame.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Router.java" />
         <option value="$PROJECT_DIR$/src/main/java/OuterJFrame.java" />
       </list>
     </option>
@@ -237,8 +277,8 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1612" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -258,6 +298,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -287,10 +331,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -697,23 +737,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-11" y="-11" width="3862" height="2122" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16956522" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16905738" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924962" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17934783" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21656977" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17930327" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21640626" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32994792" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09381663" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27122092" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -727,7 +769,6 @@
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924962" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27122092" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -825,7 +866,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="11" />
+      <option name="time" value="12" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -878,17 +919,13 @@
         <state relative-caret-position="357">
           <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
-            <element signature="e#13005#13469#0" expanded="false" />
-            <element signature="e#13668#15070#0" expanded="false" />
-            <element signature="e#15269#16607#0" expanded="false" />
-            <element signature="e#16806#17162#0" expanded="false" />
+            <element signature="docComment;method#createOuterJFrame#0;class#OuterJFrame#0" expanded="false" />
+            <element signature="docComment;method#createMenuBar#0;class#OuterJFrame#0" expanded="false" />
+            <element signature="docComment;method#createToolBar#0;class#OuterJFrame#0" expanded="false" />
             <element signature="method#createToolBar#0;class#OuterJFrame#0" expanded="false" />
-            <element signature="e#25637#25638#0" expanded="true" />
-            <element signature="e#25667#25668#0" expanded="true" />
-            <element signature="e#25714#25715#0" expanded="true" />
-            <element signature="e#25741#25742#0" expanded="true" />
-            <element signature="e#25800#25801#0" expanded="true" />
-            <element signature="e#25838#25839#0" expanded="true" />
+            <element signature="docComment;method#getDesktopPane#0;class#OuterJFrame#0" expanded="false" />
+            <element signature="e#26034#26035#0" expanded="true" />
+            <element signature="e#26068#26069#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1056,27 +1093,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Flit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Network.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/RouterDiagram.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="41" column="8" lean-forward="false" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-9/lib/src.zip!/java.base/java/io/PrintStream.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -1099,14 +1115,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/StatisticsInternalFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="56" column="23" lean-forward="false" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1115,68 +1123,114 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/FlowControlInternalFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1547">
-          <caret line="94" column="52" lean-forward="false" selection-start-line="94" selection-start-column="52" selection-end-line="94" selection-end-column="52" />
+        <state relative-caret-position="100">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/PropertiesWindow.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1411">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;method#createPropWindow#0;class#PropertiesWindow#0" expanded="false" />
-            <element signature="method#createPropWindow#0;class#PropertiesWindow#0" expanded="false" />
-            <element signature="docComment;method#createNetworkSettingsPanel#0;class#PropertiesWindow#0" expanded="false" />
-            <element signature="method#createRuntimeOptionsPanel#0;class#PropertiesWindow#0" expanded="false" />
-            <element signature="method#createRouterMAPanel#0;class#PropertiesWindow#0" expanded="false" />
-            <element signature="method#createStatWindowPanel#0;class#PropertiesWindow#0" expanded="false" />
-            <element signature="method#setProperties#0;class#PropertiesWindow#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="1078">
+          <caret line="48" column="36" lean-forward="false" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/FlowControlInternalFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Flit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-          <folding>
-            <element signature="e#1123#1124#0" expanded="true" />
-            <element signature="e#1163#1164#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="675">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Network.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/RouterDiagram.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="41" column="8" lean-forward="false" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="407" column="13" lean-forward="true" selection-start-line="407" selection-start-column="13" selection-end-line="407" selection-end-column="13" />
+        <state relative-caret-position="-382">
+          <caret line="469" column="13" lean-forward="false" selection-start-line="472" selection-start-column="104" selection-end-line="472" selection-end-column="108" />
           <folding>
-            <element signature="e#20910#21106#0" expanded="true" />
-            <element signature="e#21105#21106#0" expanded="true" />
+            <element signature="e#20861#21057#0" expanded="true" />
+            <element signature="e#21056#21057#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/StatisticsInternalFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding>
+            <element signature="e#3980#3981#0" expanded="true" />
+            <element signature="e#4018#4019#0" expanded="true" />
+            <element signature="e#4077#4078#0" expanded="true" />
+            <element signature="e#4131#4132#0" expanded="true" />
+            <element signature="e#4172#4173#0" expanded="true" />
+            <element signature="e#4212#4213#0" expanded="true" />
+            <element signature="e#4275#4276#0" expanded="true" />
+            <element signature="e#4333#4334#0" expanded="true" />
+            <element signature="e#4373#4374#0" expanded="true" />
+            <element signature="e#4412#4413#0" expanded="true" />
+            <element signature="e#4473#4474#0" expanded="true" />
+            <element signature="e#4529#4530#0" expanded="true" />
+            <element signature="e#4570#4571#0" expanded="true" />
+            <element signature="e#4610#4611#0" expanded="true" />
+            <element signature="e#4673#4674#0" expanded="true" />
+            <element signature="e#4731#4732#0" expanded="true" />
+            <element signature="e#4766#4767#0" expanded="true" />
+            <element signature="e#4800#4801#0" expanded="true" />
+            <element signature="e#4851#4852#0" expanded="true" />
+            <element signature="e#4897#4898#0" expanded="true" />
+            <element signature="e#4937#4938#0" expanded="true" />
+            <element signature="e#4976#4977#0" expanded="true" />
+            <element signature="e#5037#5038#0" expanded="true" />
+            <element signature="e#5093#5094#0" expanded="true" />
+            <element signature="e#5132#5133#0" expanded="true" />
+            <element signature="e#5170#5171#0" expanded="true" />
+            <element signature="e#5229#5230#0" expanded="true" />
+            <element signature="e#5283#5284#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/PropertiesWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6582">
+          <caret line="249" column="0" lean-forward="false" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/OuterJFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="230" column="38" lean-forward="true" selection-start-line="230" selection-start-column="38" selection-end-line="230" selection-end-column="38" />
+        <state relative-caret-position="714">
+          <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
           <folding>
-            <element signature="e#13005#13469#0" expanded="false" />
-            <element signature="e#13668#15070#0" expanded="false" />
-            <element signature="e#15269#16607#0" expanded="false" />
-            <element signature="e#16806#17162#0" expanded="false" />
+            <element signature="docComment;method#createOuterJFrame#0;class#OuterJFrame#0" expanded="false" />
+            <element signature="docComment;method#createMenuBar#0;class#OuterJFrame#0" expanded="false" />
+            <element signature="docComment;method#createToolBar#0;class#OuterJFrame#0" expanded="false" />
             <element signature="method#createToolBar#0;class#OuterJFrame#0" expanded="false" />
-            <element signature="e#25637#25638#0" expanded="true" />
-            <element signature="e#25667#25668#0" expanded="true" />
-            <element signature="e#25714#25715#0" expanded="true" />
-            <element signature="e#25741#25742#0" expanded="true" />
-            <element signature="e#25800#25801#0" expanded="true" />
-            <element signature="e#25838#25839#0" expanded="true" />
+            <element signature="docComment;method#getDesktopPane#0;class#OuterJFrame#0" expanded="false" />
+            <element signature="e#26034#26035#0" expanded="true" />
+            <element signature="e#26068#26069#0" expanded="true" />
           </folding>
         </state>
       </provider>

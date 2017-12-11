@@ -52,6 +52,8 @@ public class Router {
     Circle circle = new Circle();
 
     public Router(int inputNodeNumber, int inputLocation, int inputNorth, int inputSouth, int inputEast, int inputWest, JDesktopPane inputDesktopPane, Network inputNetwork, FlowControlInternalFrame flowControl) {
+        fc = flowControl;
+
         routerNumber = inputNodeNumber;
         routerLocation = inputLocation;
         desktopPane = inputDesktopPane;
@@ -66,8 +68,6 @@ public class Router {
         channelHome = new LinkedList<Flit>();
         homeIndex = cIndex;
         channelIndex[cIndex++] = "home";
-
-        fc = flowControl;
 
         if (inputNorth != -1) {
             channelNorth = new LinkedList<Flit>();
@@ -157,15 +157,15 @@ public class Router {
         // Go through each list and draw the rectangle on the diagram for every flit in the router
         for (int i = 0; i <= cIndex; i++) {
             if (channelIndex[i] == "home") {
-                createRectanglesFromFlitList(channelHome, i, fc);
+                createRectanglesFromFlitList(channelHome, i);
             } else if (channelIndex[i] == "north") {
-                createRectanglesFromFlitList(channelNorth, i, fc);
+                createRectanglesFromFlitList(channelNorth, i);
             } else if (channelIndex[i] == "south") {
-                createRectanglesFromFlitList(channelSouth, i, fc);
+                createRectanglesFromFlitList(channelSouth, i);
             } else if (channelIndex[i] == "east") {
-                createRectanglesFromFlitList(channelEast, i, fc);
+                createRectanglesFromFlitList(channelEast, i);
             } else if (channelIndex[i] == "west") {
-                createRectanglesFromFlitList(channelWest, i, fc);
+                createRectanglesFromFlitList(channelWest, i);
             }
         }
 
@@ -396,7 +396,7 @@ public class Router {
         }
     }
 
-    private void createRectanglesFromFlitList(LinkedList<Flit> list, int channel, FlowControlInternalFrame fc) {
+    private void createRectanglesFromFlitList(LinkedList<Flit> list, int channel) {
         if (list != null) {
             for (int i = 0; i < list.size(); i++) {
                 Flit flit = list.get(i);

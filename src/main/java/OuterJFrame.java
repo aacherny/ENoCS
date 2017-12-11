@@ -20,23 +20,26 @@ public class OuterJFrame
     protected int cycleNumber;
     public int openFrameCount;
 
+
     private JFrame outerFrame;      // Outer window
     private JPanel panel;           // Needed for toolbar
     private JDesktopPane desktop;   // Needed for Internal JFrames
     // The next line declares the frames that are going to be used to control the internal windows
     // Is there any reason not to define them now?
+
     private TopologyInternalFrame topologyFrame = new TopologyInternalFrame(new JPanel());
     private FlowControlInternalFrame flowControlFrame = new FlowControlInternalFrame(++openFrameCount);
-    private StatisticsInternalFrame statisticFrame = new StatisticsInternalFrame(++openFrameCount);
-    private PropertiesWindow propWindow;
+    protected Network network = new Mesh( 4, desktop, flowControlFrame);    // Creates a default network to work with;
+    private PropertiesWindow propWindow = new PropertiesWindow(desktop, network, getOuterJFrame(), flowControlFrame);
+    private StatisticsInternalFrame statisticFrame = new StatisticsInternalFrame(++openFrameCount, getOuterJFrame(), propWindow);
     private JToolBar toolBar = createToolBar();
     private File saveFile = new File("");
 
-    protected Network network;
+
 
     public OuterJFrame()
     {
-        network = new Mesh( 4, desktop, flowControlFrame);    // Creates a default network to work with
+//        network = new Mesh( 4, desktop, flowControlFrame);    // Creates a default network to work with
         outerFrame = new JFrame();
         desktop = new JDesktopPane();   // DesktopPane that will hold all of the windows
         desktop.setLayout(new GridBagLayout());
@@ -568,15 +571,11 @@ public class OuterJFrame
         ImageIcon refreshImage = new ImageIcon(getClass().getResource("images/refresh.png"));
         JButton refresh = new JButton(refreshImage);
         refresh.setToolTipText("Restart");
-        refresh.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-                cycleNumber = 0;
-                cycleLabel.setText("Cycle number: " + cycleNumber);
+        refresh.addActionListener(e -> {
+            cycleNumber = 0;
+            cycleLabel.setText("Cycle number: " + cycleNumber);
 
-                network.newCycle();
-            }
+            network.newCycle();
         });
         toolBar.add(refresh);
 
@@ -584,8 +583,9 @@ public class OuterJFrame
         JButton nextCycle = new JButton(nextCycleImage);
         nextCycle.setToolTipText("Next Cycle");
         nextCycle.addActionListener(e -> {
+            propWindow.okButtonAction(propWindow.topology, propWindow.nodes);
             if (cycleNumber == 0){
-                desktop.add(topologyFrame);
+//                desktop.add(topologyFrame);
                 desktop.add(flowControlFrame);
                 desktop.add(statisticFrame);
             }
@@ -642,5 +642,9 @@ public class OuterJFrame
     public void updateNetwork(Network inputNetwork)
     {
         network = inputNetwork;
+    }
+
+    public int getCycleNumber() {
+        return cycleNumber;
     }
 }

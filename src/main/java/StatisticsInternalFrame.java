@@ -7,15 +7,15 @@ public class StatisticsInternalFrame extends JInternalFrame{
 
     public static int openFrameCount = 0;
     static final int xOffset = 50, yOffset = 50;
-    private int avgNetworkLatCC = 0;
-    private int avgNetworkLatHops = 0;
-    private int networkBandwidth = 0;
-    private int networkThroughput = 0;
-    private int networkArea = 9;
-    private int powerConsumption = 0;
-    private int numFlitsDropped = 0;
+    private int avgNetworkLatCC;
+    private int avgNetworkLatHops;
+    private int networkBandwidth;
+    private int networkThroughput;
+    private int networkArea;
+    private int powerConsumption;
+    private int numFlitsDropped;
 
-    //A place for the statisticcs to go
+    //A place for the statistics to go
     private JPanel statPanel = new JPanel();
 
     private JLabel avgNetworkLatCCLabel;
@@ -26,8 +26,10 @@ public class StatisticsInternalFrame extends JInternalFrame{
     private JLabel powerConsumptionLabel;
     private JLabel numFlitsDroppedLabel;
 
+    private PropertiesWindow propertiesWindow;
+    private OuterJFrame outerFrame;
 
-    StatisticsInternalFrame(int openFrames){
+    StatisticsInternalFrame(int openFrames, OuterJFrame outer, PropertiesWindow prop){
         super(
                 "Statistics",
                 true,
@@ -35,6 +37,48 @@ public class StatisticsInternalFrame extends JInternalFrame{
                 true,
                 false
         );
+
+        outerFrame = outer;
+        propertiesWindow = prop;
+
+        avgNetworkLatCC = 0;
+        avgNetworkLatHops = 0;
+        //Below sets the network bandwidth
+        switch (propertiesWindow.topology){
+            case "Bus":
+                networkBandwidth = 1;
+                break;
+            case "Mesh":
+                switch (propertiesWindow.nodes){
+                    case 4:
+                        networkBandwidth = 4;
+                        break;
+                    case 9:
+                        networkBandwidth = 12;
+                        break;
+                    case 16:
+                        networkBandwidth = 24;
+                        break;
+                }
+            case "Torus":
+                switch (propertiesWindow.nodes){
+                    case 4:
+                        networkBandwidth = 4;
+                        break;
+                    case 9:
+                        networkBandwidth = 18;
+                        break;
+                    case 16:
+                        networkBandwidth = 32;
+                        break;
+                }
+        }
+        //This sets the network throughput statistic
+//        networkThroughput = outerFrame.getCycleNumber()/(numFlitsExited*networkBandwidth);
+
+        networkArea = 0;
+        powerConsumption = 0;
+        numFlitsDropped = 0;
 
         openFrameCount = openFrames;
         setSize(500, 350);

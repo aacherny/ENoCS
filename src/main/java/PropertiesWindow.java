@@ -527,4 +527,39 @@ public class PropertiesWindow
         showArea = areaCheck.isSelected();
         showPower = powerCheck.isSelected();
     }
+
+    //Come up with a better name for this
+    void okButtonAction(String boxTopology, int boxNodes) {
+        selectedTopology = boxTopology;
+        selectedNodes = boxNodes;
+
+        if (topologyFrame != null)   // Creates a new topology display every time it's opened
+        {
+            topologyFrame.dispose();
+        }
+
+        switch (selectedTopology) {  // sets the default value of the dropdown to the value of the object
+            default:
+                network = new Mesh(selectedNodes, desktopPane, fc);
+                break;
+            case "mesh":
+                network = new Mesh(selectedNodes, desktopPane, fc);
+                break;
+            case "bus":
+                network = new Bus(selectedNodes, desktopPane);
+                break;
+        }
+
+        // Updates the parent class that "network" is now different
+        OJFrame.updateNetwork(network);
+
+        //TODO: Come and edit openFrame as needed
+        topologyFrame = new TopologyInternalFrame(network.drawTopology());
+
+        topologyFrame.setVisible(true);
+
+        desktopPane.add(topologyFrame);
+
+        propertiesFrame.dispose();
+    }
 }
