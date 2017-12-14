@@ -8,6 +8,14 @@ ENOCS is a network-on-chip network simulator showing the routes of packets as th
 * Customizable clock cycles per step, pipeline stages, and packet injection rate
 
 ## Usage
-1. .jar file
-* Download the latest .jar file from the [project releases](https://github.com/aacherny/ENoCS/releases)
+Download the latest .jar file from the [project releases](https://github.com/aacherny/ENoCS/releases).
 
+## Documentation
+The javadocs for the project can be found [here](https://aacherny.github.io/ENoCS).
+
+## Authors
+* Alex Cherny
+* Sean Copp
+
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](https://aacherny.github.com/ENoCS/LICENSE.md) file for details.
