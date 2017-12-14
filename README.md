@@ -1,6 +1,6 @@
 # Educational Network-on-Chip Simulator
 
-ENOCS is a network-on-chip network simulator showing the routes of packets as they travel through bus, mesh, and torus network topologies.
+ENOCS is a network-on-chip network simulator showing the routes of packets as they travel through bus, mesh, and torus networks.
 
 ## Features
 

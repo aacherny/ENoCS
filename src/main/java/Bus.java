@@ -13,6 +13,7 @@ public class Bus implements Network
 
     private JDesktopPane desktopPane;
     private TextFrame scrollingTextFrame;
+    private StatsFrame statisticsFrame;
     private OuterJFrame OJFrame;
 
     protected Router[] routerArray;
@@ -23,6 +24,7 @@ public class Bus implements Network
         desktopPane = inputDesktopPane;
         OJFrame = inputOJFrame;
         scrollingTextFrame = new TextFrame();
+        statisticsFrame = new StatsFrame();
 
         packetChance = OJFrame.getPacketChance();
         pipelineStages = 4;
@@ -135,6 +137,7 @@ public class Bus implements Network
     public JPanel drawTopology() {
 
         desktopPane.add(scrollingTextFrame);
+        desktopPane.add(statisticsFrame);
 
         JPanel panelYContainer = new JPanel();
 
@@ -239,6 +242,12 @@ public class Bus implements Network
     public void removeTextWindow(){
         try{
             desktopPane.remove(scrollingTextFrame);
+        }catch(Exception e) {
+            System.out.println(e);
+        }
+
+        try{
+            desktopPane.remove(statisticsFrame);
         }catch(Exception e) {
             System.out.println(e);
         }
