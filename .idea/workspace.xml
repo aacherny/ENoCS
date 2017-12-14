@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6effbb56-f5b0-4b79-a23a-cf22072d6528" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/StatsFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Bus.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Bus.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Mesh.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Mesh.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Torus.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/Torus.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Bus.java" afterPath="$PROJECT_DIR$/src/main/java/Bus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mesh.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/TextFrame.java" afterPath="$PROJECT_DIR$/src/main/java/TextFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Torus.java" afterPath="$PROJECT_DIR$/src/main/java/Torus.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,22 +61,11 @@
             <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="204">
-                  <caret line="207" column="44" lean-forward="true" selection-start-line="207" selection-start-column="44" selection-end-line="208" selection-end-column="41" />
+                  <caret line="207" column="44" lean-forward="true" selection-start-line="207" selection-start-column="44" selection-end-line="207" selection-end-column="44" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#2897#2928#0" expanded="true" />
-                    <element signature="e#6151#6182#0" expanded="true" />
-                    <element signature="e#7390#7421#0" expanded="true" />
-                    <element signature="e#11020#11021#0" expanded="true" />
-                    <element signature="e#11054#11055#0" expanded="true" />
-                    <element signature="e#11087#11088#0" expanded="true" />
-                    <element signature="e#11115#11116#0" expanded="true" />
-                    <element signature="e#11154#11155#0" expanded="true" />
-                    <element signature="e#11183#11184#0" expanded="true" />
-                    <element signature="e#11230#11231#0" expanded="true" />
-                    <element signature="e#11271#11272#0" expanded="true" />
-                    <element signature="e#11720#11721#0" expanded="true" />
-                    <element signature="e#11757#11758#0" expanded="true" />
+                    <marker date="1513291739396" expanded="true" signature="11990:12078" ph="{...}" />
+                    <marker date="1513291739396" expanded="true" signature="12130:12289" ph="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -87,9 +74,11 @@
           <file leaf-file-name="Torus.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/Torus.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="578">
-                  <caret line="208" column="41" lean-forward="false" selection-start-line="208" selection-start-column="41" selection-end-line="208" selection-end-column="41" />
-                  <folding />
+                <state relative-caret-position="595">
+                  <caret line="209" column="0" lean-forward="false" selection-start-line="209" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
+                  <folding>
+                    <marker date="1513291739402" expanded="true" signature="14345:14433" ph="{...}" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -99,12 +88,14 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="714">
                   <caret line="156" column="91" lean-forward="false" selection-start-line="156" selection-start-column="91" selection-end-line="156" selection-end-column="91" />
-                  <folding />
+                  <folding>
+                    <marker date="1513291739393" expanded="true" signature="8594:8682" ph="{...}" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="TextFrame.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="TextFrame.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/TextFrame.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="680">
@@ -112,16 +103,6 @@
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="StatsFrame.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/StatsFrame.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="714">
-                  <caret line="43" column="36" lean-forward="true" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
-                  <folding />
                 </state>
               </provider>
             </entry>
@@ -145,8 +126,8 @@
           <file leaf-file-name="Router.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="435">
-                  <caret line="538" column="33" lean-forward="false" selection-start-line="538" selection-start-column="28" selection-end-line="538" selection-end-column="33" />
+                <state relative-caret-position="707">
+                  <caret line="554" column="105" lean-forward="true" selection-start-line="554" selection-start-column="105" selection-end-line="554" selection-end-column="105" />
                   <folding>
                     <element signature="e#30740#31066#0" expanded="true" />
                     <element signature="e#31065#31066#0" expanded="true" />
@@ -866,11 +847,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513288568887</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Test Statistics window added">
+      <created>1513291719138</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1513291719138</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="238065000" />
+    <option name="totallyTimeSpent" value="238114000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -970,7 +958,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="The diagram now shows a single input channel and a single output channel" />
     <MESSAGE value="Clicking on a router in the topology diagram now opens a Router Diagram, with the correct channels depending on which router is selected" />
     <MESSAGE value="Next Cycle button calls nextCycle for each router&#10;Flits can be created" />
     <MESSAGE value="Flits can be input into a router, and they're stored in the correct channel" />
@@ -995,7 +982,8 @@
     <MESSAGE value="The pipeline stage counter updates based on the stored value of the network object" />
     <MESSAGE value="Pipeline stages are configurable" />
     <MESSAGE value="Javadocs and README added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Javadocs and README added" />
+    <MESSAGE value="Test Statistics window added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test Statistics window added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1232,7 +1220,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1240,7 +1227,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1248,7 +1234,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="8" column="45" lean-forward="false" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1369,14 +1354,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/images/StatsFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/images/StatsFrame.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/TextFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
@@ -1389,8 +1367,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="538" column="33" lean-forward="false" selection-start-line="538" selection-start-column="28" selection-end-line="538" selection-end-column="33" />
+        <state relative-caret-position="707">
+          <caret line="554" column="105" lean-forward="true" selection-start-line="554" selection-start-column="105" selection-end-line="554" selection-end-column="105" />
           <folding>
             <element signature="e#30740#31066#0" expanded="true" />
             <element signature="e#31065#31066#0" expanded="true" />
@@ -1429,31 +1407,22 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="207" column="44" lean-forward="true" selection-start-line="207" selection-start-column="44" selection-end-line="208" selection-end-column="41" />
+          <caret line="207" column="44" lean-forward="true" selection-start-line="207" selection-start-column="44" selection-end-line="207" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2897#2928#0" expanded="true" />
-            <element signature="e#6151#6182#0" expanded="true" />
-            <element signature="e#7390#7421#0" expanded="true" />
-            <element signature="e#11020#11021#0" expanded="true" />
-            <element signature="e#11054#11055#0" expanded="true" />
-            <element signature="e#11087#11088#0" expanded="true" />
-            <element signature="e#11115#11116#0" expanded="true" />
-            <element signature="e#11154#11155#0" expanded="true" />
-            <element signature="e#11183#11184#0" expanded="true" />
-            <element signature="e#11230#11231#0" expanded="true" />
-            <element signature="e#11271#11272#0" expanded="true" />
-            <element signature="e#11720#11721#0" expanded="true" />
-            <element signature="e#11757#11758#0" expanded="true" />
+            <marker date="1513291739396" expanded="true" signature="11990:12078" ph="{...}" />
+            <marker date="1513291739396" expanded="true" signature="12130:12289" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Torus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="208" column="41" lean-forward="false" selection-start-line="208" selection-start-column="41" selection-end-line="208" selection-end-column="41" />
-          <folding />
+        <state relative-caret-position="595">
+          <caret line="209" column="0" lean-forward="false" selection-start-line="209" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
+          <folding>
+            <marker date="1513291739402" expanded="true" signature="14345:14433" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1461,7 +1430,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
           <caret line="156" column="91" lean-forward="false" selection-start-line="156" selection-start-column="91" selection-end-line="156" selection-end-column="91" />
-          <folding />
+          <folding>
+            <marker date="1513291739393" expanded="true" signature="8594:8682" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

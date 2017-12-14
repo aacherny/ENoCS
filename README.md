@@ -18,4 +18,4 @@ The javadocs for the project can be found [here](https://aacherny.github.io/ENoC
 * Sean Copp
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](https://aacherny.github.com/ENoCS/LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/aacherny/ENoCS/blob/master/LICENSE.md) file for details.
