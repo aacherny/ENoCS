@@ -9,5 +9,5 @@ ENOCS is a network-on-chip network simulator showing the routes of packets as th
 
 ## Usage
 1. .jar file
-·* Download the latest .jar file from the [https://github.com/aacherny/ENoCS/releases](project releases)
+* Download the latest .jar file from the [project releases](https://github.com/aacherny/ENoCS/releases)
 
