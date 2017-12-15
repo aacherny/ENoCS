@@ -2,6 +2,11 @@ package main.java;
 
 import java.awt.*;
 
+/**
+ * Flit object
+ * <P>
+ * Part of a packet, passed around between routers until it gets to its destination
+ */
 public class Flit {
 
     private int index; // the position of the flit inside of a packet, 0 = single flit packet, 1-4 = four flit packet
@@ -11,6 +16,15 @@ public class Flit {
     private int destinationY;
     private Color color;
 
+    /**
+     * Creates a flit object
+     * @param inputIndex    The index of the flit within the packet
+     * @param locX          The X location of the flit
+     * @param locY          The Y location of the flit
+     * @param destX         The X destination of the flit
+     * @param destY         The Y destination of the flit
+     * @param inputColor    The color of the flit
+     */
     Flit(int inputIndex, int locX, int locY, int destX, int destY, Color inputColor) {
         index = inputIndex;
         locationX = locX;

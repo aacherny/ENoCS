@@ -5,6 +5,13 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Circle object
+ * <P>
+ * Creates a circle, is used when drawing the topology of a router
+ *
+ * @author Alex Cherny
+ */
 public class Circle extends JPanel {
 
     public Circle(){

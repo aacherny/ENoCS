@@ -6,6 +6,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.LinkedList;
 
+/**
+ * Router Object that handles the location of flits within the pipeline, and their route computation
+ */
 public class Router {
     private int routerNumber;
     private int routerLocation;
@@ -49,6 +52,17 @@ public class Router {
 
     Circle circle = new Circle();
 
+    /**
+     * Creates the router object
+     * @param inputNodeNumber   The index of the router
+     * @param inputLocation     The location of the router
+     * @param inputNorth        The location of the router to its north
+     * @param inputSouth        The location of the router to its south
+     * @param inputEast         The location of the router to its east
+     * @param inputWest         The location of the router to its west
+     * @param inputDesktopPane  The desktop pane that holds the windows
+     * @param inputNetwork      The network that created the router
+     */
     public Router(int inputNodeNumber, int inputLocation, int inputNorth, int inputSouth, int inputEast, int inputWest, JDesktopPane inputDesktopPane, Network inputNetwork) {
         routerNumber = inputNodeNumber;
         routerLocation = inputLocation;
@@ -92,7 +106,8 @@ public class Router {
     }
 
     /**
-     * Called each time the Router moves forward one cycle
+     * Decides which input channel sends its flit into the pipeline, sends flits down the pipeline,
+     * and computes the correct output channel for each flit
      */
     public void nextCycle() {
         System.out.println("Next cycle for router: " + routerNumber + ", next channel is: " + nextRouter);
@@ -150,6 +165,9 @@ public class Router {
         routerDiagram.repaint();
     }
 
+    /**
+     * Clears the lists and pipeline stages of any flits they were holding
+     */
     public void newCycle() {
         channelHome = new LinkedList<Flit>();
 
@@ -184,9 +202,8 @@ public class Router {
     }
 
     /**
-     * Computes which output channel the flit should be put in depending on its location and destination
-     * Goes West/East first, then North/South once needed
-     * @param inputFlit
+     * Computes which output channel the flit should be put in depending on its location and destinationm, and the network topology
+     * @param inputFlit The flit that's about to be sorted
      */
     public void routeComputation(Flit inputFlit) {
         if(network.getTopology() == "mesh") {
@@ -255,8 +272,8 @@ public class Router {
      * Also takes into account if the flit is part of a packet, sending keeping flits of a packet together as they move
      * through the pipeline
      *
-     * @param channel
-     * @param inputFlitIndex
+     * @param channel           The current channel that's next in order
+     * @param inputFlitIndex    The index of the flit within the packet
      */
     private void setNextChannel(String channel, int inputFlitIndex) {
         Integer zero = 0;
@@ -334,7 +351,8 @@ public class Router {
     }
 
     /**
-     * Checks for stages in the pipeline that are null, paints a while rectangle at that spot if it's null
+     * Checks for stages in the pipeline that are null, paints a while rectangle at that spot if it's null.
+     * Paints the correct color at that spot if they're not null
      */
     private void clearPipelineSlots() {
 
@@ -411,6 +429,11 @@ public class Router {
         }
     }
 
+    /**
+     * Goes through a list and paints rectangles at the spots that have flits in them
+     * @param list      The list that's being checked
+     * @param channel   The row that the rectangle will be painted on
+     */
     private void createRectanglesFromFlitList(LinkedList<Flit> list, int channel) {
         if (list != null) {
             for (int i = 0; i < list.size(); i++) {
@@ -420,6 +443,11 @@ public class Router {
         }
     }
 
+    /**
+     * Checks each stage of the pipeline and paints rectangles on the topology if it's not null
+     * @param flit
+     * @param stage
+     */
     private void createRectanglesFromPipeline(Flit flit, int stage) {
         if (flit != null) {
             if (stage == 16) {
@@ -434,6 +462,10 @@ public class Router {
         }
     }
 
+    /**
+     * Adds a packet to the end of the South list (exclusively used by Bus networks)
+     * @param inputPacket   The flit to be added
+     */
     public void addPacket(Flit inputPacket) {
         if(channelSouth != null && channelSouth.size() < 16){
             channelSouth.addLast(inputPacket);
@@ -444,7 +476,7 @@ public class Router {
      * Inputs a packet into the router, adding it to the correct channel
      *
      * @param inputPacket The array of flits (packet) that's being input
-     * @param source      The source of the packet, 0 = home, 1 = north, 2 = south, 3 = east, 4 = west
+     * @param source      The source of the packet, 999 = home, 1 = north, 2 = south, 3 = east, 4 = west
      */
     public void inputPacket(Flit[] inputPacket, int source) {
 
@@ -510,9 +542,10 @@ public class Router {
         }
     }
 
-
-
-
+    /**
+     * Sends flits from one pipeline stage to the other
+     * @param inputPipelineStages   The number of stages in the pipeline
+     */
     public void pipeline(int inputPipelineStages) {
         if (inputPipelineStages == 4) {
             if (SwitchTraversal != null) {
@@ -751,9 +784,9 @@ public class Router {
 
 
     /**
-     * Returns a Jpanel containing a circle with the number of the node in the center
+     * Returns a Jpanel containing a clickable circle with the number of the node in the center
      *
-     * @return Jpanel
+     * @return Jpanel   Clickable circle that opens a Router pipeline window
      */
     public JPanel drawCircle() {
         JLabel nodeNum = new JLabel(routerNumber + "");   // Creates a label for the circle

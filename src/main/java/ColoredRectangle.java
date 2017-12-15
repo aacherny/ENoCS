@@ -3,6 +3,13 @@ package main.java;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Colored rectangle object
+ * <P>
+ * Colored rectangle to put on the pipeline of a router
+ *
+ * @author Alex Cherny
+ */
 public class ColoredRectangle extends JPanel {
 
     private Color color;
@@ -11,7 +18,12 @@ public class ColoredRectangle extends JPanel {
     private int RECT_WIDTH = 8;
     private int RECT_HEIGHT = 19;
 
-
+    /**
+     * Creates a colored rectangle at a certain location
+     * @param inputColor    The color of the rectangle
+     * @param inputRectX    The X location of the rectangle, based on which stage of the pipeline it's in
+     * @param inputRectY    The Y location of the rectangle
+     */
     public ColoredRectangle(Color inputColor, int inputRectX, int inputRectY){
         color = inputColor;
 

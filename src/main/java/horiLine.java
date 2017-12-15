@@ -3,6 +3,13 @@ package main.java;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Horizontal line object
+ * <P>
+ * Creates a circle, is used when drawing the topology of a router
+ *
+ * @author Alex Cherny
+ */
 public class horiLine extends JPanel {
 
     public horiLine(){

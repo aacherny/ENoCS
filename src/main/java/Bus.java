@@ -5,6 +5,13 @@ import java.awt.*;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Bus Object
+ * <P>
+ * Handles the functions of a Bus network like the interactions between routers
+ *
+ * @author Alex Cherny
+ */
 public class Bus implements Network
 {
     private int nodes;
@@ -18,6 +25,13 @@ public class Bus implements Network
 
     protected Router[] routerArray;
 
+    /**
+     * Creates a Bus object
+     *
+     * @param inputNodes        the number of nodes in the Bus network
+     * @param inputDesktopPane  the desktop object of the program, used to update certain windows on it when things happen
+     * @param inputOJFrame      the JOuterFrame that holds the desktop, used to update values that are used by the windows
+     */
     public Bus(int inputNodes, JDesktopPane inputDesktopPane, OuterJFrame inputOJFrame)
     {
         nodes = inputNodes;
@@ -32,6 +46,9 @@ public class Bus implements Network
         routerArray = createRouterArray(nodes);
     }
 
+    /**
+     * Calls the next cycle for each router, passes ready-to-send packets between routers, and generates packets
+     */
     public void nextCycle()
     {
         scrollingTextFrame.addText("Next cycle");
@@ -57,6 +74,9 @@ public class Bus implements Network
         generatePacket(packetChance);
     }
 
+    /**
+     * Calls the new cycle for each router
+     */
     public void newCycle()
     {
         for (int i = 0; i < nodes; i++) {    // Creates the same number of circle objects that there are number of nodes
@@ -66,6 +86,11 @@ public class Bus implements Network
         scrollingTextFrame.addText("Simulation restarted");
     }
 
+    /**
+     * Creates an array of Router objects
+     * @param inputNodes    The number of routers to create
+     * @return              The array of router objects
+     */
     @SuppressWarnings("Duplicates")
     public Router[] createRouterArray(int inputNodes) {
 
@@ -79,6 +104,11 @@ public class Bus implements Network
         return routers;
     }
 
+    /**
+     * Sometimes generates a packet with a random number of flits and with a random destination.
+     * Then inputs the packet to a random router
+     * @param chance    The chance that a packet will be created
+     */
     @SuppressWarnings("Duplicates")
     public void generatePacket(double chance) {
         for(int i = 0; i < nodes; i++)
@@ -105,6 +135,15 @@ public class Bus implements Network
         }
     }
 
+    /**
+     * Creates a packet (which is an array of flits)
+     * @param numberOfFlits The number of flits that the packet will be made out of
+     * @param locX          The X location of the flit
+     * @param locY          The Y location of the flit
+     * @param destX         The X destination of the flit
+     * @param destY         The Y destination of the flit
+     * @return              An array of flits
+     */
     @SuppressWarnings("Duplicates")
     public Flit[] createPacket(int numberOfFlits, int locX, int locY, int destX, int destY)
     {
@@ -134,6 +173,10 @@ public class Bus implements Network
         }
     }
 
+    /**
+     * Draws the topology for a Bus network, and adds a "Simulation Events" scrolling list and a statistics window
+     * @return  A JPanel of the network's topology
+     */
     public JPanel drawTopology() {
 
         desktopPane.add(scrollingTextFrame);
@@ -191,12 +234,14 @@ public class Bus implements Network
         return panelYContainer;
     }
 
+    /** Converts a two digit location like "01" to the router number that would be at that location (01 would be router 1)*/
     private int locationToIndex(int inputLocation){
         int locationX = inputLocation / 10;
         int locationY = inputLocation % 10;
         return ((int)Math.sqrt(nodes) * locationX + locationY);
     }
 
+    /** Converts a router number to what its location would be in a grid*/
     private int indexToLocation(int inputIndex){
         int locationX = inputIndex / (int)Math.sqrt(nodes);
         int locationY = inputIndex % (int)Math.sqrt(nodes);
@@ -239,6 +284,7 @@ public class Bus implements Network
         return pipelineStages;
     }
 
+    /** Removes the Statistics window and Events window if they're visible*/
     public void removeTextWindow(){
         try{
             desktopPane.remove(scrollingTextFrame);

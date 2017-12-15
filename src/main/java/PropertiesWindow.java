@@ -6,6 +6,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Properties window that receives network changes from the user and save/apply the changes to the network
+ */
 public class PropertiesWindow {
     private JFrame propertiesFrame = new JFrame();   // Main window that holds all of the tabs
     private JDesktopPane desktopPane;
@@ -21,37 +24,15 @@ public class PropertiesWindow {
     private int selectedNodes;
     private double selectedInjection;
 
-    //Setting for the properties window runtime options frame
-    public int ccPerStep = 3;
-    public String injectionType = "By Flit";
-    public int injectionRate = 10;
-    public int hotspotTrafficRate = 100;
-    public int hotspotNode = 0;
-    public String trafficPattern = "Uniform Random";
-    public String packetGeneration = "Drop packets generated at nodes with full input buffer";
-    //Settings for the properties window Network Settings frame
-    //TODO: remember to add the rest of the options to the network settings frame
-    public String topology = "Mesh";
-    public int nodes = 4;
-    //Settings for the properties window routerMA frame
-    public String bufferDesign = "1 buffer w/ 0 VCs per Node";
-    public int bufferSize = 4;
-    public String flowControl = "RoundRobin";
-    public String pipelineType = "Fixed Pipeline";
-    public int pipelineStages = 4;
-    public boolean creditBased = true;
-    //Settings for the properties window State frame
-    public boolean showClockCycles = true;
-    public boolean showHops = true;
-    public boolean showBandwidth = false;
-    public boolean showThroughput = false;
-    public boolean showDroppedFlits = true;
-    public boolean showArea = false;
-    public boolean showPower = false;
-
     TopologyInternalFrame topologyFrame;
     OuterJFrame OJFrame;
 
+    /**
+     * Creates the properties window
+     * @param inputJDesktopPane The desktop that holds different windows
+     * @param inputNetwork      The network of routers
+     * @param inputOuterJFrame  The JFrame that holds the desktop and other network information
+     */
     public PropertiesWindow(JDesktopPane inputJDesktopPane, Network inputNetwork, OuterJFrame inputOuterJFrame) {
         desktopPane = inputJDesktopPane;
         network = inputNetwork;
@@ -180,11 +161,6 @@ public class PropertiesWindow {
         borderPanel.add(okayCancelPanel, BorderLayout.SOUTH);
 
 
-
-
-
-
-
         // What happens when the OK button is clicked
         networkOkayButton.addActionListener(new ActionListener() {
             @Override
@@ -229,6 +205,10 @@ public class PropertiesWindow {
         });
     }
 
+    /**
+     * Creates the JPanel for Runtime Options
+     * @return
+     */
     private JPanel createRuntimeOptionsPanel() {
         //The below panel is for the proper positioning of the okay and cancel buttons
         JPanel borderLayout = new JPanel(new BorderLayout());
@@ -243,16 +223,6 @@ public class PropertiesWindow {
         JTextField CCPerStepField = new JTextField(OJFrame.getCyclePerStep()+"", 3);
         CCPerStepPanel.add(CCPerStepLabel);
         CCPerStepPanel.add(CCPerStepField);
-
-
-        //Below contains the injection type
-        JPanel injectionTypePanel = new JPanel();
-        JLabel injectionTypeLabel = new JLabel("Injection Type");
-        JComboBox<String> injectionTypeBox = new JComboBox<>();
-        injectionTypeBox.addItem("By Flit");
-        injectionTypeBox.addItem("By Packet");
-        injectionTypePanel.add(injectionTypeLabel);
-        injectionTypePanel.add(injectionTypeBox);
 
         //Below contains the injection rate percent and the traffic pattern
         JPanel injectionRatePanel = new JPanel();
@@ -273,10 +243,8 @@ public class PropertiesWindow {
         okayButton.addActionListener(e -> {
             selectedInjection = Integer.parseInt(boxInjection.getSelectedItem().toString());
             int selectedCyclesPerStep = Integer.parseInt(CCPerStepField.getText());
-            int selectedInjectType = injectionTypeBox.getSelectedIndex();
             OJFrame.setPacketChance(selectedInjection);
             OJFrame.setCyclePerStep(selectedCyclesPerStep);
-            OJFrame.setInjectType(selectedInjectType);
             network.setPacketChance(selectedInjection);
 
             propertiesFrame.dispose();
@@ -291,7 +259,6 @@ public class PropertiesWindow {
 
         //Adding Everything above to the RuntimeOptions Panel
         runtimeOptions.add(CCPerStepPanel);
-        runtimeOptions.add(injectionTypePanel);
         runtimeOptions.add(injectionRatePanel);
         borderLayout.add(runtimeOptions, BorderLayout.CENTER);
         borderLayout.add(okayCancelPanel, BorderLayout.SOUTH);
@@ -299,11 +266,9 @@ public class PropertiesWindow {
         return borderLayout;
     }
 
-    private void setProperties() {
-//        TODO: Figure out how to pass settings from the properties window the main window
-
-    }
-
+    /**
+     * Creates the JPanel for Router Microarchitecture options
+     */
     private JPanel createRouterMAPanel() {
         //The below panel is for the proper positioning of the okay and cancel buttons
         JPanel borderLayout = new JPanel(new BorderLayout());

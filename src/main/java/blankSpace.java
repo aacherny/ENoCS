@@ -3,6 +3,13 @@ package main.java;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Blank space object
+ * <P>
+ * Creates a white rectangle, is used when drawing the topology of a router
+ *
+ * @author Alex Cherny
+ */
 public class blankSpace extends JPanel {
 
     public blankSpace(){
