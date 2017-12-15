@@ -9,10 +9,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6effbb56-f5b0-4b79-a23a-cf22072d6528" name="Default" comment="Javadocs added">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/file" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="6effbb56-f5b0-4b79-a23a-cf22072d6528" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -95,7 +92,7 @@
             <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="1003">
-                  <caret line="59" column="35" lean-forward="false" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
+                  <caret line="59" column="30" lean-forward="false" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="30" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#3656#3687#0" expanded="true" />
@@ -151,8 +148,8 @@
           <file leaf-file-name="Router.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="605">
-                  <caret line="647" column="13" lean-forward="true" selection-start-line="647" selection-start-column="13" selection-end-line="647" selection-end-column="13" />
+                <state relative-caret-position="809">
+                  <caret line="659" column="20" lean-forward="false" selection-start-line="659" selection-start-column="20" selection-end-line="659" selection-end-column="20" />
                   <folding>
                     <element signature="e#34597#34923#0" expanded="true" />
                     <element signature="e#34922#34923#0" expanded="true" />
@@ -567,13 +564,6 @@
       <workItem from="1512882678317" duration="1283000" />
       <workItem from="1512936350431" duration="9726000" />
     </task>
-    <task id="LOCAL-00003" summary="Other buttons like 'Exit' added to the 'File' menu">
-      <created>1506441062101</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1506441062101</updated>
-    </task>
     <task id="LOCAL-00004" summary="'Properties' opens a new window">
       <created>1506529605977</created>
       <option name="number" value="00004" />
@@ -910,11 +900,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513314952819</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Another test committ">
+      <created>1513315344815</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1513315344816</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="260263000" />
+    <option name="totallyTimeSpent" value="260438000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -927,6 +924,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1712" y="0" width="1735" height="1407" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -936,8 +934,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13093415" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21640489" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4264107" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21640489" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4264107" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1013,7 +1011,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="&quot;Next Cycle&quot; moves flits out of the channel and cycles/displays flits as they move through the pipeline" />
     <MESSAGE value="Routers finish processing whole packets before moving on to the next channel" />
     <MESSAGE value="Packets now make it through the entire router, from the input channel out to the correct output channel" />
     <MESSAGE value="Packets can be passed between routers, and are randomly generated" />
@@ -1038,7 +1035,8 @@
     <MESSAGE value="Flits in the router pipeline are now clickable and display information that they carry" />
     <MESSAGE value="Minor changes" />
     <MESSAGE value="Javadocs added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Javadocs added" />
+    <MESSAGE value="Another test committ" />
+    <option name="LAST_COMMIT_MESSAGE" value="Another test committ" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1508,7 +1506,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1003">
-          <caret line="59" column="35" lean-forward="false" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
+          <caret line="59" column="30" lean-forward="false" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3656#3687#0" expanded="true" />
@@ -1534,8 +1532,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Router.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="647" column="13" lean-forward="true" selection-start-line="647" selection-start-column="13" selection-end-line="647" selection-end-column="13" />
+        <state relative-caret-position="809">
+          <caret line="659" column="20" lean-forward="false" selection-start-line="659" selection-start-column="20" selection-end-line="659" selection-end-column="20" />
           <folding>
             <element signature="e#34597#34923#0" expanded="true" />
             <element signature="e#34922#34923#0" expanded="true" />
