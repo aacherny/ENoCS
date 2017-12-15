@@ -61,37 +61,29 @@ public class Mesh implements Network
             if(routerArray[i].outputNorth != null){
                 Flit[] tempFlit = new Flit[] {routerArray[i].outputNorth};
 
-                if(routerArray[i - 1].getChannelSouth().size() < 13) {  // Makes sure the channel isn't full before sending
-                    routerArray[i - 1].inputPacket(tempFlit, routerArray[i].getRouterLocation());
-                    routerArray[i].outputNorth = null;
-                }
+                routerArray[i - 1].inputPacket(tempFlit, routerArray[i].getRouterLocation());
+                routerArray[i].outputNorth = null;
             }
 
             if(routerArray[i].outputSouth != null){
                 Flit[] tempFlit = new Flit[] {routerArray[i].outputSouth};
 
-                if(routerArray[i + 1].getChannelNorth().size() < 13) {
-                    routerArray[i + 1].inputPacket(tempFlit, routerArray[i].getRouterLocation());
-                    routerArray[i].outputSouth = null;
-                }
+                routerArray[i + 1].inputPacket(tempFlit, routerArray[i].getRouterLocation());
+                routerArray[i].outputSouth = null;
             }
 
             if(routerArray[i].outputEast != null){
                 Flit[] tempFlit = new Flit[] {routerArray[i].outputEast};
 
-                if(routerArray[i + (int) Math.sqrt(nodes)].getChannelWest().size() < 13) {
-                    routerArray[i + (int) Math.sqrt(nodes)].inputPacket(tempFlit, routerArray[i].getRouterLocation());
-                    routerArray[i].outputEast = null;
-                }
+                routerArray[i + (int) Math.sqrt(nodes)].inputPacket(tempFlit, routerArray[i].getRouterLocation());
+                routerArray[i].outputEast = null;
             }
 
             if(routerArray[i].outputWest != null){
                 Flit[] tempFlit = new Flit[] {routerArray[i].outputWest};
 
-                if(routerArray[i - (int) Math.sqrt(nodes)].getChannelEast().size() < 13) {
-                    routerArray[i - (int) Math.sqrt(nodes)].inputPacket(tempFlit, routerArray[i].getRouterLocation());
-                    routerArray[i].outputWest = null;
-                }
+                routerArray[i - (int) Math.sqrt(nodes)].inputPacket(tempFlit, routerArray[i].getRouterLocation());
+                routerArray[i].outputWest = null;
             }
         }
 
