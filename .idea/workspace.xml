@@ -7,7 +7,6 @@
     <list default="true" id="6effbb56-f5b0-4b79-a23a-cf22072d6528" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/ColoredRectangle.class" afterPath="$PROJECT_DIR$/out/production/ENoCS-project/main/java/ColoredRectangle.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Mesh.java" afterPath="$PROJECT_DIR$/src/main/java/Mesh.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -70,8 +69,8 @@
           <file leaf-file-name="Mesh.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="259">
-                  <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+                <state relative-caret-position="429">
+                  <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#13572#13573#0" expanded="true" />
@@ -533,13 +532,6 @@
       <workItem from="1512882678317" duration="1283000" />
       <workItem from="1512936350431" duration="9726000" />
     </task>
-    <task id="LOCAL-00001" summary="Another test commit">
-      <created>1506367699156</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1506367699156</updated>
-    </task>
     <task id="LOCAL-00002" summary="Look and Feel changed to Windows/Mac instead of Java&#10;&#10;Menu bar added&#10;'File' button added to menu bar&#10;'New' and 'Open' added to 'File'">
       <created>1506440023400</created>
       <option name="number" value="00002" />
@@ -876,11 +868,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513312751396</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Minor changes">
+      <created>1513313749179</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1513313749182</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="258764000" />
+    <option name="totallyTimeSpent" value="258795000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -980,7 +979,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Clicking &quot;Next Cycle&quot; updates the image with new shapes" />
     <MESSAGE value="&quot;Next Cycle&quot; brings flits from the channels into &quot;Route Computation&quot;" />
     <MESSAGE value="&quot;Next Cycle&quot; moves flits out of the channel and cycles/displays flits as they move through the pipeline" />
     <MESSAGE value="Routers finish processing whole packets before moving on to the next channel" />
@@ -1005,7 +1003,8 @@
     <MESSAGE value="More comments added for javadocs&#10;Statistics panel created" />
     <MESSAGE value="The statistics window updates correctly&#10;All three types of network operate without dropping packets, unless an input channel fills up" />
     <MESSAGE value="Flits in the router pipeline are now clickable and display information that they carry" />
-    <option name="LAST_COMMIT_MESSAGE" value="Flits in the router pipeline are now clickable and display information that they carry" />
+    <MESSAGE value="Minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1483,8 +1482,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Mesh.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+        <state relative-caret-position="429">
+          <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#13572#13573#0" expanded="true" />
