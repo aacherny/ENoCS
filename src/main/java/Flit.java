@@ -69,6 +69,10 @@ public class Flit {
         return destinationY;
     }
 
+    public int getPacketIndex() {
+        return index;
+    }
+
     public int getCycleCreated(){
         return cycleCreated;
     }

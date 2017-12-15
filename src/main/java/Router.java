@@ -52,6 +52,8 @@ public class Router {
     private RouterDiagram routerDiagram;
     private Network network;
 
+    protected Flit blankFlit = new Flit(0, 0, 0, 0, 0, Color.WHITE,0);
+
     Circle circle = new Circle();
 
     /**
@@ -391,27 +393,27 @@ public class Router {
     private void clearPipelineSlots() {
 
         if(outputHome != null) {
-            routerDiagram.addRectangle(new ColoredRectangle(outputHome.getColor(), 20, homeIndex));
+            routerDiagram.addRectangle(new ColoredRectangle(outputHome, 20, homeIndex));
         } else {
             routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, homeIndex));
         }
         if(outputNorth != null) {
-            routerDiagram.addRectangle(new ColoredRectangle(outputNorth.getColor(), 20, northIndex));
+            routerDiagram.addRectangle(new ColoredRectangle(outputNorth, 20, northIndex));
         } else {
             routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, northIndex));
         }
         if(outputSouth != null) {
-            routerDiagram.addRectangle(new ColoredRectangle(outputSouth.getColor(), 20, southIndex));
+            routerDiagram.addRectangle(new ColoredRectangle(outputSouth, 20, southIndex));
         } else {
             routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, southIndex));
         }
         if(outputEast != null) {
-            routerDiagram.addRectangle(new ColoredRectangle(outputEast.getColor(), 20, eastIndex));
+            routerDiagram.addRectangle(new ColoredRectangle(outputEast, 20, eastIndex));
         } else {
             routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, eastIndex));
         }
         if(outputWest != null) {
-            routerDiagram.addRectangle(new ColoredRectangle(outputWest.getColor(), 20, westIndex));
+            routerDiagram.addRectangle(new ColoredRectangle(outputWest, 20, westIndex));
         } else {
             routerDiagram.addRectangle(new ColoredRectangle(Color.WHITE, 20, westIndex));
         }
@@ -472,7 +474,7 @@ public class Router {
         if (list != null) {
             for (int i = 0; i < list.size(); i++) {
                 Flit flit = list.get(i);
-                routerDiagram.addRectangle(new ColoredRectangle(flit.getColor(), 15 - i, channel));
+                routerDiagram.addRectangle(new ColoredRectangle(flit, 15 - i, channel));
             }
         }
     }
@@ -485,13 +487,13 @@ public class Router {
     private void createRectanglesFromPipeline(Flit flit, int stage) {
         if (flit != null) {
             if (stage == 16) {
-                routerDiagram.addRectangle(new ColoredRectangle(flit.getColor(), 16, routerNumber));
+                routerDiagram.addRectangle(new ColoredRectangle(flit, 16, routerNumber));
             } else if (stage == 17) {
-                routerDiagram.addRectangle(new ColoredRectangle(flit.getColor(), 17, routerNumber));
+                routerDiagram.addRectangle(new ColoredRectangle(flit, 17, routerNumber));
             } else if (stage == 18) {
-                routerDiagram.addRectangle(new ColoredRectangle(flit.getColor(), 18, routerNumber));
+                routerDiagram.addRectangle(new ColoredRectangle(flit, 18, routerNumber));
             } else if (stage == 19) {
-                routerDiagram.addRectangle(new ColoredRectangle(flit.getColor(), 19, routerNumber));
+                routerDiagram.addRectangle(new ColoredRectangle(flit, 19, routerNumber));
             }
         }
     }
@@ -886,4 +888,12 @@ public class Router {
     }
 
     public LinkedList<Flit> getChannelHome() { return channelHome; }
+
+    public LinkedList<Flit> getChannelNorth() { return channelNorth; }
+
+    public LinkedList<Flit> getChannelSouth() { return channelSouth; }
+
+    public LinkedList<Flit> getChannelEast() { return channelEast; }
+
+    public LinkedList<Flit> getChannelWest() { return channelWest; }
 }
