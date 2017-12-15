@@ -1,8 +1,15 @@
 package main.java;
 
-        import javax.swing.*;
+import javax.swing.*;
         import java.awt.*;
 
+/**
+ * Vertical line object
+ * <P>
+ * Creates a vertical line, is used when drawing the topology of a network
+ *
+ * @author Alex Cherny
+ */
 public class vertLine extends JPanel {
 
     public vertLine(){

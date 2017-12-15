@@ -3,9 +3,9 @@ package main.java;
 import java.awt.*;
 
 /**
- * Flit object
- * <P>
- * Part of a packet, passed around between routers until it gets to its destination
+ * Flit object that's part of a packet, being passed around between routers until it gets to its destination
+ *
+ * @author Alex Cherny
  */
 public class Flit {
 

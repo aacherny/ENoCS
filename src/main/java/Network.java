@@ -5,6 +5,8 @@ import java.awt.*;
 
 /**
  * Network object that handles the interactions between Routers
+ *
+ * @author Alex Cherny
  */
 interface Network
 {

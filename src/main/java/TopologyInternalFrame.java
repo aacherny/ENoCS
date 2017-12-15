@@ -2,6 +2,11 @@ package main.java;
 
 import javax.swing.*;
 
+/**
+ * A window that holds the topology of a router
+ *
+ * @author Alex Cherny
+ */
 public class TopologyInternalFrame extends JInternalFrame
 {
     int openFrameCount;

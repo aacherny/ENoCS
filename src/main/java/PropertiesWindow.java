@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 
 /**
  * Properties window that receives network changes from the user and save/apply the changes to the network
+ *
+ * @author Alex Cherny
  */
 public class PropertiesWindow {
     private JFrame propertiesFrame = new JFrame();   // Main window that holds all of the tabs

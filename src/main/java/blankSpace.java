@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  * Blank space object
  * <P>
- * Creates a white rectangle, is used when drawing the topology of a router
+ * Creates a white rectangle, is used when drawing the topology of a network
  *
  * @author Alex Cherny
  */

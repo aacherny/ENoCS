@@ -3,6 +3,14 @@ package main.java;
 import javax.swing.*;
 import java.awt.*;
 
+
+/**
+ * T-segment object
+ * <P>
+ * Creates a t-segment with the single segment facing south, is used when drawing the topology of a network
+ *
+ * @author Alex Cherny
+ */
 public class shapeTSegmentDown extends JPanel {
 
     public shapeTSegmentDown(){

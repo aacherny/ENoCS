@@ -1,13 +1,19 @@
 package main.java;
 
-        import javax.swing.*;
-        import java.awt.*;
+import javax.swing.*;
+import java.awt.*;
 
+/**
+ * A window that displays important events that happen during the simulation
+ */
 public class TextFrame extends JInternalFrame {
 
     private JTextArea textArea;
     private JScrollPane scrollPane;
 
+    /**
+     * Object constructor
+     */
     public TextFrame()
     {
         super("Simulation Events",
@@ -27,6 +33,9 @@ public class TextFrame extends JInternalFrame {
         setVisible(true);
     }
 
+    /**
+     * Initializes the text window
+     */
     private void initTextWindow(){
         textArea = new JTextArea("", 10, 65);
         textArea.setLineWrap(true);
@@ -38,6 +47,10 @@ public class TextFrame extends JInternalFrame {
         getContentPane().add(scrollPane);
     }
 
+    /**
+     * Adds text to the window
+     * @param inputText The text to be added
+     */
     public void addText(String inputText){
         try {
             textArea.append(inputText + "\n");

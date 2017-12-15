@@ -14,6 +14,8 @@ import java.io.FileWriter;
 
 /**
  * Class for the outer window that holds other windows inside it
+ *
+ * @author Alex Cherny
  */
 
 public class OuterJFrame {
@@ -22,7 +24,6 @@ public class OuterJFrame {
     private JDesktopPane desktop;   // Needed for Internal JFrames
     // The next line declares the frames that are going to be used to control the internal windows
     private TopologyInternalFrame topologyFrame;
-    private StatisticsInternalFrame statisticFrame;
     private PropertiesWindow propWindow;
     private JToolBar toolBar;
     private double packetChance = 1;

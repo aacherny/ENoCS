@@ -5,9 +5,15 @@ import java.awt.*;
 
 public class StatsFrame extends JInternalFrame {
 
-    private JTextArea textArea;
-    private JScrollPane scrollPane;
+    private double avgLatency = 0;
+    private int flitsCreated = 0;
+    private int flitsRecieved = 0;
+
+    private JLabel avgLatencyNum;
     private JLabel flitsCreatedNum;
+    private JLabel flitsRecievedNum;
+
+
 
     public StatsFrame()
     {
@@ -29,19 +35,38 @@ public class StatsFrame extends JInternalFrame {
     }
 
     private void initTextWindow(){
-        JPanel flitsCreated = new JPanel(new GridLayout(0, 2));
-        JLabel flitsCreatedLabel = new JLabel("Flits created:");
+        JPanel avgLatencyContainer = new JPanel(new GridLayout(0, 2));
+        JLabel avgLatencyLabel = new JLabel("Average latency per packet:");
+        JLabel avgLatencyNum =  new JLabel();
+        avgLatencyContainer.add(avgLatencyLabel);
+        avgLatencyContainer.add(avgLatencyNum);
+        getContentPane().add(avgLatencyContainer);
+
+        JPanel flitsCreatedContainer = new JPanel(new GridLayout(0, 2));
+        JLabel flitsCreatedLabel = new JLabel("Flits generated:");
         flitsCreatedNum =  new JLabel();
-        flitsCreated.add(flitsCreatedLabel);
-        flitsCreated.add(flitsCreatedNum);
-        getContentPane().add(flitsCreated);
+        flitsCreatedContainer.add(flitsCreatedLabel);
+        flitsCreatedContainer.add(flitsCreatedNum);
+        getContentPane().add(flitsCreatedContainer);
+
+        JPanel flitsRecievedContainer = new JPanel(new GridLayout(0, 2));
+        JLabel flitsRecievedLabel = new JLabel("Flits received:");
+        flitsRecievedNum =  new JLabel();
+        flitsRecievedContainer.add(flitsRecievedLabel);
+        flitsRecievedContainer.add(flitsRecievedNum);
+        getContentPane().add(flitsRecievedContainer);
     }
 
-//    public void addText(String inputText){
-//        try {
-//            textArea.append(inputText + "\n");
-//        }catch(Exception e){
-//            System.out.println(e);
-//        }
-//    }
+    public void addFlitCreated(int flits){
+        flitsCreated = flitsCreated + flits;
+        flitsCreatedNum.setText(flitsCreated+"");
+    }
+
+    public void addFlitReceived(int flits){
+        flitsRecieved = flitsRecieved + flits;
+        flitsRecievedNum.setText(flitsRecieved+"");
+    }
+
+    private void updateLatency(){
+    }
 }

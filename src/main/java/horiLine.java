@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  * Horizontal line object
  * <P>
- * Creates a circle, is used when drawing the topology of a router
+ * Creates a horizontal line, is used when drawing the topology of a network
  *
  * @author Alex Cherny
  */

@@ -8,6 +8,8 @@ import java.util.LinkedList;
 
 /**
  * Router Object that handles the location of flits within the pipeline, and their route computation
+ *
+ * @author Alex Cherny
  */
 public class Router {
     private int routerNumber;

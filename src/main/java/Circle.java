@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 /**
  * Circle object
  * <P>
- * Creates a circle, is used when drawing the topology of a router
+ * Creates a circle, is used when drawing the topology of a network
  *
  * @author Alex Cherny
  */

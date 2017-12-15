@@ -7,6 +7,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Router diagram object that shows the channels of a router and flits at different stages of the pipeline
+ *
+ * @author Alex Cherny
+ */
 public class RouterDiagram extends JInternalFrame
 {
     static final int xOffset = 25, yOffset = 25;
@@ -17,6 +22,10 @@ public class RouterDiagram extends JInternalFrame
 
     private JPanel diagram;
 
+    /**
+     * Creates the RouterDiagram object
+     * @param inputRouter   The Router that's having a diagram made
+     */
     public RouterDiagram(Router inputRouter)
     {
         super("Router " + inputRouter.getRouterNumber(),
@@ -34,14 +43,13 @@ public class RouterDiagram extends JInternalFrame
         setLocation(xOffset, yOffset);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-        //diagram = addDiagram();
-        //add(diagram, BorderLayout.CENTER);
-
-
-
         pack();
     }
 
+    /**
+     * Adds the diagram to the window
+     * @return  A diagram of the router
+     */
     public JPanel addDiagram()
     {
         routerPanel = new JPanel();
@@ -68,6 +76,10 @@ public class RouterDiagram extends JInternalFrame
         return routerPanel;
     }
 
+    /**
+     * Adds a rectangle to the diagram
+     * @param rectangle The ColoredRectangle object that's being added
+     */
     public void addRectangle(ColoredRectangle rectangle)
     {
         routerPanel.add(rectangle, 0);
