@@ -15,23 +15,26 @@ public class Flit {
     private int destinationX;
     private int destinationY;
     private Color color;
+    private int cycleCreated;
 
     /**
      * Creates a flit object
-     * @param inputIndex    The index of the flit within the packet
-     * @param locX          The X location of the flit
-     * @param locY          The Y location of the flit
-     * @param destX         The X destination of the flit
-     * @param destY         The Y destination of the flit
-     * @param inputColor    The color of the flit
+     * @param inputIndex        The index of the flit within the packet
+     * @param locX              The X location of the flit
+     * @param locY              The Y location of the flit
+     * @param destX             The X destination of the flit
+     * @param destY             The Y destination of the flit
+     * @param inputColor        The color of the flit
+     * @param inputCycleCreated The cycle number that the flit was created
      */
-    Flit(int inputIndex, int locX, int locY, int destX, int destY, Color inputColor) {
+    Flit(int inputIndex, int locX, int locY, int destX, int destY, Color inputColor, int inputCycleCreated) {
         index = inputIndex;
         locationX = locX;
         locationY = locY;
         destinationX = destX;
         destinationY = destY;
         color = inputColor;
+        cycleCreated = inputCycleCreated;
     }
 
     public void setLocationX(int locX) {
@@ -64,5 +67,9 @@ public class Flit {
 
     public int getDestinationY() {
         return destinationY;
+    }
+
+    public int getCycleCreated(){
+        return cycleCreated;
     }
 }

@@ -63,5 +63,9 @@ interface Network
 
     int getPipelineStages();
 
+    OuterJFrame getOJFrame();
+
     TextFrame getScrollingTextFrame();
+
+    StatsFrame getStatisticsFrame();
 }

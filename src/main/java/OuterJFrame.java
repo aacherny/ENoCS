@@ -186,6 +186,10 @@ public class OuterJFrame {
         return desktop;
     }
 
+    public int getCycleNumber(){
+        return cycleNumber;
+    }
+
     public OuterJFrame getOuterJFrame() {
         return this;
     }

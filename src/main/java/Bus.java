@@ -84,6 +84,7 @@ public class Bus implements Network
         }
 
         scrollingTextFrame.addText("Simulation restarted");
+        statisticsFrame.reset();
     }
 
     /**
@@ -97,7 +98,7 @@ public class Bus implements Network
         Router[] routers = new Router[inputNodes];
 
         for(int i = 0; i < nodes; i++){
-            routers[i] = new Router(i, 00,-1, 01, -1, -1, desktopPane, this);
+            routers[i] = new Router(i, indexToLocation(i),-1, 01, -1, -1, desktopPane, this);
             scrollingTextFrame.addText("Router " + i + " Created");
         }
 
@@ -128,9 +129,13 @@ public class Bus implements Network
                 Flit[] packet = createPacket(randomNumberOfFlits, 0, 0, randomDestinationX, randomDestinationY);
                 if(routerArray[i].getChannelHome().size() < 13) {
                     routerArray[i].inputPacket(packet, 999);
+                    statisticsFrame.addFlitCreated(randomNumberOfFlits);
+                    statisticsFrame.addPacketCreated();
+
+                    scrollingTextFrame.addText("A " + randomNumberOfFlits + "-flit packet has been created at router " + i + ", destination: " + locationToIndex(randomDestination));
                 }
 
-                scrollingTextFrame.addText("A " + randomNumberOfFlits + "-flit packet has been created at router " + i + ", destination: " + locationToIndex(randomDestination));
+
             }
         }
     }
@@ -156,18 +161,18 @@ public class Bus implements Network
 
         switch(numberOfFlits) {
             default: {
-                Flit[] packet = new Flit[]{new Flit(0, locX, locY, destX, destY, randomColor)};
+                Flit[] packet = new Flit[]{new Flit(0, locX, locY, destX, destY, randomColor, OJFrame.getCycleNumber())};
                 return packet;
             }
             case (1): {
-                Flit[] packet = new Flit[]{new Flit(0, locX, locY, destX, destY, randomColor)};
+                Flit[] packet = new Flit[]{new Flit(0, locX, locY, destX, destY, randomColor, OJFrame.getCycleNumber())};
                 return packet;
             }
             case (4): {
-                Flit[] packet = new Flit[]{new Flit(1, locX, locY, destX, destY, randomColor),
-                        new Flit(2, locX, locY, destX, destY, randomColor),
-                        new Flit(3, locX, locY, destX, destY, randomColor),
-                        new Flit(4, locX, locY, destX, destY, randomColor)};
+                Flit[] packet = new Flit[]{new Flit(1, locX, locY, destX, destY, randomColor, OJFrame.getCycleNumber()),
+                        new Flit(2, locX, locY, destX, destY, randomColor, OJFrame.getCycleNumber()),
+                        new Flit(3, locX, locY, destX, destY, randomColor, OJFrame.getCycleNumber()),
+                        new Flit(4, locX, locY, destX, destY, randomColor, OJFrame.getCycleNumber())};
                 return packet;
             }
         }
@@ -267,6 +272,10 @@ public class Bus implements Network
         return scrollingTextFrame;
     }
 
+    public StatsFrame getStatisticsFrame(){
+        return statisticsFrame;
+    }
+
     public void setPacketChance(double inputPacketChance ){
         packetChance = inputPacketChance / 100;
 
@@ -282,6 +291,11 @@ public class Bus implements Network
 
     public int getPipelineStages(){
         return pipelineStages;
+    }
+
+
+    public OuterJFrame getOJFrame(){
+        return OJFrame;
     }
 
     /** Removes the Statistics window and Events window if they're visible*/

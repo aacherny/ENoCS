@@ -214,6 +214,15 @@ public class Router {
 
                 network.getScrollingTextFrame().addText("A packet has reached its destination at router " + locationToIndex(inputFlit.getDestinationX()*10 + inputFlit.getDestinationY()));
 
+                network.getStatisticsFrame().updateLatency(network.getOJFrame().cycleNumber, inputFlit);
+
+                if(inputFlit.getIndex() == 0){
+                    network.getStatisticsFrame().addFlitReceived(1);
+                    network.getStatisticsFrame().addPacketReceived();
+                }else if(inputFlit.getIndex() == 4){
+                    network.getStatisticsFrame().addFlitReceived(4);
+                    network.getStatisticsFrame().addPacketReceived();
+                }
             } else if (routerLocation / 10 > inputFlit.getDestinationX()) {
                 outputWest = inputFlit;
 
@@ -230,8 +239,20 @@ public class Router {
         else if(network.getTopology() == "bus") {
             if ((routerLocation / 10 == inputFlit.getDestinationX()) && (routerLocation % 10 == inputFlit.getDestinationY())) {
                 outputHome = inputFlit;
+
                 network.getScrollingTextFrame().addText("A packet has reached its destination at router " + locationToIndex(inputFlit.getDestinationX()*10 + inputFlit.getDestinationY()));
+
+                network.getStatisticsFrame().updateLatency(network.getOJFrame().cycleNumber, inputFlit);
+
+                if(inputFlit.getIndex() == 0){
+                    network.getStatisticsFrame().addFlitReceived(1);
+                    network.getStatisticsFrame().addPacketReceived();
+                }else if(inputFlit.getIndex() == 4){
+                    network.getStatisticsFrame().addFlitReceived(4);
+                    network.getStatisticsFrame().addPacketReceived();
+                }
             }else {
+                System.out.println("PASSED: " + routerLocation / 10 + ", " + inputFlit.getDestinationX() + ", " + routerLocation % 10 + ", " + inputFlit.getDestinationY());
                 outputSouth = inputFlit;
             }
         }
@@ -244,7 +265,18 @@ public class Router {
 
             if ((routerLocationX == flitDestinationX) && (routerLocationY == flitDestinationY)) {
                 outputHome = inputFlit;
+
                 network.getScrollingTextFrame().addText("A packet has reached its destination at router " + locationToIndex(inputFlit.getDestinationX()*10 + inputFlit.getDestinationY()));
+
+                network.getStatisticsFrame().updateLatency(network.getOJFrame().cycleNumber, inputFlit);
+
+                if(inputFlit.getIndex() == 0){
+                    network.getStatisticsFrame().addFlitReceived(1);
+                    network.getStatisticsFrame().addPacketReceived();
+                }else if(inputFlit.getIndex() == 4){
+                    network.getStatisticsFrame().addFlitReceived(4);
+                    network.getStatisticsFrame().addPacketReceived();
+                }
             } else if (routerLocationX == flitDestinationX) {
                 if (sqrtNodes - routerLocationY + flitDestinationY < routerLocationY - flitDestinationY) {
                     outputSouth = inputFlit;
@@ -552,18 +584,22 @@ public class Router {
         if (inputPipelineStages == 4) {
             if (SwitchTraversal != null) {
                 routeComputation(SwitchTraversal);
+                SwitchTraversal = null;
             }
 
             if (SwitchAllocator != null) {
                 SwitchTraversal = SwitchAllocator;
+                SwitchAllocator = null;
             }
 
             if (VCAllocator != null) {
                 SwitchAllocator = VCAllocator;
+                VCAllocator = null;
             }
 
             if (RouteComputation != null) {
                 VCAllocator = RouteComputation;
+                RouteComputation = null;
             }
 
             if ((nextRouter == "home") && (channelHome.peekFirst() != null) && (channelHome != null)) {
@@ -606,14 +642,17 @@ public class Router {
         } else if(inputPipelineStages == 3){
             if (SwitchTraversal != null) {
                 routeComputation(SwitchTraversal);
+                SwitchTraversal = null;
             }
 
             if (SwitchAllocator != null) {
                 SwitchTraversal = SwitchAllocator;
+                SwitchAllocator = null;
             }
 
             if (VCAllocator != null) {
                 SwitchAllocator = VCAllocator;
+                VCAllocator = null;
             }
 
             if ((nextRouter == "home") && (channelHome.peekFirst() != null) && (channelHome != null)) {
@@ -656,10 +695,12 @@ public class Router {
         } else if(inputPipelineStages == 2){
             if (SwitchTraversal != null) {
                 routeComputation(SwitchTraversal);
+                SwitchTraversal = null;
             }
 
             if (SwitchAllocator != null) {
                 SwitchTraversal = SwitchAllocator;
+                SwitchAllocator = null;
             }
 
             if ((nextRouter == "home") && (channelHome.peekFirst() != null) && (channelHome != null)) {
@@ -702,6 +743,8 @@ public class Router {
         } else if(inputPipelineStages == 1){
             if (SwitchTraversal != null) {
                 routeComputation(SwitchTraversal);
+
+                SwitchTraversal = null;
             }
 
             if ((nextRouter == "home") && (channelHome.peekFirst() != null) && (channelHome != null)) {
